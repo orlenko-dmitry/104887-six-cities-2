@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Дмитрий Орленко](https://up.htmlacademy.ru/react/2/user/104887).
-* Наставник: `Неизвестно`.
+* Наставник: [Влад Слепкан](https://up.htmlacademy.ru/react/2/user/383197).
 
 ---
 
