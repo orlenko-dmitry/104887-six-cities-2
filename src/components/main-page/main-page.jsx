@@ -1,4 +1,5 @@
 import React from 'react';
+import {arrayOf, string} from 'prop-types';
 
 const MainPage = ({places}) => (
   <div className="page page--gray page--main">
@@ -140,5 +141,9 @@ const MainPage = ({places}) => (
     </main>
   </div>
 );
+
+MainPage.propTypes = {
+  places: arrayOf(string),
+};
 
 export default MainPage;
