@@ -1,7 +1,7 @@
 import React from 'react';
-import {arrayOf, string} from 'prop-types';
+import {arrayOf, string, func} from 'prop-types';
 
-const MainPage = ({places}) => (
+const MainPage = ({places, titleHundler}) => (
   <div className="page page--gray page--main">
     <header className="header">
       <div className="container">
@@ -123,7 +123,7 @@ const MainPage = ({places}) => (
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
-                      <h2 className="place-card__name">
+                      <h2 className="place-card__name" onClick={titleHundler}>
                         <a href="#">{place}</a>
                       </h2>
                       <p className="place-card__type">Apartment</p>
@@ -143,7 +143,12 @@ const MainPage = ({places}) => (
 );
 
 MainPage.propTypes = {
-  places: arrayOf(string),
+  places: arrayOf(string).isRequired,
+  titleHundler: func.isRequired,
+};
+
+MainPage.defaultProps = {
+  titleHundler: () => null,
 };
 
 export default MainPage;
