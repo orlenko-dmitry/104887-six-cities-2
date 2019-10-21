@@ -10,11 +10,10 @@ it(`titleHundler have been called 1 time`, () => {
     `Nice, cozy, warm big bed apartment`,
     `Wood and stone place`,
   ];
-  const titleHundler = jest.fn();
-  const wrapper = shallow((<MainPage places={places} titleHundler={titleHundler}/>));
+  const titleHandler = jest.fn();
+  const wrapper = shallow((<MainPage places={places} titleHundler={titleHandler}/>));
+  const title = wrapper.find(`.place-card__name`).first();
 
-  wrapper.find(`.place-card__name`).forEach((node) => {
-    node.simulate(`click`);
-    expect(titleHundler).toHaveBeenCalled();
-  });
+  title.simulate(`click`);
+  expect(titleHandler).toHaveBeenCalledTimes(1);
 });
