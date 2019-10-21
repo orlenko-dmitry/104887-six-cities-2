@@ -3,7 +3,7 @@ import {shallow} from 'enzyme';
 
 import MainPage from './main-page.jsx';
 
-it(`titleHundler have been called 1 time`, () => {
+it(`titleHandler have been called 1 time`, () => {
   const places = [
     `Wood and stone place`,
     `Canal View Prinsengracht`,
@@ -11,7 +11,7 @@ it(`titleHundler have been called 1 time`, () => {
     `Wood and stone place`,
   ];
   const titleHandler = jest.fn();
-  const wrapper = shallow((<MainPage places={places} titleHundler={titleHandler}/>));
+  const wrapper = shallow((<MainPage places={places} titleHandler={titleHandler}/>));
   const title = wrapper.find(`.place-card__name`).first();
 
   title.simulate(`click`);
