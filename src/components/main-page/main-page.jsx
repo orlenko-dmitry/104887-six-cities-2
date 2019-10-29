@@ -7,19 +7,11 @@ import {
   bool,
 } from 'prop-types';
 
-import OfferCard from '../offer-card/offer-card.jsx';
+import OfferSList from '../offers-list/offers-list.jsx';
 
 class MainPage extends PureComponent {
   constructor(props) {
     super(props);
-  }
-
-  clickTitleHandler(id) {
-    return id;
-  }
-
-  hoverCardHandler(id) {
-    return id;
   }
 
   render() {
@@ -115,18 +107,7 @@ class MainPage extends PureComponent {
                   </select>
                   */}
                 </form>
-                <div className="cities__places-list places__list tabs__content">
-                  {
-                    offers.map((offer) => (
-                      <OfferCard
-                        key={offer.id}
-                        offer={offer}
-                        onTitleClick={this.clickTitleHandler}
-                        onCardHover={this.hoverCardHandler}
-                      />
-                    ))
-                  }
-                </div>
+                <OfferSList offers={offers} />
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map"></section>

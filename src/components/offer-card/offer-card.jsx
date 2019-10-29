@@ -19,12 +19,14 @@ const OfferCard = ({
     img,
   },
   onTitleClick,
-  onCardHover,
+  onCardHoverIn,
+  onCardHoverOut,
 }) => (
   <article
     className="cities__place-card place-card"
     key={id}
-    onMouseEnter={() => onCardHover(id)}
+    onMouseEnter={() => onCardHoverIn(id)}
+    onMouseLeave={onCardHoverOut}
   >
     {isPremiun && (
       <div className="place-card__mark">
@@ -83,7 +85,8 @@ OfferCard.propTypes = {
     img: string,
   }).isRequired,
   onTitleClick: func.isRequired,
-  onCardHover: func.isRequired,
+  onCardHoverIn: func.isRequired,
+  onCardHoverOut: func.isRequired,
 };
 
 export default OfferCard;
