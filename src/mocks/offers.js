@@ -18,7 +18,7 @@ const offers = [{
   img: `img/room.jpg`,
 }, {
   id: 3,
-  name: `Beautiful luxurious apartment at great location`,
+  name: `Nice, cozy, warm big bed apartmen`,
   type: `Apartment`,
   price: 70,
   isPremiun: true,
