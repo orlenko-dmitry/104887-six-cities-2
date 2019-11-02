@@ -9,21 +9,21 @@ const offers = [{
     }
   },
   "previewImage": `img/apartment-01.jpg`,
-  "images": [`/img/room.jpg`, `img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`],
+  "images": [`/img/room.jpg`, `img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/studio-01.jpg`, `img/room.jpg`],
   "title": `Beautiful & luxurious studio at great location`,
   "isFavorite": true,
   "isPremium": true,
   "rating": 4.8,
   "type": `apartment`,
   "bedrooms": 3,
-  "max_adults": 4,
+  "maxAdults": 4,
   "price": 120,
   "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
   "host": {
     "id": 3,
     "isPro": true,
     "name": `Angelina`,
-    "avatar_url": `img/avatar-angelina.jpg`
+    "avatarUrl": `img/avatar-angelina.jpg`
   },
   "description": `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
   "location": {
@@ -42,21 +42,21 @@ const offers = [{
     }
   },
   "previewImage": `img/room.jpg`,
-  "images": [`/img/room.jpg`, `img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`],
+  "images": [`/img/room.jpg`, `img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/studio-01.jpg`, `img/room.jpg`],
   "title": `Wood and stone place`,
   "isFavorite": false,
   "isPremium": false,
   "rating": 4.2,
   "type": `private room`,
   "bedrooms": 1,
-  "max_adults": 2,
+  "maxAdults": 2,
   "price": 80,
   "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
   "host": {
     "id": 3,
     "isPro": true,
     "name": `Angelina`,
-    "avatar_url": `img/avatar-angelina.jpg`
+    "avatarUrl": `img/avatar-angelina.jpg`
   },
   "description": `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
   "location": {
@@ -75,21 +75,21 @@ const offers = [{
     }
   },
   "previewImage": `img/apartment-02.jpg`,
-  "images": [`/img/room.jpg`, `img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`],
+  "images": [`/img/room.jpg`, `img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/studio-01.jpg`, `img/room.jpg`],
   "title": `Nice, cozy, warm big bed apartmen`,
   "isFavorite": true,
   "isPremium": false,
   "rating": 4,
   "type": `apartment`,
   "bedrooms": 2,
-  "max_adults": 3,
+  "maxAdults": 3,
   "price": 70,
   "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
   "host": {
     "id": 3,
     "isPro": true,
     "name": `Angelina`,
-    "avatar_url": `img/avatar-angelina.jpg`
+    "avatarUrl": `img/avatar-angelina.jpg`
   },
   "description": `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
   "location": {
@@ -108,21 +108,21 @@ const offers = [{
     }
   },
   "previewImage": `img/apartment-03.jpg`,
-  "images": [`/img/room.jpg`, `img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`],
+  "images": [`/img/room.jpg`, `img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/studio-01.jpg`, `img/room.jpg`],
   "title": `Beautiful luxurious apartment at great location`,
   "isFavorite": false,
   "isPremium": true,
   "rating": 4.9,
   "type": `apartment`,
   "bedrooms": 3,
-  "max_adults": 6,
+  "maxAdults": 6,
   "price": 200,
   "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
   "host": {
     "id": 3,
     "isPro": true,
     "name": `Angelina`,
-    "avatar_url": `img/avatar-angelina.jpg`
+    "avatarUrl": `img/avatar-angelina.jpg`
   },
   "description": `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
   "location": {

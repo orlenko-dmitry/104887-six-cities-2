@@ -12,7 +12,7 @@ const getPageScreen = (offers) => {
     case `/`:
       return <MainPage offers={offers} />;
     case `/details`:
-      return <DetailsPage />;
+      return <DetailsPage offer={offers[0]} />;
   }
   return null;
 };
