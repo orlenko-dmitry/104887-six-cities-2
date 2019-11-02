@@ -1,3 +1,3 @@
 export const defineRating = (rating) => {
-  return `${rating / 5 * 100}%`;
+  return `${Math.round(rating / 5 * 100)}%`;
 };
