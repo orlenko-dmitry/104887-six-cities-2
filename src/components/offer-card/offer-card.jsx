@@ -69,7 +69,7 @@ const OfferCard = ({
         </div>
       </div>
       <h2 className="place-card__name" onClick={() => onTitleClick(id)}>
-        <a href="#">{title}</a>
+        <a href="/details">{title}</a>
       </h2>
       <p className="place-card__type">{type}</p>
     </div>
