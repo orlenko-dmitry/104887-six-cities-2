@@ -10,13 +10,13 @@ import {
 const OfferCard = ({
   offer: {
     id,
-    name,
+    title,
     type,
     price,
-    isPremiun,
-    inBookmarks,
+    isPremium,
+    isFavorite,
     rating,
-    img,
+    previewImage,
   },
   onTitleClick,
   onCardHoverIn,
@@ -28,14 +28,14 @@ const OfferCard = ({
     onMouseEnter={() => onCardHoverIn(id)}
     onMouseLeave={onCardHoverOut}
   >
-    {isPremiun && (
+    {isPremium && (
       <div className="place-card__mark">
         <span>Premium</span>
       </div>
     )}
     <div className="cities__image-wrapper place-card__image-wrapper">
       <a href="#">
-        <img className="place-card__image" src={img} width="260" height="200" alt="Place image" />
+        <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image" />
       </a>
     </div>
     <div className="place-card__info">
@@ -45,9 +45,10 @@ const OfferCard = ({
           <span className="place-card__price-text">&#47;&nbsp;night</span>
         </div>
         <button
-          className={inBookmarks
-            ? `place-card__bookmark-button--active button`
-            : `place-card__bookmark-button button`
+          className={
+            isFavorite
+              ? `place-card__bookmark-button--active button`
+              : `place-card__bookmark-button button`
           }
           type="button"
         >
@@ -55,7 +56,7 @@ const OfferCard = ({
             <use xlinkHref="#icon-bookmark"></use>
           </svg>
           <span className="visually-hidden">
-            {inBookmarks ? `In bookmarks` : `To bookmarks`}
+            {isFavorite ? `In bookmarks` : `To bookmarks`}
           </span>
         </button>
       </div>
@@ -66,7 +67,7 @@ const OfferCard = ({
         </div>
       </div>
       <h2 className="place-card__name" onClick={() => onTitleClick(id)}>
-        <a href="#">{name}</a>
+        <a href="#">{title}</a>
       </h2>
       <p className="place-card__type">{type}</p>
     </div>
@@ -75,14 +76,14 @@ const OfferCard = ({
 
 OfferCard.propTypes = {
   offer: shape({
-    id: number,
-    name: string,
-    type: string,
-    price: number,
-    isPremiun: bool,
-    inBookmarks: bool,
-    rating: string,
-    img: string,
+    id: number.isRequired,
+    title: string.isRequired,
+    type: string.isRequired,
+    price: number.isRequired,
+    isPremium: bool.isRequired,
+    isFavorite: bool.isRequired,
+    rating: string.isRequired,
+    previewImage: string.isRequired,
   }).isRequired,
   onTitleClick: func.isRequired,
   onCardHoverIn: func.isRequired,

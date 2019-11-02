@@ -2,9 +2,6 @@ import React, {PureComponent} from 'react';
 import {
   arrayOf,
   shape,
-  string,
-  number,
-  bool,
 } from 'prop-types';
 
 import OfferSList from '../offers-list/offers-list.jsx';
@@ -121,16 +118,7 @@ class MainPage extends PureComponent {
 }
 
 MainPage.propTypes = {
-  offers: arrayOf(shape({
-    id: number,
-    name: string,
-    type: string,
-    price: number,
-    isPremiun: bool,
-    inBookmarks: bool,
-    rating: string,
-    img: string,
-  })).isRequired,
+  offers: arrayOf(shape({})).isRequired,
 };
 
 export default MainPage;
