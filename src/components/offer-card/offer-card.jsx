@@ -7,6 +7,8 @@ import {
   func,
 } from 'prop-types';
 
+import {defineRating} from '../../helpers/helpers.js';
+
 const OfferCard = ({
   offer: {
     id,
@@ -62,7 +64,7 @@ const OfferCard = ({
       </div>
       <div className="place-card__rating rating">
         <div className="place-card__stars rating__stars">
-          <span style={{width: rating}}></span>
+          <span style={{width: defineRating(rating)}}></span>
           <span className="visually-hidden">Rating</span>
         </div>
       </div>
@@ -82,7 +84,7 @@ OfferCard.propTypes = {
     price: number.isRequired,
     isPremium: bool.isRequired,
     isFavorite: bool.isRequired,
-    rating: string.isRequired,
+    rating: number.isRequired,
     previewImage: string.isRequired,
   }).isRequired,
   onTitleClick: func.isRequired,

@@ -7,6 +7,8 @@ import {
   bool,
 } from 'prop-types';
 
+import {defineRating} from '../../helpers/helpers.js';
+
 class DetailsPage extends PureComponent {
   constructor(props) {
     super(props);
@@ -64,7 +66,7 @@ class DetailsPage extends PureComponent {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: rating}} />
+                  <span style={{width: defineRating(rating)}} />
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">4.8</span>
@@ -307,10 +309,10 @@ DetailsPage.propTypes = {
     goods: arrayOf(string).isRequired,
     description: string.isRequired,
     host: shape({
-      id: 3,
-      isPro: true,
-      name: `Angelina`,
-      avatarUrl: `img/avatar-angelina.jpg`
+      id: number.isRequired,
+      isPro: bool.isRequired,
+      name: string.isRequired,
+      avatarUrl: string.isRequired,
     }),
   }).isRequired,
 };
