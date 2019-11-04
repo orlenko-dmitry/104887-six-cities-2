@@ -1,27 +1,28 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {
   arrayOf,
   shape,
-  string,
-  number,
-  bool,
 } from 'prop-types';
 
 import MainPage from '../main-page/main-page.jsx';
+import DetailsPage from '../details-page/details-page.jsx';
 
-const App = ({offers}) => <MainPage offers={offers}/>;
+const getPageScreen = (offers) => {
+  switch (location.pathname) {
+    case `/`:
+      return <MainPage offers={offers} />;
+    case `/details`:
+      return <DetailsPage offer={offers[0]} />;
+  }
+  return null;
+};
+
+const App = ({offers}) => (
+  <Fragment>{getPageScreen(offers)}</Fragment>
+);
 
 App.propTypes = {
-  offers: arrayOf(shape({
-    id: number,
-    name: string,
-    type: string,
-    price: number,
-    isPremiun: bool,
-    inBookmarks: bool,
-    rating: string,
-    img: string,
-  })).isRequired,
+  offers: arrayOf(shape({})).isRequired,
 };
 
 export default App;
