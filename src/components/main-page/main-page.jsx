@@ -5,6 +5,7 @@ import {
 } from 'prop-types';
 
 import OfferSList from '../offers-list/offers-list.jsx';
+import OffersMap from '../offers-map/offers-map.jsx';
 
 class MainPage extends PureComponent {
   constructor(props) {
@@ -107,7 +108,7 @@ class MainPage extends PureComponent {
                 <OfferSList offers={offers} />
               </section>
               <div className="cities__right-section">
-                <section className="cities__map map"></section>
+                <OffersMap offers={offers} />
               </div>
             </div>
           </div>
