@@ -9,6 +9,7 @@ import {
 
 import {defineRating} from '../../helpers/helpers.js';
 import ReviewsList from '../reviews-list/reviews-list.jsx';
+import OffersMap from '../offers-map/offers-map.jsx';
 
 class DetailsPage extends PureComponent {
   constructor(props) {
@@ -167,7 +168,9 @@ class DetailsPage extends PureComponent {
               </section>
             </div>
           </div>
-          <section className="property__map map" />
+          <section className="property__map map">
+            <OffersMap offers={offers} />
+          </section>
         </section>
         <div className="container">
           <section className="near-places places">
