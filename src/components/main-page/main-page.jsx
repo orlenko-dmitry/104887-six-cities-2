@@ -4,7 +4,7 @@ import {
   shape,
 } from 'prop-types';
 
-import OfferSList from '../offers-list/offers-list.jsx';
+import OffersList from '../offers-list/offers-list.jsx';
 import OffersMap from '../offers-map/offers-map.jsx';
 
 class MainPage extends PureComponent {
@@ -105,7 +105,7 @@ class MainPage extends PureComponent {
                   </select>
                   */}
                 </form>
-                <OfferSList offers={offers} />
+                <OffersList offers={offers} classNames={`cities__places-list tabs__content`} />
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
