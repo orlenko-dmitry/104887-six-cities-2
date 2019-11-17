@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import {
   arrayOf,
   shape,
+  string,
 } from 'prop-types';
 
 import OfferCard from '../offer-card/offer-card.jsx';
@@ -29,10 +30,10 @@ class OffersList extends PureComponent {
   }
 
   render() {
+    const {offers, classNames} = this.props;
 
-    const {offers} = this.props;
     return (
-      <div className="cities__places-list places__list tabs__content">
+      <div className={`${classNames} places__list`}>
         {
           offers.map((offer) => (
             <OfferCard
@@ -51,6 +52,11 @@ class OffersList extends PureComponent {
 
 OffersList.propTypes = {
   offers: arrayOf(shape({})).isRequired,
+  classNames: string,
+};
+
+OffersList.defaultProps = {
+  classNames: ``,
 };
 
 export default OffersList;

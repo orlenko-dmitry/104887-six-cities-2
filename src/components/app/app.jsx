@@ -7,22 +7,36 @@ import {
 import MainPage from '../main-page/main-page.jsx';
 import DetailsPage from '../details-page/details-page.jsx';
 
-const getPageScreen = (offers) => {
+const getPageScreen = (offers, nearOffers, reviews) => {
   switch (location.pathname) {
     case `/`:
       return <MainPage offers={offers} />;
     case `/details`:
-      return <DetailsPage offer={offers[0]} />;
+      return (
+        <DetailsPage
+          offer={offers[0]}
+          nearOffers={nearOffers}
+          reviews={reviews}
+        />
+      );
   }
   return null;
 };
 
-const App = ({offers}) => (
-  <Fragment>{getPageScreen(offers)}</Fragment>
+const App = ({offers, nearOffers, reviews}) => (
+  <Fragment>{getPageScreen(offers, nearOffers, reviews)}</Fragment>
 );
 
 App.propTypes = {
-  offers: arrayOf(shape({})).isRequired,
+  offers: arrayOf(shape({})),
+  nearOffers: arrayOf(shape({})),
+  reviews: arrayOf(shape({})),
+};
+
+App.defaultProps = {
+  offers: [],
+  nearOffers: [],
+  reviews: [],
 };
 
 export default App;
