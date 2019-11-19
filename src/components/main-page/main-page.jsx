@@ -3,9 +3,11 @@ import {
   arrayOf,
   shape,
 } from 'prop-types';
+import {connect} from 'react-redux';
 
 import OffersList from '../offers-list/offers-list.jsx';
 import OffersMap from '../offers-map/offers-map.jsx';
+import {getCityOffers} from '../../selectors.js';
 
 class MainPage extends PureComponent {
   constructor(props) {
@@ -120,8 +122,14 @@ class MainPage extends PureComponent {
   }
 }
 
+const mapStateToProps = (state) => ({
+  offers: getCityOffers(state),
+});
+
 MainPage.propTypes = {
   offers: arrayOf(shape({})).isRequired,
 };
 
-export default MainPage;
+export {MainPage};
+
+export default connect(mapStateToProps, null)(MainPage);

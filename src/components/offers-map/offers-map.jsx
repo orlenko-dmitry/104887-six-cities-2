@@ -6,12 +6,13 @@ import {
 } from 'prop-types';
 import leaflet from 'leaflet';
 
-const city = [52.38333, 4.9];
 const zoom = 12;
 
 class OffersMap extends PureComponent {
   componentDidMount() {
     const {offers} = this.props;
+    const {latitude: cityLatitude, longitude: cityLongitude} = offers[0].city.location;
+    const city = [cityLatitude, cityLongitude];
     const map = leaflet.map(`map`, {
       center: city,
       zoom,
@@ -29,8 +30,8 @@ class OffersMap extends PureComponent {
             attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
           })
           .addTo(map);
-    offers.map(({location: {latitude, longitude}}) => {
-      const offerCords = [latitude, longitude];
+    offers.map(({location: {latitude: offerLatitude, longitude: offerLongitude}}) => {
+      const offerCords = [offerLatitude, offerLongitude];
       leaflet
       .marker(offerCords, {icon})
       .addTo(map);

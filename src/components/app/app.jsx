@@ -10,7 +10,7 @@ import DetailsPage from '../details-page/details-page.jsx';
 const getPageScreen = (offers, nearOffers, reviews) => {
   switch (location.pathname) {
     case `/`:
-      return <MainPage offers={offers} />;
+      return <MainPage />;
     case `/details`:
       return (
         <DetailsPage
