@@ -2,6 +2,17 @@ export const defineRating = (rating) => {
   return `${Math.round(rating / 5 * 100)}%`;
 };
 
+export const leafletSetView = ({offers, map, city, zoom, icon, leaflet}) => {
+
+  map.setView(city, zoom);
+  offers.map(({location: {latitude: offerLatitude, longitude: offerLongitude}}) => {
+    const offerCords = [offerLatitude, offerLongitude];
+    leaflet
+    .marker(offerCords, {icon})
+    .addTo(map);
+  });
+};
+
 export const convertOffersToCamelCase = (offers) => {
   return offers.map(({
     city,

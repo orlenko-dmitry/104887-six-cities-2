@@ -96,7 +96,7 @@ class MainPage extends PureComponent {
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
-                  <OffersMap offers={offers} />
+                  <OffersMap offers={offers} selectedCity={city}/>
                 </section>
               </div>
             </div>
