@@ -3,6 +3,7 @@ import {
   arrayOf,
   shape,
   string,
+  func,
 } from 'prop-types';
 import {connect} from 'react-redux';
 
@@ -10,10 +11,17 @@ import OffersList from '../offers-list/offers-list.jsx';
 import OffersMap from '../offers-map/offers-map.jsx';
 import MainTabs from '../main-tabs/main-tabs.jsx';
 import {getCityOffers, getCities} from '../../selectors.js';
+import actions from '../../actions.js';
 
 class MainPage extends PureComponent {
   constructor(props) {
     super(props);
+    this.selectCityHandler = this.selectCityHandler.bind(this);
+  }
+
+  selectCityHandler(city) {
+    const {selectCity} = this.props;
+    selectCity(city);
   }
 
   render() {
@@ -50,7 +58,11 @@ class MainPage extends PureComponent {
         </header>
         <main className="page__main page__main--index">
           <h1 className="visually-hidden">Cities</h1>
-          <MainTabs cities={cities} selectedCity={city} />
+          <MainTabs
+            cities={cities}
+            selectedCity={city}
+            onSelectCityClick={this.selectCityHandler}
+          />
           <div className="cities">
             <div className="cities__places-container container">
               <section className="cities__places places">
@@ -94,18 +106,22 @@ class MainPage extends PureComponent {
   }
 }
 
+MainPage.propTypes = {
+  offers: arrayOf(shape({})).isRequired,
+  city: string.isRequired,
+  cities: arrayOf(string),
+  selectCity: func.isRequired,
+};
+
 const mapStateToProps = (state) => ({
   offers: getCityOffers(state),
   city: state.city,
   cities: getCities(state),
 });
 
-MainPage.propTypes = {
-  offers: arrayOf(shape({})).isRequired,
-  city: string.isRequired,
-  cities: arrayOf(string),
-};
-
+const mapDispatchToProps = (dispatch) => ({
+  selectCity: (payload) => dispatch(actions.selectCity(payload)),
+});
 export {MainPage};
 
-export default connect(mapStateToProps, null)(MainPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
