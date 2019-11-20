@@ -6,7 +6,7 @@ const getCity = (state) => state.city;
 
 export const getCityOffers = createSelector(
     [getOffers, getCity],
-    (offers, city) => convertOffersToCamelCase(offers.filter((item) => item.city.name === city))
+    (offers, city) => convertOffersToCamelCase(offers.filter((item) => item.city.name === city.name))
 );
 
 export const getCities = createSelector(
@@ -14,8 +14,8 @@ export const getCities = createSelector(
     (offers) => {
       let cities = [];
       offers.forEach((item) => {
-        if (!cities.includes(item.city.name)) {
-          cities.push(item.city.name);
+        if (!cities.some((elem) => elem.name === item.city.name)) {
+          cities.push(item.city);
         }
       });
       return cities;

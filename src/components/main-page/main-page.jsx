@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import {
   arrayOf,
   shape,
+  number,
   string,
   func,
 } from 'prop-types';
@@ -67,7 +68,7 @@ class MainPage extends PureComponent {
             <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{offersQuantity} places to stay in {city}</b>
+                <b className="places__found">{offersQuantity} places to stay in {city.name}</b>
                 <form className="places__sorting" action="#" method="get">
                   <span className="places__sorting-caption">Sort by</span>
                   <span className="places__sorting-type" tabIndex="0">
@@ -108,8 +109,15 @@ class MainPage extends PureComponent {
 
 MainPage.propTypes = {
   offers: arrayOf(shape({})).isRequired,
-  city: string.isRequired,
-  cities: arrayOf(string),
+  city: shape({
+    location: shape({
+      latitude: number.isRequired,
+      longitude: number.isRequired,
+      zoom: number.isRequired,
+    }).isRequired,
+    name: string.isRequired,
+  }).isRequired,
+  cities: arrayOf(shape({})).isRequired,
   selectCity: func.isRequired,
 };
 

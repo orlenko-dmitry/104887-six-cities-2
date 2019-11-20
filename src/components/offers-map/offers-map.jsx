@@ -38,6 +38,11 @@ class OffersMap extends PureComponent {
     });
   }
 
+  // componentDidUpdate(prevProps) {
+  //   const {}
+  //   if (prevProps.)
+  // }
+
   render() {
     return (
       <div id="map" style={{height: `100%`}}></div>
