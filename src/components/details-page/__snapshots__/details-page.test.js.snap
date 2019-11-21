@@ -1,0 +1,879 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailsPage renders correctly 1`] = `
+<main
+  className="page__main page__main--property"
+>
+  <section
+    className="property"
+  >
+    <div
+      className="property__gallery-container container"
+    >
+      <div
+        className="property__gallery"
+      >
+        <div
+          className="property__image-wrapper"
+          key="0"
+        >
+          <img
+            alt="Photo studio"
+            className="property__image"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/3.jpg"
+          />
+        </div>
+        <div
+          className="property__image-wrapper"
+          key="1"
+        >
+          <img
+            alt="Photo studio"
+            className="property__image"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/1.jpg"
+          />
+        </div>
+        <div
+          className="property__image-wrapper"
+          key="2"
+        >
+          <img
+            alt="Photo studio"
+            className="property__image"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/9.jpg"
+          />
+        </div>
+        <div
+          className="property__image-wrapper"
+          key="3"
+        >
+          <img
+            alt="Photo studio"
+            className="property__image"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/19.jpg"
+          />
+        </div>
+        <div
+          className="property__image-wrapper"
+          key="4"
+        >
+          <img
+            alt="Photo studio"
+            className="property__image"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/4.jpg"
+          />
+        </div>
+        <div
+          className="property__image-wrapper"
+          key="5"
+        >
+          <img
+            alt="Photo studio"
+            className="property__image"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/10.jpg"
+          />
+        </div>
+        <div
+          className="property__image-wrapper"
+          key="6"
+        >
+          <img
+            alt="Photo studio"
+            className="property__image"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/6.jpg"
+          />
+        </div>
+        <div
+          className="property__image-wrapper"
+          key="7"
+        >
+          <img
+            alt="Photo studio"
+            className="property__image"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/15.jpg"
+          />
+        </div>
+        <div
+          className="property__image-wrapper"
+          key="8"
+        >
+          <img
+            alt="Photo studio"
+            className="property__image"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/12.jpg"
+          />
+        </div>
+        <div
+          className="property__image-wrapper"
+          key="9"
+        >
+          <img
+            alt="Photo studio"
+            className="property__image"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/7.jpg"
+          />
+        </div>
+        <div
+          className="property__image-wrapper"
+          key="10"
+        >
+          <img
+            alt="Photo studio"
+            className="property__image"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/2.jpg"
+          />
+        </div>
+        <div
+          className="property__image-wrapper"
+          key="11"
+        >
+          <img
+            alt="Photo studio"
+            className="property__image"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/16.jpg"
+          />
+        </div>
+        <div
+          className="property__image-wrapper"
+          key="12"
+        >
+          <img
+            alt="Photo studio"
+            className="property__image"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/14.jpg"
+          />
+        </div>
+        <div
+          className="property__image-wrapper"
+          key="13"
+        >
+          <img
+            alt="Photo studio"
+            className="property__image"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/5.jpg"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="property__container container"
+    >
+      <div
+        className="property__wrapper"
+      >
+        <div
+          className="property__name-wrapper"
+        >
+          <h1
+            className="property__name"
+          >
+            House in countryside
+          </h1>
+          <button
+            className="property__bookmark-button button"
+            type="button"
+          >
+            <svg
+              className="property__bookmark-icon"
+              height={33}
+              width={31}
+            >
+              <use
+                xlinkHref="#icon-bookmark"
+              />
+            </svg>
+            <span
+              className="visually-hidden"
+            >
+              To bookmarks
+            </span>
+          </button>
+        </div>
+        <div
+          className="property__rating rating"
+        >
+          <div
+            className="property__stars rating__stars"
+          >
+            <span
+              style={
+                Object {
+                  "width": "84%",
+                }
+              }
+            />
+            <span
+              className="visually-hidden"
+            >
+              Rating
+            </span>
+          </div>
+          <span
+            className="property__rating-value rating__value"
+          >
+            4.8
+          </span>
+        </div>
+        <ul
+          className="property__features"
+        >
+          <li
+            className="property__feature property__feature--entire"
+          >
+            Entire place
+          </li>
+          <li
+            className="property__feature property__feature--bedrooms"
+          >
+            5
+             Bedrooms
+          </li>
+          <li
+            className="property__feature property__feature--adults"
+          >
+            Max 
+            7
+             adults
+          </li>
+        </ul>
+        <div
+          className="property__price"
+        >
+          <b
+            className="property__price-value"
+          >
+            €
+            656
+          </b>
+          <span
+            className="property__price-text"
+          >
+             night
+          </span>
+        </div>
+        <div
+          className="property__inside"
+        >
+          <h2
+            className="property__inside-title"
+          >
+            What's inside
+          </h2>
+          <ul
+            className="property__inside-list"
+          >
+            <li
+              className="property__inside-item"
+              key="0"
+            >
+              Laptop friendly workspace
+            </li>
+            <li
+              className="property__inside-item"
+              key="1"
+            >
+              Washer
+            </li>
+            <li
+              className="property__inside-item"
+              key="2"
+            >
+              Air conditioning
+            </li>
+            <li
+              className="property__inside-item"
+              key="3"
+            >
+              Breakfast
+            </li>
+            <li
+              className="property__inside-item"
+              key="4"
+            >
+              Towels
+            </li>
+            <li
+              className="property__inside-item"
+              key="5"
+            >
+              Baby seat
+            </li>
+          </ul>
+        </div>
+        <div
+          className="property__host"
+        >
+          <h2
+            className="property__host-title"
+          >
+            Meet the host
+          </h2>
+          <div
+            className="property__host-user user"
+          >
+            <div
+              className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper"
+            >
+              <img
+                alt="Host avatar"
+                className="property__avatar user__avatar"
+                height={74}
+                src="img/avatar-angelina.jpg"
+                width={74}
+              />
+            </div>
+            <span
+              className="property__user-name"
+            >
+              Angelina
+            </span>
+            <span
+              className="property__user-status"
+            >
+              Pro
+            </span>
+          </div>
+          <div
+            className="property__description"
+          >
+            <p
+              className="property__text"
+            >
+              Discover daily local life in city center, friendly neighborhood, clandestine casino, karaoke, old-style artisans, art gallery and artist studio downstairs.
+            </p>
+          </div>
+        </div>
+        <section
+          className="property__reviews reviews"
+        >
+          <h2
+            className="reviews__title"
+          >
+            Reviews · 
+            <span
+              className="reviews__amount"
+            >
+              2
+            </span>
+          </h2>
+          <ReviewsList
+            reviews={
+              Array [
+                Object {
+                  "avatar": "img/avatar-max.jpg",
+                  "dateString": "April 2019",
+                  "dateTime": "2019-04-24",
+                  "id": 1,
+                  "message": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
+              The building is green and from 18th century.",
+                  "rating": 4.9,
+                  "userName": "Max",
+                },
+                Object {
+                  "avatar": "img/avatar-angelina.jpg",
+                  "dateString": "Mart 2019",
+                  "dateTime": "2019-03-20",
+                  "id": 2,
+                  "message": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
+              The building is green and from 18th century.",
+                  "rating": 4.5,
+                  "userName": "Dasha",
+                },
+              ]
+            }
+          />
+          <form
+            action="#"
+            className="reviews__form form"
+            method="post"
+          >
+            <label
+              className="reviews__label form__label"
+              htmlFor="review"
+            >
+              Your review
+            </label>
+            <div
+              className="reviews__rating-form form__rating"
+            >
+              <input
+                className="form__rating-input visually-hidden"
+                defaultValue={5}
+                id="5-stars"
+                name="rating"
+                type="radio"
+              />
+              <label
+                className="reviews__rating-label form__rating-label"
+                htmlFor="5-stars"
+                title="perfect"
+              >
+                <svg
+                  className="form__star-image"
+                  height={33}
+                  width={37}
+                >
+                  <use
+                    xlinkHref="#icon-star"
+                  />
+                </svg>
+              </label>
+              <input
+                className="form__rating-input visually-hidden"
+                defaultValue={4}
+                id="4-stars"
+                name="rating"
+                type="radio"
+              />
+              <label
+                className="reviews__rating-label form__rating-label"
+                htmlFor="4-stars"
+                title="good"
+              >
+                <svg
+                  className="form__star-image"
+                  height={33}
+                  width={37}
+                >
+                  <use
+                    xlinkHref="#icon-star"
+                  />
+                </svg>
+              </label>
+              <input
+                className="form__rating-input visually-hidden"
+                defaultValue={3}
+                id="3-stars"
+                name="rating"
+                type="radio"
+              />
+              <label
+                className="reviews__rating-label form__rating-label"
+                htmlFor="3-stars"
+                title="not bad"
+              >
+                <svg
+                  className="form__star-image"
+                  height={33}
+                  width={37}
+                >
+                  <use
+                    xlinkHref="#icon-star"
+                  />
+                </svg>
+              </label>
+              <input
+                className="form__rating-input visually-hidden"
+                defaultValue={2}
+                id="2-stars"
+                name="rating"
+                type="radio"
+              />
+              <label
+                className="reviews__rating-label form__rating-label"
+                htmlFor="2-stars"
+                title="badly"
+              >
+                <svg
+                  className="form__star-image"
+                  height={33}
+                  width={37}
+                >
+                  <use
+                    xlinkHref="#icon-star"
+                  />
+                </svg>
+              </label>
+              <input
+                className="form__rating-input visually-hidden"
+                defaultValue={1}
+                id="1-star"
+                name="rating"
+                type="radio"
+              />
+              <label
+                className="reviews__rating-label form__rating-label"
+                htmlFor="1-star"
+                title="terribly"
+              >
+                <svg
+                  className="form__star-image"
+                  height={33}
+                  width={37}
+                >
+                  <use
+                    xlinkHref="#icon-star"
+                  />
+                </svg>
+              </label>
+            </div>
+            <textarea
+              className="reviews__textarea form__textarea"
+              defaultValue=""
+              id="review"
+              name="review"
+              placeholder="Tell how was your stay, what you like and what can be improved"
+            />
+            <div
+              className="reviews__button-wrapper"
+            >
+              <p
+                className="reviews__help"
+              >
+                To submit review please make sure to set 
+                <span
+                  className="reviews__star"
+                >
+                  rating
+                </span>
+                 and describe your stay with at least 
+                <b
+                  className="reviews__text-amount"
+                >
+                  50 characters
+                </b>
+                .
+              </p>
+              <button
+                className="reviews__submit form__submit button"
+                disabled={true}
+                type="submit"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+    <section
+      className="property__map map"
+    >
+      <OffersMap
+        offers={
+          Array [
+            Object {
+              "bedrooms": 3,
+              "city": Object {
+                "location": Object {
+                  "latitude": 52.370216,
+                  "longitude": 4.895168,
+                  "zoom": 10,
+                },
+                "name": "Amsterdam",
+              },
+              "description": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.",
+              "goods": Array [
+                "Heating",
+                "Kitchen",
+                "Cable TV",
+                "Washing machine",
+                "Coffee machine",
+                "Dishwasher",
+              ],
+              "host": Object {
+                "avatarUrl": "img/avatar-angelina.jpg",
+                "id": 3,
+                "isPro": true,
+                "name": "Angelina",
+              },
+              "id": 1,
+              "images": Array [
+                "/img/room.jpg",
+                "img/apartment-01.jpg",
+                "img/apartment-02.jpg",
+                "img/apartment-03.jpg",
+                "img/studio-01.jpg",
+                "img/room.jpg",
+              ],
+              "isFavorite": true,
+              "isPremium": true,
+              "location": Object {
+                "latitude": 52.3909553943508,
+                "longitude": 4.85309666406198,
+                "zoom": 8,
+              },
+              "maxAdults": 4,
+              "previewImage": "img/apartment-01.jpg",
+              "price": 120,
+              "rating": 4.8,
+              "title": "Beautiful & luxurious studio at great location",
+              "type": "Apartment",
+            },
+            Object {
+              "bedrooms": 1,
+              "city": Object {
+                "location": Object {
+                  "latitude": 52.370216,
+                  "longitude": 4.895168,
+                  "zoom": 10,
+                },
+                "name": "Amsterdam",
+              },
+              "description": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.",
+              "goods": Array [
+                "Heating",
+                "Kitchen",
+                "Cable TV",
+                "Washing machine",
+                "Coffee machine",
+                "Dishwasher",
+              ],
+              "host": Object {
+                "avatarUrl": "img/avatar-angelina.jpg",
+                "id": 3,
+                "isPro": true,
+                "name": "Angelina",
+              },
+              "id": 2,
+              "images": Array [
+                "/img/room.jpg",
+                "img/apartment-01.jpg",
+                "img/apartment-02.jpg",
+                "img/apartment-03.jpg",
+                "img/studio-01.jpg",
+                "img/room.jpg",
+              ],
+              "isFavorite": false,
+              "isPremium": false,
+              "location": Object {
+                "latitude": 52.369553943508,
+                "longitude": 4.85309666406198,
+                "zoom": 8,
+              },
+              "maxAdults": 2,
+              "previewImage": "img/room.jpg",
+              "price": 80,
+              "rating": 4.2,
+              "title": "Wood and stone place",
+              "type": "Private room",
+            },
+            Object {
+              "bedrooms": 2,
+              "city": Object {
+                "location": Object {
+                  "latitude": 52.370216,
+                  "longitude": 4.895168,
+                  "zoom": 10,
+                },
+                "name": "Amsterdam",
+              },
+              "description": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.",
+              "goods": Array [
+                "Heating",
+                "Kitchen",
+                "Cable TV",
+                "Washing machine",
+                "Coffee machine",
+                "Dishwasher",
+              ],
+              "host": Object {
+                "avatarUrl": "img/avatar-angelina.jpg",
+                "id": 3,
+                "isPro": true,
+                "name": "Angelina",
+              },
+              "id": 3,
+              "images": Array [
+                "/img/room.jpg",
+                "img/apartment-01.jpg",
+                "img/apartment-02.jpg",
+                "img/apartment-03.jpg",
+                "img/studio-01.jpg",
+                "img/room.jpg",
+              ],
+              "isFavorite": true,
+              "isPremium": false,
+              "location": Object {
+                "latitude": 52.3909553943508,
+                "longitude": 4.929309666406198,
+                "zoom": 8,
+              },
+              "maxAdults": 3,
+              "previewImage": "img/apartment-02.jpg",
+              "price": 70,
+              "rating": 4,
+              "title": "Nice, cozy, warm big bed apartmen",
+              "type": "Apartment",
+            },
+          ]
+        }
+        selectedCity={
+          Object {
+            "location": Object {
+              "latitude": 52.37454,
+              "longitude": 4.897976,
+              "zoom": 13,
+            },
+            "name": "Amsterdam",
+          }
+        }
+      />
+    </section>
+  </section>
+  <div
+    className="container"
+  >
+    <section
+      className="near-places places"
+    >
+      <h2
+        className="near-places__title"
+      >
+        Other places in the neighbourhood
+      </h2>
+      <OffersList
+        classNames="near-places__list"
+        offers={
+          Array [
+            Object {
+              "bedrooms": 3,
+              "city": Object {
+                "location": Object {
+                  "latitude": 52.370216,
+                  "longitude": 4.895168,
+                  "zoom": 10,
+                },
+                "name": "Amsterdam",
+              },
+              "description": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.",
+              "goods": Array [
+                "Heating",
+                "Kitchen",
+                "Cable TV",
+                "Washing machine",
+                "Coffee machine",
+                "Dishwasher",
+              ],
+              "host": Object {
+                "avatarUrl": "img/avatar-angelina.jpg",
+                "id": 3,
+                "isPro": true,
+                "name": "Angelina",
+              },
+              "id": 1,
+              "images": Array [
+                "/img/room.jpg",
+                "img/apartment-01.jpg",
+                "img/apartment-02.jpg",
+                "img/apartment-03.jpg",
+                "img/studio-01.jpg",
+                "img/room.jpg",
+              ],
+              "isFavorite": true,
+              "isPremium": true,
+              "location": Object {
+                "latitude": 52.3909553943508,
+                "longitude": 4.85309666406198,
+                "zoom": 8,
+              },
+              "maxAdults": 4,
+              "previewImage": "img/apartment-01.jpg",
+              "price": 120,
+              "rating": 4.8,
+              "title": "Beautiful & luxurious studio at great location",
+              "type": "Apartment",
+            },
+            Object {
+              "bedrooms": 1,
+              "city": Object {
+                "location": Object {
+                  "latitude": 52.370216,
+                  "longitude": 4.895168,
+                  "zoom": 10,
+                },
+                "name": "Amsterdam",
+              },
+              "description": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.",
+              "goods": Array [
+                "Heating",
+                "Kitchen",
+                "Cable TV",
+                "Washing machine",
+                "Coffee machine",
+                "Dishwasher",
+              ],
+              "host": Object {
+                "avatarUrl": "img/avatar-angelina.jpg",
+                "id": 3,
+                "isPro": true,
+                "name": "Angelina",
+              },
+              "id": 2,
+              "images": Array [
+                "/img/room.jpg",
+                "img/apartment-01.jpg",
+                "img/apartment-02.jpg",
+                "img/apartment-03.jpg",
+                "img/studio-01.jpg",
+                "img/room.jpg",
+              ],
+              "isFavorite": false,
+              "isPremium": false,
+              "location": Object {
+                "latitude": 52.369553943508,
+                "longitude": 4.85309666406198,
+                "zoom": 8,
+              },
+              "maxAdults": 2,
+              "previewImage": "img/room.jpg",
+              "price": 80,
+              "rating": 4.2,
+              "title": "Wood and stone place",
+              "type": "Private room",
+            },
+            Object {
+              "bedrooms": 2,
+              "city": Object {
+                "location": Object {
+                  "latitude": 52.370216,
+                  "longitude": 4.895168,
+                  "zoom": 10,
+                },
+                "name": "Amsterdam",
+              },
+              "description": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.",
+              "goods": Array [
+                "Heating",
+                "Kitchen",
+                "Cable TV",
+                "Washing machine",
+                "Coffee machine",
+                "Dishwasher",
+              ],
+              "host": Object {
+                "avatarUrl": "img/avatar-angelina.jpg",
+                "id": 3,
+                "isPro": true,
+                "name": "Angelina",
+              },
+              "id": 3,
+              "images": Array [
+                "/img/room.jpg",
+                "img/apartment-01.jpg",
+                "img/apartment-02.jpg",
+                "img/apartment-03.jpg",
+                "img/studio-01.jpg",
+                "img/room.jpg",
+              ],
+              "isFavorite": true,
+              "isPremium": false,
+              "location": Object {
+                "latitude": 52.3909553943508,
+                "longitude": 4.929309666406198,
+                "zoom": 8,
+              },
+              "maxAdults": 3,
+              "previewImage": "img/apartment-02.jpg",
+              "price": 70,
+              "rating": 4,
+              "title": "Nice, cozy, warm big bed apartmen",
+              "type": "Apartment",
+            },
+          ]
+        }
+      />
+    </section>
+  </div>
+</main>
+`;
