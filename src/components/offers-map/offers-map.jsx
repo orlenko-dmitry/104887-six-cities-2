@@ -8,6 +8,14 @@ import {
 import leaflet from 'leaflet';
 
 import {leafletSetView} from '../../helpers/helpers.js';
+import {LEAFLET_CONSTS} from '../../consts/index.js';
+
+const {
+  ICON_URL,
+  ICON_SIZE,
+  TILE_LAYER,
+  ATTRIBUTION,
+} = LEAFLET_CONSTS;
 
 class OffersMap extends PureComponent {
   constructor(props) {
@@ -34,14 +42,12 @@ class OffersMap extends PureComponent {
       marker: true
     });
     this.icon = leaflet.icon({
-      iconUrl: `img/pin.svg`,
-      iconSize: [30, 30]
+      iconUrl: ICON_URL,
+      iconSize: ICON_SIZE,
     });
 
     leaflet
-        .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
-          attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
-        })
+        .tileLayer(TILE_LAYER, {attribution: ATTRIBUTION})
         .addTo(this.map);
     leafletSetView({offers, map: this.map, city: center, zoom, icon: this.icon, leaflet});
   }

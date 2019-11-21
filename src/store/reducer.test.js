@@ -2,25 +2,13 @@ import reducer from './reducer.js';
 import actions from './actions';
 import {SELECT_CITY} from '../consts/actionTypes';
 import offers from '../mocks/offers.js';
+import {SELECT_CITY_PAYLOAD} from '../consts/index.js';
 
 describe(`Action creators work correctly`, () => {
   it(`Action creator for selecting city returns action with payload`, () => {
-    expect(actions.selectCity({
-      name: `Amsterdam`,
-      location: {
-        latitude: 52.37454,
-        longitude: 4.897976,
-        zoom: 13
-      }})).toEqual({
+    expect(actions.selectCity(SELECT_CITY_PAYLOAD)).toEqual({
       type: SELECT_CITY,
-      payload: {
-        name: `Amsterdam`,
-        location: {
-          latitude: 52.37454,
-          longitude: 4.897976,
-          zoom: 13
-        },
-      },
+      payload: SELECT_CITY_PAYLOAD,
     });
   });
 });
@@ -37,23 +25,9 @@ describe(`Reducer works correctly`, () => {
   it(`Reducer should change city by a given payload`, () => {
     expect(reducer(undefined, {
       type: SELECT_CITY,
-      payload: {
-        name: `Amsterdam`,
-        location: {
-          latitude: 52.37454,
-          longitude: 4.897976,
-          zoom: 13
-        },
-      },
+      payload: SELECT_CITY_PAYLOAD,
     })).toEqual(Object.assign({}, initialState, {
-      city: {
-        name: `Amsterdam`,
-        location: {
-          latitude: 52.37454,
-          longitude: 4.897976,
-          zoom: 13
-        },
-      }
+      city: SELECT_CITY_PAYLOAD,
     }));
   });
 });
