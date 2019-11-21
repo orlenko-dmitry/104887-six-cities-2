@@ -1,4 +1,4 @@
-const nearOffers = [{
+export default ([{
   "id": 1,
   "city": {
     "name": `Amsterdam`,
@@ -97,6 +97,4 @@ const nearOffers = [{
     "longitude": 4.929309666406198,
     "zoom": 8
   }
-}];
-
-export default nearOffers;
+}]);

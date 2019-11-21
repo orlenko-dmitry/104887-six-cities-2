@@ -1,12 +1,11 @@
 import {createSelector} from 'reselect';
-import {convertOffersToCamelCase} from './helpers/helpers.js';
 
 const getOffers = (state) => state.offers;
 const getCity = (state) => state.city;
 
 export const getCityOffers = createSelector(
     [getOffers, getCity],
-    (offers, city) => convertOffersToCamelCase(offers.filter((item) => item.city.name === city.name))
+    (offers, city) => offers.filter((item) => item.city.name === city.name)
 );
 
 export const getCities = createSelector(

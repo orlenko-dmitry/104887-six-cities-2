@@ -44,7 +44,12 @@ export const convertOffersToCamelCase = (offers) => {
     maxAdults,
     price,
     goods,
-    host,
+    host: {
+      id: host.id,
+      isPro: host.is_pro,
+      name: host.name,
+      avatarUrl: host.avatar_url,
+    },
     description,
     location,
     id,

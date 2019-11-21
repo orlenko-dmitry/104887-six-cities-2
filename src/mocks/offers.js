@@ -1,6 +1,8 @@
 /* eslint-disable indent */
 /* eslint-disable quotes */
-export default ([
+import {convertOffersToCamelCase} from '../helpers/helpers.js';
+
+export default (convertOffersToCamelCase([
   {
       "city": {
           "name": "Amsterdam",
@@ -4625,4 +4627,4 @@ export default ([
       },
       "id": 82
   }
-]);
+]));
