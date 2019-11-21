@@ -1,7 +1,7 @@
 import {
   SELECT_CITY,
-} from './consts/actionTypes.js';
-import offers from './mocks/offers.js';
+} from '../consts/actionTypes.js';
+import offers from '../mocks/offers.js';
 
 const initialState = {
   city: offers[0].city,

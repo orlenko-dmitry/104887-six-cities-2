@@ -11,8 +11,8 @@ import {connect} from 'react-redux';
 import OffersList from '../offers-list/offers-list.jsx';
 import OffersMap from '../offers-map/offers-map.jsx';
 import MainTabs from '../main-tabs/main-tabs.jsx';
-import {getCityOffers, getCities} from '../../selectors.js';
-import actions from '../../actions.js';
+import {getCityOffers, getCities} from '../../store/selectors.js';
+import actions from '../../store/actions.js';
 
 class MainPage extends PureComponent {
   constructor(props) {
