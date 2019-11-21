@@ -12,6 +12,7 @@ exports[`MainTabs rnders correctly 1`] = `
     >
       <li
         className="locations__item"
+        data-testid="city-0"
         key="Amsterdam"
         onClick={[Function]}
       >
@@ -25,6 +26,7 @@ exports[`MainTabs rnders correctly 1`] = `
       </li>
       <li
         className="locations__item"
+        data-testid="city-1"
         key="Brussels"
         onClick={[Function]}
       >
@@ -38,6 +40,7 @@ exports[`MainTabs rnders correctly 1`] = `
       </li>
       <li
         className="locations__item"
+        data-testid="city-2"
         key="Cologne"
         onClick={[Function]}
       >
@@ -51,6 +54,7 @@ exports[`MainTabs rnders correctly 1`] = `
       </li>
       <li
         className="locations__item"
+        data-testid="city-3"
         key="Paris"
         onClick={[Function]}
       >
@@ -64,6 +68,7 @@ exports[`MainTabs rnders correctly 1`] = `
       </li>
       <li
         className="locations__item"
+        data-testid="city-4"
         key="Hamburg"
         onClick={[Function]}
       >
@@ -77,6 +82,7 @@ exports[`MainTabs rnders correctly 1`] = `
       </li>
       <li
         className="locations__item"
+        data-testid="city-5"
         key="Dusseldorf"
         onClick={[Function]}
       >

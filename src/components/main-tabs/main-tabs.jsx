@@ -11,8 +11,13 @@ const MainTabs = ({cities, selectedCity, onSelectCityClick}) => (
   <div className="tabs">
     <section className="locations container">
       <ul className="locations__list tabs__list">
-        {cities.map((city) => (
-          <li className="locations__item" key={`${city.name}`} onClick={() => onSelectCityClick(city)}>
+        {cities.map((city, index) => (
+          <li
+            className="locations__item"
+            data-testid={`city-${index}`}
+            key={`${city.name}`}
+            onClick={() => onSelectCityClick(city)}
+          >
             <a className={`locations__item-link tabs__item ${city.name === selectedCity.name ? `tabs__item--active` : ``}`}>
               <span>{city.name}</span>
             </a>

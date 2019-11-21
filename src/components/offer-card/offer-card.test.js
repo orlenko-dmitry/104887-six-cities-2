@@ -11,6 +11,7 @@ it(`OfferCard renders correctly`, () => {
   const tree = shallow(
       <OfferCard
         offer={cityOffers[0]}
+        listIndex={0}
         onTitleClick={() => {}}
         onCardHoverIn={() => {}}
         onCardHoverOut={() => {}}

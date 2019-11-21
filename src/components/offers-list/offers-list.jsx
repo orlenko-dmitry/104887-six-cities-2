@@ -35,10 +35,11 @@ class OffersList extends PureComponent {
     return (
       <div className={`${classNames} places__list`}>
         {
-          offers.map((offer) => (
+          offers.map((offer, index) => (
             <OfferCard
               key={offer.id}
               offer={offer}
+              listIndex={index}
               onTitleClick={this.clickTitleHandler}
               onCardHoverIn={this.hoverInCardHandler}
               onCardHoverOut={this.hoverOutCardHandler}

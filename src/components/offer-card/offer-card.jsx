@@ -20,6 +20,7 @@ const OfferCard = ({
     rating,
     previewImage,
   },
+  listIndex,
   onTitleClick,
   onCardHoverIn,
   onCardHoverOut,
@@ -27,6 +28,7 @@ const OfferCard = ({
   <article
     className="cities__place-card place-card"
     key={id}
+    data-testid={`place-card-${listIndex}`}
     onMouseEnter={() => onCardHoverIn(id)}
     onMouseLeave={onCardHoverOut}
   >
@@ -68,7 +70,11 @@ const OfferCard = ({
           <span className="visually-hidden">Rating</span>
         </div>
       </div>
-      <h2 className="place-card__name" onClick={() => onTitleClick(id)}>
+      <h2
+        className="place-card__name"
+        data-testid={`place-card-title-${listIndex}`}
+        onClick={() => onTitleClick(id)}
+      >
         <a href="/details">{title}</a>
       </h2>
       <p className="place-card__type">{type}</p>
@@ -87,6 +93,7 @@ OfferCard.propTypes = {
     rating: number.isRequired,
     previewImage: string.isRequired,
   }).isRequired,
+  listIndex: number.isRequired,
   onTitleClick: func.isRequired,
   onCardHoverIn: func.isRequired,
   onCardHoverOut: func.isRequired,

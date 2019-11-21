@@ -6,6 +6,7 @@ exports[`OfferList renders correctly 1`] = `
 >
   <OfferCard
     key="1"
+    listIndex={0}
     offer={
       Object {
         "bedrooms": 5,
@@ -70,6 +71,7 @@ exports[`OfferList renders correctly 1`] = `
   />
   <OfferCard
     key="4"
+    listIndex={1}
     offer={
       Object {
         "bedrooms": 1,
@@ -136,6 +138,7 @@ exports[`OfferList renders correctly 1`] = `
   />
   <OfferCard
     key="5"
+    listIndex={2}
     offer={
       Object {
         "bedrooms": 2,
@@ -197,6 +200,7 @@ exports[`OfferList renders correctly 1`] = `
   />
   <OfferCard
     key="9"
+    listIndex={3}
     offer={
       Object {
         "bedrooms": 2,
@@ -266,6 +270,7 @@ exports[`OfferList renders correctly 1`] = `
   />
   <OfferCard
     key="17"
+    listIndex={4}
     offer={
       Object {
         "bedrooms": 1,
@@ -334,6 +339,7 @@ exports[`OfferList renders correctly 1`] = `
   />
   <OfferCard
     key="18"
+    listIndex={5}
     offer={
       Object {
         "bedrooms": 4,
@@ -394,6 +400,7 @@ exports[`OfferList renders correctly 1`] = `
   />
   <OfferCard
     key="30"
+    listIndex={6}
     offer={
       Object {
         "bedrooms": 5,
@@ -455,6 +462,7 @@ exports[`OfferList renders correctly 1`] = `
   />
   <OfferCard
     key="39"
+    listIndex={7}
     offer={
       Object {
         "bedrooms": 1,
@@ -522,6 +530,7 @@ exports[`OfferList renders correctly 1`] = `
   />
   <OfferCard
     key="41"
+    listIndex={8}
     offer={
       Object {
         "bedrooms": 1,
@@ -587,6 +596,7 @@ exports[`OfferList renders correctly 1`] = `
   />
   <OfferCard
     key="44"
+    listIndex={9}
     offer={
       Object {
         "bedrooms": 4,
@@ -654,6 +664,7 @@ exports[`OfferList renders correctly 1`] = `
   />
   <OfferCard
     key="45"
+    listIndex={10}
     offer={
       Object {
         "bedrooms": 2,
@@ -718,6 +729,7 @@ exports[`OfferList renders correctly 1`] = `
   />
   <OfferCard
     key="51"
+    listIndex={11}
     offer={
       Object {
         "bedrooms": 1,
@@ -784,6 +796,7 @@ exports[`OfferList renders correctly 1`] = `
   />
   <OfferCard
     key="64"
+    listIndex={12}
     offer={
       Object {
         "bedrooms": 3,
@@ -850,6 +863,7 @@ exports[`OfferList renders correctly 1`] = `
   />
   <OfferCard
     key="77"
+    listIndex={13}
     offer={
       Object {
         "bedrooms": 1,
@@ -918,6 +932,7 @@ exports[`OfferList renders correctly 1`] = `
   />
   <OfferCard
     key="78"
+    listIndex={14}
     offer={
       Object {
         "bedrooms": 5,

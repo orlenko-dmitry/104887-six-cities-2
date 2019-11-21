@@ -13,12 +13,13 @@ describe(`e2e test for OfferCard`, () => {
     const wrapper = shallow(
         <OfferCard
           offer={cityOffers[0]}
+          listIndex={0}
           onTitleClick={onClickHandler}
           onCardHoverIn={() => {}}
           onCardHoverOut={() => {}}
         />
     );
-    const title = wrapper.find(`.place-card__name`);
+    const title = wrapper.find(`[data-testid="place-card-title-0"]`);
 
     title.simulate(`click`);
 
@@ -29,12 +30,13 @@ describe(`e2e test for OfferCard`, () => {
     const wrapper = shallow(
         <OfferCard
           offer={offers[0]}
+          listIndex={0}
           onTitleClick={() => {}}
           onCardHoverIn={onHoverHandler}
           onCardHoverOut={() => {}}
         />
     );
-    const card = wrapper.find(`.place-card`);
+    const card = wrapper.find(`[data-testid="place-card-0"]`);
 
     card.simulate(`mouseenter`);
 
