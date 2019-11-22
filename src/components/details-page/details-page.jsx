@@ -37,6 +37,7 @@ class DetailsPage extends PureComponent {
       },
       nearOffers,
       reviews,
+      city,
     } = this.props;
 
     return (
@@ -171,7 +172,7 @@ class DetailsPage extends PureComponent {
             </div>
           </div>
           <section className="property__map map">
-            <OffersMap offers={nearOffers} />
+            <OffersMap offers={nearOffers} selectedCity={city} />
           </section>
         </section>
         <div className="container">
@@ -207,6 +208,14 @@ DetailsPage.propTypes = {
   }).isRequired,
   nearOffers: arrayOf(shape({})).isRequired,
   reviews: arrayOf(shape({})).isRequired,
+  city: shape({
+    location: shape({
+      latitude: number.isRequired,
+      longitude: number.isRequired,
+      zoom: number.isRequired,
+    }).isRequired,
+    name: string.isRequired,
+  }).isRequired,
 };
 
 export default DetailsPage;

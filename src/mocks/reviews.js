@@ -1,4 +1,4 @@
-const reviews = [
+export default ([
   {
     id: 1,
     avatar: `img/avatar-max.jpg`,
@@ -19,6 +19,4 @@ const reviews = [
     dateTime: `2019-03-20`,
     dateString: `Mart 2019`
   }
-];
-
-export default reviews;
+]);

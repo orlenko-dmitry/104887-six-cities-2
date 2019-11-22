@@ -1,20 +1,18 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import {MainPage} from './main-page.jsx';
+import MainTabs from '../main-tabs/main-tabs.jsx';
 import offers from '../../mocks/offers.js';
 import cities from '../../mocks/cities.js';
 
 const city = offers[0].city;
-const cityOffers = offers.filter((offfer) => offfer.city.name === city.name);
 
-it(`MainPage renders correctly`, () => {
+it(`MainTabs rnders correctly`, () => {
   const tree = shallow(
-      <MainPage
-        offers={cityOffers}
-        city={city}
+      <MainTabs
         cities={cities}
-        selectCity={() => {}}
+        selectedCity={city}
+        onSelectCityClick={() => {}}
       />
   );
 

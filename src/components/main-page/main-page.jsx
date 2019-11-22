@@ -2,18 +2,36 @@ import React, {PureComponent} from 'react';
 import {
   arrayOf,
   shape,
+  number,
+  string,
+  func,
 } from 'prop-types';
+import {connect} from 'react-redux';
 
 import OffersList from '../offers-list/offers-list.jsx';
 import OffersMap from '../offers-map/offers-map.jsx';
+import MainTabs from '../main-tabs/main-tabs.jsx';
+import {getCityOffers, getCities} from '../../store/selectors.js';
+import actions from '../../store/actions.js';
 
 class MainPage extends PureComponent {
   constructor(props) {
     super(props);
+    this.selectCityHandler = this.selectCityHandler.bind(this);
+  }
+
+  selectCityHandler(city) {
+    const {selectCity} = this.props;
+    selectCity(city);
   }
 
   render() {
-    const {offers} = this.props;
+    const {
+      offers,
+      city,
+      cities,
+    } = this.props;
+    const offersQuantity = offers.length;
 
     return (
       <div className="page page--gray page--main">
@@ -41,47 +59,16 @@ class MainPage extends PureComponent {
         </header>
         <main className="page__main page__main--index">
           <h1 className="visually-hidden">Cities</h1>
-          <div className="tabs">
-            <section className="locations container">
-              <ul className="locations__list tabs__list">
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Paris</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Cologne</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Brussels</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item tabs__item--active">
-                    <span>Amsterdam</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Hamburg</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Dusseldorf</span>
-                  </a>
-                </li>
-              </ul>
-            </section>
-          </div>
+          <MainTabs
+            cities={cities}
+            selectedCity={city}
+            onSelectCityClick={this.selectCityHandler}
+          />
           <div className="cities">
             <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">312 places to stay in Amsterdam</b>
+                <b className="places__found">{offersQuantity} places to stay in {city.name}</b>
                 <form className="places__sorting" action="#" method="get">
                   <span className="places__sorting-caption">Sort by</span>
                   <span className="places__sorting-type" tabIndex="0">
@@ -109,7 +96,7 @@ class MainPage extends PureComponent {
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
-                  <OffersMap offers={offers} />
+                  <OffersMap offers={offers} selectedCity={city}/>
                 </section>
               </div>
             </div>
@@ -122,6 +109,27 @@ class MainPage extends PureComponent {
 
 MainPage.propTypes = {
   offers: arrayOf(shape({})).isRequired,
+  city: shape({
+    location: shape({
+      latitude: number.isRequired,
+      longitude: number.isRequired,
+      zoom: number.isRequired,
+    }).isRequired,
+    name: string.isRequired,
+  }).isRequired,
+  cities: arrayOf(shape({})).isRequired,
+  selectCity: func.isRequired,
 };
 
-export default MainPage;
+const mapStateToProps = (state) => ({
+  offers: getCityOffers(state),
+  city: state.city,
+  cities: getCities(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  selectCity: (payload) => dispatch(actions.selectCity(payload)),
+});
+export {MainPage};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

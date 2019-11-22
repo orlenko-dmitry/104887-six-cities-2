@@ -8,15 +8,18 @@ import MainPage from '../main-page/main-page.jsx';
 import DetailsPage from '../details-page/details-page.jsx';
 
 const getPageScreen = (offers, nearOffers, reviews) => {
+  const city = offers[0].city;
+
   switch (location.pathname) {
     case `/`:
-      return <MainPage offers={offers} />;
+      return <MainPage />;
     case `/details`:
       return (
         <DetailsPage
           offer={offers[0]}
           nearOffers={nearOffers}
           reviews={reviews}
+          city={city}
         />
       );
   }
