@@ -153,6 +153,8 @@ exports[`MainPage renders correctly 1`] = `
           <OffersSorter
             isOpen={false}
             onOpenSorterClick={[Function]}
+            onSortByClick={[Function]}
+            sortedBy="Popular"
           />
           <OffersList
             classNames="cities__places-list tabs__content"

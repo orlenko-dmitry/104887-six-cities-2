@@ -13,6 +13,8 @@ export const leafletSetView = ({offers, map, city, zoom, icon, leaflet}) => {
   });
 };
 
+export const flushPromises = () => new Promise((resolve) => window.setImmediate(resolve));
+
 export const convertOffersToCamelCase = (offers) => {
   return offers.map(({
     city,

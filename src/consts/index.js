@@ -14,9 +14,28 @@ export const SELECT_CITY_PAYLOAD = {
   },
 };
 
-export const SORT_BY = {
+export const SORTED_BY = {
   POPULAR: `Popular`,
   PRICE_TO_HIGH: `Price: low to high`,
   PRICE_TO_LOW: `Price: high to low`,
   TOP_RATED: `Top rated first`,
 };
+
+export const SORT_BY_LIST = [
+  {
+    id: 1,
+    name: `Popular`,
+  },
+  {
+    id: 2,
+    name: `Price: low to high`,
+  },
+  {
+    id: 3,
+    name: `Price: high to low`,
+  },
+  {
+    id: 4,
+    name: `Top rated first`,
+  },
+];

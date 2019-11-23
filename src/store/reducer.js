@@ -1,19 +1,22 @@
 import {
   SELECT_CITY,
+  SORT_OFFERS_BY,
 } from '../consts/actionTypes.js';
-import {SORT_BY} from '../consts/index.js';
+import {SORTED_BY} from '../consts/index.js';
 import offers from '../mocks/offers.js';
 
 export const initialState = {
   city: offers[0].city,
   offers,
-  sortBy: SORT_BY.POPULAR,
+  sortedBy: SORTED_BY.POPULAR,
 };
 
 export default (state = initialState, {type, payload}) => {
   switch (type) {
     case SELECT_CITY:
       return Object.assign({}, state, {city: payload});
+    case SORT_OFFERS_BY:
+      return Object.assign({}, state, {sortedBy: payload});
     default: return state;
   }
 };

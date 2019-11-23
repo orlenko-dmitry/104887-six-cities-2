@@ -23,6 +23,7 @@ class MainPage extends PureComponent {
     };
     this.selectCityHandler = this.selectCityHandler.bind(this);
     this.openSorterHandler = this.openSorterHandler.bind(this);
+    this.sortByHandler = this.sortByHandler.bind(this);
   }
 
   selectCityHandler(city) {
@@ -35,11 +36,18 @@ class MainPage extends PureComponent {
     this.setState({isSortingOpen: !isSortingOpen});
   }
 
+  sortByHandler(tag) {
+    const {sortBy} = this.props;
+    sortBy(tag);
+    this.openSorterHandler();
+  }
+
   render() {
     const {
       offers,
       city,
       cities,
+      sortedBy,
     } = this.props;
     const {isSortingOpen} = this.state;
     const offersQuantity = offers.length;
@@ -82,7 +90,9 @@ class MainPage extends PureComponent {
                 <b className="places__found">{offersQuantity} places to stay in {city.name}</b>
                 <OffersSorter
                   isOpen={isSortingOpen}
+                  sortedBy={sortedBy}
                   onOpenSorterClick={this.openSorterHandler}
+                  onSortByClick={this.sortByHandler}
                 />
                 <OffersList offers={offers} classNames={`cities__places-list tabs__content`} />
               </section>
@@ -110,17 +120,21 @@ MainPage.propTypes = {
     name: string.isRequired,
   }).isRequired,
   cities: arrayOf(shape({})).isRequired,
+  sortedBy: string.isRequired,
   selectCity: func.isRequired,
+  sortBy: func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   offers: getCityOffers(state),
   city: state.city,
   cities: getCities(state),
+  sortedBy: state.sortedBy,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   selectCity: (payload) => dispatch(actions.selectCity(payload)),
+  sortBy: (payload) => dispatch(actions.sortBy(payload)),
 });
 export {MainPage};
 

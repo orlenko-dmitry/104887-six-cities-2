@@ -30,29 +30,37 @@ exports[`OffesSorter renders correctly 1`] = `
     </svg>
   </span>
   <ul
-    className="places__options places__options--custom "
+    className="places__options places__options--custom"
     data-testid="offers-sorter-list"
   >
     <li
       className="places__option places__option--active"
+      key="1"
+      onClick={[Function]}
       tabIndex="0"
     >
       Popular
     </li>
     <li
       className="places__option"
+      key="2"
+      onClick={[Function]}
       tabIndex="0"
     >
       Price: low to high
     </li>
     <li
       className="places__option"
+      key="3"
+      onClick={[Function]}
       tabIndex="0"
     >
       Price: high to low
     </li>
     <li
       className="places__option"
+      key="4"
+      onClick={[Function]}
       tabIndex="0"
     >
       Top rated first

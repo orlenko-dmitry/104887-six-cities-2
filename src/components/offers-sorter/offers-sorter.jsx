@@ -1,11 +1,22 @@
 import React from 'react';
-import {bool, func} from 'prop-types';
+import {
+  bool,
+  string,
+  func,
+} from 'prop-types';
 
-const OffersSorter = ({isOpen, onOpenSorterClick}) => (
+import {SORT_BY_LIST} from '../../consts/index.js';
+
+const OffersSorter = ({
+  isOpen,
+  sortedBy,
+  onOpenSorterClick,
+  onSortByClick,
+}) => (
   <form className="places__sorting" action="#" method="get">
     <span className="places__sorting-caption">Sort by </span>
     <span className="places__sorting-type" tabIndex="0">
-      Popular
+      {sortedBy}
       <svg
         className="places__sorting-arrow"
         data-testid="offers-sorter-arrow"
@@ -18,20 +29,36 @@ const OffersSorter = ({isOpen, onOpenSorterClick}) => (
       </svg>
     </span>
     <ul
-      className={`places__options places__options--custom ${isOpen ? `places__options--opened` : ``}`}
+      className={
+        isOpen
+          ? `places__options places__options--custom places__options--opened`
+          : `places__options places__options--custom`
+      }
       data-testid="offers-sorter-list"
     >
-      <li className="places__option places__option--active" tabIndex="0">Popular</li>
-      <li className="places__option" tabIndex="0">Price: low to high</li>
-      <li className="places__option" tabIndex="0">Price: high to low</li>
-      <li className="places__option" tabIndex="0">Top rated first</li>
+      {SORT_BY_LIST.map(({id, name}) => (
+        <li
+          className={
+            name === sortedBy
+              ? `places__option places__option--active`
+              : `places__option`
+          }
+          key={id}
+          tabIndex="0"
+          onClick={() => onSortByClick(name)}
+        >
+          {name}
+        </li>
+      ))}
     </ul>
   </form>
 );
 
 OffersSorter.propTypes = {
   isOpen: bool.isRequired,
+  sortedBy: string.isRequired,
   onOpenSorterClick: func.isRequired,
+  onSortByClick: func.isRequired,
 };
 
 export default OffersSorter;
