@@ -24,6 +24,7 @@ class MainPage extends PureComponent {
     this.selectCityHandler = this.selectCityHandler.bind(this);
     this.openSorterHandler = this.openSorterHandler.bind(this);
     this.sortByHandler = this.sortByHandler.bind(this);
+    this.colorPinHandler = this.colorPinHandler.bind(this);
   }
 
   selectCityHandler(city) {
@@ -40,6 +41,11 @@ class MainPage extends PureComponent {
     const {sortBy} = this.props;
     sortBy(tag);
     this.openSorterHandler();
+  }
+
+  colorPinHandler(id) {
+    const {getOnHoverOfferId} = this.props;
+    getOnHoverOfferId(id);
   }
 
   render() {
@@ -95,7 +101,11 @@ class MainPage extends PureComponent {
                   onOpenSorterClick={this.openSorterHandler}
                   onSortByClick={this.sortByHandler}
                 />
-                <OffersList offers={offers} classNames={`cities__places-list tabs__content`} />
+                <OffersList
+                  classNames={`cities__places-list tabs__content`}
+                  offers={offers}
+                  onColorPin={this.colorPinHandler}
+                />
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
@@ -129,6 +139,7 @@ MainPage.propTypes = {
   onHoverOfferId: number.isRequired,
   selectCity: func.isRequired,
   sortBy: func.isRequired,
+  getOnHoverOfferId: func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -142,6 +153,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   selectCity: (payload) => dispatch(actions.selectCity(payload)),
   sortBy: (payload) => dispatch(actions.sortBy(payload)),
+  getOnHoverOfferId: (payload) => dispatch(actions.getOnHoverOfferId(payload)),
 });
 export {MainPage};
 

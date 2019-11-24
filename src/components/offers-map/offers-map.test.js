@@ -12,7 +12,7 @@ it(`OffersMap renders correctly`, () => {
       <OffersMap
         offers={offers}
         selectedCity={city}
-        onHoverOfferId={null}
+        onHoverOfferId={-1}
       />);
 
   expect(tree).toMatchSnapshot();

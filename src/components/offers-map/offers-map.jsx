@@ -63,7 +63,7 @@ class OffersMap extends PureComponent {
     } = this.props;
     const center = [latitude, longitude];
 
-    if (prevProps.selectedCity.name !== name) {
+    if (prevProps.selectedCity.name !== name || prevProps.onHoverOfferId !== onHoverOfferId) {
       leafletSetView({offers, map: this.map, city: center, zoom, onHoverOfferId, leaflet});
     }
   }
@@ -94,7 +94,7 @@ OffersMap.propTypes = {
 };
 
 OffersMap.defaultProps = {
-  onHoverOfferId: null,
+  onHoverOfferId: -1,
 };
 
 export default OffersMap;
