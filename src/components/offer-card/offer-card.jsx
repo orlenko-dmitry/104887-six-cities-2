@@ -21,7 +21,6 @@ const OfferCard = ({
     previewImage,
   },
   listIndex,
-  onTitleClick,
   onCardHoverIn,
   onCardHoverOut,
 }) => (
@@ -73,7 +72,6 @@ const OfferCard = ({
       <h2
         className="place-card__name"
         data-testid={`place-card-title-${listIndex}`}
-        onClick={() => onTitleClick(id)}
       >
         <a href="/details">{title}</a>
       </h2>
@@ -94,7 +92,6 @@ OfferCard.propTypes = {
     previewImage: string.isRequired,
   }).isRequired,
   listIndex: number.isRequired,
-  onTitleClick: func.isRequired,
   onCardHoverIn: func.isRequired,
   onCardHoverOut: func.isRequired,
 };

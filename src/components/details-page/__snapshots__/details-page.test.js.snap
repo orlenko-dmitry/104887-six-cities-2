@@ -698,6 +698,7 @@ exports[`DetailsPage renders correctly 1`] = `
             },
           ]
         }
+        onHoverOfferId={-1}
         selectedCity={
           Object {
             "location": Object {
@@ -872,6 +873,7 @@ exports[`DetailsPage renders correctly 1`] = `
             },
           ]
         }
+        onColorPin={[Function]}
       />
     </section>
   </div>

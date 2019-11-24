@@ -1,8 +1,11 @@
-import reducer from './reducer.js';
+import reducer, {initialState} from './reducer.js';
 import actions from './actions';
-import {SELECT_CITY} from '../consts/actionTypes';
-import offers from '../mocks/offers.js';
-import {SELECT_CITY_PAYLOAD} from '../consts/index.js';
+import {
+  SELECT_CITY,
+  SORT_OFFERS_BY,
+  OFFER_ON_HOVER,
+} from '../consts/actionTypes';
+import {SELECT_CITY_PAYLOAD, SORTED_BY} from '../consts/index.js';
 
 describe(`Action creators work correctly`, () => {
   it(`Action creator for selecting city returns action with payload`, () => {
@@ -11,14 +14,21 @@ describe(`Action creators work correctly`, () => {
       payload: SELECT_CITY_PAYLOAD,
     });
   });
+  it(`Action creator for selecting city returns action with payload`, () => {
+    expect(actions.sortBy(SORTED_BY.POPULAR)).toEqual({
+      type: SORT_OFFERS_BY,
+      payload: SORTED_BY.POPULAR,
+    });
+  });
+  it(`Action creator for selecting city returns action with payload`, () => {
+    expect(actions.getOnHoverOfferId(1)).toEqual({
+      type: OFFER_ON_HOVER,
+      payload: 1,
+    });
+  });
 });
 
 describe(`Reducer works correctly`, () => {
-  const initialState = {
-    city: offers[0].city,
-    offers,
-  };
-
   it(`Reducer without additional parameters should return initial state`, () => {
     expect(reducer(undefined, {})).toEqual(initialState);
   });
@@ -28,6 +38,22 @@ describe(`Reducer works correctly`, () => {
       payload: SELECT_CITY_PAYLOAD,
     })).toEqual(Object.assign({}, initialState, {
       city: SELECT_CITY_PAYLOAD,
+    }));
+  });
+  it(`Reducer should change sortedBy by a given payload`, () => {
+    expect(reducer(undefined, {
+      type: SORT_OFFERS_BY,
+      payload: SORTED_BY.POPULAR,
+    })).toEqual(Object.assign({}, initialState, {
+      sortedBy: SORTED_BY.POPULAR,
+    }));
+  });
+  it(`Reducer should change onHoverOfferId by a given payload`, () => {
+    expect(reducer(undefined, {
+      type: OFFER_ON_HOVER,
+      payload: 1,
+    })).toEqual(Object.assign({}, initialState, {
+      onHoverOfferId: 1,
     }));
   });
 });

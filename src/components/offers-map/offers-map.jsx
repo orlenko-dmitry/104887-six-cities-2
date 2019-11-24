@@ -11,8 +11,6 @@ import {leafletSetView} from '../../helpers/helpers.js';
 import {LEAFLET_CONSTS} from '../../consts/index.js';
 
 const {
-  ICON_URL,
-  ICON_SIZE,
   TILE_LAYER,
   ATTRIBUTION,
 } = LEAFLET_CONSTS;
@@ -32,7 +30,9 @@ class OffersMap extends PureComponent {
         }
       },
       offers,
+      onHoverOfferId,
     } = this.props;
+
     const center = [latitude, longitude];
 
     this.map = leaflet.map(`map`, {
@@ -41,15 +41,11 @@ class OffersMap extends PureComponent {
       zoomControl: false,
       marker: true
     });
-    this.icon = leaflet.icon({
-      iconUrl: ICON_URL,
-      iconSize: ICON_SIZE,
-    });
 
     leaflet
         .tileLayer(TILE_LAYER, {attribution: ATTRIBUTION})
         .addTo(this.map);
-    leafletSetView({offers, map: this.map, city: center, zoom, icon: this.icon, leaflet});
+    leafletSetView({offers, map: this.map, city: center, zoom, onHoverOfferId, leaflet});
   }
 
   componentDidUpdate(prevProps) {
@@ -63,11 +59,12 @@ class OffersMap extends PureComponent {
         name,
       },
       offers,
+      onHoverOfferId,
     } = this.props;
     const center = [latitude, longitude];
 
-    if (prevProps.selectedCity.name !== name) {
-      leafletSetView({offers, map: this.map, city: center, zoom, icon: this.icon, leaflet});
+    if (prevProps.selectedCity.name !== name || prevProps.onHoverOfferId !== onHoverOfferId) {
+      leafletSetView({offers, map: this.map, city: center, zoom, onHoverOfferId, leaflet});
     }
   }
 
@@ -93,6 +90,11 @@ OffersMap.propTypes = {
     }).isRequired,
     name: string.isRequired,
   }).isRequired,
+  onHoverOfferId: number,
+};
+
+OffersMap.defaultProps = {
+  onHoverOfferId: -1,
 };
 
 export default OffersMap;

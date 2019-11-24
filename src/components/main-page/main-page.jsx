@@ -10,6 +10,7 @@ import {connect} from 'react-redux';
 
 import OffersList from '../offers-list/offers-list.jsx';
 import OffersMap from '../offers-map/offers-map.jsx';
+import OffersSorter from '../offers-sorter/offers-sorter.jsx';
 import MainTabs from '../main-tabs/main-tabs.jsx';
 import {getCityOffers, getCities} from '../../store/selectors.js';
 import actions from '../../store/actions.js';
@@ -17,7 +18,13 @@ import actions from '../../store/actions.js';
 class MainPage extends PureComponent {
   constructor(props) {
     super(props);
+    this.state = {
+      isSortingOpen: false,
+    };
     this.selectCityHandler = this.selectCityHandler.bind(this);
+    this.openSorterHandler = this.openSorterHandler.bind(this);
+    this.sortByHandler = this.sortByHandler.bind(this);
+    this.colorPinHandler = this.colorPinHandler.bind(this);
   }
 
   selectCityHandler(city) {
@@ -25,12 +32,31 @@ class MainPage extends PureComponent {
     selectCity(city);
   }
 
+  openSorterHandler() {
+    const {isSortingOpen} = this.state;
+    this.setState({isSortingOpen: !isSortingOpen});
+  }
+
+  sortByHandler(tag) {
+    const {sortBy} = this.props;
+    sortBy(tag);
+    this.openSorterHandler();
+  }
+
+  colorPinHandler(id) {
+    const {getOnHoverOfferId} = this.props;
+    getOnHoverOfferId(id);
+  }
+
   render() {
     const {
       offers,
       city,
       cities,
+      sortedBy,
+      onHoverOfferId,
     } = this.props;
+    const {isSortingOpen} = this.state;
     const offersQuantity = offers.length;
 
     return (
@@ -69,34 +95,25 @@ class MainPage extends PureComponent {
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
                 <b className="places__found">{offersQuantity} places to stay in {city.name}</b>
-                <form className="places__sorting" action="#" method="get">
-                  <span className="places__sorting-caption">Sort by</span>
-                  <span className="places__sorting-type" tabIndex="0">
-                    Popular
-                    <svg className="places__sorting-arrow" width="7" height="4">
-                      <use xlinkHref="#icon-arrow-select"></use>
-                    </svg>
-                  </span>
-                  <ul className="places__options places__options--custom places__options--opened">
-                    <li className="places__option places__option--active" tabIndex="0">Popular</li>
-                    <li className="places__option" tabIndex="0">Price: low to high</li>
-                    <li className="places__option" tabIndex="0">Price: high to low</li>
-                    <li className="places__option" tabIndex="0">Top rated first</li>
-                  </ul>
-                  {/*
-                  <select className="places__sorting-type" id="places-sorting">
-                    <option className="places__option" value="popular" selected="">Popular</option>
-                    <option className="places__option" value="to-high">Price: low to high</option>
-                    <option className="places__option" value="to-low">Price: high to low</option>
-                    <option className="places__option" value="top-rated">Top rated first</option>
-                  </select>
-                  */}
-                </form>
-                <OffersList offers={offers} classNames={`cities__places-list tabs__content`} />
+                <OffersSorter
+                  isOpen={isSortingOpen}
+                  sortedBy={sortedBy}
+                  onOpenSorterClick={this.openSorterHandler}
+                  onSortByClick={this.sortByHandler}
+                />
+                <OffersList
+                  classNames={`cities__places-list tabs__content`}
+                  offers={offers}
+                  onColorPin={this.colorPinHandler}
+                />
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
-                  <OffersMap offers={offers} selectedCity={city}/>
+                  <OffersMap
+                    offers={offers}
+                    selectedCity={city}
+                    onHoverOfferId={onHoverOfferId}
+                  />
                 </section>
               </div>
             </div>
@@ -118,17 +135,25 @@ MainPage.propTypes = {
     name: string.isRequired,
   }).isRequired,
   cities: arrayOf(shape({})).isRequired,
+  sortedBy: string.isRequired,
+  onHoverOfferId: number.isRequired,
   selectCity: func.isRequired,
+  sortBy: func.isRequired,
+  getOnHoverOfferId: func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   offers: getCityOffers(state),
   city: state.city,
   cities: getCities(state),
+  sortedBy: state.sortedBy,
+  onHoverOfferId: state.onHoverOfferId,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   selectCity: (payload) => dispatch(actions.selectCity(payload)),
+  sortBy: (payload) => dispatch(actions.sortBy(payload)),
+  getOnHoverOfferId: (payload) => dispatch(actions.getOnHoverOfferId(payload)),
 });
 export {MainPage};
 

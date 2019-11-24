@@ -8,7 +8,12 @@ const city = offers[0].city;
 
 
 it(`OffersMap renders correctly`, () => {
-  const tree = shallow(<OffersMap offers={offers} selectedCity={city}/>);
+  const tree = shallow(
+      <OffersMap
+        offers={offers}
+        selectedCity={city}
+        onHoverOfferId={-1}
+      />);
 
   expect(tree).toMatchSnapshot();
 });

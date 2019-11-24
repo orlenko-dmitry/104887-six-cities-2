@@ -67,7 +67,6 @@ exports[`OfferList renders correctly 1`] = `
     }
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
-    onTitleClick={[Function]}
   />
   <OfferCard
     key="4"
@@ -134,7 +133,6 @@ exports[`OfferList renders correctly 1`] = `
     }
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
-    onTitleClick={[Function]}
   />
   <OfferCard
     key="5"
@@ -196,7 +194,6 @@ exports[`OfferList renders correctly 1`] = `
     }
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
-    onTitleClick={[Function]}
   />
   <OfferCard
     key="9"
@@ -266,7 +263,6 @@ exports[`OfferList renders correctly 1`] = `
     }
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
-    onTitleClick={[Function]}
   />
   <OfferCard
     key="17"
@@ -335,7 +331,6 @@ exports[`OfferList renders correctly 1`] = `
     }
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
-    onTitleClick={[Function]}
   />
   <OfferCard
     key="18"
@@ -396,7 +391,6 @@ exports[`OfferList renders correctly 1`] = `
     }
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
-    onTitleClick={[Function]}
   />
   <OfferCard
     key="30"
@@ -458,7 +452,6 @@ exports[`OfferList renders correctly 1`] = `
     }
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
-    onTitleClick={[Function]}
   />
   <OfferCard
     key="39"
@@ -526,7 +519,6 @@ exports[`OfferList renders correctly 1`] = `
     }
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
-    onTitleClick={[Function]}
   />
   <OfferCard
     key="41"
@@ -592,7 +584,6 @@ exports[`OfferList renders correctly 1`] = `
     }
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
-    onTitleClick={[Function]}
   />
   <OfferCard
     key="44"
@@ -660,7 +651,6 @@ exports[`OfferList renders correctly 1`] = `
     }
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
-    onTitleClick={[Function]}
   />
   <OfferCard
     key="45"
@@ -725,7 +715,6 @@ exports[`OfferList renders correctly 1`] = `
     }
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
-    onTitleClick={[Function]}
   />
   <OfferCard
     key="51"
@@ -792,7 +781,6 @@ exports[`OfferList renders correctly 1`] = `
     }
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
-    onTitleClick={[Function]}
   />
   <OfferCard
     key="64"
@@ -859,7 +847,6 @@ exports[`OfferList renders correctly 1`] = `
     }
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
-    onTitleClick={[Function]}
   />
   <OfferCard
     key="77"
@@ -928,7 +915,6 @@ exports[`OfferList renders correctly 1`] = `
     }
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
-    onTitleClick={[Function]}
   />
   <OfferCard
     key="78"
@@ -995,7 +981,6 @@ exports[`OfferList renders correctly 1`] = `
     }
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
-    onTitleClick={[Function]}
   />
 </div>
 `;
