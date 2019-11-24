@@ -1892,7 +1892,7 @@ exports[`MainPage renders correctly 1`] = `
                   },
                 ]
               }
-              onHoverOfferId={1}
+              onHoverOfferId={-1}
               selectedCity={
                 Object {
                   "location": Object {

@@ -873,6 +873,7 @@ exports[`DetailsPage renders correctly 1`] = `
             },
           ]
         }
+        onColorPin={[Function]}
       />
     </section>
   </div>

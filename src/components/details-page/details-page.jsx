@@ -247,4 +247,6 @@ const mapDispatchToProps = (dispatch) => ({
   getOnHoverOfferId: (payload) => dispatch(actions.getOnHoverOfferId(payload)),
 });
 
+export {DetailsPage};
+
 export default connect(mapStateToProps, mapDispatchToProps)(DetailsPage);
