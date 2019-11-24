@@ -1,6 +1,6 @@
 import {
   SORTED_BY,
-  ICON_SIZE,
+  LEAFLET_CONSTS,
 } from '../consts/index.js';
 
 const {
@@ -25,8 +25,8 @@ export const leafletSetView = ({offers, map, city, zoom, onHoverOfferId, leaflet
   }) => {
     const offerCords = [offerLatitude, offerLongitude];
     const icon = leaflet.icon({
-      iconUrl: onHoverOfferId === currentId ? `img/pin-active.svg` : `img/pin.svg`,
-      iconSize: ICON_SIZE,
+      iconUrl: LEAFLET_CONSTS.iconUrl({onHoverOfferId, currentId}),
+      iconSize: LEAFLET_CONSTS.ICON_SIZE,
     });
     leaflet
     .marker(offerCords, {icon})
