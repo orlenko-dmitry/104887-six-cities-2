@@ -48,6 +48,7 @@ class MainPage extends PureComponent {
       city,
       cities,
       sortedBy,
+      onHoverOfferId,
     } = this.props;
     const {isSortingOpen} = this.state;
     const offersQuantity = offers.length;
@@ -98,7 +99,11 @@ class MainPage extends PureComponent {
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
-                  <OffersMap offers={offers} selectedCity={city}/>
+                  <OffersMap
+                    offers={offers}
+                    selectedCity={city}
+                    onHoverOfferId={onHoverOfferId}
+                  />
                 </section>
               </div>
             </div>
@@ -121,6 +126,7 @@ MainPage.propTypes = {
   }).isRequired,
   cities: arrayOf(shape({})).isRequired,
   sortedBy: string.isRequired,
+  onHoverOfferId: number.isRequired,
   selectCity: func.isRequired,
   sortBy: func.isRequired,
 };
@@ -130,6 +136,7 @@ const mapStateToProps = (state) => ({
   city: state.city,
   cities: getCities(state),
   sortedBy: state.sortedBy,
+  onHoverOfferId: state.onHoverOfferId,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -16,6 +16,7 @@ it(`MainPage renders correctly`, () => {
         city={city}
         cities={cities}
         sortedBy={SORTED_BY.POPULAR}
+        onHoverOfferId={null}
         selectCity={() => {}}
         sortBy={() => {}}
       />

@@ -1,4 +1,7 @@
-import {SORTED_BY} from '../consts/index.js';
+import {
+  SORTED_BY,
+  ICON_SIZE,
+} from '../consts/index.js';
 
 const {
   POPULAR,
@@ -11,11 +14,20 @@ export const defineRating = (rating) => {
   return `${Math.round(rating / 5 * 100)}%`;
 };
 
-export const leafletSetView = ({offers, map, city, zoom, icon, leaflet}) => {
-
+export const leafletSetView = ({offers, map, city, zoom, onHoverOfferId, leaflet}) => {
   map.setView(city, zoom);
-  offers.map(({location: {latitude: offerLatitude, longitude: offerLongitude}}) => {
+  offers.map(({
+    location: {
+      latitude: offerLatitude,
+      longitude: offerLongitude,
+    },
+    id: currentId,
+  }) => {
     const offerCords = [offerLatitude, offerLongitude];
+    const icon = leaflet.icon({
+      iconUrl: onHoverOfferId === currentId ? `img/pin-active.svg` : `img/pin.svg`,
+      iconSize: ICON_SIZE,
+    });
     leaflet
     .marker(offerCords, {icon})
     .addTo(map);

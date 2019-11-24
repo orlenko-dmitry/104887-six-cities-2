@@ -9,6 +9,7 @@ export const initialState = {
   city: offers[0].city,
   offers,
   sortedBy: SORTED_BY.POPULAR,
+  onHoverOfferId: 1,
 };
 
 export default (state = initialState, {type, payload}) => {
