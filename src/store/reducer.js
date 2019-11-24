@@ -5,10 +5,12 @@ import {
 } from '../consts/actionTypes.js';
 import {SORTED_BY} from '../consts/index.js';
 import offers from '../mocks/offers.js';
+import nearOffers from '../mocks/nearOffers.js';
 
 export const initialState = {
   city: offers[0].city,
   offers,
+  nearOffers,
   sortedBy: SORTED_BY.POPULAR,
   onHoverOfferId: -1,
 };

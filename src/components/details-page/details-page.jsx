@@ -5,16 +5,25 @@ import {
   string,
   number,
   bool,
+  func,
 } from 'prop-types';
+import {connect} from 'react-redux';
 
 import {defineRating} from '../../helpers/helpers.js';
 import ReviewsList from '../reviews-list/reviews-list.jsx';
 import OffersMap from '../offers-map/offers-map.jsx';
 import OffersList from '../offers-list/offers-list.jsx';
+import actions from '../../store/actions.js';
 
 class DetailsPage extends PureComponent {
   constructor(props) {
     super(props);
+    this.colorPinHandler = this.colorPinHandler.bind(this);
+  }
+
+  colorPinHandler(id) {
+    const {getOnHoverOfferId} = this.props;
+    getOnHoverOfferId(id);
   }
 
   render() {
@@ -38,6 +47,7 @@ class DetailsPage extends PureComponent {
       nearOffers,
       reviews,
       city,
+      onHoverOfferId,
     } = this.props;
 
     return (
@@ -172,13 +182,21 @@ class DetailsPage extends PureComponent {
             </div>
           </div>
           <section className="property__map map">
-            <OffersMap offers={nearOffers} selectedCity={city} />
+            <OffersMap
+              offers={nearOffers}
+              selectedCity={city}
+              onHoverOfferId={onHoverOfferId}
+            />
           </section>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <OffersList offers={nearOffers} classNames={`near-places__list`} />
+            <OffersList
+              classNames={`near-places__list`}
+              offers={nearOffers}
+              onColorPin={this.colorPinHandler}
+            />
           </section>
         </div>
       </main>
@@ -216,6 +234,17 @@ DetailsPage.propTypes = {
     }).isRequired,
     name: string.isRequired,
   }).isRequired,
+  onHoverOfferId: number.isRequired,
+  getOnHoverOfferId: func.isRequired,
 };
 
-export default DetailsPage;
+const mapStateToProps = (state) => ({
+  nearOffers: state.nearOffers,
+  onHoverOfferId: state.onHoverOfferId,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getOnHoverOfferId: (payload) => dispatch(actions.getOnHoverOfferId(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DetailsPage);

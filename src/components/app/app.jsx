@@ -17,7 +17,6 @@ const getPageScreen = (offers, nearOffers, reviews) => {
       return (
         <DetailsPage
           offer={offers[0]}
-          nearOffers={nearOffers}
           reviews={reviews}
           city={city}
         />
