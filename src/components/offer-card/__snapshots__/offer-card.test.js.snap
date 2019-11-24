@@ -87,7 +87,6 @@ exports[`OfferCard renders correctly 1`] = `
     <h2
       className="place-card__name"
       data-testid="place-card-title-0"
-      onClick={[Function]}
     >
       <a
         href="/details"

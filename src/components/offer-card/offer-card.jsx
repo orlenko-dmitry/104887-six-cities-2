@@ -92,7 +92,6 @@ OfferCard.propTypes = {
     previewImage: string.isRequired,
   }).isRequired,
   listIndex: number.isRequired,
-  onTitleClick: func.isRequired,
   onCardHoverIn: func.isRequired,
   onCardHoverOut: func.isRequired,
 };

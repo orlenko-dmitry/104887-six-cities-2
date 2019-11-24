@@ -5,7 +5,7 @@ import OffersSorter from '../offers-sorter/offers-sorter.jsx';
 import {SORTED_BY} from '../../consts/index.js';
 
 describe(`e2e tests for OffersSorter`, () => {
-  it(`onOpenSorterClick have been called`, () => {
+  it(`OffersSorter dosen't open`, () => {
     const clickHandler = jest.fn();
     const wrapper = shallow(
         <OffersSorter
@@ -15,27 +15,22 @@ describe(`e2e tests for OffersSorter`, () => {
           onSortByClick={() => {}}
         />
     );
-    const sorterArrow = wrapper.find(`[data-testid="offers-sorter-arrow"]`);
+    const sorterList = wrapper.find(`[data-testid="offers-sorter-list"]`);
 
-    sorterArrow.simulate(`click`);
-
-    expect(clickHandler).toHaveBeenCalled();
+    expect(sorterList.hasClass(`places__options--opened`)).toEqual(false);
   });
-  // it(`calling onOpenSorterClick open the sorter list`, () => {
-  //   const clickHandler = jest.fn();
-  //   const wrapper = shallow(
-  //       <OffersSorter
-  //         isOpen={false}
-  //         sortedBy={SORTED_BY.POPULAR}
-  //         onOpenSorterClick={clickHandler}
-  //         onSortByClick={() => {}}
-  //       />
-  //   );
-  //   const sorterArrow = wrapper.find(`[data-testid="offers-sorter-arrow"]`);
+  it(`OffersSorter is open`, () => {
+    const clickHandler = jest.fn();
+    const wrapper = shallow(
+        <OffersSorter
+          isOpen={true}
+          sortedBy={SORTED_BY.POPULAR}
+          onOpenSorterClick={clickHandler}
+          onSortByClick={() => {}}
+        />
+    );
+    const sorterList = wrapper.find(`[data-testid="offers-sorter-list"]`);
 
-  //   sorterArrow.simulate(`click`);
-  //   wrapper.update();
-
-  //   expect(wrapper.find(`[data-testid="offers-sorter-list"]`).hasClass(`places__options--opened`)).toEqual(true);
-  // });
+    expect(sorterList.hasClass(`places__options--opened`)).toEqual(true);
+  });
 });
