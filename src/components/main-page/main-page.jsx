@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import {
   arrayOf,
   shape,
@@ -12,8 +12,11 @@ import OffersList from '../offers-list/offers-list.jsx';
 import OffersMap from '../offers-map/offers-map.jsx';
 import OffersSorter from '../offers-sorter/offers-sorter.jsx';
 import MainTabs from '../main-tabs/main-tabs.jsx';
+import withSorterState from '../../hocs/withSorterState/withSorterState.jsx';
 import {getCityOffers, getCities} from '../../store/selectors.js';
 import actions from '../../store/actions.js';
+
+const WithSorterState = withSorterState(OffersSorter);
 
 const MainPage = ({
   offers,
@@ -64,7 +67,7 @@ const MainPage = ({
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{offersQuantity} places to stay in {city.name}</b>
-              <OffersSorter
+              <WithSorterState
                 sortedBy={sortedBy}
                 onSortByClick={sortByHandler}
               />
