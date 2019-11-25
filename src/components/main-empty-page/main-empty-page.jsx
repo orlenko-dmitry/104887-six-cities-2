@@ -1,6 +1,18 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {
+  arrayOf,
+  shape,
+  number,
+  string,
+  func,
+} from 'prop-types';
 
-const MainEmptyPage = () => (
+import MainTabs from '../main-tabs/main-tabs.jsx';
+import actions from '../../store/actions.js';
+import {getCities} from '../../store/selectors';
+
+const MainEmptyPage = ({cities, city, selectCity}) => (
   <div className="page page--gray page--main">
     <header className="header">
       <div className="container">
@@ -36,53 +48,18 @@ const MainEmptyPage = () => (
     </header>
     <main className="page__main page__main--index page__main--index-empty">
       <h1 className="visually-hidden">Cities</h1>
-      <div className="tabs">
-        <section className="locations container">
-          <ul className="locations__list tabs__list">
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Paris</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Cologne</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Brussels</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item">
-                <span>Amsterdam</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Hamburg</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a
-                className="locations__item-link tabs__item tabs__item--active"
-                href="#"
-              >
-                <span>Dusseldorf</span>
-              </a>
-            </li>
-          </ul>
-        </section>
-      </div>
+      <MainTabs
+        cities={cities}
+        selectedCity={city}
+        onSelectCityClick={selectCity}
+      />
       <div className="cities">
         <div className="cities__places-container cities__places-container--empty container">
           <section className="cities__no-places">
             <div className="cities__status-wrapper tabs__content">
               <b className="cities__status">No places to stay available</b>
               <p className="cities__status-description">
-                We could not find any property availbale at the moment in
-                Dusseldorf
+                We could not find any property availbale at the moment in {city.name}
               </p>
             </div>
           </section>
@@ -93,4 +70,28 @@ const MainEmptyPage = () => (
   </div>
 );
 
-export default MainEmptyPage;
+MainEmptyPage.propTypes = {
+  city: shape({
+    location: shape({
+      latitude: number.isRequired,
+      longitude: number.isRequired,
+      zoom: number.isRequired,
+    }).isRequired,
+    name: string.isRequired,
+  }).isRequired,
+  cities: arrayOf(shape({})).isRequired,
+  selectCity: func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  city: state.city,
+  cities: getCities(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  selectCity: (payload) => dispatch(actions.selectCity(payload)),
+});
+
+export {MainEmptyPage};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainEmptyPage);

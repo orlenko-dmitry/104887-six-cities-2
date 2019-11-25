@@ -155,6 +155,7 @@ const mapDispatchToProps = (dispatch) => ({
   sortBy: (payload) => dispatch(actions.sortBy(payload)),
   getOnHoverOfferId: (payload) => dispatch(actions.getOnHoverOfferId(payload)),
 });
+
 export {MainPage};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
