@@ -12,7 +12,7 @@ import MainTabs from '../main-tabs/main-tabs.jsx';
 import actions from '../../store/actions.js';
 import {getCities} from '../../store/selectors';
 
-const MainEmptyPage = ({cities, city, selectCity}) => (
+const MainEmptyPage = ({cities, city, selectCityHandler}) => (
   <div className="page page--gray page--main">
     <header className="header">
       <div className="container">
@@ -51,7 +51,7 @@ const MainEmptyPage = ({cities, city, selectCity}) => (
       <MainTabs
         cities={cities}
         selectedCity={city}
-        onSelectCityClick={selectCity}
+        onSelectCityClick={selectCityHandler}
       />
       <div className="cities">
         <div className="cities__places-container cities__places-container--empty container">
@@ -80,7 +80,7 @@ MainEmptyPage.propTypes = {
     name: string.isRequired,
   }).isRequired,
   cities: arrayOf(shape({})).isRequired,
-  selectCity: func.isRequired,
+  selectCityHandler: func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -89,7 +89,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  selectCity: (payload) => dispatch(actions.selectCity(payload)),
+  selectCityHandler: (payload) => dispatch(actions.selectCity(payload)),
 });
 
 export {MainEmptyPage};

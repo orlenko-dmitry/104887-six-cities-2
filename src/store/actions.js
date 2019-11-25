@@ -16,7 +16,7 @@ export default ({
       payload,
     };
   },
-  getOnHoverOfferId: (payload) => {
+  getOfferId: (payload) => {
     return {
       type: OFFER_ON_HOVER,
       payload,
