@@ -17,7 +17,7 @@ exports[`MainTabs rnders correctly 1`] = `
         onClick={[Function]}
       >
         <a
-          className="locations__item-link tabs__item tabs__item--active"
+          className="tabs__item--active locations__item-link tabs__item"
         >
           <span>
             Amsterdam
@@ -31,7 +31,7 @@ exports[`MainTabs rnders correctly 1`] = `
         onClick={[Function]}
       >
         <a
-          className="locations__item-link tabs__item "
+          className=" locations__item-link tabs__item"
         >
           <span>
             Brussels
@@ -45,7 +45,7 @@ exports[`MainTabs rnders correctly 1`] = `
         onClick={[Function]}
       >
         <a
-          className="locations__item-link tabs__item "
+          className=" locations__item-link tabs__item"
         >
           <span>
             Cologne
@@ -59,7 +59,7 @@ exports[`MainTabs rnders correctly 1`] = `
         onClick={[Function]}
       >
         <a
-          className="locations__item-link tabs__item "
+          className=" locations__item-link tabs__item"
         >
           <span>
             Paris
@@ -73,7 +73,7 @@ exports[`MainTabs rnders correctly 1`] = `
         onClick={[Function]}
       >
         <a
-          className="locations__item-link tabs__item "
+          className=" locations__item-link tabs__item"
         >
           <span>
             Hamburg
@@ -87,7 +87,7 @@ exports[`MainTabs rnders correctly 1`] = `
         onClick={[Function]}
       >
         <a
-          className="locations__item-link tabs__item "
+          className=" locations__item-link tabs__item"
         >
           <span>
             Dusseldorf

@@ -13,6 +13,7 @@ exports[`OffesSorter renders correctly 1`] = `
   </span>
   <span
     className="places__sorting-type"
+    onClick={[Function]}
     tabIndex="0"
   >
     Popular
@@ -20,7 +21,6 @@ exports[`OffesSorter renders correctly 1`] = `
       className="places__sorting-arrow"
       data-testid="offers-sorter-arrow"
       height="4"
-      onClick={[Function]}
       style={Object {}}
       width="7"
     >
@@ -30,11 +30,11 @@ exports[`OffesSorter renders correctly 1`] = `
     </svg>
   </span>
   <ul
-    className="places__options places__options--custom"
+    className=" places__options places__options--custom"
     data-testid="offers-sorter-list"
   >
     <li
-      className="places__option places__option--active"
+      className="places__option--active places__option"
       key="1"
       onClick={[Function]}
       tabIndex="0"
@@ -42,7 +42,7 @@ exports[`OffesSorter renders correctly 1`] = `
       Popular
     </li>
     <li
-      className="places__option"
+      className=" places__option"
       key="2"
       onClick={[Function]}
       tabIndex="0"
@@ -50,7 +50,7 @@ exports[`OffesSorter renders correctly 1`] = `
       Price: low to high
     </li>
     <li
-      className="places__option"
+      className=" places__option"
       key="3"
       onClick={[Function]}
       tabIndex="0"
@@ -58,7 +58,7 @@ exports[`OffesSorter renders correctly 1`] = `
       Price: high to low
     </li>
     <li
-      className="places__option"
+      className=" places__option"
       key="4"
       onClick={[Function]}
       tabIndex="0"

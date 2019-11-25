@@ -18,7 +18,7 @@ const MainTabs = ({cities, selectedCity, onSelectCityClick}) => (
             key={`${city.name}`}
             onClick={() => onSelectCityClick(city)}
           >
-            <a className={`locations__item-link tabs__item ${city.name === selectedCity.name ? `tabs__item--active` : ``}`}>
+            <a className={`${city.name === selectedCity.name ? `tabs__item--active` : ``} locations__item-link tabs__item`}>
               <span>{city.name}</span>
             </a>
           </li>
