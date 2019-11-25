@@ -48,11 +48,7 @@ const OfferCard = ({
           <span className="place-card__price-text">&#47;&nbsp;night</span>
         </div>
         <button
-          className={
-            isFavorite
-              ? `place-card__bookmark-button--active button`
-              : `place-card__bookmark-button button`
-          }
+          className={`place-card__bookmark-button${isFavorite ? `--active` : ``} button`}
           type="button"
         >
           <svg className="place-card__bookmark-icon" width="18" height="19">
