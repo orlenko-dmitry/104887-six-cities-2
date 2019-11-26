@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
+import {arrayOf, shape} from 'prop-types';
 
 import {getCityOffers} from '../../store/selectors.js';
 
@@ -11,6 +12,10 @@ const withEmptyPage = (ComponentPage, ComponentEmptyPage) => ({offers}) => {
 const mapStateToProps = (state) => ({
   offers: getCityOffers(state),
 });
+
+withEmptyPage.propTypes = {
+  offers: arrayOf(shape({})).isRequired,
+};
 
 export {withEmptyPage};
 

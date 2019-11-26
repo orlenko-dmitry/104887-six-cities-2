@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import {string, func} from 'prop-types';
 
 const withSorterState = (Component) => {
   class WithSorterState extends PureComponent {
@@ -28,6 +29,11 @@ const withSorterState = (Component) => {
     }
   }
   return WithSorterState;
+};
+
+withSorterState.propTypes = {
+  sortedBy: string.isRequired,
+  onSortByClick: func.isRequired,
 };
 
 export default withSorterState;
