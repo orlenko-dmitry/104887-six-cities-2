@@ -12,6 +12,8 @@ const mapStateToProps = (state) => ({
   offers: getCityOffers(state),
 });
 
+export {withEmptyPage};
+
 export default compose(
     connect(mapStateToProps, null),
     withEmptyPage
