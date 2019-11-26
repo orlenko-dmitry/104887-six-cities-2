@@ -6,7 +6,7 @@ import {
 
 import MainPage from '../main-page/main-page.jsx';
 import MainEmptyPage from '../main-empty-page/main-empty-page.jsx';
-import withEmptyPage from '../../hocs/withEmptyPage/withEmptyPage.jsx';
+import withEmptyPage from '../../hocs/with-empty-page/with-empty-page.jsx';
 import DetailsPage from '../details-page/details-page.jsx';
 
 const WithEmptyPage = withEmptyPage(MainPage, MainEmptyPage);

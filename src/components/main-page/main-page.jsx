@@ -12,7 +12,7 @@ import OffersList from '../offers-list/offers-list.jsx';
 import OffersMap from '../offers-map/offers-map.jsx';
 import OffersSorter from '../offers-sorter/offers-sorter.jsx';
 import MainTabs from '../main-tabs/main-tabs.jsx';
-import withSorterState from '../../hocs/withSorterState/withSorterState.jsx';
+import withSorterState from '../../hocs/with-sorter-state/with-sorter-state.jsx';
 import {getCityOffers, getCities} from '../../store/selectors.js';
 import actions from '../../store/actions.js';
 
