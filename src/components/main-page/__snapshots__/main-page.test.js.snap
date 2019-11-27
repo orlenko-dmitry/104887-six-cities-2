@@ -150,9 +150,7 @@ exports[`MainPage renders correctly 1`] = `
              places to stay in 
             Amsterdam
           </b>
-          <OffersSorter
-            isOpen={false}
-            onOpenSorterClick={[Function]}
+          <WithSorterState
             onSortByClick={[Function]}
             sortedBy="Popular"
           />

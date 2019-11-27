@@ -21,7 +21,7 @@ describe(`Action creators work correctly`, () => {
     });
   });
   it(`Action creator for selecting city returns action with payload`, () => {
-    expect(actions.getOnHoverOfferId(1)).toEqual({
+    expect(actions.getOfferId(1)).toEqual({
       type: OFFER_ON_HOVER,
       payload: 1,
     });
