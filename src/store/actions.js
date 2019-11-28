@@ -6,6 +6,8 @@ import {
   FETCH_OFFERS_SUCCESS,
 } from '../consts/actionTypes.js';
 
+import enpoints from '../consts/endpoints.js';
+
 export default ({
   selectCity: (payload) => {
     return {
@@ -31,7 +33,7 @@ export default ({
     };
   },
   fetchOffers: () => (dispatch, getState, api) => {
-    return api.get(`/hotels`)
+    return api.get(enpoints.offers)
     .then((response) => dispatch(() => {
       return {
         type: FETCH_OFFERS_SUCCESS,
