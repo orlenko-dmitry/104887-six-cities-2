@@ -2,6 +2,7 @@ import {
   SELECT_CITY,
   SORT_OFFERS_BY,
   OFFER_ON_HOVER,
+  AUTH_LOGIN,
 } from '../consts/actionTypes.js';
 export default ({
   selectCity: (payload) => {
@@ -22,4 +23,9 @@ export default ({
       payload,
     };
   },
+  authLogin: () => {
+    return {
+      type: AUTH_LOGIN,
+    };
+  }
 });

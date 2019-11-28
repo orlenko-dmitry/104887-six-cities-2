@@ -39,3 +39,9 @@ export const SORT_BY_LIST = [
     name: `Top rated first`,
   },
 ];
+
+export const AXIOS_CONFIG = {
+  BASE_URL: ` https://htmlacademy-react-2.appspot.com/six-cities`,
+  TIME_OUT: 5000,
+  WITH_CREDENTIAL: true,
+};
