@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import actions from './store/actions.js';
-import {AXIOS_CONFIG} from 'consts';
+import {AXIOS_CONFIG} from './consts/index.js';
 
 const {
   BASE_URL,

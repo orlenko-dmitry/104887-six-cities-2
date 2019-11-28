@@ -3,7 +3,9 @@ import {
   SORT_OFFERS_BY,
   OFFER_ON_HOVER,
   AUTH_LOGIN,
+  FETCH_OFFERS_SUCCESS,
 } from '../consts/actionTypes.js';
+
 export default ({
   selectCity: (payload) => {
     return {
@@ -27,5 +29,14 @@ export default ({
     return {
       type: AUTH_LOGIN,
     };
-  }
+  },
+  fetchOffers: () => (dispatch, getState, api) => {
+    return api.get(`/hotels`)
+    .then((response) => dispatch(() => {
+      return {
+        type: FETCH_OFFERS_SUCCESS,
+        payload: response.data,
+      };
+    }));
+  },
 });
