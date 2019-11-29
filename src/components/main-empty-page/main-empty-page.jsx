@@ -10,9 +10,9 @@ import {
 
 import MainTabs from '../main-tabs/main-tabs.jsx';
 import actions from '../../store/actions.js';
-import {getCities} from '../../store/selectors';
+import {APP_CITIES} from '../../consts/index.js';
 
-const MainEmptyPage = ({cities, city, selectCityHandler}) => (
+const MainEmptyPage = ({city, selectCityHandler}) => (
   <div className="page page--gray page--main">
     <header className="header">
       <div className="container">
@@ -49,7 +49,7 @@ const MainEmptyPage = ({cities, city, selectCityHandler}) => (
     <main className="page__main page__main--index page__main--index-empty">
       <h1 className="visually-hidden">Cities</h1>
       <MainTabs
-        cities={cities}
+        cities={APP_CITIES}
         selectedCity={city}
         onSelectCityClick={selectCityHandler}
       />
@@ -79,13 +79,11 @@ MainEmptyPage.propTypes = {
     }).isRequired,
     name: string.isRequired,
   }).isRequired,
-  cities: arrayOf(shape({})).isRequired,
   selectCityHandler: func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   city: state.city,
-  cities: getCities(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

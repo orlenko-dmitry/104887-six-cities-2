@@ -5,9 +5,6 @@ import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 
 import App from './components/app/app.jsx';
-import offers from './mocks/offers.js';
-import nearOffers from './mocks/nearOffers.js';
-import reviews from './mocks/reviews.js';
 import reducer from './store/reducer.js';
 import {createApi} from './api.js';
 
@@ -23,11 +20,7 @@ const store = createStore(
 const init = () => {
   render(
       <Provider store={store}>
-        <App
-          offers={offers}
-          reviews={reviews}
-          nearOffers={nearOffers}
-        />
+        <App/>
       </Provider>,
       document.getElementById(`root`)
   );

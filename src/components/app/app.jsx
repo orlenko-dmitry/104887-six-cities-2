@@ -13,19 +13,13 @@ import DetailsPage from '../details-page/details-page.jsx';
 import actions from '../../store/actions.js';
 
 const WithEmptyPage = withEmptyPage(MainPage, MainEmptyPage);
-const getPageScreen = (offers, nearOffers, reviews) => {
-  const city = offers[0].city;
-
+const getPageScreen = () => {
   switch (location.pathname) {
     case `/`:
       return <WithEmptyPage />;
     case `/details`:
       return (
-        <DetailsPage
-          offer={offers[0]}
-          reviews={reviews}
-          city={city}
-        />
+        <DetailsPage />
       );
   }
   return null;
@@ -37,13 +31,7 @@ class App extends PureComponent {
     getOffers();
   }
   render() {
-    const {
-      offers,
-      nearOffers,
-      reviews,
-    } = this.props;
-
-    return <Fragment>{getPageScreen(offers, nearOffers, reviews)}</Fragment>;
+    return <Fragment>{getPageScreen()}</Fragment>;
   }
 }
 

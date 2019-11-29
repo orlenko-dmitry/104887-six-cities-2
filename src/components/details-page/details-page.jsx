@@ -14,6 +14,7 @@ import ReviewsList from '../reviews-list/reviews-list.jsx';
 import OffersMap from '../offers-map/offers-map.jsx';
 import OffersList from '../offers-list/offers-list.jsx';
 import actions from '../../store/actions.js';
+import {getCityOffers} from '../../store/selectors.js';
 
 class DetailsPage extends PureComponent {
   constructor(props) {
@@ -239,7 +240,17 @@ DetailsPage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+  offer: getCityOffers(state)[0],
+  city: shape({
+    location: shape({
+      latitude: number.isRequired,
+      longitude: number.isRequired,
+      zoom: number.isRequired,
+    }).isRequired,
+    name: string.isRequired,
+  }).isRequired,
   nearOffers: state.nearOffers,
+  reviews: state.reviews,
   onHoverOfferId: state.onHoverOfferId,
 });
 

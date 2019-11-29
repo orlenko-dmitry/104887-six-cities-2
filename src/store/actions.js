@@ -7,6 +7,7 @@ import {
 } from '../consts/actionTypes.js';
 
 import enpoints from '../consts/endpoints.js';
+import {convertOffersToCamelCase} from '../helpers/helpers.js';
 
 export default ({
   selectCity: (payload) => {
@@ -34,11 +35,9 @@ export default ({
   },
   fetchOffers: () => (dispatch, getState, api) => {
     return api.get(enpoints.offers)
-    .then((response) => dispatch(() => {
-      return {
-        type: FETCH_OFFERS_SUCCESS,
-        payload: response.data,
-      };
+    .then((response) => dispatch({
+      type: FETCH_OFFERS_SUCCESS,
+      payload: convertOffersToCamelCase(response.data),
     }));
   },
 });
