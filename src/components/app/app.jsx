@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {
   arrayOf,
   shape,
+  string,
   func,
 } from 'prop-types';
 
@@ -11,6 +12,7 @@ import MainEmptyPage from '../main-empty-page/main-empty-page.jsx';
 import withEmptyPage from '../../hocs/with-empty-page/with-empty-page.jsx';
 import DetailsPage from '../details-page/details-page.jsx';
 import actions from '../../store/actions.js';
+import {ASYNC_STATUSES} from '../../consts/index.js';
 
 const WithEmptyPage = withEmptyPage(MainPage, MainEmptyPage);
 const getPageScreen = () => {
@@ -30,8 +32,12 @@ class App extends PureComponent {
     const {getOffers} = this.props;
     getOffers();
   }
+
   render() {
-    return <Fragment>{getPageScreen()}</Fragment>;
+    const {fetchStatus} = this.props;
+    const isPending = fetchStatus === ASYNC_STATUSES.PENDING;
+
+    return !isPending && <Fragment>{getPageScreen()}</Fragment>;
   }
 }
 
@@ -39,6 +45,7 @@ App.propTypes = {
   offers: arrayOf(shape({})),
   nearOffers: arrayOf(shape({})),
   reviews: arrayOf(shape({})),
+  fetchStatus: string.isRequired,
   getOffers: func.isRequired,
 };
 
@@ -48,8 +55,12 @@ App.defaultProps = {
   reviews: [],
 };
 
+const mapStateToProps = (store) => ({
+  fetchStatus: store.status,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   getOffers: () => dispatch(actions.fetchOffers()),
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

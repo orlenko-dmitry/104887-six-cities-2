@@ -29,29 +29,31 @@ class DetailsPage extends PureComponent {
 
   render() {
     const {
-      offer: {
-        images,
-        isPremium,
-        title,
-        rating,
-        price,
-        bedrooms,
-        maxAdults,
-        description,
-        goods,
-        host: {
-          isPro,
-          name: hostName,
-          avatarUrl,
-        },
-      },
+      offers,
       nearOffers,
       reviews,
       city,
       onHoverOfferId,
     } = this.props;
 
-    return (
+    const {
+      images,
+      isPremium,
+      title,
+      rating,
+      price,
+      bedrooms,
+      maxAdults,
+      description,
+      goods,
+      host: {
+        isPro,
+        name: hostName,
+        avatarUrl,
+      },
+    } = offers[0];
+
+    return offers.length && (
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">
@@ -206,7 +208,7 @@ class DetailsPage extends PureComponent {
 }
 
 DetailsPage.propTypes = {
-  offer: shape({
+  offers: arrayOf(shape({
     id: number.isRequired,
     images: arrayOf(string).isRequired,
     title: string.isRequired,
@@ -224,7 +226,7 @@ DetailsPage.propTypes = {
       name: string.isRequired,
       avatarUrl: string.isRequired,
     }),
-  }).isRequired,
+  })).isRequired,
   nearOffers: arrayOf(shape({})).isRequired,
   reviews: arrayOf(shape({})).isRequired,
   city: shape({
@@ -240,15 +242,8 @@ DetailsPage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  offer: getCityOffers(state)[0],
-  city: shape({
-    location: shape({
-      latitude: number.isRequired,
-      longitude: number.isRequired,
-      zoom: number.isRequired,
-    }).isRequired,
-    name: string.isRequired,
-  }).isRequired,
+  offers: getCityOffers(state),
+  city: state.city,
   nearOffers: state.nearOffers,
   reviews: state.reviews,
   onHoverOfferId: state.onHoverOfferId,

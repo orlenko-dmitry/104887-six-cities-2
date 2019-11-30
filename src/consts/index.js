@@ -46,6 +46,12 @@ export const AXIOS_CONFIG = {
   WITH_CREDENTIAL: true,
 };
 
+export const ASYNC_STATUSES = {
+  PENDING: `PENDING`,
+  SUCCESS: `SUCCESS`,
+  ERROR: `ERROR`,
+};
+
 export const APP_CITIES = [
   {
     "name": `Amsterdam`,
