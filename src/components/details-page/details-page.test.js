@@ -11,12 +11,12 @@ const city = offers[0].city;
 it(`DetailsPage renders correctly`, () => {
   const tree = shallow(
       <DetailsPage
-        offer={offers[0]}
+        offers={offers}
         nearOffers={nearOffers}
         reviews={reviews}
         city={city}
         onHoverOfferId={-1}
-        getOnHoverOfferId={() => {}}
+        getOfferId={() => {}}
       />
   );
 

@@ -13,7 +13,6 @@ import nearOffers from '../mocks/nearOffers.js';
 import reviews from '../mocks/reviews.js';
 
 const {
-  PENDING,
   SUCCESS,
 } = ASYNC_STATUSES;
 

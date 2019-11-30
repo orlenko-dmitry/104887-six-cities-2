@@ -1,8 +1,6 @@
 import React, {Fragment, PureComponent} from 'react';
 import {connect} from 'react-redux';
 import {
-  arrayOf,
-  shape,
   string,
   func,
 } from 'prop-types';
@@ -42,17 +40,8 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  offers: arrayOf(shape({})),
-  nearOffers: arrayOf(shape({})),
-  reviews: arrayOf(shape({})),
   fetchStatus: string.isRequired,
   getOffers: func.isRequired,
-};
-
-App.defaultProps = {
-  offers: [],
-  nearOffers: [],
-  reviews: [],
 };
 
 const mapStateToProps = (store) => ({
@@ -62,5 +51,7 @@ const mapStateToProps = (store) => ({
 const mapDispatchToProps = (dispatch) => ({
   getOffers: () => dispatch(actions.fetchOffers()),
 });
+
+export {App};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

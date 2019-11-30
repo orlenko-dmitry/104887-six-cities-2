@@ -3,7 +3,6 @@ import {shallow} from 'enzyme';
 
 import {MainPage} from './main-page.jsx';
 import offers from '../../mocks/offers.js';
-import cities from '../../mocks/cities.js';
 import {SORTED_BY} from '../../consts/index.js';
 
 const city = offers[0].city;
@@ -14,7 +13,6 @@ it(`MainPage renders correctly`, () => {
       <MainPage
         offers={cityOffers}
         city={city}
-        cities={cities}
         sortedBy={SORTED_BY.POPULAR}
         onHoverOfferId={-1}
         selectCityHandler={() => {}}

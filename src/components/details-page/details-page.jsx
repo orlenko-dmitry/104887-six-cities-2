@@ -23,8 +23,8 @@ class DetailsPage extends PureComponent {
   }
 
   colorPinHandler(id) {
-    const {getOnHoverOfferId} = this.props;
-    getOnHoverOfferId(id);
+    const {getOfferId} = this.props;
+    getOfferId(id);
   }
 
   render() {
@@ -238,7 +238,7 @@ DetailsPage.propTypes = {
     name: string.isRequired,
   }).isRequired,
   onHoverOfferId: number.isRequired,
-  getOnHoverOfferId: func.isRequired,
+  getOfferId: func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -250,7 +250,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getOnHoverOfferId: (payload) => dispatch(actions.getOnHoverOfferId(payload)),
+  getOfferId: (payload) => dispatch(actions.getOfferId(payload)),
 });
 
 export {DetailsPage};
