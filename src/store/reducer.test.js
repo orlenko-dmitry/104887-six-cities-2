@@ -1,11 +1,16 @@
+import MockAdapter from 'axios-mock-adapter';
+
+import {createApi} from '../api.js';
 import reducer, {initialState} from './reducer.js';
 import actions from './actions';
 import {
   SELECT_CITY,
   SORT_OFFERS_BY,
   OFFER_ON_HOVER,
+  FETCH_OFFERS_SUCCESS,
 } from '../consts/actionTypes';
 import {SELECT_CITY_PAYLOAD, SORTED_BY} from '../consts/index.js';
+import endpoints from '../consts/endpoints.js';
 
 describe(`Action creators work correctly`, () => {
   it(`Action creator for selecting city returns action with payload`, () => {
@@ -55,6 +60,25 @@ describe(`Reducer works correctly`, () => {
     })).toEqual(Object.assign({}, initialState, {
       onHoverOfferId: 1,
     }));
+  });
+  it(`Should make a correct API call to /hotels`, () => {
+    const dispatch = jest.fn();
+    const api = createApi(dispatch);
+    const apiMock = new MockAdapter(api);
+    const offersLoader = actions.fetchOffers();
+
+    apiMock
+      .onGet(endpoints.offers)
+      .reply(200, []);
+
+    return offersLoader(dispatch, jest.fn(), api)
+    .then(() => {
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: FETCH_OFFERS_SUCCESS,
+        payload: [],
+      });
+    });
   });
 });
 
