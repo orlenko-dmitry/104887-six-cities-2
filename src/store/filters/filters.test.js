@@ -1,4 +1,4 @@
-import reducer, {initialState} from './app-filters.js.js.js.js';
+import reducer, {initialState} from './filters.js';
 import actions from './actions';
 import {
   SORT_OFFERS_BY,

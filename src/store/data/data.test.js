@@ -1,7 +1,7 @@
 import MockAdapter from 'axios-mock-adapter';
 
 import {createApi} from '../../api.js';
-import reducer, {initialState} from './app-data.js';
+import reducer, {initialState} from './data.js';
 import actions from './actions';
 import {
   SELECT_CITY,
