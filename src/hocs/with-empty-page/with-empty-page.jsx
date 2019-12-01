@@ -3,14 +3,14 @@ import {connect} from 'react-redux';
 import {compose} from 'redux';
 import {arrayOf, shape} from 'prop-types';
 
-import {getCityOffers} from '../../store/selectors.js';
+import {getCityOffers} from '../../store/data/selectors.js';
 
 const withEmptyPage = (ComponentPage, ComponentEmptyPage) => ({offers}) => {
   return offers.length > 0 ? <ComponentPage /> : <ComponentEmptyPage />;
 };
 
-const mapStateToProps = (state) => ({
-  offers: getCityOffers(state),
+const mapStateToProps = ({rData, rFilters}) => ({
+  offers: getCityOffers({rData, rFilters}),
 });
 
 withEmptyPage.propTypes = {

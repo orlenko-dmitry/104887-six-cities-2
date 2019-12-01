@@ -9,7 +9,7 @@ import MainPage from '../main-page/main-page.jsx';
 import MainEmptyPage from '../main-empty-page/main-empty-page.jsx';
 import withEmptyPage from '../../hocs/with-empty-page/with-empty-page.jsx';
 import DetailsPage from '../details-page/details-page.jsx';
-import actions from '../../store/actions.js';
+import aData from '../../store/data/actions.js';
 import {ASYNC_STATUSES} from '../../consts/index.js';
 
 const WithEmptyPage = withEmptyPage(MainPage, MainEmptyPage);
@@ -44,12 +44,12 @@ App.propTypes = {
   getOffers: func.isRequired,
 };
 
-const mapStateToProps = (store) => ({
-  fetchStatus: store.status,
+const mapStateToProps = ({rData}) => ({
+  fetchStatus: rData.status,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getOffers: () => dispatch(actions.fetchOffers()),
+  getOffers: () => dispatch(aData.fetchOffers()),
 });
 
 export {App};

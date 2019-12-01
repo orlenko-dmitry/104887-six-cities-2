@@ -1,30 +1,16 @@
 import {
   SELECT_CITY,
-  SORT_OFFERS_BY,
-  OFFER_ON_HOVER,
   AUTH_LOGIN,
   FETCH_OFFERS_SUCCESS,
-} from '../consts/actionTypes.js';
+} from '../../consts/actionTypes.js';
 
-import enpoints from '../consts/endpoints.js';
-import {convertOffersToCamelCase} from '../helpers/helpers.js';
+import enpoints from '../../consts/endpoints.js';
+import {convertOffersToCamelCase} from '../../helpers/helpers.js';
 
 export default ({
   selectCity: (payload) => {
     return {
       type: SELECT_CITY,
-      payload,
-    };
-  },
-  sortBy: (payload) => {
-    return {
-      type: SORT_OFFERS_BY,
-      payload,
-    };
-  },
-  getOfferId: (payload) => {
-    return {
-      type: OFFER_ON_HOVER,
       payload,
     };
   },

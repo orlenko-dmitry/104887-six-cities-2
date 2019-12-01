@@ -13,8 +13,8 @@ import {defineRating} from '../../helpers/helpers.js';
 import ReviewsList from '../reviews-list/reviews-list.jsx';
 import OffersMap from '../offers-map/offers-map.jsx';
 import OffersList from '../offers-list/offers-list.jsx';
-import actions from '../../store/actions.js';
-import {getCityOffers} from '../../store/selectors.js';
+import aFilters from '../../store/filters/actions.js';
+import {getCityOffers} from '../../store/data/selectors.js';
 
 class DetailsPage extends PureComponent {
   constructor(props) {
@@ -241,16 +241,16 @@ DetailsPage.propTypes = {
   getOfferId: func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  offers: getCityOffers(state),
-  city: state.city,
-  nearOffers: state.nearOffers,
-  reviews: state.reviews,
-  onHoverOfferId: state.onHoverOfferId,
+const mapStateToProps = ({rData, rFilters}) => ({
+  offers: getCityOffers({rData, rFilters}),
+  city: rData.city,
+  nearOffers: rData.nearOffers,
+  reviews: rData.reviews,
+  onHoverOfferId: rFilters.onHoverOfferId,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getOfferId: (payload) => dispatch(actions.getOfferId(payload)),
+  getOfferId: (payload) => dispatch(aFilters.getOfferId(payload)),
 });
 
 export {DetailsPage};

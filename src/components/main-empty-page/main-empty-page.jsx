@@ -8,7 +8,7 @@ import {
 } from 'prop-types';
 
 import MainTabs from '../main-tabs/main-tabs.jsx';
-import actions from '../../store/actions.js';
+import aData from '../../store/data/actions.js';
 import {APP_CITIES} from '../../consts/index.js';
 
 const MainEmptyPage = ({city, selectCityHandler}) => (
@@ -81,12 +81,12 @@ MainEmptyPage.propTypes = {
   selectCityHandler: func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  city: state.city,
+const mapStateToProps = ({rData}) => ({
+  city: rData.city,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  selectCityHandler: (payload) => dispatch(actions.selectCity(payload)),
+  selectCityHandler: (payload) => dispatch(aData.selectCity(payload)),
 });
 
 export {MainEmptyPage};

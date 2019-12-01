@@ -1,10 +1,10 @@
 import {createSelector} from 'reselect';
 
-import {sortOffeers} from '../helpers/helpers.js';
+import {sortOffeers} from '../../helpers/helpers.js';
 
-const getOffers = (state) => state.offers;
-const getCity = (state) => state.city;
-const getSortedBy = (state) => state.sortedBy;
+const getOffers = ({rData}) => rData.offers;
+const getCity = ({rData}) => rData.city;
+const getSortedBy = ({rFilters}) => rFilters.sortedBy;
 
 export const getCityOffers = createSelector(
     [getOffers, getCity, getSortedBy],

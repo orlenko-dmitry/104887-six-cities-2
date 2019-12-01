@@ -1,34 +1,20 @@
 import MockAdapter from 'axios-mock-adapter';
 
-import {createApi} from '../api.js';
-import reducer, {initialState} from './reducer.js';
+import {createApi} from '../../api.js';
+import reducer, {initialState} from './app-data.js';
 import actions from './actions';
 import {
   SELECT_CITY,
-  SORT_OFFERS_BY,
-  OFFER_ON_HOVER,
   FETCH_OFFERS_SUCCESS,
-} from '../consts/actionTypes';
-import {SELECT_CITY_PAYLOAD, SORTED_BY} from '../consts/index.js';
-import endpoints from '../consts/endpoints.js';
+} from '../../consts/actionTypes';
+import {SELECT_CITY_PAYLOAD} from '../../consts/index.js';
+import endpoints from '../../consts/endpoints.js';
 
 describe(`Action creators work correctly`, () => {
   it(`Action creator for selecting city returns action with payload`, () => {
     expect(actions.selectCity(SELECT_CITY_PAYLOAD)).toEqual({
       type: SELECT_CITY,
       payload: SELECT_CITY_PAYLOAD,
-    });
-  });
-  it(`Action creator for selecting city returns action with payload`, () => {
-    expect(actions.sortBy(SORTED_BY.POPULAR)).toEqual({
-      type: SORT_OFFERS_BY,
-      payload: SORTED_BY.POPULAR,
-    });
-  });
-  it(`Action creator for selecting city returns action with payload`, () => {
-    expect(actions.getOfferId(1)).toEqual({
-      type: OFFER_ON_HOVER,
-      payload: 1,
     });
   });
 });
@@ -43,22 +29,6 @@ describe(`Reducer works correctly`, () => {
       payload: SELECT_CITY_PAYLOAD,
     })).toEqual(Object.assign({}, initialState, {
       city: SELECT_CITY_PAYLOAD,
-    }));
-  });
-  it(`Reducer should change sortedBy by a given payload`, () => {
-    expect(reducer(undefined, {
-      type: SORT_OFFERS_BY,
-      payload: SORTED_BY.POPULAR,
-    })).toEqual(Object.assign({}, initialState, {
-      sortedBy: SORTED_BY.POPULAR,
-    }));
-  });
-  it(`Reducer should change onHoverOfferId by a given payload`, () => {
-    expect(reducer(undefined, {
-      type: OFFER_ON_HOVER,
-      payload: 1,
-    })).toEqual(Object.assign({}, initialState, {
-      onHoverOfferId: 1,
     }));
   });
   it(`Should make a correct API call to /hotels`, () => {
@@ -81,4 +51,3 @@ describe(`Reducer works correctly`, () => {
     });
   });
 });
-

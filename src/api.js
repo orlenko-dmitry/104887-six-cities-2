@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import actions from './store/actions.js';
+import aData from './store/data/actions.js';
 import {AXIOS_CONFIG} from './consts/index.js';
 
 const {
@@ -20,7 +20,7 @@ export const createApi = (dispatch) => {
 
   const onFail = (err) => {
     if (err.response.status === 403) {
-      dispatch(actions.authLogin());
+      dispatch(aData.authLogin());
     }
   };
 
