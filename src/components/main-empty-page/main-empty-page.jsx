@@ -8,43 +8,17 @@ import {
 } from 'prop-types';
 
 import MainTabs from '../main-tabs/main-tabs.jsx';
+import PageHeader from '../page-header/page-header.jsx';
 import aData from '../../store/data/actions.js';
 import {APP_CITIES} from '../../consts/index.js';
 
-const MainEmptyPage = ({city, selectCityHandler}) => (
+const MainEmptyPage = ({
+  city,
+  selectCityHandler,
+  signInHandler,
+}) => (
   <div className="page page--gray page--main">
-    <header className="header">
-      <div className="container">
-        <div className="header__wrapper">
-          <div className="header__left">
-            <a className="header__logo-link header__logo-link--active">
-              <img
-                className="header__logo"
-                src="img/logo.svg"
-                alt="6 cities logo"
-                width={81}
-                height={41}
-              />
-            </a>
-          </div>
-          <nav className="header__nav">
-            <ul className="header__nav-list">
-              <li className="header__nav-item user">
-                <a
-                  className="header__nav-link header__nav-link--profile"
-                  href="#"
-                >
-                  <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-                  <span className="header__user-name user__name">
-                    Oliver.conner@gmail.com
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </header>
+    <PageHeader onSignInClick={signInHandler} />
     <main className="page__main page__main--index page__main--index-empty">
       <h1 className="visually-hidden">Cities</h1>
       <MainTabs
@@ -79,6 +53,7 @@ MainEmptyPage.propTypes = {
     name: string.isRequired,
   }).isRequired,
   selectCityHandler: func.isRequired,
+  signInHandler: func.isRequired,
 };
 
 const mapStateToProps = ({rData}) => ({
@@ -87,6 +62,7 @@ const mapStateToProps = ({rData}) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   selectCityHandler: (payload) => dispatch(aData.selectCity(payload)),
+  signInHandler: () => dispatch(aData.signIn()),
 });
 
 export {MainEmptyPage};

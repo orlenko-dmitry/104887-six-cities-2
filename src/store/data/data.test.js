@@ -6,6 +6,7 @@ import actions from './actions';
 import {
   SELECT_CITY,
   FETCH_OFFERS_SUCCESS,
+  SIGN_IN,
 } from '../../consts/actionTypes';
 import {SELECT_CITY_PAYLOAD} from '../../consts/index.js';
 import endpoints from '../../consts/endpoints.js';
@@ -15,6 +16,11 @@ describe(`Action creators work correctly`, () => {
     expect(actions.selectCity(SELECT_CITY_PAYLOAD)).toEqual({
       type: SELECT_CITY,
       payload: SELECT_CITY_PAYLOAD,
+    });
+  });
+  it(`Action creator for selecting city returns action with payload`, () => {
+    expect(actions.selectCity(SELECT_CITY_PAYLOAD)).toEqual({
+      type: SIGN_IN,
     });
   });
 });
@@ -29,6 +35,13 @@ describe(`Reducer works correctly`, () => {
       payload: SELECT_CITY_PAYLOAD,
     })).toEqual(Object.assign({}, initialState, {
       city: SELECT_CITY_PAYLOAD,
+    }));
+  });
+  it(`Reducer should change isAuthorizationRequired by a given payload`, () => {
+    expect(reducer(undefined, {
+      type: SIGN_IN,
+    })).toEqual(Object.assign({}, initialState, {
+      isAuthorizationRequired: true,
     }));
   });
   it(`Should make a correct API call to /hotels`, () => {

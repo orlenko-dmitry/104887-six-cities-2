@@ -1,6 +1,7 @@
 import {
   SELECT_CITY,
   AUTH_LOGIN,
+  SIGN_IN,
   FETCH_OFFERS_SUCCESS,
 } from '../../consts/actionTypes.js';
 
@@ -17,6 +18,11 @@ export default ({
   authLogin: () => {
     return {
       type: AUTH_LOGIN,
+    };
+  },
+  signIn: () => {
+    return {
+      type: SIGN_IN,
     };
   },
   fetchOffers: () => (dispatch, getState, api) => {
