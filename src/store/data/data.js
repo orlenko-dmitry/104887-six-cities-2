@@ -2,6 +2,7 @@ import {
   SELECT_CITY,
   FETCH_OFFERS_SUCCESS,
   SIGN_IN,
+  SIGN_IN_SUCCESS,
 } from '../../consts/actionTypes.js';
 import {
   APP_CITIES,
@@ -16,6 +17,7 @@ export const initialState = {
   nearOffers,
   reviews,
   isAuthorizationRequired: false,
+  user: null,
   status: ASYNC_STATUSES.PENDING,
 };
 
@@ -27,6 +29,8 @@ export default (state = initialState, {type, payload}) => {
       return Object.assign({}, state, {offers: payload, status: ASYNC_STATUSES.SUCCESS});
     case SIGN_IN:
       return Object.assign({}, state, {isAuthorizationRequired: !state.isAuthorizationRequired});
+    case SIGN_IN_SUCCESS:
+      return Object.assign({}, state, {user: payload});
     default: return state;
   }
 };

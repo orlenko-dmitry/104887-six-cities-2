@@ -1,6 +1,6 @@
 import {
   SELECT_CITY,
-  AUTH_LOGIN,
+  SIGN_IN_SUCCESS,
   SIGN_IN,
   FETCH_OFFERS_SUCCESS,
 } from '../../consts/actionTypes.js';
@@ -15,10 +15,14 @@ export default ({
       payload,
     };
   },
-  authLogin: () => {
-    return {
-      type: AUTH_LOGIN,
-    };
+  authLogin: ({userEmail, userPassword}) => (dispatch, getState, api) => {
+    return api.post(enpoints.login, {
+      email: userEmail,
+      password: userPassword,
+    }).then((response) => dispatch({
+      type: SIGN_IN_SUCCESS,
+      payload: response.data,
+    }));
   },
   signIn: () => {
     return {
@@ -27,9 +31,9 @@ export default ({
   },
   fetchOffers: () => (dispatch, getState, api) => {
     return api.get(enpoints.offers)
-    .then((response) => dispatch({
-      type: FETCH_OFFERS_SUCCESS,
-      payload: convertOffersToCamelCase(response.data),
-    }));
+            .then((response) => dispatch({
+              type: FETCH_OFFERS_SUCCESS,
+              payload: convertOffersToCamelCase(response.data),
+            }));
   },
 });

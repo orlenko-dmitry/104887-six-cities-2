@@ -13,7 +13,7 @@ import OffersMap from '../offers-map/offers-map.jsx';
 import OffersSorter from '../offers-sorter/offers-sorter.jsx';
 import MainTabs from '../main-tabs/main-tabs.jsx';
 import PageHeader from '../page-header/page-header.jsx';
-import withSorterState from '../../hocs/with-sorter-state/with-sorter-state.jsx';
+import withSorterState from '../../hocs/with-sorter/with-sorter.jsx';
 import {getCityOffers} from '../../store/data/selectors.js';
 import aData from '../../store/data/actions.js';
 import aFilters from '../../store/filters/actions.js';
