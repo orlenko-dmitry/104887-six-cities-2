@@ -15,10 +15,10 @@ import {APP_CITIES} from '../../consts/index.js';
 const MainEmptyPage = ({
   city,
   selectCityHandler,
-  signInHandler,
+  user,
 }) => (
   <div className="page page--gray page--main">
-    <PageHeader onSignInClick={signInHandler} />
+    <PageHeader user={user} />
     <main className="page__main page__main--index page__main--index-empty">
       <h1 className="visually-hidden">Cities</h1>
       <MainTabs
@@ -52,17 +52,21 @@ MainEmptyPage.propTypes = {
     }).isRequired,
     name: string.isRequired,
   }).isRequired,
+  user: shape({}),
   selectCityHandler: func.isRequired,
-  signInHandler: func.isRequired,
+};
+
+MainEmptyPage.defaultProps = {
+  user: null,
 };
 
 const mapStateToProps = ({rData}) => ({
   city: rData.city,
+  user: rData.user,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   selectCityHandler: (payload) => dispatch(aData.selectCity(payload)),
-  signInHandler: () => dispatch(aData.signIn()),
 });
 
 export {MainEmptyPage};

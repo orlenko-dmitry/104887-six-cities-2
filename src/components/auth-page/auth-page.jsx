@@ -12,13 +12,13 @@ const AuthPage = ({
   city,
   userEmail,
   userPassword,
+  user,
   onFormSubmit,
   onEmailChange,
   onPasswordChange,
-  signInHandler,
 }) => (
   <div className="page page--gray page--login">
-    <PageHeader onSignInClick={signInHandler} />
+    <PageHeader user={user} />
     <main className="page__main page__main--login">
       <div className="page__login-container container">
         <section className="login">
@@ -79,10 +79,14 @@ AuthPage.propTypes = {
   }).isRequired,
   userEmail: string.isRequired,
   userPassword: string.isRequired,
+  user: shape({}),
   onFormSubmit: func.isRequired,
   onEmailChange: func.isRequired,
   onPasswordChange: func.isRequired,
-  signInHandler: func.isRequired,
+};
+
+AuthPage.defaultProps = {
+  user: null,
 };
 
 

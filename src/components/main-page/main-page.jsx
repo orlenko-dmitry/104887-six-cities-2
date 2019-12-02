@@ -24,18 +24,18 @@ const WithSorterState = withSorterState(OffersSorter);
 const MainPage = ({
   offers,
   city,
+  user,
   sortedBy,
   onHoverOfferId,
   selectCityHandler,
   sortByHandler,
   getOfferIdHandler,
-  signInHandler
 }) => {
   const offersQuantity = offers.length;
 
   return (
     <div className="page page--gray page--main">
-      <PageHeader onSignInClick={signInHandler} />
+      <PageHeader user={user} />
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <MainTabs
@@ -85,17 +85,22 @@ MainPage.propTypes = {
     }).isRequired,
     name: string.isRequired,
   }).isRequired,
+  user: shape({}),
   sortedBy: string.isRequired,
   onHoverOfferId: number.isRequired,
   selectCityHandler: func.isRequired,
   sortByHandler: func.isRequired,
   getOfferIdHandler: func.isRequired,
-  signInHandler: func.isRequired,
+};
+
+MainPage.defaultProps = {
+  user: null,
 };
 
 const mapStateToProps = ({rData, rFilters}) => ({
   offers: getCityOffers({rData, rFilters}),
   city: rData.city,
+  user: rData.user,
   sortedBy: rFilters.sortedBy,
   onHoverOfferId: rFilters.onHoverOfferId,
 });
@@ -104,7 +109,6 @@ const mapDispatchToProps = (dispatch) => ({
   selectCityHandler: (payload) => dispatch(aData.selectCity(payload)),
   sortByHandler: (payload) => dispatch(aFilters.sortBy(payload)),
   getOfferIdHandler: (payload) => dispatch(aFilters.getOfferId(payload)),
-  signInHandler: () => dispatch(aData.signIn()),
 });
 
 export {MainPage};

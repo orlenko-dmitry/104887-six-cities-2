@@ -1,7 +1,7 @@
 import React from 'react';
-import {func} from 'prop-types';
+import {shape} from 'prop-types';
 
-const PageHeader = ({onSignInClick}) => (
+const PageHeader = ({user}) => (
   <header className="header">
     <div className="container">
       <div className="header__wrapper">
@@ -23,11 +23,11 @@ const PageHeader = ({onSignInClick}) => (
                 className="header__nav-link header__nav-link--profile"
                 href="#"
               >
-                <div className="header__avatar-wrapper user__avatar-wrapper"></div>
+                <div className="header__avatar-wrapper user__avatar-wrapper" />
                 {
-                  5 > 0
-                    ? <span className="header__login" onClick={onSignInClick}>Sign in</span>
-                    : <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+                  user === null
+                    ? <span className="header__login">Sign in</span>
+                    : <span className="header__user-name user__name">{user.email}</span>
                 }
               </a>
             </li>
@@ -39,7 +39,11 @@ const PageHeader = ({onSignInClick}) => (
 );
 
 PageHeader.propTypes = {
-  onSignInClick: func.isRequired,
+  user: shape({}),
+};
+
+PageHeader.defaultProps = {
+  user: null,
 };
 
 export default PageHeader;

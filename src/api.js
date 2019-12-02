@@ -19,8 +19,8 @@ export const createApi = (dispatch) => {
   const onSuccess = (response) => response;
 
   const onFail = (err) => {
-    if (err.response.status === 403) {
-      dispatch(aData.authLogin());
+    if (err.response.status === 401) {
+      dispatch(aData.signIn());
     }
   };
 

@@ -1,7 +1,8 @@
 import {
   SELECT_CITY,
-  SIGN_IN_SUCCESS,
   SIGN_IN,
+  SIGN_IN_SUCCESS,
+  GET_USER_SUCCESS,
   FETCH_OFFERS_SUCCESS,
 } from '../../consts/actionTypes.js';
 
@@ -28,6 +29,13 @@ export default ({
     return {
       type: SIGN_IN,
     };
+  },
+  getUser: () => (dispatch, getState, api) => {
+    return api.get(enpoints.login)
+            .then((response) => dispatch({
+              type: GET_USER_SUCCESS,
+              payload: response.data,
+            }));
   },
   fetchOffers: () => (dispatch, getState, api) => {
     return api.get(enpoints.offers)

@@ -31,8 +31,9 @@ const getPageScreen = (isAuthorizationRequired) => {
 
 class App extends PureComponent {
   componentDidMount() {
-    const {getOffers} = this.props;
+    const {getOffers, getUser} = this.props;
     getOffers();
+    getUser();
   }
 
   render() {
@@ -47,6 +48,7 @@ App.propTypes = {
   fetchStatus: string.isRequired,
   isAuthorizationRequired: bool.isRequired,
   getOffers: func.isRequired,
+  getUser: func.isRequired,
 };
 
 const mapStateToProps = ({rData}) => ({
@@ -56,6 +58,7 @@ const mapStateToProps = ({rData}) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getOffers: () => dispatch(aData.fetchOffers()),
+  getUser: () => dispatch(aData.getUser()),
 });
 
 export {App};

@@ -64,8 +64,12 @@ const withAuthForm = (Component) => {
       }).isRequired,
       name: string.isRequired,
     }).isRequired,
-    signInHandler: func.isRequired,
+    user: shape({}),
     authLogin: func.isRequired,
+  };
+
+  WithAuthForm.defaultProps = {
+    user: null,
   };
 
   return WithAuthForm;
@@ -73,10 +77,10 @@ const withAuthForm = (Component) => {
 
 const mapStateToProps = ({rData}) => ({
   city: rData.city,
+  user: rData.user,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  signInHandler: () => dispatch(aData.signIn()),
   authLogin: (payload) => dispatch(aData.authLogin(payload)),
 });
 
