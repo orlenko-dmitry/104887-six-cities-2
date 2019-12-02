@@ -39,3 +39,66 @@ export const SORT_BY_LIST = [
     name: `Top rated first`,
   },
 ];
+
+export const AXIOS_CONFIG = {
+  BASE_URL: ` https://htmlacademy-react-2.appspot.com/six-cities`,
+  TIME_OUT: 5000,
+  WITH_CREDENTIAL: true,
+};
+
+export const ASYNC_STATUSES = {
+  PENDING: `PENDING`,
+  SUCCESS: `SUCCESS`,
+  ERROR: `ERROR`,
+};
+
+export const APP_CITIES = [
+  {
+    "name": `Amsterdam`,
+    "location": {
+      "latitude": 52.37454,
+      "longitude": 4.897976,
+      "zoom": 13
+    }
+  },
+  {
+    "name": `Brussels`,
+    "location": {
+      "latitude": 50.846557,
+      "longitude": 4.351697,
+      "zoom": 13
+    }
+  },
+  {
+    "name": `Cologne`,
+    "location": {
+      "latitude": 50.938361,
+      "longitude": 6.959974,
+      "zoom": 13
+    }
+  },
+  {
+    "name": `Paris`,
+    "location": {
+      "latitude": 48.85661,
+      "longitude": 2.351499,
+      "zoom": 13
+    }
+  },
+  {
+    "name": `Hamburg`,
+    "location": {
+      "latitude": 53.550341,
+      "longitude": 10.000654,
+      "zoom": 13
+    }
+  },
+  {
+    "name": `Dusseldorf`,
+    "location": {
+      "latitude": 51.225402,
+      "longitude": 6.776314,
+      "zoom": 13
+    }
+  }
+];

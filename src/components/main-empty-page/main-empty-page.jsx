@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {
-  arrayOf,
   shape,
   number,
   string,
@@ -9,10 +8,10 @@ import {
 } from 'prop-types';
 
 import MainTabs from '../main-tabs/main-tabs.jsx';
-import actions from '../../store/actions.js';
-import {getCities} from '../../store/selectors';
+import aData from '../../store/data/actions.js';
+import {APP_CITIES} from '../../consts/index.js';
 
-const MainEmptyPage = ({cities, city, selectCityHandler}) => (
+const MainEmptyPage = ({city, selectCityHandler}) => (
   <div className="page page--gray page--main">
     <header className="header">
       <div className="container">
@@ -49,7 +48,7 @@ const MainEmptyPage = ({cities, city, selectCityHandler}) => (
     <main className="page__main page__main--index page__main--index-empty">
       <h1 className="visually-hidden">Cities</h1>
       <MainTabs
-        cities={cities}
+        cities={APP_CITIES}
         selectedCity={city}
         onSelectCityClick={selectCityHandler}
       />
@@ -79,17 +78,15 @@ MainEmptyPage.propTypes = {
     }).isRequired,
     name: string.isRequired,
   }).isRequired,
-  cities: arrayOf(shape({})).isRequired,
   selectCityHandler: func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  city: state.city,
-  cities: getCities(state),
+const mapStateToProps = ({rData}) => ({
+  city: rData.city,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  selectCityHandler: (payload) => dispatch(actions.selectCity(payload)),
+  selectCityHandler: (payload) => dispatch(aData.selectCity(payload)),
 });
 
 export {MainEmptyPage};

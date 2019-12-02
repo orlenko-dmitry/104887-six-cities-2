@@ -13,15 +13,16 @@ import OffersMap from '../offers-map/offers-map.jsx';
 import OffersSorter from '../offers-sorter/offers-sorter.jsx';
 import MainTabs from '../main-tabs/main-tabs.jsx';
 import withSorterState from '../../hocs/with-sorter-state/with-sorter-state.jsx';
-import {getCityOffers, getCities} from '../../store/selectors.js';
-import actions from '../../store/actions.js';
+import {getCityOffers} from '../../store/data/selectors.js';
+import aData from '../../store/data/actions.js';
+import aFilters from '../../store/filters/actions.js';
+import {APP_CITIES} from '../../consts/index.js';
 
 const WithSorterState = withSorterState(OffersSorter);
 
 const MainPage = ({
   offers,
   city,
-  cities,
   sortedBy,
   onHoverOfferId,
   selectCityHandler,
@@ -58,7 +59,7 @@ const MainPage = ({
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <MainTabs
-          cities={cities}
+          cities={APP_CITIES}
           selectedCity={city}
           onSelectCityClick={selectCityHandler}
         />
@@ -104,7 +105,6 @@ MainPage.propTypes = {
     }).isRequired,
     name: string.isRequired,
   }).isRequired,
-  cities: arrayOf(shape({})).isRequired,
   sortedBy: string.isRequired,
   onHoverOfferId: number.isRequired,
   selectCityHandler: func.isRequired,
@@ -112,18 +112,17 @@ MainPage.propTypes = {
   getOfferIdHandler: func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  offers: getCityOffers(state),
-  city: state.city,
-  cities: getCities(state),
-  sortedBy: state.sortedBy,
-  onHoverOfferId: state.onHoverOfferId,
+const mapStateToProps = ({rData, rFilters}) => ({
+  offers: getCityOffers({rData, rFilters}),
+  city: rData.city,
+  sortedBy: rFilters.sortedBy,
+  onHoverOfferId: rFilters.onHoverOfferId,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  selectCityHandler: (payload) => dispatch(actions.selectCity(payload)),
-  sortByHandler: (payload) => dispatch(actions.sortBy(payload)),
-  getOfferIdHandler: (payload) => dispatch(actions.getOfferId(payload)),
+  selectCityHandler: (payload) => dispatch(aData.selectCity(payload)),
+  sortByHandler: (payload) => dispatch(aFilters.sortBy(payload)),
+  getOfferIdHandler: (payload) => dispatch(aFilters.getOfferId(payload)),
 });
 
 export {MainPage};

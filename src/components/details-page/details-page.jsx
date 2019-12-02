@@ -13,7 +13,8 @@ import {defineRating} from '../../helpers/helpers.js';
 import ReviewsList from '../reviews-list/reviews-list.jsx';
 import OffersMap from '../offers-map/offers-map.jsx';
 import OffersList from '../offers-list/offers-list.jsx';
-import actions from '../../store/actions.js';
+import aFilters from '../../store/filters/actions.js';
+import {getCityOffers} from '../../store/data/selectors.js';
 
 class DetailsPage extends PureComponent {
   constructor(props) {
@@ -22,35 +23,37 @@ class DetailsPage extends PureComponent {
   }
 
   colorPinHandler(id) {
-    const {getOnHoverOfferId} = this.props;
-    getOnHoverOfferId(id);
+    const {getOfferId} = this.props;
+    getOfferId(id);
   }
 
   render() {
     const {
-      offer: {
-        images,
-        isPremium,
-        title,
-        rating,
-        price,
-        bedrooms,
-        maxAdults,
-        description,
-        goods,
-        host: {
-          isPro,
-          name: hostName,
-          avatarUrl,
-        },
-      },
+      offers,
       nearOffers,
       reviews,
       city,
       onHoverOfferId,
     } = this.props;
 
-    return (
+    const {
+      images,
+      isPremium,
+      title,
+      rating,
+      price,
+      bedrooms,
+      maxAdults,
+      description,
+      goods,
+      host: {
+        isPro,
+        name: hostName,
+        avatarUrl,
+      },
+    } = offers[0];
+
+    return offers.length && (
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">
@@ -205,7 +208,7 @@ class DetailsPage extends PureComponent {
 }
 
 DetailsPage.propTypes = {
-  offer: shape({
+  offers: arrayOf(shape({
     id: number.isRequired,
     images: arrayOf(string).isRequired,
     title: string.isRequired,
@@ -223,7 +226,7 @@ DetailsPage.propTypes = {
       name: string.isRequired,
       avatarUrl: string.isRequired,
     }),
-  }).isRequired,
+  })).isRequired,
   nearOffers: arrayOf(shape({})).isRequired,
   reviews: arrayOf(shape({})).isRequired,
   city: shape({
@@ -235,16 +238,19 @@ DetailsPage.propTypes = {
     name: string.isRequired,
   }).isRequired,
   onHoverOfferId: number.isRequired,
-  getOnHoverOfferId: func.isRequired,
+  getOfferId: func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  nearOffers: state.nearOffers,
-  onHoverOfferId: state.onHoverOfferId,
+const mapStateToProps = ({rData, rFilters}) => ({
+  offers: getCityOffers({rData, rFilters}),
+  city: rData.city,
+  nearOffers: rData.nearOffers,
+  reviews: rData.reviews,
+  onHoverOfferId: rFilters.onHoverOfferId,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getOnHoverOfferId: (payload) => dispatch(actions.getOnHoverOfferId(payload)),
+  getOfferId: (payload) => dispatch(aFilters.getOfferId(payload)),
 });
 
 export {DetailsPage};
