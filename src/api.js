@@ -22,6 +22,7 @@ export const createApi = (dispatch) => {
     if (err.response.status === 401) {
       dispatch(aData.signIn());
     }
+    return Promise.reject(err);
   };
 
   api.interceptors.response.use(onSuccess, onFail);

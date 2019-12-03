@@ -27,7 +27,7 @@ export default (state = initialState, {type, payload}) => {
     case SIGN_IN:
       return Object.assign({}, state, {isAuthorizationRequired: !state.isAuthorizationRequired});
     case SIGN_IN_SUCCESS:
-      return Object.assign({}, state, {user: payload});
+      return Object.assign({}, state, {user: payload, isAuthorizationRequired: false});
     case GET_USER_SUCCESS:
       return Object.assign({}, state, {user: payload});
     case SELECT_CITY:

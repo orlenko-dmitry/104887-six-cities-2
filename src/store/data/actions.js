@@ -35,7 +35,8 @@ export default ({
             .then((response) => dispatch({
               type: GET_USER_SUCCESS,
               payload: response.data,
-            }));
+            }))
+            .catch((err) => err.message);
   },
   fetchOffers: () => (dispatch, getState, api) => {
     return api.get(enpoints.offers)
