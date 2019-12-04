@@ -7,7 +7,7 @@ import offers from '../../mocks/offers.js';
 describe(`e2e test for withAuthForm hoc`, () => {
   const MockComponent = () => <div />;
   const MockComponentWrapped = withAuthForm(MockComponent);
-  const city = offers[0];
+  const city = offers[0].city;
 
   it(`Should change userEmail, when call emailChangeHandler with value`, () => {
     const wrapper = shallow(
@@ -46,7 +46,7 @@ describe(`e2e test for withAuthForm hoc`, () => {
         <MockComponentWrapped
           city={city}
           user={null}
-          authLogin={() => {}}
+          authLogin={authLoginHandler}
         />
     );
 

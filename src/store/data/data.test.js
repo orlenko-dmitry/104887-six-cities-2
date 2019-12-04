@@ -7,6 +7,8 @@ import {
   SELECT_CITY,
   FETCH_OFFERS_SUCCESS,
   SIGN_IN,
+  SIGN_IN_SUCCESS,
+  GET_USER_SUCCESS,
 } from '../../consts/actionTypes';
 import {SELECT_CITY_PAYLOAD} from '../../consts/index.js';
 import endpoints from '../../consts/endpoints.js';
@@ -55,12 +57,50 @@ describe(`Reducer works correctly`, () => {
       .reply(200, []);
 
     return offersLoader(dispatch, jest.fn(), api)
-    .then(() => {
-      expect(dispatch).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenNthCalledWith(1, {
-        type: FETCH_OFFERS_SUCCESS,
-        payload: [],
+      .then(() => {
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: FETCH_OFFERS_SUCCESS,
+          payload: [],
+        });
       });
+  });
+  it(`Should make a correct API call to /login, with post method`, () => {
+    const dispatch = jest.fn();
+    const api = createApi(dispatch);
+    const apiMock = new MockAdapter(api);
+    const loginUser = actions.authLogin({
+      userEmail: `test@email.com`,
+      userPassword: `qwerty`,
     });
+
+    apiMock
+      .onPost(endpoints.login)
+      .reply(200, {fake: true});
+
+    return loginUser(dispatch, jest.fn(), api)
+      .then(() => {
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: SIGN_IN_SUCCESS,
+          payload: {fake: true},
+        });
+      });
+  });
+  it(`Should make a correct API call to /login, with get method`, () => {
+    const dispatch = jest.fn();
+    const api = createApi(dispatch);
+    const apiMock = new MockAdapter(api);
+    const userLoader = actions.getUser();
+
+    apiMock
+      .onGet(endpoints.login)
+      .reply(200, {fake: true});
+
+    return userLoader(dispatch, jest.fn(), api)
+      .then(() => {
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: GET_USER_SUCCESS,
+          payload: {fake: true},
+        });
+      });
   });
 });
