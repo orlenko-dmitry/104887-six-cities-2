@@ -84,6 +84,8 @@ const mapDispatchToProps = (dispatch) => ({
   authLogin: (payload) => dispatch(aData.authLogin(payload)),
 });
 
+export {withAuthForm};
+
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     withAuthForm
