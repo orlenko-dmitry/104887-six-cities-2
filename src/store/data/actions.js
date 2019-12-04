@@ -23,7 +23,8 @@ export default ({
     }).then((response) => dispatch({
       type: SIGN_IN_SUCCESS,
       payload: response.data,
-    }));
+    }))
+    .catch((err) => err.message);
   },
   signIn: () => {
     return {
@@ -43,6 +44,7 @@ export default ({
             .then((response) => dispatch({
               type: FETCH_OFFERS_SUCCESS,
               payload: convertOffersToCamelCase(response.data),
-            }));
+            }))
+            .catch((err) => err.message);
   },
 });

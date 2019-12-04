@@ -18,8 +18,8 @@ describe(`Action creators work correctly`, () => {
       payload: SELECT_CITY_PAYLOAD,
     });
   });
-  it(`Action creator for selecting city returns action with payload`, () => {
-    expect(actions.selectCity(SELECT_CITY_PAYLOAD)).toEqual({
+  it(`Action creator for signIn returns action`, () => {
+    expect(actions.signIn()).toEqual({
       type: SIGN_IN,
     });
   });

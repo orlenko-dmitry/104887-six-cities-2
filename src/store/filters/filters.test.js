@@ -7,13 +7,13 @@ import {
 import {SORTED_BY} from '../../consts/index.js';
 
 describe(`Action creators work correctly`, () => {
-  it(`Action creator for selecting city returns action with payload`, () => {
+  it(`Action creator for sorting offers returns action with payload`, () => {
     expect(actions.sortBy(SORTED_BY.POPULAR)).toEqual({
       type: SORT_OFFERS_BY,
       payload: SORTED_BY.POPULAR,
     });
   });
-  it(`Action creator for selecting city returns action with payload`, () => {
+  it(`Action creator for coloring pin returns action with payload`, () => {
     expect(actions.getOfferId(1)).toEqual({
       type: OFFER_ON_HOVER,
       payload: 1,

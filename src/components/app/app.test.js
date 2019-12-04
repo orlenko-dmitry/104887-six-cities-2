@@ -9,7 +9,9 @@ it(`App renders correctly`, () => {
   const tree = shallow(
       <App
         fetchStatus={ASYNC_STATUSES.SUCCESS}
+        isAuthorizationRequired={false}
         getOffers={() => {}}
+        getUser={() => {}}
       />
   );
 
