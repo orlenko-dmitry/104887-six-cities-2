@@ -15,6 +15,7 @@ it(`DetailsPage renders correctly`, () => {
         city={city}
         onHoverOfferId={-1}
         getOfferId={() => {}}
+        fetchComments={() => {}}
       />
   );
 

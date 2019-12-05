@@ -4,10 +4,11 @@ import {
   SIGN_IN_SUCCESS,
   GET_USER_SUCCESS,
   FETCH_OFFERS_SUCCESS,
+  FETCH_COMMENTS_SUCCESS,
 } from '../../consts/actionTypes.js';
 
 import enpoints from '../../consts/endpoints.js';
-import {convertOffersToCamelCase} from '../../helpers/helpers.js';
+import {convertOffersToCamelCase, convertCommentsToCamelCase} from '../../helpers/helpers.js';
 
 export default ({
   selectCity: (payload) => {
@@ -47,4 +48,11 @@ export default ({
             }))
             .catch((err) => err.message);
   },
+  fetchComments: (offerId) => (dispatch, getState, api) => {
+    return api.get(enpoints.comments(offerId))
+            .then((response) => dispatch({
+              type: FETCH_COMMENTS_SUCCESS,
+              payload: convertCommentsToCamelCase(response.data),
+            }));
+  }
 });

@@ -4,17 +4,17 @@ import {
   GET_USER_SUCCESS,
   SELECT_CITY,
   FETCH_OFFERS_SUCCESS,
+  FETCH_COMMENTS_SUCCESS,
 } from '../../consts/actionTypes.js';
 import {
   APP_CITIES,
   ASYNC_STATUSES,
 } from '../../consts/index.js';
-import reviews from '../../mocks/reviews.js';
 
 export const initialState = {
   city: APP_CITIES[0],
   offers: [],
-  reviews,
+  comments: [],
   isAuthorizationRequired: false,
   user: null,
   status: ASYNC_STATUSES.PENDING,
@@ -32,6 +32,8 @@ export default (state = initialState, {type, payload}) => {
       return Object.assign({}, state, {city: payload});
     case FETCH_OFFERS_SUCCESS:
       return Object.assign({}, state, {offers: payload, status: ASYNC_STATUSES.SUCCESS});
+    case FETCH_COMMENTS_SUCCESS:
+      return Object.assign({}, state, {comments: payload});
     default: return state;
   }
 };

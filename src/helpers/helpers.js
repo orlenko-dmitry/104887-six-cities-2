@@ -89,3 +89,24 @@ export const convertOffersToCamelCase = (offers) => {
     id,
   }));
 };
+
+export const convertCommentsToCamelCase = (comments) => {
+  return comments.map(({
+    comment,
+    date,
+    id,
+    rating,
+    user,
+  }) => ({
+    comment,
+    date,
+    id,
+    rating,
+    user: {
+      avatarUrl: user.avatar_url,
+      id: user.id,
+      isPro: user.is_pro,
+      name: user.name,
+    },
+  }));
+};

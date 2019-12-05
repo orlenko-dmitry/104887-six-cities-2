@@ -52,6 +52,11 @@ export const ASYNC_STATUSES = {
   ERROR: `ERROR`,
 };
 
+export const DATE_FORMATS = {
+  DATE_TIME: `YYYY-MM-DD`,
+  MOTH_YEAR: `MMMM YYYY`,
+};
+
 export const APP_CITIES = [
   {
     "name": `Amsterdam`,

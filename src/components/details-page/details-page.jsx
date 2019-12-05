@@ -14,6 +14,7 @@ import ReviewsList from '../reviews-list/reviews-list.jsx';
 import OffersMap from '../offers-map/offers-map.jsx';
 import OffersList from '../offers-list/offers-list.jsx';
 import aFilters from '../../store/filters/actions.js';
+import aData from '../../store/data/actions.js';
 import {getCityOffers} from '../../store/data/selectors.js';
 
 class DetailsPage extends PureComponent {
@@ -22,15 +23,20 @@ class DetailsPage extends PureComponent {
     this.colorPinHandler = this.colorPinHandler.bind(this);
   }
 
+  componentDidMount() {
+    const {fetchCommentsHandler} = this.props;
+    fetchCommentsHandler(2);
+  }
+
   colorPinHandler(id) {
-    const {getOfferId} = this.props;
-    getOfferId(id);
+    const {getOfferIdHandler} = this.props;
+    getOfferIdHandler(id);
   }
 
   render() {
     const {
       offers,
-      reviews,
+      comments,
       city,
       onHoverOfferId,
     } = this.props;
@@ -136,8 +142,8 @@ class DetailsPage extends PureComponent {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews · <span className="reviews__amount">{reviews.length}</span></h2>
-                <ReviewsList reviews={reviews} />
+                <h2 className="reviews__title">Reviews · <span className="reviews__amount">{comments.length}</span></h2>
+                <ReviewsList reviews={comments} />
                 <form className="reviews__form form" action="#" method="post">
                   <label className="reviews__label form__label" htmlFor="review">Your review</label>
                   <div className="reviews__rating-form form__rating">
@@ -226,7 +232,7 @@ DetailsPage.propTypes = {
       avatarUrl: string.isRequired,
     }),
   })).isRequired,
-  reviews: arrayOf(shape({})).isRequired,
+  comments: arrayOf(shape({})).isRequired,
   city: shape({
     location: shape({
       latitude: number.isRequired,
@@ -236,18 +242,20 @@ DetailsPage.propTypes = {
     name: string.isRequired,
   }).isRequired,
   onHoverOfferId: number.isRequired,
-  getOfferId: func.isRequired,
+  getOfferIdHandler: func.isRequired,
+  fetchCommentsHandler: func
 };
 
 const mapStateToProps = ({rData, rFilters}) => ({
   offers: getCityOffers({rData, rFilters}),
   city: rData.city,
-  reviews: rData.reviews,
+  comments: rData.comments,
   onHoverOfferId: rFilters.onHoverOfferId,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getOfferId: (payload) => dispatch(aFilters.getOfferId(payload)),
+  getOfferIdHandler: (payload) => dispatch(aFilters.getOfferIdHandler(payload)),
+  fetchCommentsHandler: (payload) => dispatch(aData.fetchComments(payload)),
 });
 
 export {DetailsPage};
