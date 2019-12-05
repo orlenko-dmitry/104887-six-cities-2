@@ -254,7 +254,7 @@ const mapStateToProps = ({rData, rFilters}) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getOfferIdHandler: (payload) => dispatch(aFilters.getOfferIdHandler(payload)),
+  getOfferIdHandler: (payload) => dispatch(aFilters.getOfferId(payload)),
   fetchCommentsHandler: (payload) => dispatch(aData.fetchComments(payload)),
 });
 

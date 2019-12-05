@@ -1,5 +1,10 @@
 import MockAdapter from 'axios-mock-adapter';
 
+//   SIGN_IN_SUCCESS,
+//   GET_USER_SUCCESS,
+//   FETCH_OFFERS_SUCCESS,
+//   FETCH_COMMENTS_SUCCESS,
+
 import {createApi} from '../../api.js';
 import reducer, {initialState} from './data.js';
 import actions from './actions';
@@ -9,6 +14,7 @@ import {
   SIGN_IN,
   SIGN_IN_SUCCESS,
   GET_USER_SUCCESS,
+  FETCH_COMMENTS_SUCCESS,
 } from '../../consts/actionTypes';
 import {SELECT_CITY_PAYLOAD} from '../../consts/index.js';
 import endpoints from '../../consts/endpoints.js';
@@ -100,6 +106,24 @@ describe(`Reducer works correctly`, () => {
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: GET_USER_SUCCESS,
           payload: {fake: true},
+        });
+      });
+  });
+  it(`Should make a correct API call to /comments/:offerId`, () => {
+    const dispatch = jest.fn();
+    const api = createApi(dispatch);
+    const apiMock = new MockAdapter(api);
+    const commentsLoader = actions.fetchComments(1);
+
+    apiMock
+      .onGet(endpoints.comments(1))
+      .reply(200, []);
+
+    return commentsLoader(dispatch, jest.fn(), api)
+      .then(() => {
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: FETCH_COMMENTS_SUCCESS,
+          payload: [],
         });
       });
   });
