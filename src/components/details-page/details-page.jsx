@@ -243,7 +243,7 @@ DetailsPage.propTypes = {
   }).isRequired,
   onHoverOfferId: number.isRequired,
   getOfferIdHandler: func.isRequired,
-  fetchCommentsHandler: func
+  fetchCommentsHandler: func.isRequired,
 };
 
 const mapStateToProps = ({rData, rFilters}) => ({
