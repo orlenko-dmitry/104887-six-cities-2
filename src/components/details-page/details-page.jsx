@@ -30,7 +30,6 @@ class DetailsPage extends PureComponent {
   render() {
     const {
       offers,
-      nearOffers,
       reviews,
       city,
       onHoverOfferId,
@@ -186,7 +185,7 @@ class DetailsPage extends PureComponent {
           </div>
           <section className="property__map map">
             <OffersMap
-              offers={nearOffers}
+              offers={offers}
               selectedCity={city}
               onHoverOfferId={onHoverOfferId}
             />
@@ -197,7 +196,7 @@ class DetailsPage extends PureComponent {
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <OffersList
               classNames={`near-places__list`}
-              offers={nearOffers}
+              offers={offers}
               onColorPin={this.colorPinHandler}
             />
           </section>
@@ -227,7 +226,6 @@ DetailsPage.propTypes = {
       avatarUrl: string.isRequired,
     }),
   })).isRequired,
-  nearOffers: arrayOf(shape({})).isRequired,
   reviews: arrayOf(shape({})).isRequired,
   city: shape({
     location: shape({
@@ -244,7 +242,6 @@ DetailsPage.propTypes = {
 const mapStateToProps = ({rData, rFilters}) => ({
   offers: getCityOffers({rData, rFilters}),
   city: rData.city,
-  nearOffers: rData.nearOffers,
   reviews: rData.reviews,
   onHoverOfferId: rFilters.onHoverOfferId,
 });

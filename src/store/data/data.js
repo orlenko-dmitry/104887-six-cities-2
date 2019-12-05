@@ -9,13 +9,11 @@ import {
   APP_CITIES,
   ASYNC_STATUSES,
 } from '../../consts/index.js';
-import nearOffers from '../../mocks/nearOffers.js';
 import reviews from '../../mocks/reviews.js';
 
 export const initialState = {
   city: APP_CITIES[0],
   offers: [],
-  nearOffers,
   reviews,
   isAuthorizationRequired: false,
   user: null,
