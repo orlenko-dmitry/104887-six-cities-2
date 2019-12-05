@@ -1,6 +1,8 @@
 import {
   SELECT_CITY,
-  AUTH_LOGIN,
+  SIGN_IN,
+  SIGN_IN_SUCCESS,
+  GET_USER_SUCCESS,
   FETCH_OFFERS_SUCCESS,
 } from '../../consts/actionTypes.js';
 
@@ -14,16 +16,35 @@ export default ({
       payload,
     };
   },
-  authLogin: () => {
+  authLogin: ({userEmail, userPassword}) => (dispatch, getState, api) => {
+    return api.post(enpoints.login, {
+      email: userEmail,
+      password: userPassword,
+    }).then((response) => dispatch({
+      type: SIGN_IN_SUCCESS,
+      payload: response.data,
+    }))
+    .catch((err) => err.message);
+  },
+  signIn: () => {
     return {
-      type: AUTH_LOGIN,
+      type: SIGN_IN,
     };
+  },
+  getUser: () => (dispatch, getState, api) => {
+    return api.get(enpoints.login)
+            .then((response) => dispatch({
+              type: GET_USER_SUCCESS,
+              payload: response.data,
+            }))
+            .catch((err) => err.message);
   },
   fetchOffers: () => (dispatch, getState, api) => {
     return api.get(enpoints.offers)
-    .then((response) => dispatch({
-      type: FETCH_OFFERS_SUCCESS,
-      payload: convertOffersToCamelCase(response.data),
-    }));
+            .then((response) => dispatch({
+              type: FETCH_OFFERS_SUCCESS,
+              payload: convertOffersToCamelCase(response.data),
+            }))
+            .catch((err) => err.message);
   },
 });
