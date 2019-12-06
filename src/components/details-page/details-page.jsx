@@ -50,6 +50,7 @@ class DetailsPage extends PureComponent {
       bedrooms,
       maxAdults,
       description,
+      id,
       goods,
       host: {
         isPro,
@@ -191,9 +192,9 @@ class DetailsPage extends PureComponent {
           </div>
           <section className="property__map map">
             <OffersMap
-              offers={getNearOffers(offers, 9, true)}
+              offers={getNearOffers(offers, id, true)}
               selectedCity={city}
-              selectedOfferId={9}
+              selectedOfferId={id}
               onHoverOfferId={onHoverOfferId}
             />
           </section>
@@ -203,7 +204,7 @@ class DetailsPage extends PureComponent {
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <OffersList
               classNames={`near-places__list`}
-              offers={getNearOffers(offers, 9)}
+              offers={getNearOffers(offers, id)}
               onColorPin={this.colorPinHandler}
             />
           </section>

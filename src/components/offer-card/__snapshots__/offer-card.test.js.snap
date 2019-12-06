@@ -97,7 +97,7 @@ exports[`OfferCard renders correctly 1`] = `
     <p
       className="place-card__type"
     >
-      house
+      House
     </p>
   </div>
 </article>
