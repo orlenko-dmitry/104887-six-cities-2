@@ -1,4 +1,8 @@
 import React, {PureComponent} from 'react';
+import {func} from 'prop-types';
+import {connect} from 'react-redux';
+import {compose} from 'redux';
+import aData from '../../store/data/actions.js';
 
 const withReviewsForm = (Component) => {
   class WithReviewsForm extends PureComponent {
@@ -6,10 +10,10 @@ const withReviewsForm = (Component) => {
       super(props);
       this.state = {
         rating: 0,
-        message: ``,
+        comment: ``,
       };
       this.ratingChangeHandler = this.ratingChangeHandler.bind(this);
-      this.messageChangeHandler = this.messageChangeHandler.bind(this);
+      this.commentChangeHandler = this.commentChangeHandler.bind(this);
       this.formSubmitHandler = this.formSubmitHandler.bind(this);
     }
 
@@ -17,33 +21,45 @@ const withReviewsForm = (Component) => {
       this.setState({rating: value});
     }
 
-    messageChangeHandler(value) {
-      this.setState({message: value});
+    commentChangeHandler(value) {
+      this.setState({comment: value});
     }
 
     formSubmitHandler(evt) {
-      const {rating, message} = this.state;
+      const {postCommentHandler} = this.props;
+      const {rating, comment} = this.state;
 
       evt.preventDefault();
-      console.log(rating, message);
+      postCommentHandler({offerId: 3, rating, comment});
     }
 
     render() {
-      const {message, rating} = this.state;
+      const {comment, rating} = this.state;
       return (
         <Component
           {...this.props}
           rating={rating}
-          message={message}
+          comment={comment}
           onRatingChange={this.ratingChangeHandler}
-          onMessageChange={this.messageChangeHandler}
+          onCommentChange={this.commentChangeHandler}
           onSubmitForm={this.formSubmitHandler}
         />
       );
     }
   }
 
+  WithReviewsForm.propTypes = {
+    postCommentHandler: func.isRequired,
+  };
+
   return WithReviewsForm;
 };
 
-export default withReviewsForm;
+const mapDispatchToProps = (dispatch) => ({
+  postCommentHandler: (payload) => dispatch(aData.postComment(payload)),
+});
+
+export default compose(
+    connect(null, mapDispatchToProps),
+    withReviewsForm
+);

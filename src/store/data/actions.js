@@ -5,6 +5,7 @@ import {
   GET_USER_SUCCESS,
   FETCH_OFFERS_SUCCESS,
   FETCH_COMMENTS_SUCCESS,
+  POST_COMMENTS_SUCCES,
 } from '../../consts/actionTypes.js';
 
 import enpoints from '../../consts/endpoints.js';
@@ -54,5 +55,12 @@ export default ({
               type: FETCH_COMMENTS_SUCCESS,
               payload: convertCommentsToCamelCase(response.data),
             }));
-  }
+  },
+  postComment: ({offerId, rating, comment}) => (dispatch, getState, api) => {
+    return api.post(enpoints.comments(offerId), {rating, comment})
+            .then((response) => dispatch({
+              type: POST_COMMENTS_SUCCES,
+              payload: response.data,
+            }));
+  },
 });
