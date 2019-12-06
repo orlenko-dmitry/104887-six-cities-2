@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   shape,
+  oneOf,
   string,
   number,
   bool,
@@ -8,6 +9,7 @@ import {
 } from 'prop-types';
 
 import {defineRating} from '../../helpers/helpers.js';
+import {OFFER_TYPE} from '../../consts/index.js';
 
 const OfferCard = ({
   offer: {
@@ -71,7 +73,7 @@ const OfferCard = ({
       >
         <a href="/details">{title}</a>
       </h2>
-      <p className="place-card__type">{type}</p>
+      <p className="place-card__type">{OFFER_TYPE[type]}</p>
     </div>
   </article>
 );
@@ -80,7 +82,7 @@ OfferCard.propTypes = {
   offer: shape({
     id: number.isRequired,
     title: string.isRequired,
-    type: string.isRequired,
+    type: oneOf([`apartment`, `room`, `house`, `hotel`]).isRequired,
     price: number.isRequired,
     isPremium: bool.isRequired,
     isFavorite: bool.isRequired,

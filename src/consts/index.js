@@ -51,6 +51,13 @@ export const DATE_FORMATS = {
   MOTH_YEAR: `MMMM YYYY`,
 };
 
+export const OFFER_TYPE = {
+  apartment: `Apartment`,
+  room: `Private Room`,
+  house: `House`,
+  hotel: `Hotel`,
+};
+
 export const APP_CITIES = [
   {
     "name": `Amsterdam`,
