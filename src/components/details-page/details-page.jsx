@@ -14,9 +14,12 @@ import ReviewsList from '../reviews-list/reviews-list.jsx';
 import OffersMap from '../offers-map/offers-map.jsx';
 import OffersList from '../offers-list/offers-list.jsx';
 import ReviewsFrom from '../reviews-form/reviews-form.jsx';
+import withReviewsForm from '../../hocs/with-reviews-form/with-reviews-form.jsx';
 import aFilters from '../../store/filters/actions.js';
 import aData from '../../store/data/actions.js';
 import {getCityOffers} from '../../store/data/selectors.js';
+
+const WithReviewsForm = withReviewsForm(ReviewsFrom);
 
 class DetailsPage extends PureComponent {
   constructor(props) {
@@ -146,7 +149,7 @@ class DetailsPage extends PureComponent {
               <section className="property__reviews reviews">
                 <h2 className="reviews__title">Reviews · <span className="reviews__amount">{comments.length}</span></h2>
                 <ReviewsList reviews={comments} />
-                <ReviewsFrom />
+                <WithReviewsForm />
               </section>
             </div>
           </div>
