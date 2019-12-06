@@ -1,10 +1,5 @@
 import MockAdapter from 'axios-mock-adapter';
 
-//   SIGN_IN_SUCCESS,
-//   GET_USER_SUCCESS,
-//   FETCH_OFFERS_SUCCESS,
-//   FETCH_COMMENTS_SUCCESS,
-
 import {createApi} from '../../api.js';
 import reducer, {initialState} from './data.js';
 import actions from './actions';
@@ -16,14 +11,14 @@ import {
   GET_USER_SUCCESS,
   FETCH_COMMENTS_SUCCESS,
 } from '../../consts/actionTypes';
-import {SELECT_CITY_PAYLOAD} from '../../consts/index.js';
+import {ASYNC_STATUSES} from '../../consts/index.js';
 import endpoints from '../../consts/endpoints.js';
 
 describe(`Action creators work correctly`, () => {
   it(`Action creator for selecting city returns action with payload`, () => {
-    expect(actions.selectCity(SELECT_CITY_PAYLOAD)).toEqual({
+    expect(actions.selectCity({fake: true})).toEqual({
       type: SELECT_CITY,
-      payload: SELECT_CITY_PAYLOAD,
+      payload: {fake: true},
     });
   });
   it(`Action creator for signIn returns action`, () => {
@@ -40,9 +35,9 @@ describe(`Reducer works correctly`, () => {
   it(`Reducer should change city by a given payload`, () => {
     expect(reducer(undefined, {
       type: SELECT_CITY,
-      payload: SELECT_CITY_PAYLOAD,
+      payload: {fake: true},
     })).toEqual(Object.assign({}, initialState, {
-      city: SELECT_CITY_PAYLOAD,
+      city: {fake: true},
     }));
   });
   it(`Reducer should change isAuthorizationRequired by a given payload`, () => {
@@ -52,6 +47,41 @@ describe(`Reducer works correctly`, () => {
       isAuthorizationRequired: true,
     }));
   });
+  it(`Reducer should change user by a given payload`, () => {
+    expect(reducer(undefined, {
+      type: SIGN_IN_SUCCESS,
+      payload: {fake: true},
+    })).toEqual(Object.assign({}, initialState, {
+      user: {fake: true},
+      isAuthorizationRequired: false,
+    }));
+  });
+  it(`Reducer should change user by a given payload`, () => {
+    expect(reducer(undefined, {
+      type: GET_USER_SUCCESS,
+      payload: {fake: true},
+    })).toEqual(Object.assign({}, initialState, {
+      user: {fake: true},
+    }));
+  });
+  it(`Reducer should change offers by a given payload`, () => {
+    expect(reducer(undefined, {
+      type: FETCH_OFFERS_SUCCESS,
+      payload: [{fake: true}],
+    })).toEqual(Object.assign({}, initialState, {
+      offers: [{fake: true}],
+      status: ASYNC_STATUSES.SUCCESS,
+    }));
+  });
+  it(`Reducer should change comments by a given payload`, () => {
+    expect(reducer(undefined, {
+      type: FETCH_COMMENTS_SUCCESS,
+      payload: [{fake: true}],
+    })).toEqual(Object.assign({}, initialState, {
+      comments: [{fake: true}],
+    }));
+  });
+
   it(`Should make a correct API call to /hotels`, () => {
     const dispatch = jest.fn();
     const api = createApi(dispatch);
