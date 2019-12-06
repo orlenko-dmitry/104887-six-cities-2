@@ -9,7 +9,7 @@ import {
 } from 'prop-types';
 import {connect} from 'react-redux';
 
-import {defineRating} from '../../helpers/helpers.js';
+import {defineRating, getNearOffers} from '../../helpers/helpers.js';
 import ReviewsList from '../reviews-list/reviews-list.jsx';
 import OffersMap from '../offers-map/offers-map.jsx';
 import OffersList from '../offers-list/offers-list.jsx';
@@ -191,8 +191,9 @@ class DetailsPage extends PureComponent {
           </div>
           <section className="property__map map">
             <OffersMap
-              offers={offers}
+              offers={getNearOffers(offers, 9, true)}
               selectedCity={city}
+              selectedOfferId={9}
               onHoverOfferId={onHoverOfferId}
             />
           </section>
@@ -202,7 +203,7 @@ class DetailsPage extends PureComponent {
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <OffersList
               classNames={`near-places__list`}
-              offers={offers}
+              offers={getNearOffers(offers, 9)}
               onColorPin={this.colorPinHandler}
             />
           </section>

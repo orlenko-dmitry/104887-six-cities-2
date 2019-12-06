@@ -14,7 +14,7 @@ export const defineRating = (rating) => {
   return `${Math.round(rating / 5 * 100)}%`;
 };
 
-export const leafletSetView = ({offers, map, city, zoom, onHoverOfferId, leaflet}) => {
+export const leafletSetView = ({offers, map, city, zoom, onHoverOfferId, selectedOfferId, leaflet}) => {
   map.setView(city, zoom);
   offers.map(({
     location: {
@@ -25,7 +25,7 @@ export const leafletSetView = ({offers, map, city, zoom, onHoverOfferId, leaflet
   }) => {
     const offerCords = [offerLatitude, offerLongitude];
     const icon = leaflet.icon({
-      iconUrl: LEAFLET_CONSTS.iconUrl({onHoverOfferId, currentId}),
+      iconUrl: LEAFLET_CONSTS.iconUrl({onHoverOfferId, selectedOfferId, currentId}),
       iconSize: LEAFLET_CONSTS.ICON_SIZE,
     });
     leaflet
@@ -44,6 +44,25 @@ export const sortOffeers = (offers, sortedBy) => {
     case TOP_RATED:
       return offers.sort((a, b) => b.rating - a.rating);
     default: return offers;
+  }
+};
+
+export const getNearOffers = (offers, selectedOfferId, withSelectedOffer = false) => {
+  const result = [];
+  const selectedOfferIndex = offers.map((offer) => offer.id).indexOf(selectedOfferId);
+  let index = 0;
+  while (result.length < 3) {
+    if (index !== selectedOfferIndex) {
+      result.push(offers[index]);
+      ++index;
+    } else {
+      ++index;
+    }
+  }
+  if (withSelectedOffer) {
+    return [...result, offers[selectedOfferIndex]];
+  } else {
+    return result;
   }
 };
 

@@ -31,6 +31,7 @@ class OffersMap extends PureComponent {
       },
       offers,
       onHoverOfferId,
+      selectedOfferId,
     } = this.props;
 
     const center = [latitude, longitude];
@@ -45,7 +46,7 @@ class OffersMap extends PureComponent {
     leaflet
         .tileLayer(TILE_LAYER, {attribution: ATTRIBUTION})
         .addTo(this.map);
-    leafletSetView({offers, map: this.map, city: center, zoom, onHoverOfferId, leaflet});
+    leafletSetView({offers, map: this.map, city: center, zoom, onHoverOfferId, selectedOfferId, leaflet});
   }
 
   componentDidUpdate(prevProps) {
@@ -60,11 +61,12 @@ class OffersMap extends PureComponent {
       },
       offers,
       onHoverOfferId,
+      selectedOfferId,
     } = this.props;
     const center = [latitude, longitude];
 
     if (prevProps.selectedCity.name !== name || prevProps.onHoverOfferId !== onHoverOfferId) {
-      leafletSetView({offers, map: this.map, city: center, zoom, onHoverOfferId, leaflet});
+      leafletSetView({offers, map: this.map, city: center, zoom, onHoverOfferId, selectedOfferId, leaflet});
     }
   }
 
@@ -91,10 +93,12 @@ OffersMap.propTypes = {
     name: string.isRequired,
   }).isRequired,
   onHoverOfferId: number,
+  selectedOfferId: number,
 };
 
 OffersMap.defaultProps = {
   onHoverOfferId: -1,
+  selectedOfferId: null,
 };
 
 export default OffersMap;
