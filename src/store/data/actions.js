@@ -5,7 +5,9 @@ import {
   GET_USER_SUCCESS,
   FETCH_OFFERS_SUCCESS,
   FETCH_COMMENTS_SUCCESS,
+  POST_COMMENTS_PENDING,
   POST_COMMENTS_SUCCES,
+  POST_COMMENTS_ERROR,
 } from '../../consts/actionTypes.js';
 
 import enpoints from '../../consts/endpoints.js';
@@ -57,10 +59,17 @@ export default ({
             }));
   },
   postComment: ({offerId, rating, comment}) => (dispatch, getState, api) => {
+    dispatch({type: POST_COMMENTS_PENDING});
     return api.post(enpoints.comments(offerId), {rating, comment})
             .then((response) => dispatch({
               type: POST_COMMENTS_SUCCES,
-              payload: response.data,
-            }));
+              payload: convertCommentsToCamelCase(response.data),
+            }))
+            .catch((err) => {
+              return {
+                type: POST_COMMENTS_ERROR,
+                payload: err.message,
+              };
+            });
   },
 });
