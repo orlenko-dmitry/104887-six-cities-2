@@ -21,7 +21,7 @@ export const initialState = {
   isAuthorizationRequired: false,
   user: null,
   status: ASYNC_STATUSES.PENDING,
-  postMessageStatus: ``,
+  postMessageStatus: `this.props`,
 };
 
 export default (state = initialState, {type, payload}) => {

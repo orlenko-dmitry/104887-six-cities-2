@@ -4,12 +4,14 @@ import {
   number,
   func,
 } from 'prop-types';
+import {ASYNC_STATUSES} from '../../consts';
 
 const raitings = Array.from(Array(5).keys()).reverse();
 
 const ReviewsForm = ({
   rating,
   comment,
+  postMessageStatus,
   onRatingChange,
   onCommentChange,
   onSubmitForm,
@@ -45,6 +47,7 @@ const ReviewsForm = ({
       name="review"
       placeholder="Tell how was your stay, what you like and what can be improved"
       value={comment}
+      disabled={postMessageStatus === ASYNC_STATUSES.PENDING}
       onChange={(evt) => onCommentChange(evt.target.value)}
     />
     <div className="reviews__button-wrapper">
@@ -54,7 +57,12 @@ const ReviewsForm = ({
       <button
         className="reviews__submit form__submit button"
         type="submit"
-        disabled={rating === 0 || comment.length < 50 || comment.length > 300}
+        disabled={
+          postMessageStatus === ASYNC_STATUSES.PENDING
+          || rating === 0
+          || comment.length < 50
+          || comment.length > 300
+        }
       >
         Submit
       </button>
@@ -65,6 +73,7 @@ const ReviewsForm = ({
 ReviewsForm.propTypes = {
   rating: number.isRequired,
   comment: string.isRequired,
+  postMessageStatus: string.isRequired,
   onRatingChange: func.isRequired,
   onCommentChange: func.isRequired,
   onSubmitForm: func.isRequired,

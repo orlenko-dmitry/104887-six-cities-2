@@ -10,6 +10,9 @@ import {
   SIGN_IN_SUCCESS,
   GET_USER_SUCCESS,
   FETCH_COMMENTS_SUCCESS,
+  // POST_COMMENTS_PENDING,
+  POST_COMMENTS_SUCCESS,
+  // POST_COMMENTS_ERROR,
 } from '../../consts/actionTypes';
 import {ASYNC_STATUSES} from '../../consts/index.js';
 import endpoints from '../../consts/endpoints.js';
@@ -139,7 +142,7 @@ describe(`Reducer works correctly`, () => {
         });
       });
   });
-  it(`Should make a correct API call to /comments/:offerId`, () => {
+  it(`Should make a correct API call to /comments/:offerId with get method`, () => {
     const dispatch = jest.fn();
     const api = createApi(dispatch);
     const apiMock = new MockAdapter(api);
@@ -154,6 +157,24 @@ describe(`Reducer works correctly`, () => {
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: FETCH_COMMENTS_SUCCESS,
           payload: [],
+        });
+      });
+  });
+  it(`Should make a correct API call to /comments/:offerId with get method`, () => {
+    const dispatch = jest.fn();
+    const api = createApi(dispatch);
+    const apiMock = new MockAdapter(api);
+    const postComment = actions.postComment({offerId: 1, rating: 5, comment: `Comment`});
+
+    apiMock
+      .onPost(endpoints.comments(1))
+      .reply(200, [{fake: true}]);
+
+    return postComment(dispatch, jest.fn(), api)
+      .then(() => {
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: POST_COMMENTS_SUCCESS,
+          payload: [{fake: true}],
         });
       });
   });

@@ -61,17 +61,16 @@ export default ({
   },
   postComment: ({offerId, rating, comment}) => (dispatch, getState, api) => {
     dispatch({type: POST_COMMENTS_PENDING});
-    return api.post(enpoints.comments(offerId), {comment})
+    return api.post(enpoints.comments(offerId), {rating, comment})
             .then((response) => dispatch({
               type: POST_COMMENTS_SUCCES,
               payload: convertCommentsToCamelCase(response.data),
             }))
             .catch((err) => {
               toast.error(err.message);
-              return {
+              dispatch({
                 type: POST_COMMENTS_ERROR,
-                payload: err.message,
-              };
+              });
             });
   },
 });

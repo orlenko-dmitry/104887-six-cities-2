@@ -1,8 +1,9 @@
 import React, {PureComponent} from 'react';
-import {func} from 'prop-types';
+import {string, func} from 'prop-types';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
 import aData from '../../store/data/actions.js';
+import {ASYNC_STATUSES} from '../../consts/index.js';
 
 const withReviewsForm = (Component) => {
   class WithReviewsForm extends PureComponent {
@@ -15,6 +16,17 @@ const withReviewsForm = (Component) => {
       this.ratingChangeHandler = this.ratingChangeHandler.bind(this);
       this.commentChangeHandler = this.commentChangeHandler.bind(this);
       this.formSubmitHandler = this.formSubmitHandler.bind(this);
+      this.clearState = this.clearState.bind(this);
+    }
+
+    componentDidUpdate() {
+      if (this.props.postMessageStatus === ASYNC_STATUSES.SUCCESS) {
+        this.clearState();
+      }
+    }
+
+    clearState() {
+      this.setState({rating: 0, comment: ``});
     }
 
     ratingChangeHandler(value) {
@@ -34,12 +46,15 @@ const withReviewsForm = (Component) => {
     }
 
     render() {
+      const {postMessageStatus} = this.props;
       const {comment, rating} = this.state;
+
       return (
         <Component
           {...this.props}
           rating={rating}
           comment={comment}
+          postMessageStatus={postMessageStatus}
           onRatingChange={this.ratingChangeHandler}
           onCommentChange={this.commentChangeHandler}
           onSubmitForm={this.formSubmitHandler}
@@ -49,17 +64,22 @@ const withReviewsForm = (Component) => {
   }
 
   WithReviewsForm.propTypes = {
+    postMessageStatus: string.isRequired,
     postCommentHandler: func.isRequired,
   };
 
   return WithReviewsForm;
 };
 
+const mapStateToProps = ({rData}) => ({
+  postMessageStatus: rData.postMessageStatus,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   postCommentHandler: (payload) => dispatch(aData.postComment(payload)),
 });
 
 export default compose(
-    connect(null, mapDispatchToProps),
+    connect(mapStateToProps, mapDispatchToProps),
     withReviewsForm
 );
