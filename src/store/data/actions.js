@@ -9,6 +9,7 @@ import {
   POST_COMMENTS_SUCCES,
   POST_COMMENTS_ERROR,
 } from '../../consts/actionTypes.js';
+import {toast} from 'react-toastify';
 
 import enpoints from '../../consts/endpoints.js';
 import {convertOffersToCamelCase, convertCommentsToCamelCase} from '../../helpers/helpers.js';
@@ -66,6 +67,7 @@ export default ({
               payload: convertCommentsToCamelCase(response.data),
             }))
             .catch((err) => {
+              toast.error(err.message);
               return {
                 type: POST_COMMENTS_ERROR,
                 payload: err.message,

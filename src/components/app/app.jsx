@@ -5,6 +5,8 @@ import {
   string,
   func,
 } from 'prop-types';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import MainPage from '../main-page/main-page.jsx';
 import MainEmptyPage from '../main-empty-page/main-empty-page.jsx';
@@ -40,7 +42,12 @@ class App extends PureComponent {
     const {fetchStatus, isAuthorizationRequired} = this.props;
     const isPending = fetchStatus === ASYNC_STATUSES.PENDING;
 
-    return !isPending && <Fragment>{getPageScreen(isAuthorizationRequired)}</Fragment>;
+    return !isPending && (
+      <Fragment>
+        {getPageScreen(isAuthorizationRequired)}
+        <ToastContainer />
+      </Fragment>
+    );
   }
 }
 
