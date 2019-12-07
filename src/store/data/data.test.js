@@ -10,7 +10,7 @@ import {
   SIGN_IN_SUCCESS,
   GET_USER_SUCCESS,
   FETCH_COMMENTS_SUCCESS,
-  // POST_COMMENTS_PENDING,
+  POST_COMMENTS_PENDING,
   POST_COMMENTS_SUCCESS,
   // POST_COMMENTS_ERROR,
 } from '../../consts/actionTypes';
@@ -160,11 +160,15 @@ describe(`Reducer works correctly`, () => {
         });
       });
   });
-  it(`Should make a correct API call to /comments/:offerId with get method`, () => {
+  it(`Should make a correct API call to /comments/:offerId with post method`, () => {
     const dispatch = jest.fn();
     const api = createApi(dispatch);
     const apiMock = new MockAdapter(api);
-    const postComment = actions.postComment({offerId: 1, rating: 5, comment: `Comment`});
+    const postComment = actions.postComment({
+      offerId: 1,
+      rating: 5,
+      comment: `I stayed here for one night and it was an unpleasant experience.`,
+    });
 
     apiMock
       .onPost(endpoints.comments(1))
@@ -172,7 +176,9 @@ describe(`Reducer works correctly`, () => {
 
     return postComment(dispatch, jest.fn(), api)
       .then(() => {
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: POST_COMMENTS_PENDING,
+        }, {
           type: POST_COMMENTS_SUCCESS,
           payload: [{fake: true}],
         });

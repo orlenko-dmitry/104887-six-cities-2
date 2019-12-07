@@ -6,7 +6,7 @@ import {
   FETCH_OFFERS_SUCCESS,
   FETCH_COMMENTS_SUCCESS,
   POST_COMMENTS_PENDING,
-  POST_COMMENTS_SUCCES,
+  POST_COMMENTS_SUCCESS,
   POST_COMMENTS_ERROR,
 } from '../../consts/actionTypes.js';
 import {toast} from 'react-toastify';
@@ -63,7 +63,7 @@ export default ({
     dispatch({type: POST_COMMENTS_PENDING});
     return api.post(enpoints.comments(offerId), {rating, comment})
             .then((response) => dispatch({
-              type: POST_COMMENTS_SUCCES,
+              type: POST_COMMENTS_SUCCESS,
               payload: convertCommentsToCamelCase(response.data),
             }))
             .catch((err) => {
