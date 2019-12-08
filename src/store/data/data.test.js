@@ -76,7 +76,7 @@ describe(`Reducer works correctly`, () => {
       payload: [{fake: true}],
     })).toEqual(Object.assign({}, initialState, {
       offers: [{fake: true}],
-      status: ASYNC_STATUSES.SUCCESS,
+      offersFetchStatus: ASYNC_STATUSES.SUCCESS,
     }));
   });
   it(`Reducer should change comments by a given payload`, () => {
