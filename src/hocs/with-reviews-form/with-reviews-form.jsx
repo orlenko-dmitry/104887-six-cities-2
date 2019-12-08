@@ -20,7 +20,7 @@ const withReviewsForm = (Component) => {
     }
 
     componentDidUpdate() {
-      if (this.props.postMessageStatus === ASYNC_STATUSES.SUCCESS) {
+      if (this.props.messagePostStatus === ASYNC_STATUSES.SUCCESS) {
         this.clearState();
       }
     }
@@ -46,7 +46,7 @@ const withReviewsForm = (Component) => {
     }
 
     render() {
-      const {postMessageStatus} = this.props;
+      const {messagePostStatus} = this.props;
       const {comment, rating} = this.state;
 
       return (
@@ -54,7 +54,7 @@ const withReviewsForm = (Component) => {
           {...this.props}
           rating={rating}
           comment={comment}
-          postMessageStatus={postMessageStatus}
+          messagePostStatus={messagePostStatus}
           onRatingChange={this.ratingChangeHandler}
           onCommentChange={this.commentChangeHandler}
           onSubmitForm={this.formSubmitHandler}
@@ -64,7 +64,7 @@ const withReviewsForm = (Component) => {
   }
 
   WithReviewsForm.propTypes = {
-    postMessageStatus: string.isRequired,
+    messagePostStatus: string.isRequired,
     postCommentHandler: func.isRequired,
   };
 
@@ -72,7 +72,7 @@ const withReviewsForm = (Component) => {
 };
 
 const mapStateToProps = ({rData}) => ({
-  postMessageStatus: rData.postMessageStatus,
+  messagePostStatus: rData.messagePostStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({

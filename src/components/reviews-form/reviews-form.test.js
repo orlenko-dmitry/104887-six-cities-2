@@ -8,7 +8,7 @@ it(`ReviewsForm renders correctly`, () => {
       <ReviewsForm
         rating={0}
         comment=""
-        postMessageStatus=""
+        messagePostStatus=""
         onRatingChange={() => {}}
         onCommentChange={() => {}}
         onSubmitForm={() => {}}

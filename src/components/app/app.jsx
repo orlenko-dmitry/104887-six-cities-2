@@ -39,8 +39,8 @@ class App extends PureComponent {
   }
 
   render() {
-    const {fetchStatus, isAuthorizationRequired} = this.props;
-    const isPending = fetchStatus === ASYNC_STATUSES.PENDING;
+    const {offersFetchStatus, isAuthorizationRequired} = this.props;
+    const isPending = offersFetchStatus === ASYNC_STATUSES.PENDING;
 
     return !isPending && (
       <Fragment>
@@ -52,14 +52,14 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  fetchStatus: string.isRequired,
+  offersFetchStatus: string.isRequired,
   isAuthorizationRequired: bool.isRequired,
   getOffers: func.isRequired,
   getUser: func.isRequired,
 };
 
 const mapStateToProps = ({rData}) => ({
-  fetchStatus: rData.status,
+  offersFetchStatus: rData.offersFetchStatus,
   isAuthorizationRequired: rData.isAuthorizationRequired,
 });
 

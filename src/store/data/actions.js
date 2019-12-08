@@ -3,8 +3,12 @@ import {
   SIGN_IN,
   SIGN_IN_SUCCESS,
   GET_USER_SUCCESS,
+  FETCH_OFFERS_PENDING,
   FETCH_OFFERS_SUCCESS,
+  FETCH_OFFERS_ERROR,
+  FETCH_COMMENTS_PENDING,
   FETCH_COMMENTS_SUCCESS,
+  FETCH_COMMENTS_ERROR,
   POST_COMMENTS_PENDING,
   POST_COMMENTS_SUCCESS,
   POST_COMMENTS_ERROR,
@@ -29,7 +33,9 @@ export default ({
       type: SIGN_IN_SUCCESS,
       payload: response.data,
     }))
-    .catch((err) => err.message);
+    .catch((err) => {
+      toast.error(err.message);
+    });
   },
   signIn: () => {
     return {
@@ -42,22 +48,37 @@ export default ({
               type: GET_USER_SUCCESS,
               payload: response.data,
             }))
-            .catch((err) => err.message);
+            .catch((err) => {
+              toast.error(err.message);
+            });
   },
   fetchOffers: () => (dispatch, getState, api) => {
+    dispatch({type: FETCH_OFFERS_PENDING});
     return api.get(enpoints.offers)
             .then((response) => dispatch({
               type: FETCH_OFFERS_SUCCESS,
               payload: convertOffersToCamelCase(response.data),
             }))
-            .catch((err) => err.message);
+            .catch((err) => {
+              toast.error(err.message);
+              dispatch({
+                type: FETCH_OFFERS_ERROR,
+              });
+            });
   },
   fetchComments: (offerId) => (dispatch, getState, api) => {
+    dispatch({type: FETCH_COMMENTS_PENDING});
     return api.get(enpoints.comments(offerId))
             .then((response) => dispatch({
               type: FETCH_COMMENTS_SUCCESS,
               payload: convertCommentsToCamelCase(response.data),
-            }));
+            }))
+            .catch((err) => {
+              toast.error(err.message);
+              dispatch({
+                type: FETCH_COMMENTS_ERROR,
+              });
+            });
   },
   postComment: ({offerId, rating, comment}) => (dispatch, getState, api) => {
     dispatch({type: POST_COMMENTS_PENDING});

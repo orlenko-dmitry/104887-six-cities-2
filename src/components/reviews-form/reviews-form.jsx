@@ -11,7 +11,7 @@ const raitings = Array.from(Array(5).keys()).reverse();
 const ReviewsForm = ({
   rating,
   comment,
-  postMessageStatus,
+  messagePostStatus,
   onRatingChange,
   onCommentChange,
   onSubmitForm,
@@ -47,7 +47,7 @@ const ReviewsForm = ({
       name="review"
       placeholder="Tell how was your stay, what you like and what can be improved"
       value={comment}
-      disabled={postMessageStatus === ASYNC_STATUSES.PENDING}
+      disabled={messagePostStatus === ASYNC_STATUSES.PENDING}
       onChange={(evt) => onCommentChange(evt.target.value)}
     />
     <div className="reviews__button-wrapper">
@@ -58,7 +58,7 @@ const ReviewsForm = ({
         className="reviews__submit form__submit button"
         type="submit"
         disabled={
-          postMessageStatus === ASYNC_STATUSES.PENDING
+          messagePostStatus === ASYNC_STATUSES.PENDING
           || rating === 0
           || comment.length < 50
           || comment.length > 300
@@ -73,7 +73,7 @@ const ReviewsForm = ({
 ReviewsForm.propTypes = {
   rating: number.isRequired,
   comment: string.isRequired,
-  postMessageStatus: string.isRequired,
+  messagePostStatus: string.isRequired,
   onRatingChange: func.isRequired,
   onCommentChange: func.isRequired,
   onSubmitForm: func.isRequired,
