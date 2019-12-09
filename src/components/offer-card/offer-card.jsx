@@ -7,9 +7,10 @@ import {
   bool,
   func,
 } from 'prop-types';
+import {Link} from 'react-router-dom';
 
 import {defineRating} from '../../helpers/helpers.js';
-import {OFFER_TYPE} from '../../consts/index.js';
+import {OFFER_TYPE, ROUTES} from '../../consts/index.js';
 
 const OfferCard = ({
   offer: {
@@ -71,7 +72,7 @@ const OfferCard = ({
         className="place-card__name"
         data-testid={`place-card-title-${listIndex}`}
       >
-        <a href="/details">{title}</a>
+        <Link to={`${ROUTES.OFFER}/${id}`}>{title}</Link>
       </h2>
       <p className="place-card__type">{OFFER_TYPE[type]}</p>
     </div>

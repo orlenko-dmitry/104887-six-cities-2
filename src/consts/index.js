@@ -15,6 +15,12 @@ export const SORTED_BY = {
   TOP_RATED: `Top rated first`,
 };
 
+export const ROUTES = {
+  ROOT: `/`,
+  OFFER: `/offer`,
+  AUTH: `/login`,
+};
+
 export const SORT_BY_LIST = [
   {
     id: 1,

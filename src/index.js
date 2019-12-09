@@ -3,6 +3,9 @@ import {render} from 'react-dom';
 import {createStore, compose, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
+import {BrowserRouter} from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+import 'leaflet/dist/leaflet.css';
 
 import App from './components/app/app.jsx';
 import reducer from './store/reducer.js';
@@ -21,7 +24,9 @@ const store = createStore(
 const init = () => {
   render(
       <Provider store={store}>
-        <App/>
+        <BrowserRouter>
+          <App/>
+        </BrowserRouter>
       </Provider>,
       document.getElementById(`root`)
   );
