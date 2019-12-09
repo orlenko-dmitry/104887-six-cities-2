@@ -12,10 +12,8 @@ import {
   GET_USER_SUCCESS,
   FETCH_COMMENTS_PENDING,
   FETCH_COMMENTS_SUCCESS,
-  // FETCH_COMMENTS_ERROR,
   POST_COMMENTS_PENDING,
   POST_COMMENTS_SUCCESS,
-  // POST_COMMENTS_ERROR,
 } from '../../consts/actionTypes';
 import {ASYNC_STATUSES} from '../../consts/index.js';
 import endpoints from '../../consts/endpoints.js';
@@ -169,26 +167,6 @@ describe(`Reducer works correctly`, () => {
         });
       });
   });
-  // it(`Should fail API call to /comments/:offerId with get method`, () => {
-  //   const dispatch = jest.fn();
-  //   const api = createApi(dispatch);
-  //   const apiMock = new MockAdapter(api);
-  //   const commentsLoader = actions.fetchComments();
-
-  //   apiMock
-  //     .onGet(endpoints.comments())
-  //     .reply(200, [{fake: true}]);
-
-  //   return commentsLoader(dispatch, jest.fn(), api)
-  //     .then(() => {
-  //       expect(dispatch).toHaveBeenNthCalledWith(1, {
-  //         type: FETCH_COMMENTS_PENDING,
-  //       });
-  //       expect(dispatch).toHaveBeenNthCalledWith(2, {
-  //         type: FETCH_COMMENTS_ERROR,
-  //       });
-  //     });
-  // });
   it(`Should make a correct API call to /comments/:offerId with post method`, () => {
     const dispatch = jest.fn();
     const api = createApi(dispatch);
@@ -214,28 +192,4 @@ describe(`Reducer works correctly`, () => {
         });
       });
   });
-  // it(`Should fail API call to /comments/:offerId with post method`, () => {
-  //   const dispatch = jest.fn();
-  //   const api = createApi(dispatch);
-  //   const apiMock = new MockAdapter(api);
-  //   const postComment = actions.postComment({
-  //     offerId: 3,
-  //     rating: 0,
-  //     comment: ``,
-  //   });
-
-  //   apiMock
-  //     .onPost(endpoints.comments(3))
-  //     .reply(200, []);
-
-  //   return postComment(dispatch, jest.fn(), api)
-  //     .then(() => {
-  //       expect(dispatch).toHaveBeenNthCalledWith(1, {
-  //         type: POST_COMMENTS_PENDING,
-  //       });
-  //       expect(dispatch).toHaveBeenNthCalledWith(2, {
-  //         type: POST_COMMENTS_ERROR,
-  //       });
-  //     });
-  // });
 });
