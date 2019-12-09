@@ -48,7 +48,12 @@ export default (state = initialState, {type, payload}) => {
     case POST_COMMENTS_ERROR:
       return Object.assign({}, state, {messagePostStatus: ASYNC_STATUSES.ERROR});
     case POST_FAVORITE_SUCCESS:
-      return Object.assign({}, state, {offers: Object.assign([], state.offers, {payload})});
+      return Object.assign({}, state, {offers: state.offers.map((offer) => {
+        if (offer.id === payload.id) {
+          offer.isFavorite = payload.is_favorite;
+        }
+        return offer;
+      })});
     default: return state;
   }
 };

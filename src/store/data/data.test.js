@@ -190,7 +190,7 @@ describe(`Reducer works correctly`, () => {
     });
 
     apiMock
-      .onPost(endpoints.postFavorite)
+      .onPost(endpoints.postFavorite({offerId: 3, status: 1}))
       .reply(200, {fake: true});
 
     return postFavorite(dispatch, jest.fn(), api)
