@@ -14,6 +14,7 @@ it(`OfferCard renders correctly`, () => {
         listIndex={0}
         onCardHoverIn={() => {}}
         onCardHoverOut={() => {}}
+        onAddFavorite={() => {}}
       />
   );
 

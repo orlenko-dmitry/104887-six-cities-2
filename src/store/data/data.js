@@ -1,5 +1,4 @@
 import {
-  SIGN_IN,
   SIGN_IN_SUCCESS,
   GET_USER_SUCCESS,
   SELECT_CITY,
@@ -10,6 +9,7 @@ import {
   POST_COMMENTS_PENDING,
   POST_COMMENTS_SUCCESS,
   POST_COMMENTS_ERROR,
+  POST_FAVORITE_SUCCESS,
 } from '../../consts/actionTypes.js';
 import {
   APP_CITIES,
@@ -47,6 +47,8 @@ export default (state = initialState, {type, payload}) => {
       return Object.assign({}, state, {comments: payload, messagePostStatus: ASYNC_STATUSES.SUCCESS});
     case POST_COMMENTS_ERROR:
       return Object.assign({}, state, {messagePostStatus: ASYNC_STATUSES.ERROR});
+    case POST_FAVORITE_SUCCESS:
+      return Object.assign({}, state, {offers: Object.assign([], state.offers, {payload})});
     default: return state;
   }
 };

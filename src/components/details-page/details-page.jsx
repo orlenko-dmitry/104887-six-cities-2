@@ -43,6 +43,7 @@ class DetailsPage extends PureComponent {
       comments,
       city,
       onHoverOfferId,
+      favoriteAddHandler,
       match: {
         params: {
           offerId,
@@ -55,6 +56,7 @@ class DetailsPage extends PureComponent {
     const {
       images,
       isPremium,
+      isFavorite,
       title,
       rating,
       price,
@@ -93,7 +95,11 @@ class DetailsPage extends PureComponent {
                 <h1 className="property__name">
                   {title}
                 </h1>
-                <button className="property__bookmark-button button" type="button">
+                <button
+                  className={`property__bookmark-button ${isFavorite ? `property__bookmark-button--active` : ``} button`}
+                  type="button"
+                  onClick={() => favoriteAddHandler({offerId: id, status: isFavorite ? 0 : 1})}
+                >
                   <svg className="property__bookmark-icon" width={31} height={33}>
                     <use xlinkHref="#icon-bookmark" />
                   </svg>
@@ -176,6 +182,7 @@ class DetailsPage extends PureComponent {
               classNames={`near-places__list`}
               offers={getNearOffers(offers, id)}
               onColorPin={this.colorPinHandler}
+              onAddFavorite={favoriteAddHandler}
             />
           </section>
         </div>
@@ -221,6 +228,7 @@ DetailsPage.propTypes = {
   onHoverOfferId: number.isRequired,
   getOfferIdHandler: func.isRequired,
   fetchCommentsHandler: func.isRequired,
+  favoriteAddHandler: func.isRequired,
 };
 
 const mapStateToProps = ({rData, rFilters}) => ({
@@ -233,6 +241,7 @@ const mapStateToProps = ({rData, rFilters}) => ({
 const mapDispatchToProps = (dispatch) => ({
   getOfferIdHandler: (payload) => dispatch(aFilters.getOfferId(payload)),
   fetchCommentsHandler: (payload) => dispatch(aData.fetchComments(payload)),
+  favoriteAddHandler: (payload) => dispatch(aData.postFavorite(payload)),
 });
 
 export {DetailsPage};

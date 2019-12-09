@@ -2,7 +2,7 @@ import React from 'react';
 import {shape} from 'prop-types';
 import {Link} from 'react-router-dom';
 
-import {ROUTES} from '../../consts';
+import {ROUTES, AXIOS_CONFIG} from '../../consts';
 
 const PageHeader = ({user}) => (
   <header className="header">
@@ -31,7 +31,13 @@ const PageHeader = ({user}) => (
                     </Link>
                   ) : (
                     <Link className="header__nav-link header__nav-link--profile" to={ROUTES.FAVORITE}>
-                      <div className="header__avatar-wrapper user__avatar-wrapper" />
+                      <div
+                        className="header__avatar-wrapper user__avatar-wrapper"
+                        style={{
+                          backgroundImage: `url(${AXIOS_CONFIG.BASE_URL}${user.avatar_url})`,
+                          borderRadius: `50%`,
+                        }}
+                      />
                       <span className="header__user-name user__name">{user.email}</span>
                     </Link>
                   )

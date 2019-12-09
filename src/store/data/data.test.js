@@ -82,7 +82,7 @@ describe(`Reducer works correctly`, () => {
     const offersLoader = actions.fetchOffers();
 
     apiMock
-      .onGet(endpoints.offers)
+      .onGet(endpoints.getOffers)
       .reply(200, []);
 
     return offersLoader(dispatch, jest.fn(), api)

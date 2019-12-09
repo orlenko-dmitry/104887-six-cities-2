@@ -26,6 +26,7 @@ const OfferCard = ({
   listIndex,
   onCardHoverIn,
   onCardHoverOut,
+  onAddFavorite,
 }) => (
   <article
     className="cities__place-card place-card"
@@ -53,6 +54,7 @@ const OfferCard = ({
         <button
           className={`place-card__bookmark-button${isFavorite ? `--active` : ``} button`}
           type="button"
+          onClick={() => onAddFavorite({offerId: id, status: isFavorite ? 0 : 1})}
         >
           <svg className="place-card__bookmark-icon" width="18" height="19">
             <use xlinkHref="#icon-bookmark"></use>
@@ -93,6 +95,7 @@ OfferCard.propTypes = {
   listIndex: number.isRequired,
   onCardHoverIn: func.isRequired,
   onCardHoverOut: func.isRequired,
+  onAddFavorite: func.isRequired,
 };
 
 export default OfferCard;

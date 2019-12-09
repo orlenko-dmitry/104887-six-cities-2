@@ -30,6 +30,7 @@ const MainPage = ({
   selectCityHandler,
   sortByHandler,
   getOfferIdHandler,
+  favoriteAddHandler,
 }) => {
   const offersQuantity = offers.length;
 
@@ -56,6 +57,7 @@ const MainPage = ({
                 classNames={`cities__places-list tabs__content`}
                 offers={offers}
                 onColorPin={getOfferIdHandler}
+                onAddFavorite={favoriteAddHandler}
               />
             </section>
             <div className="cities__right-section">
@@ -91,6 +93,7 @@ MainPage.propTypes = {
   selectCityHandler: func.isRequired,
   sortByHandler: func.isRequired,
   getOfferIdHandler: func.isRequired,
+  favoriteAddHandler: func.isRequired,
 };
 
 MainPage.defaultProps = {
@@ -109,6 +112,7 @@ const mapDispatchToProps = (dispatch) => ({
   selectCityHandler: (payload) => dispatch(aData.selectCity(payload)),
   sortByHandler: (payload) => dispatch(aFilters.sortBy(payload)),
   getOfferIdHandler: (payload) => dispatch(aFilters.getOfferId(payload)),
+  favoriteAddHandler: (payload) => dispatch(aData.postFavorite(payload)),
 });
 
 export {MainPage};
