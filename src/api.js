@@ -1,9 +1,10 @@
 import axios from 'axios';
-import {createBrowserHistory} from 'history';
 
-import {AXIOS_CONFIG, ROUTES} from './consts/index.js';
-
-const history = createBrowserHistory();
+import {
+  AXIOS_CONFIG,
+  ROUTES,
+} from './consts/index.js';
+import history from './history.js';
 
 const {
   BASE_URL,
@@ -21,10 +22,11 @@ export const createApi = () => {
   const onSuccess = (response) => response;
 
   const onFail = (err) => {
-    if (err.response.status === 401) {
+    const {config: {url}, data: {error}} = err.response;
+    if (err.response.status === 401 && url.includes(ROUTES.FAVORITE)) {
       history.push(ROUTES.AUTH);
     }
-    return Promise.reject(err);
+    return Promise.reject(error);
   };
 
   api.interceptors.response.use(onSuccess, onFail);

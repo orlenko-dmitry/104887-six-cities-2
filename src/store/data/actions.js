@@ -1,6 +1,5 @@
 import {
   SELECT_CITY,
-  SIGN_IN,
   SIGN_IN_SUCCESS,
   GET_USER_SUCCESS,
   FETCH_OFFERS_PENDING,
@@ -34,7 +33,7 @@ export default ({
       payload: response.data,
     }))
     .catch((err) => {
-      toast.error(err.message);
+      toast.error(err);
     });
   },
   getUser: () => (dispatch, getState, api) => {
@@ -43,9 +42,7 @@ export default ({
               type: GET_USER_SUCCESS,
               payload: response.data,
             }))
-            .catch((err) => {
-              toast.error(err.message);
-            });
+            .catch(() => {});
   },
   fetchOffers: () => (dispatch, getState, api) => {
     dispatch({type: FETCH_OFFERS_PENDING});
@@ -55,7 +52,7 @@ export default ({
               payload: convertOffersToCamelCase(response.data),
             }))
             .catch((err) => {
-              toast.error(err.message);
+              toast.error(err);
               dispatch({
                 type: FETCH_OFFERS_ERROR,
               });
@@ -69,7 +66,7 @@ export default ({
               payload: convertCommentsToCamelCase(response.data),
             }))
             .catch((err) => {
-              toast.error(err.message);
+              toast.error(err);
               dispatch({
                 type: FETCH_COMMENTS_ERROR,
               });
@@ -83,7 +80,7 @@ export default ({
               payload: convertCommentsToCamelCase(response.data),
             }))
             .catch((err) => {
-              toast.error(err.message);
+              toast.error(err);
               dispatch({
                 type: POST_COMMENTS_ERROR,
               });

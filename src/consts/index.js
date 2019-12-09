@@ -17,8 +17,9 @@ export const SORTED_BY = {
 
 export const ROUTES = {
   ROOT: `/`,
-  OFFER: `/offer`,
   AUTH: `/login`,
+  OFFER: `/offer`,
+  FAVORITE: `/favorite`,
 };
 
 export const SORT_BY_LIST = [

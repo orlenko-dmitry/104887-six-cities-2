@@ -69,6 +69,7 @@ class DetailsPage extends PureComponent {
         avatarUrl,
       },
     } = offers[offerIndex];
+
     return offers.length && (
       <main className="page__main page__main--property">
         <section className="property">
@@ -155,7 +156,7 @@ class DetailsPage extends PureComponent {
               <section className="property__reviews reviews">
                 <h2 className="reviews__title">Reviews <span className="reviews__amount">{comments.length}</span></h2>
                 <ReviewsList reviews={comments} />
-                <WithReviewsForm />
+                <WithReviewsForm offerId={offerId} />
               </section>
             </div>
           </div>

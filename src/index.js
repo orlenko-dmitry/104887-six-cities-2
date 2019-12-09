@@ -4,17 +4,15 @@ import {createStore, compose, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 import {Router} from 'react-router-dom';
-import {createBrowserHistory} from 'history';
 import 'react-toastify/dist/ReactToastify.css';
 import 'leaflet/dist/leaflet.css';
 
 import App from './components/app/app.jsx';
 import reducer from './store/reducer.js';
 import {createApi} from './api.js';
+import history from './history.js';
 
 const api = createApi((...args) => store.dispatch(...args));
-
-const history = createBrowserHistory();
 
 const store = createStore(
     reducer,
