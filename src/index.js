@@ -3,7 +3,8 @@ import {render} from 'react-dom';
 import {createStore, compose, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
-import {BrowserRouter} from 'react-router-dom';
+import {Router} from 'react-router-dom';
+import {createBrowserHistory} from 'history';
 import 'react-toastify/dist/ReactToastify.css';
 import 'leaflet/dist/leaflet.css';
 
@@ -12,6 +13,8 @@ import reducer from './store/reducer.js';
 import {createApi} from './api.js';
 
 const api = createApi((...args) => store.dispatch(...args));
+
+const history = createBrowserHistory();
 
 const store = createStore(
     reducer,
@@ -24,9 +27,9 @@ const store = createStore(
 const init = () => {
   render(
       <Provider store={store}>
-        <BrowserRouter>
+        <Router history={history}>
           <App/>
-        </BrowserRouter>
+        </Router>
       </Provider>,
       document.getElementById(`root`)
   );

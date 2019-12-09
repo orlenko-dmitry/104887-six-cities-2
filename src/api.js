@@ -1,7 +1,9 @@
 import axios from 'axios';
+import {createBrowserHistory} from 'history';
 
-import aData from './store/data/actions.js';
-import {AXIOS_CONFIG} from './consts/index.js';
+import {AXIOS_CONFIG, ROUTES} from './consts/index.js';
+
+const history = createBrowserHistory();
 
 const {
   BASE_URL,
@@ -9,7 +11,7 @@ const {
   WITH_CREDENTIAL,
 } = AXIOS_CONFIG;
 
-export const createApi = (dispatch) => {
+export const createApi = () => {
   const api = axios.create({
     baseURL: BASE_URL,
     timeout: TIME_OUT,
@@ -20,7 +22,7 @@ export const createApi = (dispatch) => {
 
   const onFail = (err) => {
     if (err.response.status === 401) {
-      // dispatch();
+      history.push(ROUTES.AUTH);
     }
     return Promise.reject(err);
   };

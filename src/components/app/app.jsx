@@ -1,7 +1,6 @@
-import React, {PureComponent} from 'react';
+import React, {Fragment, PureComponent} from 'react';
 import {connect} from 'react-redux';
 import {
-  bool,
   string,
   func,
 } from 'prop-types';
@@ -32,32 +31,26 @@ class App extends PureComponent {
     const isPending = offersFetchStatus === ASYNC_STATUSES.PENDING;
 
     return !isPending && (
-      <Switch>
-        <Route exact path={ROUTES.ROOT}>
-          <WithEmptyPage />
-        </Route>
-        <Route path={`${ROUTES.OFFER}/:id`}>
-          <DetailsPage />
-        </Route>
-        <Route path={ROUTES.AUTH}>
-          <WithAuthForm />
-        </Route>
+      <Fragment>
+        <Switch>
+          <Route exact path={ROUTES.ROOT} component={WithEmptyPage} />
+          <Route path={`${ROUTES.OFFER}/:offerId`} component={DetailsPage} />
+          <Route path={ROUTES.AUTH} component={WithAuthForm} />
+        </Switch>
         <ToastContainer />
-      </Switch>
+      </Fragment>
     );
   }
 }
 
 App.propTypes = {
   offersFetchStatus: string.isRequired,
-  isAuthorizationRequired: bool.isRequired,
   getOffers: func.isRequired,
   getUser: func.isRequired,
 };
 
 const mapStateToProps = ({rData}) => ({
   offersFetchStatus: rData.offersFetchStatus,
-  isAuthorizationRequired: rData.isAuthorizationRequired,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -28,8 +28,8 @@ class DetailsPage extends PureComponent {
   }
 
   componentDidMount() {
-    const {fetchCommentsHandler} = this.props;
-    fetchCommentsHandler(2);
+    const {fetchCommentsHandler, match: {params: {offerId}}} = this.props;
+    fetchCommentsHandler(offerId);
   }
 
   colorPinHandler(id) {
@@ -43,7 +43,14 @@ class DetailsPage extends PureComponent {
       comments,
       city,
       onHoverOfferId,
+      match: {
+        params: {
+          offerId,
+        }
+      }
     } = this.props;
+
+    const offerIndex = offers.map((offer) => offer.id).indexOf(Number(offerId));
 
     const {
       images,
@@ -61,8 +68,7 @@ class DetailsPage extends PureComponent {
         name: hostName,
         avatarUrl,
       },
-    } = offers[0];
-
+    } = offers[offerIndex];
     return offers.length && (
       <main className="page__main page__main--property">
         <section className="property">
@@ -98,7 +104,7 @@ class DetailsPage extends PureComponent {
                   <span style={{width: defineRating(rating)}} />
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">4.8</span>
+                <span className="property__rating-value rating__value">{rating}</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
@@ -147,7 +153,7 @@ class DetailsPage extends PureComponent {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews · <span className="reviews__amount">{comments.length}</span></h2>
+                <h2 className="reviews__title">Reviews <span className="reviews__amount">{comments.length}</span></h2>
                 <ReviewsList reviews={comments} />
                 <WithReviewsForm />
               </section>
@@ -205,6 +211,11 @@ DetailsPage.propTypes = {
       zoom: number.isRequired,
     }).isRequired,
     name: string.isRequired,
+  }).isRequired,
+  match: shape({
+    params: shape({
+      offerId: string.isRequired,
+    }).isRequired
   }).isRequired,
   onHoverOfferId: number.isRequired,
   getOfferIdHandler: func.isRequired,
