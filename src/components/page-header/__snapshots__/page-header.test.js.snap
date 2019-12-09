@@ -35,9 +35,9 @@ exports[`PageHeader renders correctly 1`] = `
           <li
             className="header__nav-item user"
           >
-            <a
+            <Link
               className="header__nav-link header__nav-link--profile"
-              href="#"
+              to="/login"
             >
               <div
                 className="header__avatar-wrapper user__avatar-wrapper"
@@ -47,7 +47,7 @@ exports[`PageHeader renders correctly 1`] = `
               >
                 Sign in
               </span>
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

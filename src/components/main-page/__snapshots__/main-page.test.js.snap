@@ -969,6 +969,7 @@ exports[`MainPage renders correctly 1`] = `
                 },
               ]
             }
+            onAddFavorite={[Function]}
             onColorPin={[Function]}
           />
         </section>
