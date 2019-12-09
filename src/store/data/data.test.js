@@ -27,11 +27,6 @@ describe(`Action creators work correctly`, () => {
       payload: {fake: true},
     });
   });
-  it(`Action creator for signIn returns action`, () => {
-    expect(actions.signIn()).toEqual({
-      type: SIGN_IN,
-    });
-  });
 });
 
 describe(`Reducer works correctly`, () => {
@@ -46,20 +41,12 @@ describe(`Reducer works correctly`, () => {
       city: {fake: true},
     }));
   });
-  it(`Reducer should change isAuthorizationRequired by a given payload`, () => {
-    expect(reducer(undefined, {
-      type: SIGN_IN,
-    })).toEqual(Object.assign({}, initialState, {
-      isAuthorizationRequired: true,
-    }));
-  });
   it(`Reducer should change user by a given payload`, () => {
     expect(reducer(undefined, {
       type: SIGN_IN_SUCCESS,
       payload: {fake: true},
     })).toEqual(Object.assign({}, initialState, {
       user: {fake: true},
-      isAuthorizationRequired: false,
     }));
   });
   it(`Reducer should change user by a given payload`, () => {

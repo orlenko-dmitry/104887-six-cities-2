@@ -37,11 +37,6 @@ export default ({
       toast.error(err.message);
     });
   },
-  signIn: () => {
-    return {
-      type: SIGN_IN,
-    };
-  },
   getUser: () => (dispatch, getState, api) => {
     return api.get(enpoints.login)
             .then((response) => dispatch({

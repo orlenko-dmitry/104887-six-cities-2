@@ -20,7 +20,7 @@ export const createApi = (dispatch) => {
 
   const onFail = (err) => {
     if (err.response.status === 401) {
-      dispatch(aData.signIn());
+      // dispatch();
     }
     return Promise.reject(err);
   };

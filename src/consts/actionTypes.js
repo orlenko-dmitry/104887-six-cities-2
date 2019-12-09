@@ -1,4 +1,3 @@
-export const SIGN_IN = `SIGN_IN`;
 export const SIGN_IN_SUCCESS = `SIGN_IN_SUCCESS`;
 export const GET_USER_SUCCESS = `GET_USER_SUCCESS`;
 export const FETCH_COMMENTS_PENDING = `FETCH_COMMENTS_PENDING`;
