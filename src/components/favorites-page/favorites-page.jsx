@@ -1,6 +1,18 @@
 import React, {PureComponent} from 'react';
+import {
+  arrayOf,
+  shape,
+  func,
+} from 'prop-types';
+import {connect} from 'react-redux';
 
+import aData from '../../store/data/actions.js';
 class FavoritesPage extends PureComponent {
+  componentDidMount() {
+    const {getFavoriteHandler} = this.props;
+    getFavoriteHandler();
+  }
+
   render() {
     return (
       <main className="page__main page__main--favorites">
@@ -170,4 +182,19 @@ class FavoritesPage extends PureComponent {
   }
 }
 
-export default FavoritesPage;
+FavoritesPage.propTypes = {
+  favorites: arrayOf(shape({})).isRequired,
+  getFavoriteHandler: func.isRequired,
+};
+
+const mapStateToProps = ({rData}) => ({
+  favorites: rData.favorites,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getFavoriteHandler: () => dispatch(aData.getFavorite()),
+});
+
+export {FavoritesPage};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FavoritesPage);

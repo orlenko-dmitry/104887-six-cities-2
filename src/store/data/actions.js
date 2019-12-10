@@ -14,6 +14,9 @@ import {
   POST_FAVORITE_PENDING,
   POST_FAVORITE_SUCCESS,
   POST_FAVORITE_ERROR,
+  FETCH_FAVORITE_PENDING,
+  FETCH_FAVORITE_SUCCESS,
+  FETCH_FAVORITE_ERROR,
 } from '../../consts/actionTypes.js';
 import {toast} from 'react-toastify';
 
@@ -107,6 +110,22 @@ export default ({
               toast.error(err);
               dispatch({
                 type: POST_FAVORITE_ERROR,
+              });
+            });
+  },
+  getFavorite: () => (dispatch, getState, api) => {
+    dispatch({type: FETCH_FAVORITE_PENDING});
+    return api.get(endpoints.getFavorite)
+            .then((response) => {
+              dispatch({
+                type: FETCH_FAVORITE_SUCCESS,
+                payload: response.payload,
+              });
+            })
+            .catch((err) => {
+              toast.error(err);
+              dispatch({
+                type: FETCH_FAVORITE_ERROR,
               });
             });
   },

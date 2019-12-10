@@ -14,7 +14,6 @@ it(`getOffers have been called once`, () => {
       <App
         offers={offers}
         offersFetchStatus={ASYNC_STATUSES.PENDING}
-        isAuthorizationRequired={false}
         getOffers={getOffersHandler}
         getUser={getUserHandler}
       />

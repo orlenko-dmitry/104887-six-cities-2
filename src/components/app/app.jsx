@@ -13,6 +13,8 @@ import MainPage from '../main-page/main-page.jsx';
 import MainEmptyPage from '../main-empty-page/main-empty-page.jsx';
 import DetailsPage from '../details-page/details-page.jsx';
 import AuthPage from '../auth-page/auth-page.jsx';
+import FavoritesPage from '../favorites-page/favorites-page.jsx';
+import FavoritesEmptyPage from '../favorites-empty-page/favorites-empty-page.jsx';
 import withEmptyPage from '../../hocs/with-empty-page/with-empty-page.jsx';
 import withAuthForm from '../../hocs/with-auth-form/with-auth-form.jsx';
 import aData from '../../store/data/actions.js';
@@ -21,16 +23,24 @@ import {ASYNC_STATUSES, ROUTES} from '../../consts/index.js';
 
 const WithEmptyMainPage = withEmptyPage(MainPage, MainEmptyPage);
 const WithAuthForm = withAuthForm(AuthPage);
+const WithEmptyFavoritesPage = withEmptyPage(FavoritesPage, FavoritesEmptyPage);
 
 class App extends PureComponent {
   componentDidMount() {
-    const {getOffers, getUser} = this.props;
-    getOffers();
-    getUser();
+    const {
+      getOffersHandler,
+      getUserHandler,
+    } = this.props;
+    getOffersHandler();
+    getUserHandler();
   }
 
   render() {
-    const {offers, offersFetchStatus} = this.props;
+    const {
+      offers,
+      favorites,
+      offersFetchStatus,
+    } = this.props;
     const isPending = offersFetchStatus === ASYNC_STATUSES.PENDING;
 
     return !isPending && (
@@ -39,8 +49,11 @@ class App extends PureComponent {
           <Route exact path={ROUTES.ROOT} render={(props) => (
             <WithEmptyMainPage {...props} dataLength={offers.length} />
           )} />
-          <Route path={`${ROUTES.OFFER}/:offerId`} component={DetailsPage} />
           <Route path={ROUTES.AUTH} component={WithAuthForm} />
+          <Route path={`${ROUTES.OFFER}/:offerId`} component={DetailsPage} />
+          <Route path={ROUTES.FAVORITE} render={(props) => (
+            <WithEmptyFavoritesPage {...props} dataLength={favorites.length}/>
+          )}/>
         </Switch>
         <ToastContainer />
       </Fragment>
@@ -50,19 +63,21 @@ class App extends PureComponent {
 
 App.propTypes = {
   offers: arrayOf(shape({})).isRequired,
+  favorites: arrayOf(shape({})).isRequired,
   offersFetchStatus: string.isRequired,
-  getOffers: func.isRequired,
-  getUser: func.isRequired,
+  getOffersHandler: func.isRequired,
+  getUserHandler: func.isRequired,
 };
 
 const mapStateToProps = ({rData, rFilters}) => ({
   offers: getCityOffers({rData, rFilters}),
+  favorites: rData.favorites,
   offersFetchStatus: rData.offersFetchStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getOffers: () => dispatch(aData.fetchOffers()),
-  getUser: () => dispatch(aData.getUser()),
+  getOffersHandler: () => dispatch(aData.fetchOffers()),
+  getUserHandler: () => dispatch(aData.getUser()),
 });
 
 export {App};

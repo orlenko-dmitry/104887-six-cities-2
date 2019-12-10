@@ -19,6 +19,7 @@ import {
 export const initialState = {
   city: APP_CITIES[0],
   offers: [],
+  favorites: [],
   comments: [],
   user: null,
   offersFetchStatus: ASYNC_STATUSES.PENDING,
