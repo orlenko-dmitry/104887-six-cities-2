@@ -1,7 +1,10 @@
 import axios from 'axios';
 
-import aData from './store/data/actions.js';
-import {AXIOS_CONFIG} from './consts/index.js';
+import {
+  AXIOS_CONFIG,
+  ROUTES,
+} from './consts/index.js';
+import history from './history.js';
 
 const {
   BASE_URL,
@@ -9,7 +12,7 @@ const {
   WITH_CREDENTIAL,
 } = AXIOS_CONFIG;
 
-export const createApi = (dispatch) => {
+export const createApi = () => {
   const api = axios.create({
     baseURL: BASE_URL,
     timeout: TIME_OUT,
@@ -19,10 +22,11 @@ export const createApi = (dispatch) => {
   const onSuccess = (response) => response;
 
   const onFail = (err) => {
-    if (err.response.status === 401) {
-      dispatch(aData.signIn());
+    const {config: {url}, data: {error}} = err.response;
+    if (err.response.status === 401 && url.includes(ROUTES.FAVORITE)) {
+      history.push(ROUTES.AUTH);
     }
-    return Promise.reject(err);
+    return Promise.reject(error);
   };
 
   api.interceptors.response.use(onSuccess, onFail);

@@ -65,6 +65,7 @@ exports[`OfferList renders correctly 1`] = `
         "type": "house",
       }
     }
+    onAddFavorite={[Function]}
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
   />
@@ -131,6 +132,7 @@ exports[`OfferList renders correctly 1`] = `
         "type": "hotel",
       }
     }
+    onAddFavorite={[Function]}
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
   />
@@ -192,6 +194,7 @@ exports[`OfferList renders correctly 1`] = `
         "type": "apartment",
       }
     }
+    onAddFavorite={[Function]}
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
   />
@@ -261,6 +264,7 @@ exports[`OfferList renders correctly 1`] = `
         "type": "house",
       }
     }
+    onAddFavorite={[Function]}
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
   />
@@ -329,6 +333,7 @@ exports[`OfferList renders correctly 1`] = `
         "type": "room",
       }
     }
+    onAddFavorite={[Function]}
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
   />
@@ -389,6 +394,7 @@ exports[`OfferList renders correctly 1`] = `
         "type": "house",
       }
     }
+    onAddFavorite={[Function]}
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
   />
@@ -450,6 +456,7 @@ exports[`OfferList renders correctly 1`] = `
         "type": "house",
       }
     }
+    onAddFavorite={[Function]}
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
   />
@@ -517,6 +524,7 @@ exports[`OfferList renders correctly 1`] = `
         "type": "room",
       }
     }
+    onAddFavorite={[Function]}
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
   />
@@ -582,6 +590,7 @@ exports[`OfferList renders correctly 1`] = `
         "type": "room",
       }
     }
+    onAddFavorite={[Function]}
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
   />
@@ -649,6 +658,7 @@ exports[`OfferList renders correctly 1`] = `
         "type": "house",
       }
     }
+    onAddFavorite={[Function]}
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
   />
@@ -713,6 +723,7 @@ exports[`OfferList renders correctly 1`] = `
         "type": "apartment",
       }
     }
+    onAddFavorite={[Function]}
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
   />
@@ -779,6 +790,7 @@ exports[`OfferList renders correctly 1`] = `
         "type": "room",
       }
     }
+    onAddFavorite={[Function]}
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
   />
@@ -845,6 +857,7 @@ exports[`OfferList renders correctly 1`] = `
         "type": "apartment",
       }
     }
+    onAddFavorite={[Function]}
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
   />
@@ -913,6 +926,7 @@ exports[`OfferList renders correctly 1`] = `
         "type": "room",
       }
     }
+    onAddFavorite={[Function]}
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
   />
@@ -979,6 +993,7 @@ exports[`OfferList renders correctly 1`] = `
         "type": "apartment",
       }
     }
+    onAddFavorite={[Function]}
     onCardHoverIn={[Function]}
     onCardHoverOut={[Function]}
   />

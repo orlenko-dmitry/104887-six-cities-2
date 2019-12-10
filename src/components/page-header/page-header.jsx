@@ -1,5 +1,8 @@
 import React from 'react';
 import {shape} from 'prop-types';
+import {Link} from 'react-router-dom';
+
+import {ROUTES, AXIOS_CONFIG} from '../../consts';
 
 const PageHeader = ({user}) => (
   <header className="header">
@@ -19,17 +22,26 @@ const PageHeader = ({user}) => (
         <nav className="header__nav">
           <ul className="header__nav-list">
             <li className="header__nav-item user">
-              <a
-                className="header__nav-link header__nav-link--profile"
-                href="#"
-              >
-                <div className="header__avatar-wrapper user__avatar-wrapper" />
-                {
-                  user === null
-                    ? <span className="header__login">Sign in</span>
-                    : <span className="header__user-name user__name">{user.email}</span>
-                }
-              </a>
+              {
+                user === null
+                  ? (
+                    <Link className="header__nav-link header__nav-link--profile" to={ROUTES.AUTH}>
+                      <div className="header__avatar-wrapper user__avatar-wrapper" />
+                      <span className="header__login">Sign in</span>
+                    </Link>
+                  ) : (
+                    <Link className="header__nav-link header__nav-link--profile" to={ROUTES.FAVORITE}>
+                      <div
+                        className="header__avatar-wrapper user__avatar-wrapper"
+                        style={{
+                          backgroundImage: `url(${AXIOS_CONFIG.BASE_URL}${user.avatar_url})`,
+                          borderRadius: `50%`,
+                        }}
+                      />
+                      <span className="header__user-name user__name">{user.email}</span>
+                    </Link>
+                  )
+              }
             </li>
           </ul>
         </nav>

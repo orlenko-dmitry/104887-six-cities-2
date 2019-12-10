@@ -1,7 +1,7 @@
 export const LEAFLET_CONSTS = {
   iconUrl: ({onHoverOfferId, selectedOfferId, currentId}) => {
     return selectedOfferId === currentId
-    || onHoverOfferId === currentId ? `img/pin-active.svg` : `img/pin.svg`;
+    || onHoverOfferId === currentId ? `/img/pin-active.svg` : `/img/pin.svg`;
   },
   ICON_SIZE: [30, 30],
   TILE_LAYER: `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`,
@@ -13,6 +13,13 @@ export const SORTED_BY = {
   PRICE_TO_HIGH: `Price: low to high`,
   PRICE_TO_LOW: `Price: high to low`,
   TOP_RATED: `Top rated first`,
+};
+
+export const ROUTES = {
+  ROOT: `/`,
+  AUTH: `/login`,
+  OFFER: `/offer`,
+  FAVORITE: `/favorite`,
 };
 
 export const SORT_BY_LIST = [

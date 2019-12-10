@@ -2,7 +2,45 @@
 
 exports[`App renders correctly 1`] = `
 <Fragment>
-  <Connect(Component) />
+  <Switch>
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(Component)",
+          "type": [Function],
+        }
+      }
+      exact={true}
+      path="/"
+    />
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(DetailsPage)",
+          "type": [Function],
+        }
+      }
+      path="/offer/:offerId"
+    />
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(WithAuthForm)",
+          "type": [Function],
+        }
+      }
+      path="/login"
+    />
+  </Switch>
   <ToastContainer
     autoClose={5000}
     bodyClassName={null}

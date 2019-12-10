@@ -20,7 +20,7 @@ exports[`DetailsPage renders correctly 1`] = `
           <img
             alt="Photo studio"
             className="property__image"
-            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/3.jpg"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/7.jpg"
           />
         </div>
         <div
@@ -30,7 +30,7 @@ exports[`DetailsPage renders correctly 1`] = `
           <img
             alt="Photo studio"
             className="property__image"
-            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/1.jpg"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/3.jpg"
           />
         </div>
         <div
@@ -50,7 +50,7 @@ exports[`DetailsPage renders correctly 1`] = `
           <img
             alt="Photo studio"
             className="property__image"
-            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/19.jpg"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/15.jpg"
           />
         </div>
         <div
@@ -60,7 +60,7 @@ exports[`DetailsPage renders correctly 1`] = `
           <img
             alt="Photo studio"
             className="property__image"
-            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/4.jpg"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/19.jpg"
           />
         </div>
         <div
@@ -70,7 +70,7 @@ exports[`DetailsPage renders correctly 1`] = `
           <img
             alt="Photo studio"
             className="property__image"
-            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/10.jpg"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/12.jpg"
           />
         </div>
         <div
@@ -80,7 +80,7 @@ exports[`DetailsPage renders correctly 1`] = `
           <img
             alt="Photo studio"
             className="property__image"
-            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/6.jpg"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/20.jpg"
           />
         </div>
         <div
@@ -90,7 +90,7 @@ exports[`DetailsPage renders correctly 1`] = `
           <img
             alt="Photo studio"
             className="property__image"
-            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/15.jpg"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/2.jpg"
           />
         </div>
         <div
@@ -100,7 +100,7 @@ exports[`DetailsPage renders correctly 1`] = `
           <img
             alt="Photo studio"
             className="property__image"
-            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/12.jpg"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/11.jpg"
           />
         </div>
         <div
@@ -110,7 +110,7 @@ exports[`DetailsPage renders correctly 1`] = `
           <img
             alt="Photo studio"
             className="property__image"
-            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/7.jpg"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/17.jpg"
           />
         </div>
         <div
@@ -120,7 +120,7 @@ exports[`DetailsPage renders correctly 1`] = `
           <img
             alt="Photo studio"
             className="property__image"
-            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/2.jpg"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/10.jpg"
           />
         </div>
         <div
@@ -140,7 +140,7 @@ exports[`DetailsPage renders correctly 1`] = `
           <img
             alt="Photo studio"
             className="property__image"
-            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/14.jpg"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/13.jpg"
           />
         </div>
         <div
@@ -150,7 +150,7 @@ exports[`DetailsPage renders correctly 1`] = `
           <img
             alt="Photo studio"
             className="property__image"
-            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/5.jpg"
+            src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/8.jpg"
           />
         </div>
       </div>
@@ -167,10 +167,11 @@ exports[`DetailsPage renders correctly 1`] = `
           <h1
             className="property__name"
           >
-            House in countryside
+            Wood and stone place
           </h1>
           <button
-            className="property__bookmark-button button"
+            className="property__bookmark-button  button"
+            onClick={[Function]}
             type="button"
           >
             <svg
@@ -198,7 +199,7 @@ exports[`DetailsPage renders correctly 1`] = `
             <span
               style={
                 Object {
-                  "width": "84%",
+                  "width": "74%",
                 }
               }
             />
@@ -211,7 +212,7 @@ exports[`DetailsPage renders correctly 1`] = `
           <span
             className="property__rating-value rating__value"
           >
-            4.8
+            3.7
           </span>
         </div>
         <ul
@@ -225,14 +226,14 @@ exports[`DetailsPage renders correctly 1`] = `
           <li
             className="property__feature property__feature--bedrooms"
           >
-            5
+            1
              Bedrooms
           </li>
           <li
             className="property__feature property__feature--adults"
           >
             Max 
-            7
+            9
              adults
           </li>
         </ul>
@@ -243,7 +244,7 @@ exports[`DetailsPage renders correctly 1`] = `
             className="property__price-value"
           >
             €
-            656
+            274
           </b>
           <span
             className="property__price-text"
@@ -266,13 +267,13 @@ exports[`DetailsPage renders correctly 1`] = `
               className="property__inside-item"
               key="0"
             >
-              Laptop friendly workspace
+              Washing machine
             </li>
             <li
               className="property__inside-item"
               key="1"
             >
-              Washer
+              Fridge
             </li>
             <li
               className="property__inside-item"
@@ -284,19 +285,49 @@ exports[`DetailsPage renders correctly 1`] = `
               className="property__inside-item"
               key="3"
             >
-              Breakfast
+              Baby seat
             </li>
             <li
               className="property__inside-item"
               key="4"
             >
-              Towels
+              Cable TV
             </li>
             <li
               className="property__inside-item"
               key="5"
             >
-              Baby seat
+              Breakfast
+            </li>
+            <li
+              className="property__inside-item"
+              key="6"
+            >
+              Laptop friendly workspace
+            </li>
+            <li
+              className="property__inside-item"
+              key="7"
+            >
+              Dishwasher
+            </li>
+            <li
+              className="property__inside-item"
+              key="8"
+            >
+              Coffee machine
+            </li>
+            <li
+              className="property__inside-item"
+              key="9"
+            >
+              Washer
+            </li>
+            <li
+              className="property__inside-item"
+              key="10"
+            >
+              Towels
             </li>
           </ul>
         </div>
@@ -318,7 +349,7 @@ exports[`DetailsPage renders correctly 1`] = `
                 alt="Host avatar"
                 className="property__avatar user__avatar"
                 height={74}
-                src="img/avatar-angelina.jpg"
+                src="/img/avatar-angelina.jpg"
                 width={74}
               />
             </div>
@@ -339,7 +370,7 @@ exports[`DetailsPage renders correctly 1`] = `
             <p
               className="property__text"
             >
-              Discover daily local life in city center, friendly neighborhood, clandestine casino, karaoke, old-style artisans, art gallery and artist studio downstairs.
+              Relax, rejuvenate and unplug in this ultimate rustic getaway experience in the country. In our beautiful screened Pondhouse, you can gaze at the stars and listen to the sounds of nature from your cozy warm bed.
             </p>
           </div>
         </div>
@@ -349,7 +380,7 @@ exports[`DetailsPage renders correctly 1`] = `
           <h2
             className="reviews__title"
           >
-            Reviews · 
+            Reviews 
             <span
               className="reviews__amount"
             >
@@ -386,7 +417,9 @@ exports[`DetailsPage renders correctly 1`] = `
               ]
             }
           />
-          <Connect(WithReviewsForm) />
+          <Connect(WithReviewsForm)
+            offerId="3"
+          />
         </section>
       </div>
     </div>
@@ -396,183 +429,6 @@ exports[`DetailsPage renders correctly 1`] = `
       <OffersMap
         offers={
           Array [
-            Object {
-              "bedrooms": 3,
-              "city": Object {
-                "location": Object {
-                  "latitude": 50.846557,
-                  "longitude": 4.351697,
-                  "zoom": 13,
-                },
-                "name": "Brussels",
-              },
-              "description": "I rent out a very sunny and bright apartment only 7 minutes walking distance to the metro station. The apartment has a spacious living room with a kitchen, one bedroom and a bathroom with mit bath. A terrace can be used in summer.",
-              "goods": Array [
-                "Fridge",
-                "Breakfast",
-                "Air conditioning",
-                "Washer",
-                "Laptop friendly workspace",
-                "Baby seat",
-                "Towels",
-                "Dishwasher",
-              ],
-              "host": Object {
-                "avatarUrl": "img/avatar-angelina.jpg",
-                "id": 25,
-                "isPro": true,
-                "name": "Angelina",
-              },
-              "id": 2,
-              "images": Array [
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/8.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/14.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/11.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/15.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/3.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/9.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/7.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/18.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/4.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/10.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/6.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/13.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/12.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/5.jpg",
-              ],
-              "isFavorite": false,
-              "isPremium": false,
-              "location": Object {
-                "latitude": 50.867557,
-                "longitude": 4.371696999999999,
-                "zoom": 16,
-              },
-              "maxAdults": 5,
-              "previewImage": "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/7.jpg",
-              "price": 858,
-              "rating": 3,
-              "title": "The Joshua Tree House",
-              "type": "house",
-            },
-            Object {
-              "bedrooms": 1,
-              "city": Object {
-                "location": Object {
-                  "latitude": 50.938361,
-                  "longitude": 6.959974,
-                  "zoom": 13,
-                },
-                "name": "Cologne",
-              },
-              "description": "Relax, rejuvenate and unplug in this ultimate rustic getaway experience in the country. In our beautiful screened Pondhouse, you can gaze at the stars and listen to the sounds of nature from your cozy warm bed.",
-              "goods": Array [
-                "Washing machine",
-                "Fridge",
-                "Air conditioning",
-                "Baby seat",
-                "Cable TV",
-                "Breakfast",
-                "Laptop friendly workspace",
-                "Dishwasher",
-                "Coffee machine",
-                "Washer",
-                "Towels",
-              ],
-              "host": Object {
-                "avatarUrl": "img/avatar-angelina.jpg",
-                "id": 25,
-                "isPro": true,
-                "name": "Angelina",
-              },
-              "id": 3,
-              "images": Array [
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/7.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/3.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/9.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/15.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/19.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/12.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/20.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/2.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/11.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/17.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/10.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/16.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/13.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/8.jpg",
-              ],
-              "isFavorite": false,
-              "isPremium": false,
-              "location": Object {
-                "latitude": 50.947361,
-                "longitude": 6.9799739999999995,
-                "zoom": 16,
-              },
-              "maxAdults": 9,
-              "previewImage": "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/4.jpg",
-              "price": 274,
-              "rating": 3.7,
-              "title": "Wood and stone place",
-              "type": "apartment",
-            },
-            Object {
-              "bedrooms": 1,
-              "city": Object {
-                "location": Object {
-                  "latitude": 52.37454,
-                  "longitude": 4.897976,
-                  "zoom": 13,
-                },
-                "name": "Amsterdam",
-              },
-              "description": "A new spacious villa, one floor. All commodities, jacuzzi and beautiful scenery. Ideal for families or friends.",
-              "goods": Array [
-                "Washer",
-                "Towels",
-                "Dishwasher",
-                "Laptop friendly workspace",
-                "Fridge",
-                "Air conditioning",
-                "Breakfast",
-                "Baby seat",
-              ],
-              "host": Object {
-                "avatarUrl": "img/avatar-angelina.jpg",
-                "id": 25,
-                "isPro": true,
-                "name": "Angelina",
-              },
-              "id": 4,
-              "images": Array [
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/12.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/17.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/15.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/10.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/4.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/13.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/2.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/1.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/6.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/5.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/7.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/20.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/14.jpg",
-                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/9.jpg",
-              ],
-              "isFavorite": false,
-              "isPremium": false,
-              "location": Object {
-                "latitude": 52.35054,
-                "longitude": 4.908976,
-                "zoom": 16,
-              },
-              "maxAdults": 8,
-              "previewImage": "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/10.jpg",
-              "price": 258,
-              "rating": 3.3,
-              "title": "The house among olive ",
-              "type": "hotel",
-            },
             Object {
               "bedrooms": 5,
               "city": Object {
@@ -629,38 +485,6 @@ exports[`DetailsPage renders correctly 1`] = `
               "title": "House in countryside",
               "type": "house",
             },
-          ]
-        }
-        onHoverOfferId={-1}
-        selectedCity={
-          Object {
-            "location": Object {
-              "latitude": 52.37454,
-              "longitude": 4.897976,
-              "zoom": 13,
-            },
-            "name": "Amsterdam",
-          }
-        }
-        selectedOfferId={1}
-      />
-    </section>
-  </section>
-  <div
-    className="container"
-  >
-    <section
-      className="near-places places"
-    >
-      <h2
-        className="near-places__title"
-      >
-        Other places in the neighbourhood
-      </h2>
-      <OffersList
-        classNames="near-places__list"
-        offers={
-          Array [
             Object {
               "bedrooms": 3,
               "city": Object {
@@ -723,6 +547,64 @@ exports[`DetailsPage renders correctly 1`] = `
               "bedrooms": 1,
               "city": Object {
                 "location": Object {
+                  "latitude": 52.37454,
+                  "longitude": 4.897976,
+                  "zoom": 13,
+                },
+                "name": "Amsterdam",
+              },
+              "description": "A new spacious villa, one floor. All commodities, jacuzzi and beautiful scenery. Ideal for families or friends.",
+              "goods": Array [
+                "Washer",
+                "Towels",
+                "Dishwasher",
+                "Laptop friendly workspace",
+                "Fridge",
+                "Air conditioning",
+                "Breakfast",
+                "Baby seat",
+              ],
+              "host": Object {
+                "avatarUrl": "img/avatar-angelina.jpg",
+                "id": 25,
+                "isPro": true,
+                "name": "Angelina",
+              },
+              "id": 4,
+              "images": Array [
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/12.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/17.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/15.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/10.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/4.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/13.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/2.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/1.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/6.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/5.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/7.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/20.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/14.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/9.jpg",
+              ],
+              "isFavorite": false,
+              "isPremium": false,
+              "location": Object {
+                "latitude": 52.35054,
+                "longitude": 4.908976,
+                "zoom": 16,
+              },
+              "maxAdults": 8,
+              "previewImage": "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/10.jpg",
+              "price": 258,
+              "rating": 3.3,
+              "title": "The house among olive ",
+              "type": "hotel",
+            },
+            Object {
+              "bedrooms": 1,
+              "city": Object {
+                "location": Object {
                   "latitude": 50.938361,
                   "longitude": 6.959974,
                   "zoom": 13,
@@ -779,6 +661,152 @@ exports[`DetailsPage renders correctly 1`] = `
               "rating": 3.7,
               "title": "Wood and stone place",
               "type": "apartment",
+            },
+          ]
+        }
+        onHoverOfferId={-1}
+        selectedCity={
+          Object {
+            "location": Object {
+              "latitude": 52.37454,
+              "longitude": 4.897976,
+              "zoom": 13,
+            },
+            "name": "Amsterdam",
+          }
+        }
+        selectedOfferId={3}
+      />
+    </section>
+  </section>
+  <div
+    className="container"
+  >
+    <section
+      className="near-places places"
+    >
+      <h2
+        className="near-places__title"
+      >
+        Other places in the neighbourhood
+      </h2>
+      <OffersList
+        classNames="near-places__list"
+        offers={
+          Array [
+            Object {
+              "bedrooms": 5,
+              "city": Object {
+                "location": Object {
+                  "latitude": 52.37454,
+                  "longitude": 4.897976,
+                  "zoom": 13,
+                },
+                "name": "Amsterdam",
+              },
+              "description": "Discover daily local life in city center, friendly neighborhood, clandestine casino, karaoke, old-style artisans, art gallery and artist studio downstairs.",
+              "goods": Array [
+                "Laptop friendly workspace",
+                "Washer",
+                "Air conditioning",
+                "Breakfast",
+                "Towels",
+                "Baby seat",
+              ],
+              "host": Object {
+                "avatarUrl": "img/avatar-angelina.jpg",
+                "id": 25,
+                "isPro": true,
+                "name": "Angelina",
+              },
+              "id": 1,
+              "images": Array [
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/3.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/1.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/9.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/19.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/4.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/10.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/6.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/15.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/12.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/7.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/2.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/16.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/14.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/5.jpg",
+              ],
+              "isFavorite": false,
+              "isPremium": false,
+              "location": Object {
+                "latitude": 52.37854,
+                "longitude": 4.894976,
+                "zoom": 16,
+              },
+              "maxAdults": 7,
+              "previewImage": "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/19.jpg",
+              "price": 656,
+              "rating": 4.2,
+              "title": "House in countryside",
+              "type": "house",
+            },
+            Object {
+              "bedrooms": 3,
+              "city": Object {
+                "location": Object {
+                  "latitude": 50.846557,
+                  "longitude": 4.351697,
+                  "zoom": 13,
+                },
+                "name": "Brussels",
+              },
+              "description": "I rent out a very sunny and bright apartment only 7 minutes walking distance to the metro station. The apartment has a spacious living room with a kitchen, one bedroom and a bathroom with mit bath. A terrace can be used in summer.",
+              "goods": Array [
+                "Fridge",
+                "Breakfast",
+                "Air conditioning",
+                "Washer",
+                "Laptop friendly workspace",
+                "Baby seat",
+                "Towels",
+                "Dishwasher",
+              ],
+              "host": Object {
+                "avatarUrl": "img/avatar-angelina.jpg",
+                "id": 25,
+                "isPro": true,
+                "name": "Angelina",
+              },
+              "id": 2,
+              "images": Array [
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/8.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/14.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/11.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/15.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/3.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/9.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/7.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/18.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/4.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/10.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/6.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/13.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/12.jpg",
+                "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/5.jpg",
+              ],
+              "isFavorite": false,
+              "isPremium": false,
+              "location": Object {
+                "latitude": 50.867557,
+                "longitude": 4.371696999999999,
+                "zoom": 16,
+              },
+              "maxAdults": 5,
+              "previewImage": "https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/7.jpg",
+              "price": 858,
+              "rating": 3,
+              "title": "The Joshua Tree House",
+              "type": "house",
             },
             Object {
               "bedrooms": 1,
@@ -840,6 +868,7 @@ exports[`DetailsPage renders correctly 1`] = `
             },
           ]
         }
+        onAddFavorite={[Function]}
         onColorPin={[Function]}
       />
     </section>

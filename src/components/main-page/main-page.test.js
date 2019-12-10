@@ -18,6 +18,7 @@ it(`MainPage renders correctly`, () => {
         selectCityHandler={() => {}}
         sortByHandler={() => {}}
         getOfferIdHandler={() => {}}
+        favoriteAddHandler={() => {}}
       />
   );
 

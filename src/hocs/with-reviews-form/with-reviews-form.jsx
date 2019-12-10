@@ -1,5 +1,9 @@
 import React, {PureComponent} from 'react';
-import {string, func} from 'prop-types';
+import {
+  shape,
+  string,
+  func,
+} from 'prop-types';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
 import aData from '../../store/data/actions.js';
@@ -38,18 +42,18 @@ const withReviewsForm = (Component) => {
     }
 
     formSubmitHandler(evt) {
-      const {postCommentHandler} = this.props;
+      const {offerId, postCommentHandler} = this.props;
       const {rating, comment} = this.state;
 
       evt.preventDefault();
-      postCommentHandler({offerId: 3, rating, comment});
+      postCommentHandler({offerId, rating, comment});
     }
 
     render() {
-      const {messagePostStatus} = this.props;
+      const {user, messagePostStatus} = this.props;
       const {comment, rating} = this.state;
 
-      return (
+      return user && (
         <Component
           {...this.props}
           rating={rating}
@@ -64,14 +68,21 @@ const withReviewsForm = (Component) => {
   }
 
   WithReviewsForm.propTypes = {
+    user: shape({}),
     messagePostStatus: string.isRequired,
+    offerId: string.isRequired,
     postCommentHandler: func.isRequired,
+  };
+
+  WithReviewsForm.defaultProps = {
+    user: null,
   };
 
   return WithReviewsForm;
 };
 
 const mapStateToProps = ({rData}) => ({
+  user: rData.user,
   messagePostStatus: rData.messagePostStatus,
 });
 

@@ -7,13 +7,14 @@ import {
   SELECT_CITY,
   FETCH_OFFERS_PENDING,
   FETCH_OFFERS_SUCCESS,
-  SIGN_IN,
   SIGN_IN_SUCCESS,
   GET_USER_SUCCESS,
   FETCH_COMMENTS_PENDING,
   FETCH_COMMENTS_SUCCESS,
   POST_COMMENTS_PENDING,
   POST_COMMENTS_SUCCESS,
+  POST_FAVORITE_PENDING,
+  POST_FAVORITE_SUCCESS,
 } from '../../consts/actionTypes';
 import {ASYNC_STATUSES} from '../../consts/index.js';
 import endpoints from '../../consts/endpoints.js';
@@ -23,11 +24,6 @@ describe(`Action creators work correctly`, () => {
     expect(actions.selectCity({fake: true})).toEqual({
       type: SELECT_CITY,
       payload: {fake: true},
-    });
-  });
-  it(`Action creator for signIn returns action`, () => {
-    expect(actions.signIn()).toEqual({
-      type: SIGN_IN,
     });
   });
 });
@@ -44,20 +40,12 @@ describe(`Reducer works correctly`, () => {
       city: {fake: true},
     }));
   });
-  it(`Reducer should change isAuthorizationRequired by a given payload`, () => {
-    expect(reducer(undefined, {
-      type: SIGN_IN,
-    })).toEqual(Object.assign({}, initialState, {
-      isAuthorizationRequired: true,
-    }));
-  });
   it(`Reducer should change user by a given payload`, () => {
     expect(reducer(undefined, {
       type: SIGN_IN_SUCCESS,
       payload: {fake: true},
     })).toEqual(Object.assign({}, initialState, {
       user: {fake: true},
-      isAuthorizationRequired: false,
     }));
   });
   it(`Reducer should change user by a given payload`, () => {
@@ -93,7 +81,7 @@ describe(`Reducer works correctly`, () => {
     const offersLoader = actions.fetchOffers();
 
     apiMock
-      .onGet(endpoints.offers)
+      .onGet(endpoints.getOffers)
       .reply(200, []);
 
     return offersLoader(dispatch, jest.fn(), api)
@@ -189,6 +177,30 @@ describe(`Reducer works correctly`, () => {
         expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: POST_COMMENTS_SUCCESS,
           payload: [],
+        });
+      });
+  });
+  it(`Should make a correct API call to /favorite/:offerId/:status with post method`, () => {
+    const dispatch = jest.fn();
+    const api = createApi(dispatch);
+    const apiMock = new MockAdapter(api);
+    const postFavorite = actions.postFavorite({
+      offerId: 3,
+      status: 1,
+    });
+
+    apiMock
+      .onPost(endpoints.postFavorite({offerId: 3, status: 1}))
+      .reply(200, {fake: true});
+
+    return postFavorite(dispatch, jest.fn(), api)
+      .then(() => {
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: POST_FAVORITE_PENDING,
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: POST_FAVORITE_SUCCESS,
+          payload: {fake: true},
         });
       });
   });

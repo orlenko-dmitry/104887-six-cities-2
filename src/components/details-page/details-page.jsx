@@ -28,8 +28,8 @@ class DetailsPage extends PureComponent {
   }
 
   componentDidMount() {
-    const {fetchCommentsHandler} = this.props;
-    fetchCommentsHandler(2);
+    const {fetchCommentsHandler, match: {params: {offerId}}} = this.props;
+    fetchCommentsHandler(offerId);
   }
 
   colorPinHandler(id) {
@@ -43,11 +43,20 @@ class DetailsPage extends PureComponent {
       comments,
       city,
       onHoverOfferId,
+      favoriteAddHandler,
+      match: {
+        params: {
+          offerId,
+        }
+      }
     } = this.props;
+
+    const offerIndex = offers.map((offer) => offer.id).indexOf(Number(offerId));
 
     const {
       images,
       isPremium,
+      isFavorite,
       title,
       rating,
       price,
@@ -61,7 +70,7 @@ class DetailsPage extends PureComponent {
         name: hostName,
         avatarUrl,
       },
-    } = offers[0];
+    } = offers[offerIndex];
 
     return offers.length && (
       <main className="page__main page__main--property">
@@ -86,7 +95,11 @@ class DetailsPage extends PureComponent {
                 <h1 className="property__name">
                   {title}
                 </h1>
-                <button className="property__bookmark-button button" type="button">
+                <button
+                  className={`property__bookmark-button ${isFavorite ? `property__bookmark-button--active` : ``} button`}
+                  type="button"
+                  onClick={() => favoriteAddHandler({offerId: id, status: isFavorite ? 0 : 1})}
+                >
                   <svg className="property__bookmark-icon" width={31} height={33}>
                     <use xlinkHref="#icon-bookmark" />
                   </svg>
@@ -98,7 +111,7 @@ class DetailsPage extends PureComponent {
                   <span style={{width: defineRating(rating)}} />
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">4.8</span>
+                <span className="property__rating-value rating__value">{rating}</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
@@ -129,7 +142,7 @@ class DetailsPage extends PureComponent {
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
                   <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="property__avatar user__avatar" src={avatarUrl} width={74} height={74} alt="Host avatar" />
+                    <img className="property__avatar user__avatar" src={`/${avatarUrl}`} width={74} height={74} alt="Host avatar" />
                   </div>
                   <span className="property__user-name">
                     {hostName}
@@ -147,9 +160,9 @@ class DetailsPage extends PureComponent {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews · <span className="reviews__amount">{comments.length}</span></h2>
+                <h2 className="reviews__title">Reviews <span className="reviews__amount">{comments.length}</span></h2>
                 <ReviewsList reviews={comments} />
-                <WithReviewsForm />
+                <WithReviewsForm offerId={offerId} />
               </section>
             </div>
           </div>
@@ -169,6 +182,7 @@ class DetailsPage extends PureComponent {
               classNames={`near-places__list`}
               offers={getNearOffers(offers, id)}
               onColorPin={this.colorPinHandler}
+              onAddFavorite={favoriteAddHandler}
             />
           </section>
         </div>
@@ -206,9 +220,15 @@ DetailsPage.propTypes = {
     }).isRequired,
     name: string.isRequired,
   }).isRequired,
+  match: shape({
+    params: shape({
+      offerId: string.isRequired,
+    }).isRequired
+  }).isRequired,
   onHoverOfferId: number.isRequired,
   getOfferIdHandler: func.isRequired,
   fetchCommentsHandler: func.isRequired,
+  favoriteAddHandler: func.isRequired,
 };
 
 const mapStateToProps = ({rData, rFilters}) => ({
@@ -221,6 +241,7 @@ const mapStateToProps = ({rData, rFilters}) => ({
 const mapDispatchToProps = (dispatch) => ({
   getOfferIdHandler: (payload) => dispatch(aFilters.getOfferId(payload)),
   fetchCommentsHandler: (payload) => dispatch(aData.fetchComments(payload)),
+  favoriteAddHandler: (payload) => dispatch(aData.postFavorite(payload)),
 });
 
 export {DetailsPage};

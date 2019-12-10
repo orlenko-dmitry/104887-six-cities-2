@@ -6,6 +6,11 @@ import offers from '../../mocks/offers.js';
 import comments from '../../mocks/comments.js';
 
 const city = offers[0].city;
+const match = {
+  params: {
+    offerId: `3`,
+  },
+};
 
 it(`DetailsPage renders correctly`, () => {
   const tree = shallow(
@@ -14,8 +19,10 @@ it(`DetailsPage renders correctly`, () => {
         comments={comments}
         city={city}
         onHoverOfferId={-1}
+        match={match}
         getOfferIdHandler={() => {}}
         fetchCommentsHandler={() => {}}
+        favoriteAddHandler={() => {}}
       />
   );
 

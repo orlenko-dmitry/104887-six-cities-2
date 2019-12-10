@@ -46,6 +46,7 @@ exports[`OfferCard renders correctly 1`] = `
       </div>
       <button
         className="place-card__bookmark-button button"
+        onClick={[Function]}
         type="button"
       >
         <svg
@@ -88,11 +89,11 @@ exports[`OfferCard renders correctly 1`] = `
       className="place-card__name"
       data-testid="place-card-title-0"
     >
-      <a
-        href="/details"
+      <Link
+        to="/offer/1"
       >
         House in countryside
-      </a>
+      </Link>
     </h2>
     <p
       className="place-card__type"

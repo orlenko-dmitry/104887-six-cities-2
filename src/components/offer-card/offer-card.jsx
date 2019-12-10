@@ -7,9 +7,10 @@ import {
   bool,
   func,
 } from 'prop-types';
+import {Link} from 'react-router-dom';
 
 import {defineRating} from '../../helpers/helpers.js';
-import {OFFER_TYPE} from '../../consts/index.js';
+import {OFFER_TYPE, ROUTES} from '../../consts/index.js';
 
 const OfferCard = ({
   offer: {
@@ -25,6 +26,7 @@ const OfferCard = ({
   listIndex,
   onCardHoverIn,
   onCardHoverOut,
+  onAddFavorite,
 }) => (
   <article
     className="cities__place-card place-card"
@@ -52,6 +54,7 @@ const OfferCard = ({
         <button
           className={`place-card__bookmark-button${isFavorite ? `--active` : ``} button`}
           type="button"
+          onClick={() => onAddFavorite({offerId: id, status: isFavorite ? 0 : 1})}
         >
           <svg className="place-card__bookmark-icon" width="18" height="19">
             <use xlinkHref="#icon-bookmark"></use>
@@ -71,7 +74,7 @@ const OfferCard = ({
         className="place-card__name"
         data-testid={`place-card-title-${listIndex}`}
       >
-        <a href="/details">{title}</a>
+        <Link to={`${ROUTES.OFFER}/${id}`}>{title}</Link>
       </h2>
       <p className="place-card__type">{OFFER_TYPE[type]}</p>
     </div>
@@ -92,6 +95,7 @@ OfferCard.propTypes = {
   listIndex: number.isRequired,
   onCardHoverIn: func.isRequired,
   onCardHoverOut: func.isRequired,
+  onAddFavorite: func.isRequired,
 };
 
 export default OfferCard;

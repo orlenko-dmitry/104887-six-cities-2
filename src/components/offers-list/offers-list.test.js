@@ -12,6 +12,7 @@ it(`OfferList renders correctly`, () => {
       <OfferList
         offers={cityOffers}
         onColorPin={() => {}}
+        onAddFavorite={() => {}}
       />);
 
   expect(tree).toMatchSnapshot();

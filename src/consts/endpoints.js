@@ -1,5 +1,7 @@
 export default ({
   login: `/login`,
-  offers: `/hotels`,
+  getOffers: `/hotels`,
   comments: (offerId) => `/comments/${offerId}`,
+  getFavorite: `/favorite`,
+  postFavorite: ({offerId, status}) => `/favorite/${offerId}/${status}`,
 });

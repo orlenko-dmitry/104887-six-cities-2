@@ -1,12 +1,11 @@
 import React, {Fragment, PureComponent} from 'react';
 import {connect} from 'react-redux';
 import {
-  bool,
   string,
   func,
 } from 'prop-types';
+import {Switch, Route} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import MainPage from '../main-page/main-page.jsx';
 import MainEmptyPage from '../main-empty-page/main-empty-page.jsx';
@@ -15,21 +14,10 @@ import AuthPage from '../auth-page/auth-page.jsx';
 import withEmptyPage from '../../hocs/with-empty-page/with-empty-page.jsx';
 import withAuthForm from '../../hocs/with-auth-form/with-auth-form.jsx';
 import aData from '../../store/data/actions.js';
-import {ASYNC_STATUSES} from '../../consts/index.js';
+import {ASYNC_STATUSES, ROUTES} from '../../consts/index.js';
 
 const WithEmptyPage = withEmptyPage(MainPage, MainEmptyPage);
 const WithAuthForm = withAuthForm(AuthPage);
-const getPageScreen = (isAuthorizationRequired) => {
-  switch (location.pathname) {
-    case `/`:
-      return isAuthorizationRequired ? <WithAuthForm /> : <WithEmptyPage />;
-    case `/details`:
-      return (
-        <DetailsPage />
-      );
-  }
-  return null;
-};
 
 class App extends PureComponent {
   componentDidMount() {
@@ -39,12 +27,16 @@ class App extends PureComponent {
   }
 
   render() {
-    const {offersFetchStatus, isAuthorizationRequired} = this.props;
+    const {offersFetchStatus} = this.props;
     const isPending = offersFetchStatus === ASYNC_STATUSES.PENDING;
 
     return !isPending && (
       <Fragment>
-        {getPageScreen(isAuthorizationRequired)}
+        <Switch>
+          <Route exact path={ROUTES.ROOT} component={WithEmptyPage} />
+          <Route path={`${ROUTES.OFFER}/:offerId`} component={DetailsPage} />
+          <Route path={ROUTES.AUTH} component={WithAuthForm} />
+        </Switch>
         <ToastContainer />
       </Fragment>
     );
@@ -53,14 +45,12 @@ class App extends PureComponent {
 
 App.propTypes = {
   offersFetchStatus: string.isRequired,
-  isAuthorizationRequired: bool.isRequired,
   getOffers: func.isRequired,
   getUser: func.isRequired,
 };
 
 const mapStateToProps = ({rData}) => ({
   offersFetchStatus: rData.offersFetchStatus,
-  isAuthorizationRequired: rData.isAuthorizationRequired,
 });
 
 const mapDispatchToProps = (dispatch) => ({
