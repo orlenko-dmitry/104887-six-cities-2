@@ -13,8 +13,11 @@ import {
   FETCH_COMMENTS_SUCCESS,
   POST_COMMENTS_PENDING,
   POST_COMMENTS_SUCCESS,
+<<<<<<< HEAD
   POST_FAVORITE_PENDING,
   POST_FAVORITE_SUCCESS,
+=======
+>>>>>>> master
 } from '../../consts/actionTypes';
 import {ASYNC_STATUSES} from '../../consts/index.js';
 import endpoints from '../../consts/endpoints.js';
@@ -180,6 +183,7 @@ describe(`Reducer works correctly`, () => {
         });
       });
   });
+<<<<<<< HEAD
   it(`Should make a correct API call to /favorite/:offerId/:status with post method`, () => {
     const dispatch = jest.fn();
     const api = createApi(dispatch);
@@ -204,4 +208,6 @@ describe(`Reducer works correctly`, () => {
         });
       });
   });
+=======
+>>>>>>> master
 });
