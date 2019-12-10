@@ -1,4 +1,5 @@
 export default ({
-  offers: `/hotels`,
   login: `/login`,
+  offers: `/hotels`,
+  comments: (offerId) => `/comments/${offerId}`,
 });

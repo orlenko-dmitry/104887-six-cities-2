@@ -1,17 +1,11 @@
 export const LEAFLET_CONSTS = {
-  iconUrl: ({onHoverOfferId, currentId}) => onHoverOfferId === currentId ? `img/pin-active.svg` : `img/pin.svg`,
+  iconUrl: ({onHoverOfferId, selectedOfferId, currentId}) => {
+    return selectedOfferId === currentId
+    || onHoverOfferId === currentId ? `img/pin-active.svg` : `img/pin.svg`;
+  },
   ICON_SIZE: [30, 30],
   TILE_LAYER: `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`,
   ATTRIBUTION: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`,
-};
-
-export const SELECT_CITY_PAYLOAD = {
-  name: `Amsterdam`,
-  location: {
-    latitude: 52.37454,
-    longitude: 4.897976,
-    zoom: 13
-  },
 };
 
 export const SORTED_BY = {
@@ -50,6 +44,18 @@ export const ASYNC_STATUSES = {
   PENDING: `PENDING`,
   SUCCESS: `SUCCESS`,
   ERROR: `ERROR`,
+};
+
+export const DATE_FORMATS = {
+  DATE_TIME: `YYYY-MM-DD`,
+  MOTH_YEAR: `MMMM YYYY`,
+};
+
+export const OFFER_TYPE = {
+  apartment: `Apartment`,
+  room: `Private Room`,
+  house: `House`,
+  hotel: `Hotel`,
 };
 
 export const APP_CITIES = [

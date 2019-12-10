@@ -9,12 +9,17 @@ import {
 } from 'prop-types';
 import {connect} from 'react-redux';
 
-import {defineRating} from '../../helpers/helpers.js';
+import {defineRating, getNearOffers} from '../../helpers/helpers.js';
 import ReviewsList from '../reviews-list/reviews-list.jsx';
 import OffersMap from '../offers-map/offers-map.jsx';
 import OffersList from '../offers-list/offers-list.jsx';
+import ReviewsFrom from '../reviews-form/reviews-form.jsx';
+import withReviewsForm from '../../hocs/with-reviews-form/with-reviews-form.jsx';
 import aFilters from '../../store/filters/actions.js';
+import aData from '../../store/data/actions.js';
 import {getCityOffers} from '../../store/data/selectors.js';
+
+const WithReviewsForm = withReviewsForm(ReviewsFrom);
 
 class DetailsPage extends PureComponent {
   constructor(props) {
@@ -22,16 +27,20 @@ class DetailsPage extends PureComponent {
     this.colorPinHandler = this.colorPinHandler.bind(this);
   }
 
+  componentDidMount() {
+    const {fetchCommentsHandler} = this.props;
+    fetchCommentsHandler(2);
+  }
+
   colorPinHandler(id) {
-    const {getOfferId} = this.props;
-    getOfferId(id);
+    const {getOfferIdHandler} = this.props;
+    getOfferIdHandler(id);
   }
 
   render() {
     const {
       offers,
-      nearOffers,
-      reviews,
+      comments,
       city,
       onHoverOfferId,
     } = this.props;
@@ -45,6 +54,7 @@ class DetailsPage extends PureComponent {
       bedrooms,
       maxAdults,
       description,
+      id,
       goods,
       host: {
         isPro,
@@ -137,57 +147,17 @@ class DetailsPage extends PureComponent {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews · <span className="reviews__amount">{reviews.length}</span></h2>
-                <ReviewsList reviews={reviews} />
-                <form className="reviews__form form" action="#" method="post">
-                  <label className="reviews__label form__label" htmlFor="review">Your review</label>
-                  <div className="reviews__rating-form form__rating">
-                    <input className="form__rating-input visually-hidden" name="rating" defaultValue={5} id="5-stars" type="radio" />
-                    <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
-                      <svg className="form__star-image" width={37} height={33}>
-                        <use xlinkHref="#icon-star" />
-                      </svg>
-                    </label>
-                    <input className="form__rating-input visually-hidden" name="rating" defaultValue={4} id="4-stars" type="radio" />
-                    <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
-                      <svg className="form__star-image" width={37} height={33}>
-                        <use xlinkHref="#icon-star" />
-                      </svg>
-                    </label>
-                    <input className="form__rating-input visually-hidden" name="rating" defaultValue={3} id="3-stars" type="radio" />
-                    <label htmlFor="3-stars" className="reviews__rating-label form__rating-label" title="not bad">
-                      <svg className="form__star-image" width={37} height={33}>
-                        <use xlinkHref="#icon-star" />
-                      </svg>
-                    </label>
-                    <input className="form__rating-input visually-hidden" name="rating" defaultValue={2} id="2-stars" type="radio" />
-                    <label htmlFor="2-stars" className="reviews__rating-label form__rating-label" title="badly">
-                      <svg className="form__star-image" width={37} height={33}>
-                        <use xlinkHref="#icon-star" />
-                      </svg>
-                    </label>
-                    <input className="form__rating-input visually-hidden" name="rating" defaultValue={1} id="1-star" type="radio" />
-                    <label htmlFor="1-star" className="reviews__rating-label form__rating-label" title="terribly">
-                      <svg className="form__star-image" width={37} height={33}>
-                        <use xlinkHref="#icon-star" />
-                      </svg>
-                    </label>
-                  </div>
-                  <textarea className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved" defaultValue={``} />
-                  <div className="reviews__button-wrapper">
-                    <p className="reviews__help">
-                      To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
-                    </p>
-                    <button className="reviews__submit form__submit button" type="submit" disabled>Submit</button>
-                  </div>
-                </form>
+                <h2 className="reviews__title">Reviews · <span className="reviews__amount">{comments.length}</span></h2>
+                <ReviewsList reviews={comments} />
+                <WithReviewsForm />
               </section>
             </div>
           </div>
           <section className="property__map map">
             <OffersMap
-              offers={nearOffers}
+              offers={getNearOffers(offers, id, true)}
               selectedCity={city}
+              selectedOfferId={id}
               onHoverOfferId={onHoverOfferId}
             />
           </section>
@@ -197,7 +167,7 @@ class DetailsPage extends PureComponent {
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <OffersList
               classNames={`near-places__list`}
-              offers={nearOffers}
+              offers={getNearOffers(offers, id)}
               onColorPin={this.colorPinHandler}
             />
           </section>
@@ -227,8 +197,7 @@ DetailsPage.propTypes = {
       avatarUrl: string.isRequired,
     }),
   })).isRequired,
-  nearOffers: arrayOf(shape({})).isRequired,
-  reviews: arrayOf(shape({})).isRequired,
+  comments: arrayOf(shape({})).isRequired,
   city: shape({
     location: shape({
       latitude: number.isRequired,
@@ -238,19 +207,20 @@ DetailsPage.propTypes = {
     name: string.isRequired,
   }).isRequired,
   onHoverOfferId: number.isRequired,
-  getOfferId: func.isRequired,
+  getOfferIdHandler: func.isRequired,
+  fetchCommentsHandler: func.isRequired,
 };
 
 const mapStateToProps = ({rData, rFilters}) => ({
   offers: getCityOffers({rData, rFilters}),
   city: rData.city,
-  nearOffers: rData.nearOffers,
-  reviews: rData.reviews,
+  comments: rData.comments,
   onHoverOfferId: rFilters.onHoverOfferId,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getOfferId: (payload) => dispatch(aFilters.getOfferId(payload)),
+  getOfferIdHandler: (payload) => dispatch(aFilters.getOfferId(payload)),
+  fetchCommentsHandler: (payload) => dispatch(aData.fetchComments(payload)),
 });
 
 export {DetailsPage};

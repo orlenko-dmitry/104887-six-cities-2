@@ -1852,6 +1852,7 @@ exports[`MainPage renders correctly 1`] = `
                   "name": "Amsterdam",
                 }
               }
+              selectedOfferId={null}
             />
           </section>
         </div>

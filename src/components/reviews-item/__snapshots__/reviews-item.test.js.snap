@@ -14,14 +14,14 @@ exports[`ReviewsItem renders correctly 1`] = `
         alt="Reviews avatar"
         className="reviews__avatar user__avatar"
         height={54}
-        src="img/avatar-max.jpg"
+        src="https://htmlacademy-react-2.appspot.com/six-cities/static/avatar/10.jpg"
         width={54}
       />
     </div>
     <span
       className="reviews__user-name"
     >
-      Max
+      Christina
     </span>
   </div>
   <div
@@ -36,7 +36,7 @@ exports[`ReviewsItem renders correctly 1`] = `
         <span
           style={
             Object {
-              "width": "98%",
+              "width": "60%",
             }
           }
         />
@@ -50,14 +50,13 @@ exports[`ReviewsItem renders correctly 1`] = `
     <p
       className="reviews__text"
     >
-      A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
-              The building is green and from 18th century.
+      The deluxe room was a quite comfortable one with all the adequate facilities. The only thing that made me feel uncomfortable was the rude behavior of an impolite staff at the reception desk.
     </p>
     <time
       className="reviews__time"
-      dateTime="2019-04-24"
+      dateTime="2019-12-02"
     >
-      April 2019
+      December 2019
     </time>
   </div>
 </li>

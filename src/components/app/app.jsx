@@ -5,6 +5,8 @@ import {
   string,
   func,
 } from 'prop-types';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import MainPage from '../main-page/main-page.jsx';
 import MainEmptyPage from '../main-empty-page/main-empty-page.jsx';
@@ -37,22 +39,27 @@ class App extends PureComponent {
   }
 
   render() {
-    const {fetchStatus, isAuthorizationRequired} = this.props;
-    const isPending = fetchStatus === ASYNC_STATUSES.PENDING;
+    const {offersFetchStatus, isAuthorizationRequired} = this.props;
+    const isPending = offersFetchStatus === ASYNC_STATUSES.PENDING;
 
-    return !isPending && <Fragment>{getPageScreen(isAuthorizationRequired)}</Fragment>;
+    return !isPending && (
+      <Fragment>
+        {getPageScreen(isAuthorizationRequired)}
+        <ToastContainer />
+      </Fragment>
+    );
   }
 }
 
 App.propTypes = {
-  fetchStatus: string.isRequired,
+  offersFetchStatus: string.isRequired,
   isAuthorizationRequired: bool.isRequired,
   getOffers: func.isRequired,
   getUser: func.isRequired,
 };
 
 const mapStateToProps = ({rData}) => ({
-  fetchStatus: rData.status,
+  offersFetchStatus: rData.offersFetchStatus,
   isAuthorizationRequired: rData.isAuthorizationRequired,
 });
 

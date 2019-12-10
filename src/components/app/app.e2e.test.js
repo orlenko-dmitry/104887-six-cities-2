@@ -10,7 +10,7 @@ it(`getOffers have been called once`, () => {
 
   shallow(
       <App
-        fetchStatus={ASYNC_STATUSES.PENDING}
+        offersFetchStatus={ASYNC_STATUSES.PENDING}
         isAuthorizationRequired={false}
         getOffers={getOffersHandler}
         getUser={getUserHandler}

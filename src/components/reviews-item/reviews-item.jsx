@@ -1,25 +1,33 @@
 import React from 'react';
-import {shape, string, number} from 'prop-types';
+import {
+  shape,
+  string,
+  number,
+  bool,
+} from 'prop-types';
+import moment from 'moment';
 
 import {defineRating} from '../../helpers/helpers.js';
+import {DATE_FORMATS} from '../../consts/index.js';
 
 const ReviewsItem = ({
   review: {
-    avatar,
-    userName,
+    comment,
+    date,
     rating,
-    message,
-    dateTime,
-    dateString,
+    user: {
+      avatarUrl,
+      name,
+    },
   },
 }) => (
   <li className="reviews__item">
     <div className="reviews__user user">
       <div className="reviews__avatar-wrapper user__avatar-wrapper">
-        <img className="reviews__avatar user__avatar" src={avatar} width={54} height={54} alt="Reviews avatar" />
+        <img className="reviews__avatar user__avatar" src={avatarUrl} width={54} height={54} alt="Reviews avatar" />
       </div>
       <span className="reviews__user-name">
-        {userName}
+        {name}
       </span>
     </div>
     <div className="reviews__info">
@@ -30,27 +38,31 @@ const ReviewsItem = ({
         </div>
       </div>
       <p className="reviews__text">
-        {message}
+        {comment}
       </p>
-      <time className="reviews__time" dateTime={dateTime}>{dateString}</time>
+      <time
+        className="reviews__time"
+        dateTime={moment(date).format(DATE_FORMATS.DATE_TIME)}
+      >
+        {moment(date).format(DATE_FORMATS.MOTH_YEAR)}
+      </time>
     </div>
   </li>
 );
 
 ReviewsItem.propTypes = {
   review: shape({
+    comment: string.isRequired,
+    date: string.isRequired,
     id: number.isRequired,
-    avatar: string,
-    userName: string.isRequired,
     rating: number.isRequired,
-    message: string.isRequired,
-    dateTime: string.isRequired,
-    dateString: string.isRequired,
+    user: shape({
+      avatarUrl: string.isRequired,
+      id: number.isRequired,
+      isPro: bool.isRequired,
+      name: string.isRequired,
+    }).isRequired,
   }).isRequired,
-};
-
-ReviewsItem.defaultProps = {
-  avatar: ``,
 };
 
 export default ReviewsItem;
