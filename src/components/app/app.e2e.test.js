@@ -3,6 +3,8 @@ import {shallow} from 'enzyme';
 
 import {App} from './app.jsx';
 import {ASYNC_STATUSES} from '../../consts/index.js';
+import offers from '../../mocks/offers.js';
+
 
 it(`getOffers have been called once`, () => {
   const getOffersHandler = jest.fn();
@@ -10,6 +12,7 @@ it(`getOffers have been called once`, () => {
 
   shallow(
       <App
+        offers={offers}
         offersFetchStatus={ASYNC_STATUSES.PENDING}
         isAuthorizationRequired={false}
         getOffers={getOffersHandler}

@@ -1,6 +1,8 @@
 import React, {Fragment, PureComponent} from 'react';
 import {connect} from 'react-redux';
 import {
+  arrayOf,
+  shape,
   string,
   func,
 } from 'prop-types';
@@ -14,9 +16,10 @@ import AuthPage from '../auth-page/auth-page.jsx';
 import withEmptyPage from '../../hocs/with-empty-page/with-empty-page.jsx';
 import withAuthForm from '../../hocs/with-auth-form/with-auth-form.jsx';
 import aData from '../../store/data/actions.js';
+import {getCityOffers} from '../../store/data/selectors.js';
 import {ASYNC_STATUSES, ROUTES} from '../../consts/index.js';
 
-const WithEmptyPage = withEmptyPage(MainPage, MainEmptyPage);
+const WithEmptyMainPage = withEmptyPage(MainPage, MainEmptyPage);
 const WithAuthForm = withAuthForm(AuthPage);
 
 class App extends PureComponent {
@@ -27,13 +30,15 @@ class App extends PureComponent {
   }
 
   render() {
-    const {offersFetchStatus} = this.props;
+    const {offers, offersFetchStatus} = this.props;
     const isPending = offersFetchStatus === ASYNC_STATUSES.PENDING;
 
     return !isPending && (
       <Fragment>
         <Switch>
-          <Route exact path={ROUTES.ROOT} component={WithEmptyPage} />
+          <Route exact path={ROUTES.ROOT} render={(props) => (
+            <WithEmptyMainPage {...props} dataLength={offers.length} />
+          )} />
           <Route path={`${ROUTES.OFFER}/:offerId`} component={DetailsPage} />
           <Route path={ROUTES.AUTH} component={WithAuthForm} />
         </Switch>
@@ -44,12 +49,14 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
+  offers: arrayOf(shape({})).isRequired,
   offersFetchStatus: string.isRequired,
   getOffers: func.isRequired,
   getUser: func.isRequired,
 };
 
-const mapStateToProps = ({rData}) => ({
+const mapStateToProps = ({rData, rFilters}) => ({
+  offers: getCityOffers({rData, rFilters}),
   offersFetchStatus: rData.offersFetchStatus,
 });
 
