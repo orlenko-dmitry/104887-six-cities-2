@@ -168,6 +168,6 @@ class FavoritesPage extends PureComponent {
       </main>
     );
   }
-};
+}
 
 export default FavoritesPage;
