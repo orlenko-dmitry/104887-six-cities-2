@@ -10,6 +10,7 @@ import {
   POST_COMMENTS_SUCCESS,
   POST_COMMENTS_ERROR,
   POST_FAVORITE_SUCCESS,
+  FETCH_FAVORITE_SUCCESS,
 } from '../../consts/actionTypes.js';
 import {
   APP_CITIES,
@@ -49,12 +50,9 @@ export default (state = initialState, {type, payload}) => {
     case POST_COMMENTS_ERROR:
       return Object.assign({}, state, {messagePostStatus: ASYNC_STATUSES.ERROR});
     case POST_FAVORITE_SUCCESS:
-      return Object.assign({}, state, {offers: state.offers.map((offer) => {
-        if (offer.id === payload.id) {
-          offer.isFavorite = payload.is_favorite;
-        }
-        return offer;
-      })});
+      return Object.assign({}, state, {offers: payload.offers, favorites: payload.favorites});
+    case FETCH_FAVORITE_SUCCESS:
+      return Object.assign({}, state, {favorites: payload});
     default: return state;
   }
 };

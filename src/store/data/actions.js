@@ -101,9 +101,22 @@ export default ({
     dispatch({type: POST_FAVORITE_PENDING});
     return api.post(endpoints.postFavorite({offerId, status}))
             .then((response) => {
+              const offers = getState().rData.offers.map((offer) => {
+                if (offer.id === response.data.id) {
+                  offer.isFavorite = response.data.is_favorite;
+                }
+                return offer;
+              });
+              const postFavoriteIndex = getState().rData.favorites.map((favorite) => favorite.id).indexOf(response.data.id);
+              const favorites = getState().rData.favorites;
+              if (postFavoriteIndex === -1) {
+                favorites.push(response.data);
+              } else {
+                favorites.splice(postFavoriteIndex, 1);
+              }
               dispatch({
                 type: POST_FAVORITE_SUCCESS,
-                payload: response.data,
+                payload: {offers, favorites},
               });
             })
             .catch((err) => {
@@ -119,7 +132,7 @@ export default ({
             .then((response) => {
               dispatch({
                 type: FETCH_FAVORITE_SUCCESS,
-                payload: response.payload,
+                payload: response.data,
               });
             })
             .catch((err) => {

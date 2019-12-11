@@ -35,6 +35,13 @@ class App extends PureComponent {
     getUserHandler();
   }
 
+  componentDidUpdate(prevProps) {
+    const {user, getFavorite} = this.props;
+    if (prevProps.user === null && user !== null) {
+      getFavorite();
+    }
+  }
+
   render() {
     const {
       offers,
@@ -64,20 +71,28 @@ class App extends PureComponent {
 App.propTypes = {
   offers: arrayOf(shape({})).isRequired,
   favorites: arrayOf(shape({})).isRequired,
+  user: shape({}),
   offersFetchStatus: string.isRequired,
   getOffersHandler: func.isRequired,
   getUserHandler: func.isRequired,
+  getFavorite: func.isRequired,
+};
+
+App.defaultProps = {
+  user: null,
 };
 
 const mapStateToProps = ({rData, rFilters}) => ({
   offers: getCityOffers({rData, rFilters}),
   favorites: rData.favorites,
+  user: rData.user,
   offersFetchStatus: rData.offersFetchStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getOffersHandler: () => dispatch(aData.fetchOffers()),
   getUserHandler: () => dispatch(aData.getUser()),
+  getFavorite: () => dispatch(aData.getFavorite()),
 });
 
 export {App};

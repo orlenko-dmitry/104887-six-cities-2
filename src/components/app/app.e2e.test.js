@@ -13,9 +13,11 @@ it(`getOffers have been called once`, () => {
   shallow(
       <App
         offers={offers}
+        user={null}
         offersFetchStatus={ASYNC_STATUSES.PENDING}
         getOffers={getOffersHandler}
         getUser={getUserHandler}
+        getFavorite={() => {}}
       />
   );
 
