@@ -7,6 +7,7 @@ import {
 import {connect} from 'react-redux';
 
 import aData from '../../store/data/actions.js';
+import {getFavoriteOffers} from '../../store/data/selectors';
 class FavoritesPage extends PureComponent {
   componentDidMount() {
     const {getFavoriteHandler} = this.props;
@@ -188,7 +189,7 @@ FavoritesPage.propTypes = {
 };
 
 const mapStateToProps = ({rData}) => ({
-  favorites: rData.favorites,
+  favorites: getFavoriteOffers({rData}),
 });
 
 const mapDispatchToProps = (dispatch) => ({

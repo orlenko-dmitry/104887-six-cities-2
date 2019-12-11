@@ -1,6 +1,7 @@
 import {
   SORTED_BY,
   LEAFLET_CONSTS,
+  APP_CITIES,
 } from '../consts/index.js';
 
 const {
@@ -45,6 +46,17 @@ export const sortOffeers = (offers, sortedBy) => {
       return offers.sort((a, b) => b.rating - a.rating);
     default: return offers;
   }
+};
+
+export const sortFavorites = (favorites) => {
+  const result = [];
+  for (let i = 0; i < APP_CITIES.length; i++) {
+    const chunk = favorites.filter((favorite) => favorite.city.name === APP_CITIES[i].name);
+    if (chunk.length > 0) {
+      result.push(chunk);
+    }
+  }
+  return result;
 };
 
 export const getNearOffers = (offers, selectedOfferId, withSelectedOffer = false) => {
