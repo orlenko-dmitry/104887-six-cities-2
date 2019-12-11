@@ -6,21 +6,24 @@ import {ASYNC_STATUSES} from '../../consts/index.js';
 import offers from '../../mocks/offers.js';
 
 
-it(`getOffers have been called once`, () => {
+it(`getOffersHandler have been called once`, () => {
   const getOffersHandler = jest.fn();
   const getUserHandler = jest.fn();
+  const getFavoriteHandler = jest.fn();
 
   shallow(
       <App
         offers={offers}
+        favorites={offers}
         user={null}
         offersFetchStatus={ASYNC_STATUSES.PENDING}
-        getOffers={getOffersHandler}
-        getUser={getUserHandler}
-        getFavorite={() => {}}
+        getOffersHandler={getOffersHandler}
+        getUserHandler={getUserHandler}
+        getFavorite={getFavoriteHandler}
       />
   );
 
   expect(getOffersHandler).toHaveBeenCalledTimes(1);
   expect(getUserHandler).toHaveBeenCalledTimes(1);
+  expect(getFavoriteHandler).toHaveBeenCalledTimes(0);
 });

@@ -13,8 +13,8 @@ import {
   FETCH_COMMENTS_SUCCESS,
   POST_COMMENTS_PENDING,
   POST_COMMENTS_SUCCESS,
-  POST_FAVORITE_PENDING,
-  POST_FAVORITE_SUCCESS,
+  FETCH_FAVORITE_PENDING,
+  FETCH_FAVORITE_SUCCESS,
 } from '../../consts/actionTypes';
 import {ASYNC_STATUSES} from '../../consts/index.js';
 import endpoints from '../../consts/endpoints.js';
@@ -180,27 +180,24 @@ describe(`Reducer works correctly`, () => {
         });
       });
   });
-  it(`Should make a correct API call to /favorite/:offerId/:status with post method`, () => {
+  it(`Should make a correct API call to /favorite with get method`, () => {
     const dispatch = jest.fn();
     const api = createApi(dispatch);
     const apiMock = new MockAdapter(api);
-    const postFavorite = actions.postFavorite({
-      offerId: 3,
-      status: 1,
-    });
+    const postFavorite = actions.getFavorite();
 
     apiMock
-      .onPost(endpoints.postFavorite({offerId: 3, status: 1}))
-      .reply(200, {fake: true});
+      .onGet(endpoints.getFavorite)
+      .reply(200, [{fake: true}]);
 
     return postFavorite(dispatch, jest.fn(), api)
       .then(() => {
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: POST_FAVORITE_PENDING,
+          type: FETCH_FAVORITE_PENDING,
         });
         expect(dispatch).toHaveBeenNthCalledWith(2, {
-          type: POST_FAVORITE_SUCCESS,
-          payload: {fake: true},
+          type: FETCH_FAVORITE_SUCCESS,
+          payload: [{fake: true}],
         });
       });
   });

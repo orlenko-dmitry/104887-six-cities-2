@@ -10,10 +10,11 @@ it(`App renders correctly`, () => {
   const tree = shallow(
       <App
         offers={offers}
+        favorites={offers}
         user={null}
         offersFetchStatus={ASYNC_STATUSES.SUCCESS}
-        getOffers={() => {}}
-        getUser={() => {}}
+        getOffersHandler={() => {}}
+        getUserHandler={() => {}}
         getFavorite={() => {}}
       />
   );
