@@ -46,8 +46,8 @@ const OfferCard = ({
         <img
           className="place-card__image"
           src={previewImage}
-          width="260"
-          height="200"
+          width={isFavoriteCard ? 150 : 260}
+          height={isFavoriteCard ? 100 : 200}
           alt="Place image"
         />
       </a>
