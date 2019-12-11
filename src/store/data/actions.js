@@ -21,7 +21,11 @@ import {
 import {toast} from 'react-toastify';
 
 import endpoints from '../../consts/endpoints.js';
-import {convertOffersToCamelCase, convertCommentsToCamelCase} from '../../helpers/helpers.js';
+import {
+  convertOffersToCamelCase,
+  convertOfferToCamelCase,
+  convertCommentsToCamelCase,
+} from '../../helpers/helpers.js';
 import history from '../../history.js';
 import {ROUTES} from '../../consts/index.js';
 
@@ -110,7 +114,7 @@ export default ({
               const postFavoriteIndex = getState().rData.favorites.map((favorite) => favorite.id).indexOf(response.data.id);
               const favorites = getState().rData.favorites;
               if (postFavoriteIndex === -1) {
-                favorites.push(response.data);
+                favorites.push(convertOfferToCamelCase(response.data));
               } else {
                 favorites.splice(postFavoriteIndex, 1);
               }
@@ -132,7 +136,7 @@ export default ({
             .then((response) => {
               dispatch({
                 type: FETCH_FAVORITE_SUCCESS,
-                payload: response.data,
+                payload: convertOffersToCamelCase(response.data),
               });
             })
             .catch((err) => {
