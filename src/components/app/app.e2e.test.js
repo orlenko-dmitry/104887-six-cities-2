@@ -15,8 +15,8 @@ it(`getOffersHandler have been called once`, () => {
       <App
         offers={offers}
         favorites={offers}
-        user={null}
         offersFetchStatus={ASYNC_STATUSES.PENDING}
+        getUserStatus={ASYNC_STATUSES.PENDING}
         getOffersHandler={getOffersHandler}
         getUserHandler={getUserHandler}
         getFavorite={getFavoriteHandler}

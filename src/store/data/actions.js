@@ -34,9 +34,7 @@ export default ({
             }))
             .catch((err) => {
               toast.error(err);
-              dispatch({
-                type: FETCH_OFFERS_ERROR,
-              });
+              dispatch({type: FETCH_OFFERS_ERROR});
             });
   },
   fetchComments: (offerId) => (dispatch, getState, api) => {
@@ -48,9 +46,7 @@ export default ({
             }))
             .catch((err) => {
               toast.error(err);
-              dispatch({
-                type: FETCH_COMMENTS_ERROR,
-              });
+              dispatch({type: FETCH_COMMENTS_ERROR});
             });
   },
   postComment: ({offerId, rating, comment}) => (dispatch, getState, api) => {
@@ -62,9 +58,7 @@ export default ({
             }))
             .catch((err) => {
               toast.error(err);
-              dispatch({
-                type: POST_COMMENTS_ERROR,
-              });
+              dispatch({type: POST_COMMENTS_ERROR});
             });
   },
 });

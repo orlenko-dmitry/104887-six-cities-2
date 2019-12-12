@@ -6,11 +6,18 @@ import actions from './actions';
 import {
   SIGN_IN_SUCCESS,
   GET_USER_SUCCESS,
+  GET_USER_ERROR,
   FETCH_FAVORITE_PENDING,
   FETCH_FAVORITE_SUCCESS,
   POST_FAVORITE_SUCCESS,
 } from '../../consts/actionTypes';
 import endpoints from '../../consts/endpoints.js';
+import {ASYNC_STATUSES} from '../../consts/index.js';
+
+const {
+  SUCCESS,
+  ERROR,
+} = ASYNC_STATUSES;
 
 describe(`Reducer works correctly`, () => {
   it(`Reducer without additional parameters should return initial state`, () => {
@@ -30,6 +37,14 @@ describe(`Reducer works correctly`, () => {
       payload: {fake: true},
     })).toEqual(Object.assign({}, initialState, {
       user: {fake: true},
+      getUserStatus: SUCCESS,
+    }));
+  });
+  it(`Reducer should change user by a given payload`, () => {
+    expect(reducer(undefined, {
+      type: GET_USER_ERROR,
+    })).toEqual(Object.assign({}, initialState, {
+      getUserStatus: ERROR,
     }));
   });
   it(`Reducer should change user by a given payload`, () => {

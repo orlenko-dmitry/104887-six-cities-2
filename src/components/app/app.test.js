@@ -11,8 +11,8 @@ it(`App renders correctly`, () => {
       <App
         offers={offers}
         favorites={offers}
-        user={null}
         offersFetchStatus={ASYNC_STATUSES.SUCCESS}
+        getUserStatus={ASYNC_STATUSES.PENDING}
         getOffersHandler={() => {}}
         getUserHandler={() => {}}
         getFavorite={() => {}}

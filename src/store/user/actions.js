@@ -1,6 +1,7 @@
 import {
   SIGN_IN_SUCCESS,
   GET_USER_SUCCESS,
+  GET_USER_ERROR,
   FETCH_FAVORITE_PENDING,
   FETCH_FAVORITE_SUCCESS,
   FETCH_FAVORITE_ERROR,
@@ -40,7 +41,7 @@ export default ({
               type: GET_USER_SUCCESS,
               payload: response.data,
             }))
-            .catch(() => {});
+            .catch(() => dispatch({type: GET_USER_ERROR}));
   },
   getFavorite: () => (dispatch, getState, api) => {
     dispatch({type: FETCH_FAVORITE_PENDING});
@@ -53,9 +54,7 @@ export default ({
             })
             .catch((err) => {
               toast.error(err);
-              dispatch({
-                type: FETCH_FAVORITE_ERROR,
-              });
+              dispatch({type: FETCH_FAVORITE_ERROR});
             });
   },
   postFavorite: ({offerId, status}) => (dispatch, getState, api) => {
@@ -82,9 +81,7 @@ export default ({
             })
             .catch((err) => {
               toast.error(err);
-              dispatch({
-                type: POST_FAVORITE_ERROR,
-              });
+              dispatch({type: POST_FAVORITE_ERROR});
             });
   },
 });
