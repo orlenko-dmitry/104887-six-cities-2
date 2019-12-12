@@ -5,8 +5,10 @@ import {
   number,
   func,
 } from 'prop-types';
+import {Link} from 'react-router-dom';
 
 import PageHeader from '../page-header/page-header.jsx';
+import {ROUTES} from '../../consts/index.js';
 
 const AuthPage = ({
   city,
@@ -58,9 +60,9 @@ const AuthPage = ({
         </section>
         <section className="locations locations--login locations--current">
           <div className="locations__item">
-            <a className="locations__item-link" href="#">
+            <Link className="locations__item-link" to={ROUTES.ROOT}>
               <span>{city.name}</span>
-            </a>
+            </Link>
           </div>
         </section>
       </div>
