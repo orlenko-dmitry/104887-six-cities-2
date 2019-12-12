@@ -5,13 +5,11 @@ import {
   func,
 } from 'prop-types';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 
-import OfferCard from '../offer-card/offer-card.jsx';
+import FavoritesList from '../favorites-list/favorites-list.jsx';
 import aData from '../../store/data/actions.js';
 import aUser from '../../store/user/actions.js';
 import {getFavoriteOffers} from '../../store/user/selectors';
-import {ROUTES} from '../../consts/index.js';
 
 const FavoritesPage = ({
   favorites,
@@ -22,37 +20,11 @@ const FavoritesPage = ({
     <div className="page__favorites-container container">
       <section className="favorites">
         <h1 className="favorites__title">Saved listing</h1>
-        <ul className="favorites__list">
-          {
-            favorites.map((chunk, i) => (
-              <li className="favorites__locations-items" key={chunk[0].city.name}>
-                <div className="favorites__locations locations locations--current">
-                  <div className="locations__item">
-                    <Link
-                      className="locations__item-link"
-                      to={ROUTES.ROOT}
-                      data-testid={`location-item-link-${i}`}
-                      onClick={() => selectCityHandler(chunk[0].city)}
-                    >
-                      <span>{chunk[0].city.name}</span>
-                    </Link>
-                  </div>
-                </div>
-                <div className="favorites__places">
-                  {chunk.map((favorite, index) => (
-                    <OfferCard
-                      key={favorite.id}
-                      offer={favorite}
-                      listIndex={index}
-                      isFavoriteCard
-                      onAddFavorite={favoriteAddHandler}
-                    />
-                  ))}
-                </div>
-              </li>
-            ))
-          }
-        </ul>
+        <FavoritesList
+          favorites={favorites}
+          onAddFavorite={favoriteAddHandler}
+          onSelectCity={selectCityHandler}
+        />
       </section>
     </div>
   </main>

@@ -1,20 +1,20 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import {FavoritesPage} from './favorites-page.jsx';
+import FavoritesList from './favorites-list.jsx';
 import {sortFavorites} from '../../helpers/helpers.js';
 import offers from '../../mocks/offers.js';
 
-describe(`e2e test for MainTabs`, () => {
+describe(`e2e test for FavoritesList`, () => {
   const favorites = sortFavorites(offers);
 
   it(`selectCityHandler have been called`, () => {
     const selectCityHandler = jest.fn();
     const wrapper = shallow(
-        <FavoritesPage
+        <FavoritesList
           favorites={favorites}
-          selectCityHandler={selectCityHandler}
-          favoriteAddHandler={() => {}}
+          onSelectCity={selectCityHandler}
+          onAddFavorite={() => {}}
         />
     );
     const link = wrapper.find(`[data-testid="location-item-link-0"]`);
@@ -27,10 +27,10 @@ describe(`e2e test for MainTabs`, () => {
   it(`selectCityHandler called with valid argument`, () => {
     const selectCityHandler = jest.fn();
     const wrapper = shallow(
-        <FavoritesPage
+        <FavoritesList
           favorites={favorites}
-          selectCityHandler={selectCityHandler}
-          favoriteAddHandler={() => {}}
+          onSelectCity={selectCityHandler}
+          onAddFavorite={() => {}}
         />
     );
     const link = wrapper.find(`[data-testid="location-item-link-0"]`);
