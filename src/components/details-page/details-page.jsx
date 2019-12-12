@@ -17,6 +17,7 @@ import ReviewsFrom from '../reviews-form/reviews-form.jsx';
 import withReviewsForm from '../../hocs/with-reviews-form/with-reviews-form.jsx';
 import aFilters from '../../store/filters/actions.js';
 import aData from '../../store/data/actions.js';
+import {getCityOffers} from '../../store/data/selectors.js';
 
 const WithReviewsForm = withReviewsForm(ReviewsFrom);
 
@@ -231,7 +232,7 @@ DetailsPage.propTypes = {
 };
 
 const mapStateToProps = ({rData, rFilters}) => ({
-  offers: rData.offers,
+  offers: getCityOffers({rData, rFilters}),
   city: rData.city,
   comments: rData.comments,
   onHoverOfferId: rFilters.onHoverOfferId,

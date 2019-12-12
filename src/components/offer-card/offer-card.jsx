@@ -81,7 +81,11 @@ const OfferCard = ({
         className="place-card__name"
         data-testid={`place-card-title-${listIndex}`}
       >
-        <Link to={`${ROUTES.OFFER}/${id}`}>{title}</Link>
+        {
+          isFavoriteCard
+            ? <span>{title}</span>
+            : <Link to={`${ROUTES.OFFER}/${id}`}>{title}</Link>
+        }
       </h2>
       <p className="place-card__type">{OFFER_TYPE[type]}</p>
     </div>
