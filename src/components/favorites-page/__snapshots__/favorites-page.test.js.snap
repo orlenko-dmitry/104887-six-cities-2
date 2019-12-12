@@ -28,14 +28,16 @@ exports[`FavoritesPage rendres correctly 1`] = `
             <div
               className="locations__item"
             >
-              <a
+              <Link
                 className="locations__item-link"
-                href="#"
+                data-testid="location-item-link-0"
+                onClick={[Function]}
+                to="/"
               >
                 <span>
                   Amsterdam
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
           <div
@@ -1061,14 +1063,16 @@ exports[`FavoritesPage rendres correctly 1`] = `
             <div
               className="locations__item"
             >
-              <a
+              <Link
                 className="locations__item-link"
-                href="#"
+                data-testid="location-item-link-1"
+                onClick={[Function]}
+                to="/"
               >
                 <span>
                   Brussels
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
           <div
@@ -1760,14 +1764,16 @@ exports[`FavoritesPage rendres correctly 1`] = `
             <div
               className="locations__item"
             >
-              <a
+              <Link
                 className="locations__item-link"
-                href="#"
+                data-testid="location-item-link-2"
+                onClick={[Function]}
+                to="/"
               >
                 <span>
                   Cologne
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
           <div
@@ -2727,14 +2733,16 @@ exports[`FavoritesPage rendres correctly 1`] = `
             <div
               className="locations__item"
             >
-              <a
+              <Link
                 className="locations__item-link"
-                href="#"
+                data-testid="location-item-link-3"
+                onClick={[Function]}
+                to="/"
               >
                 <span>
                   Paris
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
           <div
@@ -3864,14 +3872,16 @@ exports[`FavoritesPage rendres correctly 1`] = `
             <div
               className="locations__item"
             >
-              <a
+              <Link
                 className="locations__item-link"
-                href="#"
+                data-testid="location-item-link-4"
+                onClick={[Function]}
+                to="/"
               >
                 <span>
                   Hamburg
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
           <div
@@ -4805,14 +4815,16 @@ exports[`FavoritesPage rendres correctly 1`] = `
             <div
               className="locations__item"
             >
-              <a
+              <Link
                 className="locations__item-link"
-                href="#"
+                data-testid="location-item-link-5"
+                onClick={[Function]}
+                to="/"
               >
                 <span>
                   Dusseldorf
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
           <div

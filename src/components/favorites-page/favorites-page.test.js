@@ -8,7 +8,13 @@ import offers from '../../mocks/offers.js';
 const favorites = sortFavorites(offers);
 
 it(`FavoritesPage rendres correctly`, () => {
-  const tree = shallow(<FavoritesPage favorites={favorites} favoriteAddHandler={() => {}}/>);
+  const tree = shallow(
+      <FavoritesPage
+        favorites={favorites}
+        selectCityHandler={() => {}}
+        favoriteAddHandler={() => {}}
+      />
+  );
 
   expect(tree).toMatchSnapshot();
 });

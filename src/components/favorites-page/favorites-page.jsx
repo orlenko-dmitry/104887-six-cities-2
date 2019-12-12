@@ -5,25 +5,36 @@ import {
   func,
 } from 'prop-types';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 import OfferCard from '../offer-card/offer-card.jsx';
 import aData from '../../store/data/actions.js';
 import {getFavoriteOffers} from '../../store/data/selectors';
+import {ROUTES} from '../../consts/index.js';
 
-const FavoritesPage = ({favorites, favoriteAddHandler}) => (
+const FavoritesPage = ({
+  favorites,
+  favoriteAddHandler,
+  selectCityHandler,
+}) => (
   <main className="page__main page__main--favorites">
     <div className="page__favorites-container container">
       <section className="favorites">
         <h1 className="favorites__title">Saved listing</h1>
         <ul className="favorites__list">
           {
-            favorites.map((chunk) => (
+            favorites.map((chunk, i) => (
               <li className="favorites__locations-items" key={chunk[0].city.name}>
                 <div className="favorites__locations locations locations--current">
                   <div className="locations__item">
-                    <a className="locations__item-link" href="#">
+                    <Link
+                      className="locations__item-link"
+                      to={ROUTES.ROOT}
+                      data-testid={`location-item-link-${i}`}
+                      onClick={() => selectCityHandler(chunk[0].city)}
+                    >
                       <span>{chunk[0].city.name}</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="favorites__places">
@@ -50,6 +61,7 @@ FavoritesPage.propTypes = {
   favorites: arrayOf(arrayOf(shape({
   }))).isRequired,
   favoriteAddHandler: func.isRequired,
+  selectCityHandler: func.isRequired,
 };
 
 const mapStateToProps = ({rData}) => ({
@@ -58,6 +70,7 @@ const mapStateToProps = ({rData}) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   favoriteAddHandler: (payload) => dispatch(aData.postFavorite(payload)),
+  selectCityHandler: (payload) => dispatch(aData.selectCity(payload)),
 });
 
 export {FavoritesPage};

@@ -59,6 +59,15 @@ export const sortFavorites = (favorites) => {
   return result;
 };
 
+// export const sortFavorites = (favorites) => {
+//   let baz = favorites.map((c) => {
+//     console.log(c, APP_CITIES);
+//     return APP_CITIES.filter((f) => f.name === c.city.name);
+//   });
+//   console.log(baz, `baz`);
+//   return baz;
+// };
+
 export const getNearOffers = (offers, selectedOfferId, withSelectedOffer = false) => {
   const result = [];
   const selectedOfferIndex = offers.map((offer) => offer.id).indexOf(selectedOfferId);

@@ -32,9 +32,9 @@ describe(`e2e test for MainTabs`, () => {
           onSelectCityClick={onClickHandler}
         />
     );
-    const card = wrapper.find(`[data-testid="city-0"]`);
+    const title = wrapper.find(`[data-testid="city-0"]`);
 
-    card.simulate(`click`);
+    title.simulate(`click`);
 
     expect(onClickHandler).toBeCalledWith(expect.any(Object));
   });
