@@ -17,6 +17,7 @@ import ReviewsFrom from '../reviews-form/reviews-form.jsx';
 import withReviewsForm from '../../hocs/with-reviews-form/with-reviews-form.jsx';
 import aFilters from '../../store/filters/actions.js';
 import aData from '../../store/data/actions.js';
+import aUser from '../../store/user/actions.js';
 import {getCityOffers} from '../../store/data/selectors.js';
 
 const WithReviewsForm = withReviewsForm(ReviewsFrom);
@@ -241,7 +242,7 @@ const mapStateToProps = ({rData, rFilters}) => ({
 const mapDispatchToProps = (dispatch) => ({
   getOfferIdHandler: (payload) => dispatch(aFilters.getOfferId(payload)),
   fetchCommentsHandler: (payload) => dispatch(aData.fetchComments(payload)),
-  favoriteAddHandler: (payload) => dispatch(aData.postFavorite(payload)),
+  favoriteAddHandler: (payload) => dispatch(aUser.postFavorite(payload)),
 });
 
 export {DetailsPage};

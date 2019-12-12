@@ -8,7 +8,7 @@ import {
   func,
 } from 'prop-types';
 
-import aData from '../../store/data/actions.js';
+import aUser from '../../store/user/actions.js';
 
 const withAuthForm = (Component) => {
   class WithAuthForm extends PureComponent {
@@ -75,13 +75,13 @@ const withAuthForm = (Component) => {
   return WithAuthForm;
 };
 
-const mapStateToProps = ({rData}) => ({
+const mapStateToProps = ({rData, rUser}) => ({
   city: rData.city,
-  user: rData.user,
+  user: rUser.user,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  authLogin: (payload) => dispatch(aData.authLogin(payload)),
+  authLogin: (payload) => dispatch(aUser.authLogin(payload)),
 });
 
 export {withAuthForm};

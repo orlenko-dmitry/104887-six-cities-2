@@ -81,8 +81,8 @@ const withReviewsForm = (Component) => {
   return WithReviewsForm;
 };
 
-const mapStateToProps = ({rData}) => ({
-  user: rData.user,
+const mapStateToProps = ({rData, rUser}) => ({
+  user: rUser.user,
   messagePostStatus: rData.messagePostStatus,
 });
 

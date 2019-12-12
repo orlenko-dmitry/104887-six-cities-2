@@ -1,6 +1,4 @@
 import {
-  SIGN_IN_SUCCESS,
-  GET_USER_SUCCESS,
   SELECT_CITY,
   FETCH_OFFERS_PENDING,
   FETCH_OFFERS_SUCCESS,
@@ -10,7 +8,6 @@ import {
   POST_COMMENTS_SUCCESS,
   POST_COMMENTS_ERROR,
   POST_FAVORITE_SUCCESS,
-  FETCH_FAVORITE_SUCCESS,
 } from '../../consts/actionTypes.js';
 import {
   APP_CITIES,
@@ -20,19 +17,13 @@ import {
 export const initialState = {
   city: APP_CITIES[0],
   offers: [],
-  favorites: [],
   comments: [],
-  user: null,
   offersFetchStatus: ASYNC_STATUSES.PENDING,
   messagePostStatus: ``,
 };
 
 export default (state = initialState, {type, payload}) => {
   switch (type) {
-    case SIGN_IN_SUCCESS:
-      return Object.assign({}, state, {user: payload});
-    case GET_USER_SUCCESS:
-      return Object.assign({}, state, {user: payload});
     case SELECT_CITY:
       return Object.assign({}, state, {city: payload});
     case FETCH_OFFERS_PENDING:
@@ -50,9 +41,7 @@ export default (state = initialState, {type, payload}) => {
     case POST_COMMENTS_ERROR:
       return Object.assign({}, state, {messagePostStatus: ASYNC_STATUSES.ERROR});
     case POST_FAVORITE_SUCCESS:
-      return Object.assign({}, state, {offers: payload.offers, favorites: payload.favorites});
-    case FETCH_FAVORITE_SUCCESS:
-      return Object.assign({}, state, {favorites: payload});
+      return Object.assign({}, state, {offers: payload.offers});
     default: return state;
   }
 };

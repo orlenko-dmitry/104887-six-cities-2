@@ -16,6 +16,7 @@ import PageHeader from '../page-header/page-header.jsx';
 import withSorterState from '../../hocs/with-sorter/with-sorter.jsx';
 import {getCityOffers} from '../../store/data/selectors.js';
 import aData from '../../store/data/actions.js';
+import aUser from '../../store/user/actions.js';
 import aFilters from '../../store/filters/actions.js';
 import {APP_CITIES} from '../../consts/index.js';
 
@@ -100,10 +101,14 @@ MainPage.defaultProps = {
   user: null,
 };
 
-const mapStateToProps = ({rData, rFilters}) => ({
+const mapStateToProps = ({
+  rData,
+  rFilters,
+  rUser,
+}) => ({
   offers: getCityOffers({rData, rFilters}),
   city: rData.city,
-  user: rData.user,
+  user: rUser.user,
   sortedBy: rFilters.sortedBy,
   onHoverOfferId: rFilters.onHoverOfferId,
 });
@@ -112,7 +117,7 @@ const mapDispatchToProps = (dispatch) => ({
   selectCityHandler: (payload) => dispatch(aData.selectCity(payload)),
   sortByHandler: (payload) => dispatch(aFilters.sortBy(payload)),
   getOfferIdHandler: (payload) => dispatch(aFilters.getOfferId(payload)),
-  favoriteAddHandler: (payload) => dispatch(aData.postFavorite(payload)),
+  favoriteAddHandler: (payload) => dispatch(aUser.postFavorite(payload)),
 });
 
 export {MainPage};

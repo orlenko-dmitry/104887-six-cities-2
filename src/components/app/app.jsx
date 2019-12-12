@@ -18,6 +18,7 @@ import FavoritesEmptyPage from '../favorites-empty-page/favorites-empty-page.jsx
 import withEmptyPage from '../../hocs/with-empty-page/with-empty-page.jsx';
 import withAuthForm from '../../hocs/with-auth-form/with-auth-form.jsx';
 import aData from '../../store/data/actions.js';
+import aUser from '../../store/user/actions.js';
 import {getCityOffers} from '../../store/data/selectors.js';
 import {ASYNC_STATUSES, ROUTES} from '../../consts/index.js';
 
@@ -82,17 +83,21 @@ App.defaultProps = {
   user: null,
 };
 
-const mapStateToProps = ({rData, rFilters}) => ({
+const mapStateToProps = ({
+  rData,
+  rFilters,
+  rUser,
+}) => ({
   offers: getCityOffers({rData, rFilters}),
-  favorites: rData.favorites,
-  user: rData.user,
+  favorites: rUser.favorites,
+  user: rUser.user,
   offersFetchStatus: rData.offersFetchStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getOffersHandler: () => dispatch(aData.fetchOffers()),
-  getUserHandler: () => dispatch(aData.getUser()),
-  getFavorite: () => dispatch(aData.getFavorite()),
+  getUserHandler: () => dispatch(aUser.getUser()),
+  getFavorite: () => dispatch(aUser.getFavorite()),
 });
 
 export {App};

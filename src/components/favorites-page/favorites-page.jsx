@@ -9,7 +9,8 @@ import {Link} from 'react-router-dom';
 
 import OfferCard from '../offer-card/offer-card.jsx';
 import aData from '../../store/data/actions.js';
-import {getFavoriteOffers} from '../../store/data/selectors';
+import aUser from '../../store/user/actions.js';
+import {getFavoriteOffers} from '../../store/user/selectors';
 import {ROUTES} from '../../consts/index.js';
 
 const FavoritesPage = ({
@@ -64,12 +65,12 @@ FavoritesPage.propTypes = {
   selectCityHandler: func.isRequired,
 };
 
-const mapStateToProps = ({rData}) => ({
-  favorites: getFavoriteOffers({rData}),
+const mapStateToProps = ({rUser}) => ({
+  favorites: getFavoriteOffers({rUser}),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  favoriteAddHandler: (payload) => dispatch(aData.postFavorite(payload)),
+  favoriteAddHandler: (payload) => dispatch(aUser.postFavorite(payload)),
   selectCityHandler: (payload) => dispatch(aData.selectCity(payload)),
 });
 
