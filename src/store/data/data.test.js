@@ -188,7 +188,7 @@ describe(`Reducer works correctly`, () => {
 
     apiMock
       .onGet(endpoints.getFavorite)
-      .reply(200, [{fake: true}]);
+      .reply(200, []);
 
     return postFavorite(dispatch, jest.fn(), api)
       .then(() => {
@@ -197,7 +197,7 @@ describe(`Reducer works correctly`, () => {
         });
         expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: FETCH_FAVORITE_SUCCESS,
-          payload: [{fake: true}],
+          payload: [],
         });
       });
   });
