@@ -21,7 +21,7 @@ import withAuth from '../../hocs/with-auth/with-auth.jsx';
 import aData from '../../store/data/actions.js';
 import aUser from '../../store/user/actions.js';
 import {getCityOffers} from '../../store/data/selectors.js';
-import {ASYNC_STATUSES, ROUTES} from '../../consts/index.js';
+import {ROUTES} from '../../consts/index.js';
 
 const WithEmptyMainPage = withEmptyPage(MainPage, MainEmptyPage);
 const WithAuthForm = withAuthForm(AuthPage);
@@ -51,15 +51,19 @@ class App extends PureComponent {
       favorites,
       user,
       offersFetchStatus,
-      getUserStatus,
+      userGetStatus,
+      favoritesFetchStatus,
     } = this.props;
-    const isPending = offersFetchStatus === ASYNC_STATUSES.PENDING;
 
-    return !isPending && (
+    return (
       <Fragment>
         <Switch>
           <Route exact path={ROUTES.ROOT} render={(props) => (
-            <WithEmptyMainPage {...props} dataLength={offers.length} />
+            <WithEmptyMainPage
+              {...props}
+              dataLength={offers.length}
+              fetchStatus={offersFetchStatus}
+            />
           )} />
           <Route path={ROUTES.AUTH} component={WithAuthForm} />
           <Route path={`${ROUTES.OFFER}/:offerId`} component={DetailsPage} />
@@ -67,8 +71,9 @@ class App extends PureComponent {
             <WithAuth
               {...props}
               user={user}
-              getUserStatus={getUserStatus}
+              userGetStatus={userGetStatus}
               dataLength={favorites.length}
+              fetchStatus={favoritesFetchStatus}
             />
           )}/>
         </Switch>
@@ -83,7 +88,8 @@ App.propTypes = {
   favorites: arrayOf(shape({})).isRequired,
   user: shape({}),
   offersFetchStatus: string.isRequired,
-  getUserStatus: string.isRequired,
+  userGetStatus: string.isRequired,
+  favoritesFetchStatus: string.isRequired,
   getOffersHandler: func.isRequired,
   getUserHandler: func.isRequired,
   getFavorite: func.isRequired,
@@ -102,7 +108,8 @@ const mapStateToProps = ({
   favorites: rUser.favorites,
   user: rUser.user,
   offersFetchStatus: rData.offersFetchStatus,
-  getUserStatus: rUser.getUserStatus,
+  userGetStatus: rUser.userGetStatus,
+  favoritesFetchStatus: rUser.favoritesFetchStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -7,7 +7,6 @@ import {
   SIGN_IN_SUCCESS,
   GET_USER_SUCCESS,
   GET_USER_ERROR,
-  FETCH_FAVORITE_PENDING,
   FETCH_FAVORITE_SUCCESS,
   POST_FAVORITE_SUCCESS,
 } from '../../consts/actionTypes';
@@ -29,6 +28,7 @@ describe(`Reducer works correctly`, () => {
       payload: {fake: true},
     })).toEqual(Object.assign({}, initialState, {
       user: {fake: true},
+      userGetStatus: SUCCESS,
     }));
   });
   it(`Reducer should change user by a given payload`, () => {
@@ -37,14 +37,14 @@ describe(`Reducer works correctly`, () => {
       payload: {fake: true},
     })).toEqual(Object.assign({}, initialState, {
       user: {fake: true},
-      getUserStatus: SUCCESS,
+      userGetStatus: SUCCESS,
     }));
   });
   it(`Reducer should change user by a given payload`, () => {
     expect(reducer(undefined, {
       type: GET_USER_ERROR,
     })).toEqual(Object.assign({}, initialState, {
-      getUserStatus: ERROR,
+      userGetStatus: ERROR,
     }));
   });
   it(`Reducer should change user by a given payload`, () => {
@@ -110,9 +110,6 @@ describe(`Action creators work correctly`, () => {
     return postFavorite(dispatch, jest.fn(), api)
       .then(() => {
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: FETCH_FAVORITE_PENDING,
-        });
-        expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: FETCH_FAVORITE_SUCCESS,
           payload: [],
         });

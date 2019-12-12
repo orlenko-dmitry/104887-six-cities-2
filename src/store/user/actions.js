@@ -2,10 +2,8 @@ import {
   SIGN_IN_SUCCESS,
   GET_USER_SUCCESS,
   GET_USER_ERROR,
-  FETCH_FAVORITE_PENDING,
   FETCH_FAVORITE_SUCCESS,
   FETCH_FAVORITE_ERROR,
-  POST_FAVORITE_PENDING,
   POST_FAVORITE_SUCCESS,
   POST_FAVORITE_ERROR,
 } from '../../consts/actionTypes.js';
@@ -44,7 +42,6 @@ export default ({
             .catch(() => dispatch({type: GET_USER_ERROR}));
   },
   getFavorite: () => (dispatch, getState, api) => {
-    dispatch({type: FETCH_FAVORITE_PENDING});
     return api.get(endpoints.getFavorite)
             .then((response) => {
               dispatch({
@@ -58,7 +55,6 @@ export default ({
             });
   },
   postFavorite: ({offerId, status}) => (dispatch, getState, api) => {
-    dispatch({type: POST_FAVORITE_PENDING});
     return api.post(endpoints.postFavorite({offerId, status}))
             .then((response) => {
               const offers = getState().rData.offers.map((offer) => {

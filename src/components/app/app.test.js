@@ -12,7 +12,8 @@ it(`App renders correctly`, () => {
         offers={offers}
         favorites={offers}
         offersFetchStatus={ASYNC_STATUSES.SUCCESS}
-        getUserStatus={ASYNC_STATUSES.PENDING}
+        userGetStatus={ASYNC_STATUSES.SUCCESS}
+        favoritesFetchStatus={ASYNC_STATUSES.SUCCESS}
         getOffersHandler={() => {}}
         getUserHandler={() => {}}
         getFavorite={() => {}}
