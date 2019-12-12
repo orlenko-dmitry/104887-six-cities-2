@@ -9,7 +9,7 @@ import {connect} from 'react-redux';
 import FavoritesList from '../favorites-list/favorites-list.jsx';
 import aData from '../../store/data/actions.js';
 import aUser from '../../store/user/actions.js';
-import {getFavoriteOffers} from '../../store/user/selectors';
+import {sortFavorites} from '../../helpers/helpers.js';
 
 const FavoritesPage = ({
   favorites,
@@ -38,7 +38,7 @@ FavoritesPage.propTypes = {
 };
 
 const mapStateToProps = ({rUser}) => ({
-  favorites: getFavoriteOffers({rUser}),
+  favorites: sortFavorites(rUser.favorites),
 });
 
 const mapDispatchToProps = (dispatch) => ({
