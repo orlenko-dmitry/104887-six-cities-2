@@ -5,9 +5,7 @@ import reducer, {initialState} from './data.js';
 import actions from './actions';
 import {
   SELECT_CITY,
-  FETCH_OFFERS_PENDING,
   FETCH_OFFERS_SUCCESS,
-  FETCH_COMMENTS_PENDING,
   FETCH_COMMENTS_SUCCESS,
   POST_COMMENTS_PENDING,
   POST_COMMENTS_SUCCESS,
@@ -75,9 +73,6 @@ describe(`Action creators work correctly`, () => {
     return offersLoader(dispatch, jest.fn(), api)
       .then(() => {
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: FETCH_OFFERS_PENDING,
-        });
-        expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: FETCH_OFFERS_SUCCESS,
           payload: [],
         });
@@ -96,9 +91,6 @@ describe(`Action creators work correctly`, () => {
     return commentsLoader(dispatch, jest.fn(), api)
       .then(() => {
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: FETCH_COMMENTS_PENDING,
-        });
-        expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: FETCH_COMMENTS_SUCCESS,
           payload: [],
         });

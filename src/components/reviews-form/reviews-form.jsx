@@ -1,11 +1,17 @@
 import React, {Fragment} from 'react';
 import {
+  oneOf,
   string,
   number,
   func,
 } from 'prop-types';
 import {ASYNC_STATUSES} from '../../consts';
 
+const {
+  PENDING,
+  SUCCESS,
+  ERROR,
+} = ASYNC_STATUSES;
 const raitings = Array.from(Array(5).keys()).reverse();
 
 const ReviewsForm = ({
@@ -74,7 +80,7 @@ const ReviewsForm = ({
 ReviewsForm.propTypes = {
   rating: number.isRequired,
   comment: string.isRequired,
-  messagePostStatus: string.isRequired,
+  messagePostStatus: oneOf([``, PENDING, SUCCESS, ERROR]).isRequired,
   onRatingChange: func.isRequired,
   onCommentChange: func.isRequired,
   onSubmitForm: func.isRequired,

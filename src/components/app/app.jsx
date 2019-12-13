@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {
   arrayOf,
   shape,
-  string,
+  oneOf,
   func,
 } from 'prop-types';
 import {Switch, Route} from 'react-router-dom';
@@ -21,7 +21,13 @@ import withAuth from '../../hocs/with-auth/with-auth.jsx';
 import aData from '../../store/data/actions.js';
 import aUser from '../../store/user/actions.js';
 import {getCityOffers} from '../../store/data/selectors.js';
-import {ROUTES} from '../../consts/index.js';
+import {ROUTES, ASYNC_STATUSES} from '../../consts/index.js';
+
+const {
+  PENDING,
+  SUCCESS,
+  ERROR,
+} = ASYNC_STATUSES;
 
 const WithEmptyMainPage = withEmptyPage(MainPage, MainEmptyPage);
 const WithAuthForm = withAuthForm(AuthPage);
@@ -87,9 +93,9 @@ App.propTypes = {
   offers: arrayOf(shape({})).isRequired,
   favorites: arrayOf(shape({})).isRequired,
   user: shape({}),
-  offersFetchStatus: string.isRequired,
-  userGetStatus: string.isRequired,
-  favoritesFetchStatus: string.isRequired,
+  offersFetchStatus: oneOf([PENDING, SUCCESS, ERROR]).isRequired,
+  userGetStatus: oneOf([PENDING, SUCCESS, ERROR]).isRequired,
+  favoritesFetchStatus: oneOf([PENDING, SUCCESS, ERROR]).isRequired,
   getOffersHandler: func.isRequired,
   getUserHandler: func.isRequired,
   getFavorite: func.isRequired,

@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import {
+  oneOf,
   shape,
   string,
   func,
@@ -8,6 +9,12 @@ import {connect} from 'react-redux';
 import {compose} from 'redux';
 import aData from '../../store/data/actions.js';
 import {ASYNC_STATUSES} from '../../consts/index.js';
+
+const {
+  PENDING,
+  SUCCESS,
+  ERROR,
+} = ASYNC_STATUSES;
 
 const withReviewsForm = (Component) => {
   class WithReviewsForm extends PureComponent {
@@ -69,7 +76,7 @@ const withReviewsForm = (Component) => {
 
   WithReviewsForm.propTypes = {
     user: shape({}),
-    messagePostStatus: string.isRequired,
+    messagePostStatus: oneOf([``, PENDING, SUCCESS, ERROR]).isRequired,
     offerId: string.isRequired,
     postCommentHandler: func.isRequired,
   };

@@ -1,11 +1,8 @@
 import {
   SELECT_CITY,
-  FETCH_OFFERS_PENDING,
   FETCH_OFFERS_SUCCESS,
   FETCH_OFFERS_ERROR,
-  FETCH_COMMENTS_PENDING,
   FETCH_COMMENTS_SUCCESS,
-  FETCH_COMMENTS_ERROR,
   POST_COMMENTS_PENDING,
   POST_COMMENTS_SUCCESS,
   POST_COMMENTS_ERROR,
@@ -26,7 +23,6 @@ export default ({
     };
   },
   fetchOffers: () => (dispatch, getState, api) => {
-    dispatch({type: FETCH_OFFERS_PENDING});
     return api.get(endpoints.getOffers)
             .then((response) => dispatch({
               type: FETCH_OFFERS_SUCCESS,
@@ -38,7 +34,6 @@ export default ({
             });
   },
   fetchComments: (offerId) => (dispatch, getState, api) => {
-    dispatch({type: FETCH_COMMENTS_PENDING});
     return api.get(endpoints.comments(offerId))
             .then((response) => dispatch({
               type: FETCH_COMMENTS_SUCCESS,
@@ -46,7 +41,6 @@ export default ({
             }))
             .catch((err) => {
               toast.error(err);
-              dispatch({type: FETCH_COMMENTS_ERROR});
             });
   },
   postComment: ({offerId, rating, comment}) => (dispatch, getState, api) => {
