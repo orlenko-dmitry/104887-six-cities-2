@@ -8,10 +8,10 @@ const withSorterState = (Component) => {
       this.state = {
         isSorterOpen: false,
       };
-      this.openSorterHandler = this.openSorterHandler.bind(this);
+      this._openSorterHandler = this._openSorterHandler.bind(this);
     }
 
-    openSorterHandler() {
+    _openSorterHandler() {
       const {isSorterOpen} = this.state;
       this.setState({isSorterOpen: !isSorterOpen});
     }
@@ -23,7 +23,7 @@ const withSorterState = (Component) => {
         <Component
           {...this.props}
           isOpen={isSorterOpen}
-          onOpenSorterClick={this.openSorterHandler}
+          onOpenSorterClick={this._openSorterHandler}
         />
       );
     }

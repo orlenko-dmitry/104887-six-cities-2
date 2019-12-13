@@ -22,6 +22,8 @@ export const ROUTES = {
   FAVORITE: `/favorite`,
 };
 
+export const MAX_REVIEWS = 10;
+
 export const SORT_BY_LIST = [
   {
     id: 1,

@@ -1,6 +1,8 @@
 import {
   SORTED_BY,
   LEAFLET_CONSTS,
+  APP_CITIES,
+  MAX_REVIEWS,
 } from '../consts/index.js';
 
 const {
@@ -11,8 +13,10 @@ const {
 } = SORTED_BY;
 
 export const defineRating = (rating) => {
-  return `${Math.round(rating / 5 * 100)}%`;
+  return `${Math.round(rating) / 5 * 100}%`;
 };
+
+export const defineMaxReviews = (reviews) => reviews.length <= MAX_REVIEWS ? reviews : reviews.splice(0, reviews.length - MAX_REVIEWS);
 
 export const leafletSetView = ({offers, map, city, zoom, onHoverOfferId, selectedOfferId, leaflet}) => {
   map.setView(city, zoom);
@@ -45,6 +49,17 @@ export const sortOffeers = (offers, sortedBy) => {
       return offers.sort((a, b) => b.rating - a.rating);
     default: return offers;
   }
+};
+
+export const sortFavorites = (favorites) => {
+  const result = [];
+  for (let i = 0; i < APP_CITIES.length; i++) {
+    const chunk = favorites.filter((favorite) => favorite.city.name === APP_CITIES[i].name);
+    if (chunk.length > 0) {
+      result.push(chunk);
+    }
+  }
+  return result;
 };
 
 export const getNearOffers = (offers, selectedOfferId, withSelectedOffer = false) => {
@@ -108,6 +123,47 @@ export const convertOffersToCamelCase = (offers) => {
     id,
   }));
 };
+
+export const convertOfferToCamelCase = ({
+  city,
+  preview_image: previewImage,
+  images,
+  title,
+  is_favorite: isFavorite,
+  is_premium: isPremium,
+  rating,
+  type,
+  bedrooms,
+  max_adults: maxAdults,
+  price,
+  goods,
+  host,
+  description,
+  location,
+  id,
+}) => ({
+  city,
+  previewImage,
+  images,
+  title,
+  isFavorite,
+  isPremium,
+  rating,
+  type,
+  bedrooms,
+  maxAdults,
+  price,
+  goods,
+  host: {
+    id: host.id,
+    isPro: host.is_pro,
+    name: host.name,
+    avatarUrl: host.avatar_url,
+  },
+  description,
+  location,
+  id,
+});
 
 export const convertCommentsToCamelCase = (comments) => {
   return comments.map(({

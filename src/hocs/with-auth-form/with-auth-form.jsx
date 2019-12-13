@@ -3,12 +3,20 @@ import {connect} from 'react-redux';
 import {compose} from 'redux';
 import {
   shape,
+  oneOf,
   string,
   number,
   func,
 } from 'prop-types';
 
-import aData from '../../store/data/actions.js';
+import aUser from '../../store/user/actions.js';
+import {ASYNC_STATUSES} from '../../consts/index.js';
+
+const {
+  PENDING,
+  SUCCESS,
+  ERROR,
+} = ASYNC_STATUSES;
 
 const withAuthForm = (Component) => {
   class WithAuthForm extends PureComponent {
@@ -18,12 +26,12 @@ const withAuthForm = (Component) => {
         userEmail: ``,
         userPassword: ``,
       };
-      this.formSubmitHandler = this.formSubmitHandler.bind(this);
-      this.emailChangeHandler = this.emailChangeHandler.bind(this);
-      this.passwordChangeHandler = this.passwordChangeHandler.bind(this);
+      this._formSubmitHandler = this._formSubmitHandler.bind(this);
+      this._emailChangeHandler = this._emailChangeHandler.bind(this);
+      this._passwordChangeHandler = this._passwordChangeHandler.bind(this);
     }
 
-    formSubmitHandler(evt) {
+    _formSubmitHandler(evt) {
       const {userEmail, userPassword} = this.state;
       const {authLogin} = this.props;
 
@@ -31,25 +39,27 @@ const withAuthForm = (Component) => {
       authLogin({userEmail, userPassword});
     }
 
-    emailChangeHandler(value) {
+    _emailChangeHandler(value) {
       this.setState({userEmail: value});
     }
 
-    passwordChangeHandler(value) {
+    _passwordChangeHandler(value) {
       this.setState({userPassword: value});
     }
 
     render() {
       const {userEmail, userPassword} = this.state;
+      const {userGetStatus} = this.props;
 
       return (
         <Component
           {...this.props}
           userEmail={userEmail}
           userPassword={userPassword}
-          onFormSubmit={this.formSubmitHandler}
-          onEmailChange={this.emailChangeHandler}
-          onPasswordChange={this.passwordChangeHandler}
+          userGetStatus={userGetStatus}
+          onFormSubmit={this._formSubmitHandler}
+          onEmailChange={this._emailChangeHandler}
+          onPasswordChange={this._passwordChangeHandler}
         />
       );
     }
@@ -65,6 +75,7 @@ const withAuthForm = (Component) => {
       name: string.isRequired,
     }).isRequired,
     user: shape({}),
+    userGetStatus: oneOf([PENDING, SUCCESS, ERROR]).isRequired,
     authLogin: func.isRequired,
   };
 
@@ -75,13 +86,14 @@ const withAuthForm = (Component) => {
   return WithAuthForm;
 };
 
-const mapStateToProps = ({rData}) => ({
+const mapStateToProps = ({rData, rUser}) => ({
   city: rData.city,
-  user: rData.user,
+  user: rUser.user,
+  userGetStatus: rUser.userGetStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  authLogin: (payload) => dispatch(aData.authLogin(payload)),
+  authLogin: (payload) => dispatch(aUser.authLogin(payload)),
 });
 
 export {withAuthForm};

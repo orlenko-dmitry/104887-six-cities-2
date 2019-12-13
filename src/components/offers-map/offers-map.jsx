@@ -16,10 +16,6 @@ const {
 } = LEAFLET_CONSTS;
 
 class OffersMap extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     const {
       selectedCity: {

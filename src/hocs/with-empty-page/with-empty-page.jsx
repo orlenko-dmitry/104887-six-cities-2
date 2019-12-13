@@ -1,25 +1,21 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {compose} from 'redux';
-import {arrayOf, shape} from 'prop-types';
+import {number} from 'prop-types';
 
-import {getCityOffers} from '../../store/data/selectors.js';
+import {ASYNC_STATUSES} from '../../consts/index.js';
 
-const withEmptyPage = (ComponentPage, ComponentEmptyPage) => ({offers}) => {
-  return offers.length > 0 ? <ComponentPage /> : <ComponentEmptyPage />;
+const withEmptyPage = (ComponentPage, ComponentEmptyPage) => (props) => {
+  const {dataLength, fetchStatus} = props;
+
+  if (fetchStatus === ASYNC_STATUSES.PENDING) {
+    return null;
+  } else if (fetchStatus === ASYNC_STATUSES.SUCCESS) {
+    return dataLength > 0 ? <ComponentPage {...props} /> : <ComponentEmptyPage {...props} />;
+  }
+  return null;
 };
-
-const mapStateToProps = ({rData, rFilters}) => ({
-  offers: getCityOffers({rData, rFilters}),
-});
 
 withEmptyPage.propTypes = {
-  offers: arrayOf(shape({})).isRequired,
+  dataLength: number.isRequired,
 };
 
-export {withEmptyPage};
-
-export default compose(
-    connect(mapStateToProps, null),
-    withEmptyPage
-);
+export default withEmptyPage;

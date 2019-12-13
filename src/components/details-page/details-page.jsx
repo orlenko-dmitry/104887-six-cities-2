@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import {
   arrayOf,
   shape,
+  oneOf,
   string,
   number,
   bool,
@@ -17,14 +18,21 @@ import ReviewsFrom from '../reviews-form/reviews-form.jsx';
 import withReviewsForm from '../../hocs/with-reviews-form/with-reviews-form.jsx';
 import aFilters from '../../store/filters/actions.js';
 import aData from '../../store/data/actions.js';
+import aUser from '../../store/user/actions.js';
 import {getCityOffers} from '../../store/data/selectors.js';
+import {ASYNC_STATUSES} from '../../consts/index.js';
 
+const {
+  PENDING,
+  SUCCESS,
+  ERROR,
+} = ASYNC_STATUSES;
 const WithReviewsForm = withReviewsForm(ReviewsFrom);
 
 class DetailsPage extends PureComponent {
   constructor(props) {
     super(props);
-    this.colorPinHandler = this.colorPinHandler.bind(this);
+    this._colorPinHandler = this._colorPinHandler.bind(this);
   }
 
   componentDidMount() {
@@ -32,7 +40,7 @@ class DetailsPage extends PureComponent {
     fetchCommentsHandler(offerId);
   }
 
-  colorPinHandler(id) {
+  _colorPinHandler(id) {
     const {getOfferIdHandler} = this.props;
     getOfferIdHandler(id);
   }
@@ -43,6 +51,7 @@ class DetailsPage extends PureComponent {
       comments,
       city,
       onHoverOfferId,
+      offersFetchStatus,
       favoriteAddHandler,
       match: {
         params: {
@@ -52,7 +61,7 @@ class DetailsPage extends PureComponent {
     } = this.props;
 
     const offerIndex = offers.map((offer) => offer.id).indexOf(Number(offerId));
-
+    const isPending = offersFetchStatus === PENDING;
     const {
       images,
       isPremium,
@@ -65,14 +74,10 @@ class DetailsPage extends PureComponent {
       description,
       id,
       goods,
-      host: {
-        isPro,
-        name: hostName,
-        avatarUrl,
-      },
-    } = offers[offerIndex];
+      host,
+    } = !isPending && offers[offerIndex];
 
-    return offers.length && (
+    return !isPending && (
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">
@@ -111,7 +116,7 @@ class DetailsPage extends PureComponent {
                   <span style={{width: defineRating(rating)}} />
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">{rating}</span>
+                <span className="property__rating-value rating__value">{Math.round(rating)}</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
@@ -142,12 +147,12 @@ class DetailsPage extends PureComponent {
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
                   <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="property__avatar user__avatar" src={`/${avatarUrl}`} width={74} height={74} alt="Host avatar" />
+                    <img className="property__avatar user__avatar" src={`/${host.avatarUrl}`} width={74} height={74} alt="Host avatar" />
                   </div>
                   <span className="property__user-name">
-                    {hostName}
+                    {host.name}
                   </span>
-                  {isPro && (
+                  {host.isPro && (
                     <span className="property__user-status">
                       Pro
                     </span>
@@ -181,7 +186,7 @@ class DetailsPage extends PureComponent {
             <OffersList
               classNames={`near-places__list`}
               offers={getNearOffers(offers, id)}
-              onColorPin={this.colorPinHandler}
+              onColorPin={this._colorPinHandler}
               onAddFavorite={favoriteAddHandler}
             />
           </section>
@@ -226,6 +231,7 @@ DetailsPage.propTypes = {
     }).isRequired
   }).isRequired,
   onHoverOfferId: number.isRequired,
+  offersFetchStatus: oneOf([PENDING, SUCCESS, ERROR]).isRequired,
   getOfferIdHandler: func.isRequired,
   fetchCommentsHandler: func.isRequired,
   favoriteAddHandler: func.isRequired,
@@ -236,12 +242,13 @@ const mapStateToProps = ({rData, rFilters}) => ({
   city: rData.city,
   comments: rData.comments,
   onHoverOfferId: rFilters.onHoverOfferId,
+  offersFetchStatus: rData.offersFetchStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getOfferIdHandler: (payload) => dispatch(aFilters.getOfferId(payload)),
   fetchCommentsHandler: (payload) => dispatch(aData.fetchComments(payload)),
-  favoriteAddHandler: (payload) => dispatch(aData.postFavorite(payload)),
+  favoriteAddHandler: (payload) => dispatch(aUser.postFavorite(payload)),
 });
 
 export {DetailsPage};

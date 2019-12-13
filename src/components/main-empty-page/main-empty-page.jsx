@@ -60,9 +60,9 @@ MainEmptyPage.defaultProps = {
   user: null,
 };
 
-const mapStateToProps = ({rData}) => ({
+const mapStateToProps = ({rData, rUser}) => ({
   city: rData.city,
-  user: rData.user,
+  user: rUser.user,
 });
 
 const mapDispatchToProps = (dispatch) => ({

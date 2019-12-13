@@ -3,6 +3,7 @@ import {shallow} from 'enzyme';
 
 import {withAuthForm} from './with-auth-form.jsx';
 import offers from '../../mocks/offers.js';
+import {ASYNC_STATUSES} from '../../consts/index.js';
 
 describe(`e2e test for withAuthForm hoc`, () => {
   const MockComponent = () => <div />;
@@ -14,13 +15,14 @@ describe(`e2e test for withAuthForm hoc`, () => {
         <MockComponentWrapped
           city={city}
           user={null}
+          userGetStatus={ASYNC_STATUSES.ERROR}
           authLogin={jest.fn()}
         />
     );
 
     expect(wrapper.state().userEmail).toEqual(``);
 
-    wrapper.instance().emailChangeHandler(`test`);
+    wrapper.instance()._emailChangeHandler(`test`);
 
     expect(wrapper.state().userEmail).toEqual(`test`);
   });
@@ -29,13 +31,14 @@ describe(`e2e test for withAuthForm hoc`, () => {
         <MockComponentWrapped
           city={city}
           user={null}
+          userGetStatus={ASYNC_STATUSES.ERROR}
           authLogin={() => {}}
         />
     );
 
     expect(wrapper.state().userPassword).toEqual(``);
 
-    wrapper.instance().passwordChangeHandler(`qwerty`);
+    wrapper.instance()._passwordChangeHandler(`qwerty`);
 
     expect(wrapper.state().userPassword).toEqual(`qwerty`);
   });
@@ -46,13 +49,14 @@ describe(`e2e test for withAuthForm hoc`, () => {
         <MockComponentWrapped
           city={city}
           user={null}
+          userGetStatus={ASYNC_STATUSES.ERROR}
           authLogin={authLoginHandler}
         />
     );
 
-    wrapper.instance().emailChangeHandler(`test`);
-    wrapper.instance().passwordChangeHandler(`qwerty`);
-    wrapper.instance().formSubmitHandler(mockEvent);
+    wrapper.instance()._emailChangeHandler(`test`);
+    wrapper.instance()._passwordChangeHandler(`qwerty`);
+    wrapper.instance()._formSubmitHandler(mockEvent);
 
     expect(authLoginHandler).toHaveBeenNthCalledWith(1, {
       userEmail: `test`,

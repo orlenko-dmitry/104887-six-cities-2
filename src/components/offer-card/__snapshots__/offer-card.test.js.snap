@@ -17,14 +17,14 @@ exports[`OfferCard renders correctly 1`] = `
       <img
         alt="Place image"
         className="place-card__image"
-        height="200"
+        height={200}
         src="https://htmlacademy-react-2.appspot.com/six-cities/static/hotel/19.jpg"
-        width="260"
+        width={260}
       />
     </a>
   </div>
   <div
-    className="place-card__info"
+    className="false place-card__info"
   >
     <div
       className="place-card__price-wrapper"
@@ -74,7 +74,7 @@ exports[`OfferCard renders correctly 1`] = `
         <span
           style={
             Object {
-              "width": "84%",
+              "width": "80%",
             }
           }
         />

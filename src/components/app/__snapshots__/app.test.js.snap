@@ -4,17 +4,21 @@ exports[`App renders correctly 1`] = `
 <Fragment>
   <Switch>
     <Route
+      exact={true}
+      path="/"
+      render={[Function]}
+    />
+    <Route
       component={
         Object {
           "$$typeof": Symbol(react.memo),
           "WrappedComponent": [Function],
           "compare": null,
-          "displayName": "Connect(Component)",
+          "displayName": "Connect(WithAuthForm)",
           "type": [Function],
         }
       }
-      exact={true}
-      path="/"
+      path="/login"
     />
     <Route
       component={
@@ -29,16 +33,8 @@ exports[`App renders correctly 1`] = `
       path="/offer/:offerId"
     />
     <Route
-      component={
-        Object {
-          "$$typeof": Symbol(react.memo),
-          "WrappedComponent": [Function],
-          "compare": null,
-          "displayName": "Connect(WithAuthForm)",
-          "type": [Function],
-        }
-      }
-      path="/login"
+      path="/favorite"
+      render={[Function]}
     />
   </Switch>
   <ToastContainer

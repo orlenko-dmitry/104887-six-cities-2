@@ -1,26 +1,19 @@
 import {
   SELECT_CITY,
-  SIGN_IN_SUCCESS,
-  GET_USER_SUCCESS,
-  FETCH_OFFERS_PENDING,
   FETCH_OFFERS_SUCCESS,
   FETCH_OFFERS_ERROR,
-  FETCH_COMMENTS_PENDING,
   FETCH_COMMENTS_SUCCESS,
-  FETCH_COMMENTS_ERROR,
   POST_COMMENTS_PENDING,
   POST_COMMENTS_SUCCESS,
   POST_COMMENTS_ERROR,
-  POST_FAVORITE_PENDING,
-  POST_FAVORITE_SUCCESS,
-  POST_FAVORITE_ERROR,
 } from '../../consts/actionTypes.js';
 import {toast} from 'react-toastify';
 
 import endpoints from '../../consts/endpoints.js';
-import {convertOffersToCamelCase, convertCommentsToCamelCase} from '../../helpers/helpers.js';
-import history from '../../history.js';
-import {ROUTES} from '../../consts/index.js';
+import {
+  convertOffersToCamelCase,
+  convertCommentsToCamelCase,
+} from '../../helpers/helpers.js';
 
 export default ({
   selectCity: (payload) => {
@@ -29,31 +22,7 @@ export default ({
       payload,
     };
   },
-  authLogin: ({userEmail, userPassword}) => (dispatch, getState, api) => {
-    return api.post(endpoints.login, {
-      email: userEmail,
-      password: userPassword,
-    }).then((response) => {
-      dispatch({
-        type: SIGN_IN_SUCCESS,
-        payload: response.data,
-      });
-      history.push(ROUTES.ROOT);
-    })
-    .catch((err) => {
-      toast.error(err);
-    });
-  },
-  getUser: () => (dispatch, getState, api) => {
-    return api.get(endpoints.login)
-            .then((response) => dispatch({
-              type: GET_USER_SUCCESS,
-              payload: response.data,
-            }))
-            .catch(() => {});
-  },
   fetchOffers: () => (dispatch, getState, api) => {
-    dispatch({type: FETCH_OFFERS_PENDING});
     return api.get(endpoints.getOffers)
             .then((response) => dispatch({
               type: FETCH_OFFERS_SUCCESS,
@@ -61,13 +30,10 @@ export default ({
             }))
             .catch((err) => {
               toast.error(err);
-              dispatch({
-                type: FETCH_OFFERS_ERROR,
-              });
+              dispatch({type: FETCH_OFFERS_ERROR});
             });
   },
   fetchComments: (offerId) => (dispatch, getState, api) => {
-    dispatch({type: FETCH_COMMENTS_PENDING});
     return api.get(endpoints.comments(offerId))
             .then((response) => dispatch({
               type: FETCH_COMMENTS_SUCCESS,
@@ -75,9 +41,6 @@ export default ({
             }))
             .catch((err) => {
               toast.error(err);
-              dispatch({
-                type: FETCH_COMMENTS_ERROR,
-              });
             });
   },
   postComment: ({offerId, rating, comment}) => (dispatch, getState, api) => {
@@ -89,25 +52,7 @@ export default ({
             }))
             .catch((err) => {
               toast.error(err);
-              dispatch({
-                type: POST_COMMENTS_ERROR,
-              });
-            });
-  },
-  postFavorite: ({offerId, status}) => (dispatch, getState, api) => {
-    dispatch({type: POST_FAVORITE_PENDING});
-    return api.post(endpoints.postFavorite({offerId, status}))
-            .then((response) => {
-              dispatch({
-                type: POST_FAVORITE_SUCCESS,
-                payload: response.data,
-              });
-            })
-            .catch((err) => {
-              toast.error(err);
-              dispatch({
-                type: POST_FAVORITE_ERROR,
-              });
+              dispatch({type: POST_COMMENTS_ERROR});
             });
   },
 });

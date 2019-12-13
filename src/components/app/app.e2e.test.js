@@ -3,20 +3,28 @@ import {shallow} from 'enzyme';
 
 import {App} from './app.jsx';
 import {ASYNC_STATUSES} from '../../consts/index.js';
+import offers from '../../mocks/offers.js';
 
-it(`getOffers have been called once`, () => {
+
+it(`getOffersHandler have been called once`, () => {
   const getOffersHandler = jest.fn();
   const getUserHandler = jest.fn();
+  const getFavoriteHandler = jest.fn();
 
   shallow(
       <App
-        offersFetchStatus={ASYNC_STATUSES.PENDING}
-        isAuthorizationRequired={false}
-        getOffers={getOffersHandler}
-        getUser={getUserHandler}
+        offers={offers}
+        favorites={offers}
+        offersFetchStatus={ASYNC_STATUSES.SUCCESS}
+        userGetStatus={ASYNC_STATUSES.SUCCESS}
+        favoritesFetchStatus={ASYNC_STATUSES.SUCCESS}
+        getOffersHandler={getOffersHandler}
+        getUserHandler={getUserHandler}
+        getFavorite={getFavoriteHandler}
       />
   );
 
   expect(getOffersHandler).toHaveBeenCalledTimes(1);
   expect(getUserHandler).toHaveBeenCalledTimes(1);
+  expect(getFavoriteHandler).toHaveBeenCalledTimes(0);
 });

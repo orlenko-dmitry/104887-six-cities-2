@@ -5,6 +5,7 @@ exports[`OfferList renders correctly 1`] = `
   className=" places__list"
 >
   <OfferCard
+    isFavoriteCard={false}
     key="1"
     listIndex={0}
     offer={
@@ -70,6 +71,7 @@ exports[`OfferList renders correctly 1`] = `
     onCardHoverOut={[Function]}
   />
   <OfferCard
+    isFavoriteCard={false}
     key="4"
     listIndex={1}
     offer={
@@ -137,6 +139,7 @@ exports[`OfferList renders correctly 1`] = `
     onCardHoverOut={[Function]}
   />
   <OfferCard
+    isFavoriteCard={false}
     key="5"
     listIndex={2}
     offer={
@@ -199,6 +202,7 @@ exports[`OfferList renders correctly 1`] = `
     onCardHoverOut={[Function]}
   />
   <OfferCard
+    isFavoriteCard={false}
     key="9"
     listIndex={3}
     offer={
@@ -269,6 +273,7 @@ exports[`OfferList renders correctly 1`] = `
     onCardHoverOut={[Function]}
   />
   <OfferCard
+    isFavoriteCard={false}
     key="17"
     listIndex={4}
     offer={
@@ -338,6 +343,7 @@ exports[`OfferList renders correctly 1`] = `
     onCardHoverOut={[Function]}
   />
   <OfferCard
+    isFavoriteCard={false}
     key="18"
     listIndex={5}
     offer={
@@ -399,6 +405,7 @@ exports[`OfferList renders correctly 1`] = `
     onCardHoverOut={[Function]}
   />
   <OfferCard
+    isFavoriteCard={false}
     key="30"
     listIndex={6}
     offer={
@@ -461,6 +468,7 @@ exports[`OfferList renders correctly 1`] = `
     onCardHoverOut={[Function]}
   />
   <OfferCard
+    isFavoriteCard={false}
     key="39"
     listIndex={7}
     offer={
@@ -529,6 +537,7 @@ exports[`OfferList renders correctly 1`] = `
     onCardHoverOut={[Function]}
   />
   <OfferCard
+    isFavoriteCard={false}
     key="41"
     listIndex={8}
     offer={
@@ -595,6 +604,7 @@ exports[`OfferList renders correctly 1`] = `
     onCardHoverOut={[Function]}
   />
   <OfferCard
+    isFavoriteCard={false}
     key="44"
     listIndex={9}
     offer={
@@ -663,6 +673,7 @@ exports[`OfferList renders correctly 1`] = `
     onCardHoverOut={[Function]}
   />
   <OfferCard
+    isFavoriteCard={false}
     key="45"
     listIndex={10}
     offer={
@@ -728,6 +739,7 @@ exports[`OfferList renders correctly 1`] = `
     onCardHoverOut={[Function]}
   />
   <OfferCard
+    isFavoriteCard={false}
     key="51"
     listIndex={11}
     offer={
@@ -795,6 +807,7 @@ exports[`OfferList renders correctly 1`] = `
     onCardHoverOut={[Function]}
   />
   <OfferCard
+    isFavoriteCard={false}
     key="64"
     listIndex={12}
     offer={
@@ -862,6 +875,7 @@ exports[`OfferList renders correctly 1`] = `
     onCardHoverOut={[Function]}
   />
   <OfferCard
+    isFavoriteCard={false}
     key="77"
     listIndex={13}
     offer={
@@ -931,6 +945,7 @@ exports[`OfferList renders correctly 1`] = `
     onCardHoverOut={[Function]}
   />
   <OfferCard
+    isFavoriteCard={false}
     key="78"
     listIndex={14}
     offer={

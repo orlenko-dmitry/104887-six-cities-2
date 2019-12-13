@@ -24,12 +24,13 @@ const OfferCard = ({
     previewImage,
   },
   listIndex,
+  isFavoriteCard,
   onCardHoverIn,
   onCardHoverOut,
   onAddFavorite,
 }) => (
   <article
-    className="cities__place-card place-card"
+    className={`${isFavoriteCard ? `favorites__card` : `cities__place-card`} place-card`}
     key={id}
     data-testid={`place-card-${listIndex}`}
     onMouseEnter={() => onCardHoverIn(id)}
@@ -40,12 +41,18 @@ const OfferCard = ({
         <span>Premium</span>
       </div>
     )}
-    <div className="cities__image-wrapper place-card__image-wrapper">
+    <div className={`${isFavoriteCard ? `favorites__image-wrapper` : `cities__image-wrapper`} place-card__image-wrapper`}>
       <a href="#">
-        <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image" />
+        <img
+          className="place-card__image"
+          src={previewImage}
+          width={isFavoriteCard ? 150 : 260}
+          height={isFavoriteCard ? 100 : 200}
+          alt="Place image"
+        />
       </a>
     </div>
-    <div className="place-card__info">
+    <div className={`${isFavoriteCard && `favorites__card-info`} place-card__info`}>
       <div className="place-card__price-wrapper">
         <div className="place-card__price">
           <b className="place-card__price-value">&euro;{price}</b>
@@ -74,7 +81,11 @@ const OfferCard = ({
         className="place-card__name"
         data-testid={`place-card-title-${listIndex}`}
       >
-        <Link to={`${ROUTES.OFFER}/${id}`}>{title}</Link>
+        {
+          isFavoriteCard
+            ? <span>{title}</span>
+            : <Link to={`${ROUTES.OFFER}/${id}`}>{title}</Link>
+        }
       </h2>
       <p className="place-card__type">{OFFER_TYPE[type]}</p>
     </div>
@@ -93,9 +104,16 @@ OfferCard.propTypes = {
     previewImage: string.isRequired,
   }).isRequired,
   listIndex: number.isRequired,
-  onCardHoverIn: func.isRequired,
-  onCardHoverOut: func.isRequired,
+  isFavoriteCard: bool,
+  onCardHoverIn: func,
+  onCardHoverOut: func,
   onAddFavorite: func.isRequired,
+};
+
+OfferCard.defaultProps = {
+  isFavoriteCard: false,
+  onCardHoverIn: () => {},
+  onCardHoverOut: () => {},
 };
 
 export default OfferCard;
