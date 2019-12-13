@@ -11,7 +11,7 @@ it(`Should change isSorterOpen when call openSorterHandler`, () => {
 
   expect(wrapper.state().isSorterOpen).toEqual(false);
 
-  wrapper.instance().openSorterHandler();
+  wrapper.instance()._openSorterHandler();
 
   expect(wrapper.state().isSorterOpen).toEqual(true);
 });

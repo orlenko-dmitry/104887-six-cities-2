@@ -20,7 +20,7 @@ describe(`e2e test for withAuthForm hoc`, () => {
 
     expect(wrapper.state().userEmail).toEqual(``);
 
-    wrapper.instance().emailChangeHandler(`test`);
+    wrapper.instance()._emailChangeHandler(`test`);
 
     expect(wrapper.state().userEmail).toEqual(`test`);
   });
@@ -35,7 +35,7 @@ describe(`e2e test for withAuthForm hoc`, () => {
 
     expect(wrapper.state().userPassword).toEqual(``);
 
-    wrapper.instance().passwordChangeHandler(`qwerty`);
+    wrapper.instance()._passwordChangeHandler(`qwerty`);
 
     expect(wrapper.state().userPassword).toEqual(`qwerty`);
   });
@@ -50,9 +50,9 @@ describe(`e2e test for withAuthForm hoc`, () => {
         />
     );
 
-    wrapper.instance().emailChangeHandler(`test`);
-    wrapper.instance().passwordChangeHandler(`qwerty`);
-    wrapper.instance().formSubmitHandler(mockEvent);
+    wrapper.instance()._emailChangeHandler(`test`);
+    wrapper.instance()._passwordChangeHandler(`qwerty`);
+    wrapper.instance()._formSubmitHandler(mockEvent);
 
     expect(authLoginHandler).toHaveBeenNthCalledWith(1, {
       userEmail: `test`,
