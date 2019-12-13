@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import {
   arrayOf,
   shape,
+  oneOf,
   string,
   number,
   bool,
@@ -19,7 +20,13 @@ import aFilters from '../../store/filters/actions.js';
 import aData from '../../store/data/actions.js';
 import aUser from '../../store/user/actions.js';
 import {getCityOffers} from '../../store/data/selectors.js';
+import {ASYNC_STATUSES} from '../../consts/index.js';
 
+const {
+  PENDING,
+  SUCCESS,
+  ERROR,
+} = ASYNC_STATUSES;
 const WithReviewsForm = withReviewsForm(ReviewsFrom);
 
 class DetailsPage extends PureComponent {
@@ -44,6 +51,7 @@ class DetailsPage extends PureComponent {
       comments,
       city,
       onHoverOfferId,
+      offersFetchStatus,
       favoriteAddHandler,
       match: {
         params: {
@@ -53,7 +61,7 @@ class DetailsPage extends PureComponent {
     } = this.props;
 
     const offerIndex = offers.map((offer) => offer.id).indexOf(Number(offerId));
-
+    const isPending = offersFetchStatus === PENDING;
     const {
       images,
       isPremium,
@@ -66,14 +74,10 @@ class DetailsPage extends PureComponent {
       description,
       id,
       goods,
-      host: {
-        isPro,
-        name: hostName,
-        avatarUrl,
-      },
-    } = offers[offerIndex];
+      host,
+    } = !isPending && offers[offerIndex];
 
-    return offers.length && (
+    return !isPending && (
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">
@@ -143,12 +147,12 @@ class DetailsPage extends PureComponent {
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
                   <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="property__avatar user__avatar" src={`/${avatarUrl}`} width={74} height={74} alt="Host avatar" />
+                    <img className="property__avatar user__avatar" src={`/${host.avatarUrl}`} width={74} height={74} alt="Host avatar" />
                   </div>
                   <span className="property__user-name">
-                    {hostName}
+                    {host.name}
                   </span>
-                  {isPro && (
+                  {host.isPro && (
                     <span className="property__user-status">
                       Pro
                     </span>
@@ -227,6 +231,7 @@ DetailsPage.propTypes = {
     }).isRequired
   }).isRequired,
   onHoverOfferId: number.isRequired,
+  offersFetchStatus: oneOf([PENDING, SUCCESS, ERROR]).isRequired,
   getOfferIdHandler: func.isRequired,
   fetchCommentsHandler: func.isRequired,
   favoriteAddHandler: func.isRequired,
@@ -237,6 +242,7 @@ const mapStateToProps = ({rData, rFilters}) => ({
   city: rData.city,
   comments: rData.comments,
   onHoverOfferId: rFilters.onHoverOfferId,
+  offersFetchStatus: rData.offersFetchStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -28,7 +28,6 @@ const {
   SUCCESS,
   ERROR,
 } = ASYNC_STATUSES;
-
 const WithEmptyMainPage = withEmptyPage(MainPage, MainEmptyPage);
 const WithAuthForm = withAuthForm(AuthPage);
 const WithEmptyFavoritesPage = withEmptyPage(FavoritesPage, FavoritesEmptyPage);
