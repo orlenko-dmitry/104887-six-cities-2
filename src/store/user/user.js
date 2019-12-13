@@ -28,10 +28,10 @@ export default (state = initialState, {type, payload}) => {
       return Object.assign({}, state, {user: payload, userGetStatus: SUCCESS});
     case GET_USER_ERROR:
       return Object.assign({}, state, {userGetStatus: ERROR});
-    case POST_FAVORITE_SUCCESS:
-      return Object.assign({}, state, {favorites: payload.favorites});
     case FETCH_FAVORITE_SUCCESS:
       return Object.assign({}, state, {favorites: payload, favoritesFetchStatus: SUCCESS});
+    case POST_FAVORITE_SUCCESS:
+      return Object.assign({}, state, {favorites: payload.favorites});
     default: return state;
   }
 };

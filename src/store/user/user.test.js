@@ -49,6 +49,15 @@ describe(`Reducer works correctly`, () => {
   });
   it(`Reducer should change user by a given payload`, () => {
     expect(reducer(undefined, {
+      type: FETCH_FAVORITE_SUCCESS,
+      payload: [{fake: true}],
+    })).toEqual(Object.assign({}, initialState, {
+      favorites: [{fake: true}],
+      favoritesFetchStatus: SUCCESS,
+    }));
+  });
+  it(`Reducer should change user by a given payload`, () => {
+    expect(reducer(undefined, {
       type: POST_FAVORITE_SUCCESS,
       payload: {offers: [{fake: true}], favorites: [{fake: true}]},
     })).toEqual(Object.assign({}, initialState, {

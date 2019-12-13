@@ -6,13 +6,21 @@ import actions from './actions';
 import {
   SELECT_CITY,
   FETCH_OFFERS_SUCCESS,
+  FETCH_OFFERS_ERROR,
   FETCH_COMMENTS_SUCCESS,
   POST_COMMENTS_PENDING,
   POST_COMMENTS_SUCCESS,
+  POST_COMMENTS_ERROR,
   POST_FAVORITE_SUCCESS,
 } from '../../consts/actionTypes';
 import {ASYNC_STATUSES} from '../../consts/index.js';
 import endpoints from '../../consts/endpoints.js';
+
+const {
+  PENDING,
+  SUCCESS,
+  ERROR,
+} = ASYNC_STATUSES;
 
 describe(`Reducer works correctly`, () => {
   it(`Reducer without additional parameters should return initial state`, () => {
@@ -32,7 +40,14 @@ describe(`Reducer works correctly`, () => {
       payload: [{fake: true}],
     })).toEqual(Object.assign({}, initialState, {
       offers: [{fake: true}],
-      offersFetchStatus: ASYNC_STATUSES.SUCCESS,
+      offersFetchStatus: SUCCESS,
+    }));
+  });
+  it(`Reducer should change offers by a given payload`, () => {
+    expect(reducer(undefined, {
+      type: FETCH_OFFERS_ERROR,
+    })).toEqual(Object.assign({}, initialState, {
+      offersFetchStatus: ERROR,
     }));
   });
   it(`Reducer should change comments by a given payload`, () => {
@@ -41,6 +56,29 @@ describe(`Reducer works correctly`, () => {
       payload: [{fake: true}],
     })).toEqual(Object.assign({}, initialState, {
       comments: [{fake: true}],
+    }));
+  });
+  it(`Reducer should change user by a given payload`, () => {
+    expect(reducer(undefined, {
+      type: POST_COMMENTS_PENDING,
+    })).toEqual(Object.assign({}, initialState, {
+      messagePostStatus: PENDING,
+    }));
+  });
+  it(`Reducer should change user by a given payload`, () => {
+    expect(reducer(undefined, {
+      type: POST_COMMENTS_SUCCESS,
+      payload: [{fake: true}],
+    })).toEqual(Object.assign({}, initialState, {
+      comments: [{fake: true}],
+      messagePostStatus: SUCCESS,
+    }));
+  });
+  it(`Reducer should change user by a given payload`, () => {
+    expect(reducer(undefined, {
+      type: POST_COMMENTS_ERROR,
+    })).toEqual(Object.assign({}, initialState, {
+      messagePostStatus: ERROR,
     }));
   });
   it(`Reducer should change user by a given payload`, () => {
