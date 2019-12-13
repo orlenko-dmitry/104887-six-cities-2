@@ -12,7 +12,7 @@ const {
 } = SORTED_BY;
 
 export const defineRating = (rating) => {
-  return `${Math.round(rating / 5 * 100)}%`;
+  return `${Math.round(rating) / 5 * 100}%`;
 };
 
 export const leafletSetView = ({offers, map, city, zoom, onHoverOfferId, selectedOfferId, leaflet}) => {
