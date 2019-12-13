@@ -32,7 +32,7 @@ const WithReviewsForm = withReviewsForm(ReviewsFrom);
 class DetailsPage extends PureComponent {
   constructor(props) {
     super(props);
-    this.colorPinHandler = this.colorPinHandler.bind(this);
+    this._colorPinHandler = this._colorPinHandler.bind(this);
   }
 
   componentDidMount() {
@@ -40,7 +40,7 @@ class DetailsPage extends PureComponent {
     fetchCommentsHandler(offerId);
   }
 
-  colorPinHandler(id) {
+  _colorPinHandler(id) {
     const {getOfferIdHandler} = this.props;
     getOfferIdHandler(id);
   }
@@ -186,7 +186,7 @@ class DetailsPage extends PureComponent {
             <OffersList
               classNames={`near-places__list`}
               offers={getNearOffers(offers, id)}
-              onColorPin={this.colorPinHandler}
+              onColorPin={this._colorPinHandler}
               onAddFavorite={favoriteAddHandler}
             />
           </section>

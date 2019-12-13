@@ -18,12 +18,12 @@ const withAuthForm = (Component) => {
         userEmail: ``,
         userPassword: ``,
       };
-      this.formSubmitHandler = this.formSubmitHandler.bind(this);
-      this.emailChangeHandler = this.emailChangeHandler.bind(this);
-      this.passwordChangeHandler = this.passwordChangeHandler.bind(this);
+      this._formSubmitHandler = this._formSubmitHandler.bind(this);
+      this._emailChangeHandler = this._emailChangeHandler.bind(this);
+      this._passwordChangeHandler = this._passwordChangeHandler.bind(this);
     }
 
-    formSubmitHandler(evt) {
+    _formSubmitHandler(evt) {
       const {userEmail, userPassword} = this.state;
       const {authLogin} = this.props;
 
@@ -31,11 +31,11 @@ const withAuthForm = (Component) => {
       authLogin({userEmail, userPassword});
     }
 
-    emailChangeHandler(value) {
+    _emailChangeHandler(value) {
       this.setState({userEmail: value});
     }
 
-    passwordChangeHandler(value) {
+    _passwordChangeHandler(value) {
       this.setState({userPassword: value});
     }
 
@@ -47,9 +47,9 @@ const withAuthForm = (Component) => {
           {...this.props}
           userEmail={userEmail}
           userPassword={userPassword}
-          onFormSubmit={this.formSubmitHandler}
-          onEmailChange={this.emailChangeHandler}
-          onPasswordChange={this.passwordChangeHandler}
+          onFormSubmit={this._formSubmitHandler}
+          onEmailChange={this._emailChangeHandler}
+          onPasswordChange={this._passwordChangeHandler}
         />
       );
     }
