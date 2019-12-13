@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {toast} from 'react-toastify';
 
 import {
   AXIOS_CONFIG,
@@ -26,6 +27,10 @@ export const createApi = () => {
     if (err.response.status === 401 && url.includes(ROUTES.FAVORITE)) {
       history.push(ROUTES.AUTH);
     }
+    if (err.response.status === 404) {
+      toast.error(error);
+    }
+
     return Promise.reject(error);
   };
 
