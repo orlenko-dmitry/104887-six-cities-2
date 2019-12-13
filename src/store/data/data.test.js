@@ -71,7 +71,7 @@ describe(`Reducer works correctly`, () => {
       payload: [{fake: true}],
     })).toEqual(Object.assign({}, initialState, {
       comments: [{fake: true}],
-      messagePostStatus: SUCCESS,
+      messagePostStatus: ``,
     }));
   });
   it(`Reducer should change user by a given payload`, () => {

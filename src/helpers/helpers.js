@@ -2,6 +2,7 @@ import {
   SORTED_BY,
   LEAFLET_CONSTS,
   APP_CITIES,
+  MAX_REVIEWS,
 } from '../consts/index.js';
 
 const {
@@ -14,6 +15,8 @@ const {
 export const defineRating = (rating) => {
   return `${Math.round(rating) / 5 * 100}%`;
 };
+
+export const defineMaxReviews = (reviews) => reviews.length <= MAX_REVIEWS ? reviews : reviews.splice(0, reviews.length - MAX_REVIEWS);
 
 export const leafletSetView = ({offers, map, city, zoom, onHoverOfferId, selectedOfferId, leaflet}) => {
   map.setView(city, zoom);

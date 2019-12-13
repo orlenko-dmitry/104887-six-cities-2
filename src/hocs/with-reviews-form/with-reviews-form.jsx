@@ -30,8 +30,9 @@ const withReviewsForm = (Component) => {
       this._clearState = this._clearState.bind(this);
     }
 
-    componentDidUpdate() {
-      if (this.props.messagePostStatus === ASYNC_STATUSES.SUCCESS) {
+    componentDidUpdate(prevProps) {
+      const {messagePostStatus} = this.props;
+      if (prevProps.messagePostStatus === PENDING && messagePostStatus === ``) {
         this._clearState();
       }
     }

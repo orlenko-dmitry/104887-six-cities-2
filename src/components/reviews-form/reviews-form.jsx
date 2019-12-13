@@ -26,6 +26,7 @@ const ReviewsForm = ({
               || rating === 0
               || comment.length < 50
               || comment.length > 300;
+
   return (
     <form className="reviews__form form" onSubmit={(evt) => onSubmitForm(evt)}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>

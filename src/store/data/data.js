@@ -40,7 +40,7 @@ export default (state = initialState, {type, payload}) => {
     case POST_COMMENTS_PENDING:
       return Object.assign({}, state, {messagePostStatus: PENDING});
     case POST_COMMENTS_SUCCESS:
-      return Object.assign({}, state, {comments: payload, messagePostStatus: SUCCESS});
+      return Object.assign({}, state, {comments: payload, messagePostStatus: ``});
     case POST_COMMENTS_ERROR:
       return Object.assign({}, state, {messagePostStatus: ERROR});
     case POST_FAVORITE_SUCCESS:
