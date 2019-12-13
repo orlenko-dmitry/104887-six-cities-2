@@ -3,12 +3,20 @@ import {connect} from 'react-redux';
 import {compose} from 'redux';
 import {
   shape,
+  oneOf,
   string,
   number,
   func,
 } from 'prop-types';
 
 import aUser from '../../store/user/actions.js';
+import {ASYNC_STATUSES} from '../../consts/index.js';
+
+const {
+  PENDING,
+  SUCCESS,
+  ERROR,
+} = ASYNC_STATUSES;
 
 const withAuthForm = (Component) => {
   class WithAuthForm extends PureComponent {
@@ -41,12 +49,14 @@ const withAuthForm = (Component) => {
 
     render() {
       const {userEmail, userPassword} = this.state;
+      const {userGetStatus} = this.props;
 
       return (
         <Component
           {...this.props}
           userEmail={userEmail}
           userPassword={userPassword}
+          userGetStatus={userGetStatus}
           onFormSubmit={this._formSubmitHandler}
           onEmailChange={this._emailChangeHandler}
           onPasswordChange={this._passwordChangeHandler}
@@ -65,6 +75,7 @@ const withAuthForm = (Component) => {
       name: string.isRequired,
     }).isRequired,
     user: shape({}),
+    userGetStatus: oneOf([PENDING, SUCCESS, ERROR]).isRequired,
     authLogin: func.isRequired,
   };
 
@@ -78,6 +89,7 @@ const withAuthForm = (Component) => {
 const mapStateToProps = ({rData, rUser}) => ({
   city: rData.city,
   user: rUser.user,
+  userGetStatus: rUser.userGetStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({
