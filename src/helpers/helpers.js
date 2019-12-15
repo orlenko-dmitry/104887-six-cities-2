@@ -16,6 +16,11 @@ export const defineRating = (rating) => {
   return `${Math.round(rating) / 5 * 100}%`;
 };
 
+export const randomInteger = (min, max) => {
+  let rand = min + Math.random() * (max + 1 - min);
+  return Math.floor(rand);
+};
+
 export const defineMaxReviews = (reviews) => reviews.length <= MAX_REVIEWS ? reviews : reviews.splice(0, reviews.length - MAX_REVIEWS);
 
 export const leafletSetView = ({offers, map, city, zoom, onHoverOfferId, selectedOfferId, leaflet}) => {
