@@ -21,13 +21,13 @@ import aFilters from '../../store/filters/actions.js';
 import aData from '../../store/data/actions.js';
 import aUser from '../../store/user/actions.js';
 import {getCityOffers} from '../../store/data/selectors.js';
-import {ASYNC_STATUSES} from '../../consts/index.js';
+import {AsyncStatus} from '../../consts/consts.js';
 
 const {
   PENDING,
   SUCCESS,
   ERROR,
-} = ASYNC_STATUSES;
+} = AsyncStatus;
 const WithReviewsForm = withReviewsForm(ReviewsFrom);
 
 class DetailsPage extends PureComponent {

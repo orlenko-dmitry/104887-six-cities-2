@@ -10,7 +10,7 @@ import {
 import MainTabs from '../main-tabs/main-tabs.jsx';
 import PageHeader from '../page-header/page-header.jsx';
 import aData from '../../store/data/actions.js';
-import {APP_CITIES} from '../../consts/index.js';
+import {AppCity} from '../../consts/consts.js';
 
 const MainEmptyPage = ({
   city,
@@ -22,7 +22,7 @@ const MainEmptyPage = ({
     <main className="page__main page__main--index page__main--index-empty">
       <h1 className="visually-hidden">Cities</h1>
       <MainTabs
-        cities={APP_CITIES}
+        cities={AppCity}
         selectedCity={city}
         onSelectCityClick={handleSelectCity}
       />

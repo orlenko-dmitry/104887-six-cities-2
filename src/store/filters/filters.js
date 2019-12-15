@@ -2,10 +2,10 @@ import {
   SORT_OFFERS_BY,
   OFFER_ON_HOVER,
 } from '../../consts/actionTypes.js';
-import {SORTED_BY} from '../../consts/index.js';
+import {SortedBy} from '../../consts/consts.js';
 
 export const initialState = {
-  sortedBy: SORTED_BY.POPULAR,
+  sortedBy: SortedBy.POPULAR,
   onHoverOfferId: -1,
 };
 

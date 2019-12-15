@@ -5,13 +5,13 @@ import {
   POST_FAVORITE_SUCCESS,
   FETCH_FAVORITE_SUCCESS,
 } from '../../consts/actionTypes.js';
-import {ASYNC_STATUSES} from '../../consts/index.js';
+import {AsyncStatus} from '../../consts/consts.js';
 
 const {
   PENDING,
   SUCCESS,
   ERROR,
-} = ASYNC_STATUSES;
+} = AsyncStatus;
 
 export const initialState = {
   favorites: [],

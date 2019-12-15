@@ -2,7 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 
 import OffersSorter from '../offers-sorter/offers-sorter.jsx';
-import {SORTED_BY} from '../../consts/index.js';
+import {SortedBy} from '../../consts/consts.js';
 
 describe(`e2e tests for OffersSorter`, () => {
   it(`OffersSorter dosen't open`, () => {
@@ -10,7 +10,7 @@ describe(`e2e tests for OffersSorter`, () => {
     const wrapper = shallow(
         <OffersSorter
           isOpen={false}
-          sortedBy={SORTED_BY.POPULAR}
+          sortedBy={SortedBy.POPULAR}
           onOpenSorterClick={handleClick}
           onSortByClick={() => {}}
         />
@@ -24,7 +24,7 @@ describe(`e2e tests for OffersSorter`, () => {
     const wrapper = shallow(
         <OffersSorter
           isOpen={true}
-          sortedBy={SORTED_BY.POPULAR}
+          sortedBy={SortedBy.POPULAR}
           onOpenSorterClick={handleClick}
           onSortByClick={() => {}}
         />

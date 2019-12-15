@@ -3,7 +3,7 @@ import {shallow} from 'enzyme';
 
 import {withAuthForm} from './with-auth-form.jsx';
 import offers from '../../mocks/offers.js';
-import {ASYNC_STATUSES} from '../../consts/index.js';
+import {AsyncStatus} from '../../consts/consts.js';
 
 describe(`e2e test for withAuthForm hoc`, () => {
   const MockComponent = () => <div />;
@@ -15,7 +15,7 @@ describe(`e2e test for withAuthForm hoc`, () => {
         <MockComponentWrapped
           city={city}
           user={null}
-          userGetStatus={ASYNC_STATUSES.ERROR}
+          userGetStatus={AsyncStatus.ERROR}
           authLogin={jest.fn()}
         />
     );
@@ -31,7 +31,7 @@ describe(`e2e test for withAuthForm hoc`, () => {
         <MockComponentWrapped
           city={city}
           user={null}
-          userGetStatus={ASYNC_STATUSES.ERROR}
+          userGetStatus={AsyncStatus.ERROR}
           authLogin={() => {}}
         />
     );
@@ -49,7 +49,7 @@ describe(`e2e test for withAuthForm hoc`, () => {
         <MockComponentWrapped
           city={city}
           user={null}
-          userGetStatus={ASYNC_STATUSES.ERROR}
+          userGetStatus={AsyncStatus.ERROR}
           handleAuthLogin={handleAuthLogin}
         />
     );

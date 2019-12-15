@@ -5,13 +5,13 @@ import {
   number,
   func,
 } from 'prop-types';
-import {ASYNC_STATUSES} from '../../consts';
+import {AsyncStatus} from '../../consts/consts.js';
 
 const {
   PENDING,
   SUCCESS,
   ERROR,
-} = ASYNC_STATUSES;
+} = AsyncStatus;
 const stars = Array.from(Array(5).keys()).reverse();
 
 const ReviewsForm = ({
@@ -22,7 +22,7 @@ const ReviewsForm = ({
   onCommentChange,
   onSubmitForm,
 }) => {
-  const disabledCondition = messagePostStatus === ASYNC_STATUSES.PENDING
+  const disabledCondition = messagePostStatus === AsyncStatus.PENDING
               || rating === 0
               || comment.length < 50
               || comment.length > 300;
@@ -60,7 +60,7 @@ const ReviewsForm = ({
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
         value={comment}
-        disabled={messagePostStatus === ASYNC_STATUSES.PENDING}
+        disabled={messagePostStatus === AsyncStatus.PENDING}
         onChange={(evt) => onCommentChange(evt.target.value)}
       />
       <div className="reviews__button-wrapper">

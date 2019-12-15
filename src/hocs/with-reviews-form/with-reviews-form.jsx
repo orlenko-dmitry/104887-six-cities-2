@@ -8,13 +8,13 @@ import {
 import {connect} from 'react-redux';
 import {compose} from 'redux';
 import aData from '../../store/data/actions.js';
-import {ASYNC_STATUSES} from '../../consts/index.js';
+import {AsyncStatus} from '../../consts/consts.js';
 
 const {
   PENDING,
   SUCCESS,
   ERROR,
-} = ASYNC_STATUSES;
+} = AsyncStatus;
 
 const withReviewsForm = (Component) => {
   class WithReviewsForm extends PureComponent {

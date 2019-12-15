@@ -13,14 +13,14 @@ import {
   POST_COMMENTS_ERROR,
   POST_FAVORITE_SUCCESS,
 } from '../../consts/actionTypes';
-import {ASYNC_STATUSES} from '../../consts/index.js';
+import {AsyncStatus} from '../../consts/consts.js';
 import endpoints from '../../consts/endpoints.js';
 
 const {
   PENDING,
   SUCCESS,
   ERROR,
-} = ASYNC_STATUSES;
+} = AsyncStatus;
 
 describe(`Reducer works correctly`, () => {
   it(`Reducer without additional parameters should return initial state`, () => {

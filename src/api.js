@@ -2,16 +2,17 @@ import axios from 'axios';
 import {toast} from 'react-toastify';
 
 import {
-  AXIOS_CONFIG,
-  ROUTES,
-} from './consts/index.js';
+  AxiosConfig,
+  AppRoute,
+  ResponseStatus,
+} from './consts/consts.js';
 import history from './history.js';
 
 const {
   BASE_URL,
   TIME_OUT,
   WITH_CREDENTIAL,
-} = AXIOS_CONFIG;
+} = AxiosConfig;
 
 export const createApi = () => {
   const api = axios.create({
@@ -24,10 +25,10 @@ export const createApi = () => {
 
   const onFail = (err) => {
     const {config: {url}, data: {error}} = err.response;
-    if (err.response.status === 401 && url.includes(ROUTES.FAVORITE)) {
-      history.push(ROUTES.AUTH);
+    if (err.response.status === ResponseStatus.UNAUTHORIZED && url.includes(AppRoute.FAVORITE)) {
+      history.push(AppRoute.AUTH);
     }
-    if (err.response.status === 404) {
+    if (err.response.status === ResponseStatus.NOT_FOUND) {
       toast.error(error);
     }
 

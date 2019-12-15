@@ -3,7 +3,7 @@ import {shallow} from 'enzyme';
 
 import MainTabs from './main-tabs.jsx';
 import offers from '../../mocks/offers.js';
-import {APP_CITIES} from '../../consts/index.js';
+import {AppCity} from '../../consts/consts.js';
 
 describe(`e2e test for MainTabs`, () => {
   const city = offers[0].city;
@@ -12,7 +12,7 @@ describe(`e2e test for MainTabs`, () => {
     const handleClick = jest.fn();
     const wrapper = shallow(
         <MainTabs
-          cities={APP_CITIES}
+          cities={AppCity}
           selectedCity={city}
           onSelectCityClick={handleClick}
         />
@@ -27,7 +27,7 @@ describe(`e2e test for MainTabs`, () => {
     const handleClick = jest.fn();
     const wrapper = shallow(
         <MainTabs
-          cities={APP_CITIES}
+          cities={AppCity}
           selectedCity={city}
           onSelectCityClick={handleClick}
         />

@@ -2,7 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 
 import {App} from './app.jsx';
-import {ASYNC_STATUSES} from '../../consts/index.js';
+import {AsyncStatus} from '../../consts/consts.js';
 import offers from '../../mocks/offers.js';
 
 
@@ -11,9 +11,9 @@ it(`App renders correctly`, () => {
       <App
         offers={offers}
         favorites={offers}
-        offersFetchStatus={ASYNC_STATUSES.SUCCESS}
-        userGetStatus={ASYNC_STATUSES.SUCCESS}
-        favoritesFetchStatus={ASYNC_STATUSES.SUCCESS}
+        offersFetchStatus={AsyncStatus.SUCCESS}
+        userGetStatus={AsyncStatus.SUCCESS}
+        favoritesFetchStatus={AsyncStatus.SUCCESS}
         handleGetOffers={() => {}}
         handleGetUser={() => {}}
         handleGetFavorite={() => {}}

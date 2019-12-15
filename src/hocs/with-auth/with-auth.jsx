@@ -2,13 +2,13 @@ import React from 'react';
 import {shape, oneOf} from 'prop-types';
 import {Redirect} from 'react-router-dom';
 
-import {ROUTES, ASYNC_STATUSES} from '../../consts/index.js';
+import {AppRoute, AsyncStatus} from '../../consts/consts.js';
 
 const {
   PENDING,
   SUCCESS,
   ERROR,
-} = ASYNC_STATUSES;
+} = AsyncStatus;
 
 const withAuth = (Component) => (props) => {
   const {user, userGetStatus} = props;
@@ -16,7 +16,7 @@ const withAuth = (Component) => (props) => {
   if (user !== null && userGetStatus === SUCCESS) {
     return <Component {...props} />;
   } else if (user === null && userGetStatus === ERROR) {
-    return <Redirect to={ROUTES.AUTH} />;
+    return <Redirect to={AppRoute.AUTH} />;
   }
   return null;
 };

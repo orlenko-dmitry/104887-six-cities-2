@@ -15,7 +15,7 @@ import {
   convertOfferToCamelCase,
 } from '../../helpers/helpers.js';
 import history from '../../history.js';
-import {ROUTES} from '../../consts/index.js';
+import {AppRoute} from '../../consts/consts.js';
 
 export default ({
   authLogin: ({userEmail, userPassword}) => (dispatch, getState, api) => {
@@ -27,7 +27,7 @@ export default ({
         type: SIGN_IN_SUCCESS,
         payload: response.data,
       });
-      history.push(ROUTES.ROOT);
+      history.push(AppRoute.ROOT);
     })
     .catch((err) => {
       toast.error(err);

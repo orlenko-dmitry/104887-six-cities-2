@@ -4,7 +4,7 @@ import {shallow} from 'enzyme';
 import {DetailsPage} from '../details-page/details-page.jsx';
 import offers from '../../mocks/offers.js';
 import comments from '../../mocks/comments.js';
-import {ASYNC_STATUSES} from '../../consts/index.js';
+import {AsyncStatus} from '../../consts/consts.js';
 const city = offers[0].city;
 const match = {
   params: {
@@ -20,7 +20,7 @@ it(`DetailsPage renders correctly`, () => {
         city={city}
         user={null}
         onHoverOfferId={-1}
-        offersFetchStatus={ASYNC_STATUSES.SUCCESS}
+        offersFetchStatus={AsyncStatus.SUCCESS}
         match={match}
         handleGetOfferId={() => {}}
         handleFetchComments={() => {}}

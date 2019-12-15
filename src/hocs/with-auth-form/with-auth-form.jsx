@@ -10,13 +10,13 @@ import {
 } from 'prop-types';
 
 import aUser from '../../store/user/actions.js';
-import {ASYNC_STATUSES} from '../../consts/index.js';
+import {AsyncStatus} from '../../consts/consts.js';
 
 const {
   PENDING,
   SUCCESS,
   ERROR,
-} = ASYNC_STATUSES;
+} = AsyncStatus;
 
 const withAuthForm = (Component) => {
   class WithAuthForm extends PureComponent {

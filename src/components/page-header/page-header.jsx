@@ -2,14 +2,14 @@ import React from 'react';
 import {shape} from 'prop-types';
 import {Link} from 'react-router-dom';
 
-import {ROUTES, AXIOS_CONFIG} from '../../consts';
+import {AppRoute, AxiosConfig} from '../../consts/consts.js';
 
 const PageHeader = ({user}) => (
   <header className="header">
     <div className="container">
       <div className="header__wrapper">
         <div className="header__left">
-          <Link className="header__logo-link" to={ROUTES.ROOT}>
+          <Link className="header__logo-link" to={AppRoute.ROOT}>
             <img
               className="header__logo"
               src="/img/logo.svg"
@@ -25,16 +25,16 @@ const PageHeader = ({user}) => (
               {
                 user === null
                   ? (
-                    <Link className="header__nav-link header__nav-link--profile" to={ROUTES.AUTH}>
+                    <Link className="header__nav-link header__nav-link--profile" to={AppRoute.AUTH}>
                       <div className="header__avatar-wrapper user__avatar-wrapper" />
                       <span className="header__login">Sign in</span>
                     </Link>
                   ) : (
-                    <Link className="header__nav-link header__nav-link--profile" to={ROUTES.FAVORITE}>
+                    <Link className="header__nav-link header__nav-link--profile" to={AppRoute.FAVORITE}>
                       <div
                         className="header__avatar-wrapper user__avatar-wrapper"
                         style={{
-                          backgroundImage: `url(${AXIOS_CONFIG.BASE_URL}${user.avatar_url})`,
+                          backgroundImage: `url(${AxiosConfig.BASE_URL}${user.avatar_url})`,
                           borderRadius: `50%`,
                         }}
                       />

@@ -8,7 +8,7 @@ import {
 import moment from 'moment';
 
 import {defineRating} from '../../helpers/helpers.js';
-import {DATE_FORMATS} from '../../consts/index.js';
+import {DateFormat} from '../../consts/consts.js';
 
 const ReviewsItem = ({
   review: {
@@ -42,9 +42,9 @@ const ReviewsItem = ({
       </p>
       <time
         className="reviews__time"
-        dateTime={moment(date).format(DATE_FORMATS.DATE_TIME)}
+        dateTime={moment(date).format(DateFormat.DATE_TIME)}
       >
-        {moment(date).format(DATE_FORMATS.MOTH_YEAR)}
+        {moment(date).format(DateFormat.MOTH_YEAR)}
       </time>
     </div>
   </li>

@@ -9,20 +9,20 @@ import {
   POST_FAVORITE_SUCCESS,
 } from '../../consts/actionTypes.js';
 import {
-  APP_CITIES,
-  ASYNC_STATUSES,
-} from '../../consts/index.js';
+  AppCity,
+  AsyncStatus,
+} from '../../consts/consts.js';
 import {randomInteger} from '../../helpers/helpers.js';
 
 const {
   PENDING,
   SUCCESS,
   ERROR,
-} = ASYNC_STATUSES;
-const initCityIndex = randomInteger(0, APP_CITIES.length);
+} = AsyncStatus;
+const initCityIndex = randomInteger(0, AppCity.length);
 
 export const initialState = {
-  city: APP_CITIES[initCityIndex],
+  city: AppCity[initCityIndex],
   offers: [],
   comments: [],
   offersFetchStatus: PENDING,

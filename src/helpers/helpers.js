@@ -1,16 +1,21 @@
 import {
-  SORTED_BY,
-  LEAFLET_CONSTS,
-  APP_CITIES,
+  SortedBy,
+  LeafletConst,
+  AppCity,
   MAX_REVIEWS,
-} from '../consts/index.js';
+} from '../consts/consts.js';
 
 const {
   POPULAR,
   PRICE_TO_HIGH,
   PRICE_TO_LOW,
   TOP_RATED,
-} = SORTED_BY;
+} = SortedBy;
+
+const {
+  iconUrl,
+  ICON_SIZE,
+} = LeafletConst;
 
 export const defineRating = (rating) => {
   return `${Math.round(rating) / 5 * 100}%`;
@@ -36,8 +41,8 @@ export const leafletSetView = ({offers, map, city, zoom, onHoverOfferId, selecte
   }) => {
     const offerCords = [offerLatitude, offerLongitude];
     const icon = leaflet.icon({
-      iconUrl: LEAFLET_CONSTS.iconUrl({onHoverOfferId, selectedOfferId, currentId}),
-      iconSize: LEAFLET_CONSTS.ICON_SIZE,
+      iconUrl: iconUrl({onHoverOfferId, selectedOfferId, currentId}),
+      iconSize: ICON_SIZE,
     });
     leaflet
     .marker(offerCords, {icon})
@@ -60,8 +65,8 @@ export const sortOffeers = (offers, sortedBy) => {
 
 export const sortFavorites = (favorites) => {
   const result = [];
-  for (let i = 0; i < APP_CITIES.length; i++) {
-    const chunk = favorites.filter((favorite) => favorite.city.name === APP_CITIES[i].name);
+  for (let i = 0; i < AppCity.length; i++) {
+    const chunk = favorites.filter((favorite) => favorite.city.name === AppCity[i].name);
     if (chunk.length > 0) {
       result.push(chunk);
     }

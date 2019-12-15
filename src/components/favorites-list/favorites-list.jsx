@@ -7,7 +7,7 @@ import {
 import {Link} from 'react-router-dom';
 
 import OfferCard from '../offer-card/offer-card.jsx';
-import {ROUTES} from '../../consts/index.js';
+import {AppRoute} from '../../consts/consts.js';
 
 const FavoritesList = ({
   favorites,
@@ -22,7 +22,7 @@ const FavoritesList = ({
             <div className="locations__item">
               <Link
                 className="locations__item-link"
-                to={ROUTES.ROOT}
+                to={AppRoute.ROOT}
                 data-testid={`location-item-link-${i}`}
                 onClick={() => onSelectCity(chunk[0].city)}
               >

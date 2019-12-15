@@ -18,7 +18,7 @@ import {getCityOffers} from '../../store/data/selectors.js';
 import aData from '../../store/data/actions.js';
 import aUser from '../../store/user/actions.js';
 import aFilters from '../../store/filters/actions.js';
-import {APP_CITIES} from '../../consts/index.js';
+import {AppCity} from '../../consts/consts.js';
 
 const WithSorterState = withSorterState(OffersSorter);
 
@@ -41,7 +41,7 @@ const MainPage = ({
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <MainTabs
-          cities={APP_CITIES}
+          cities={AppCity}
           selectedCity={city}
           onSelectCityClick={handleSelectCity}
         />

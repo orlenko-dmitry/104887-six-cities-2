@@ -5,7 +5,7 @@ import {
   func,
 } from 'prop-types';
 
-import {SORT_BY_LIST} from '../../consts/index.js';
+import {SortByList} from '../../consts/consts.js';
 
 const OffersSorter = ({
   isOpen,
@@ -41,7 +41,7 @@ const OffersSorter = ({
         className={`${isOpen ? `places__options--opened` : ``} places__options places__options--custom`}
         data-testid="offers-sorter-list"
       >
-        {SORT_BY_LIST.map(({id, name}) => (
+        {SortByList.map(({id, name}) => (
           <li
             className={`${name === sortedBy ? `places__option--active` : ``} places__option`}
             key={id}

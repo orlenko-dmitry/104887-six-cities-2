@@ -10,7 +10,7 @@ import {
 import {Link} from 'react-router-dom';
 
 import {defineRating} from '../../helpers/helpers.js';
-import {OFFER_TYPE, ROUTES} from '../../consts/index.js';
+import {OfferType, AppRoute} from '../../consts/consts.js';
 
 const OfferCard = ({
   offer: {
@@ -84,10 +84,10 @@ const OfferCard = ({
         {
           isFavoriteCard
             ? <span>{title}</span>
-            : <Link to={`${ROUTES.OFFER}/${id}`}>{title}</Link>
+            : <Link to={`${AppRoute.OFFER}/${id}`}>{title}</Link>
         }
       </h2>
-      <p className="place-card__type">{OFFER_TYPE[type]}</p>
+      <p className="place-card__type">{OfferType[type.toUpperCase()]}</p>
     </div>
   </article>
 );

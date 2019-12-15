@@ -3,14 +3,14 @@ import {shallow} from 'enzyme';
 
 import MainTabs from '../main-tabs/main-tabs.jsx';
 import offers from '../../mocks/offers.js';
-import {APP_CITIES} from '../../consts/index.js';
+import {AppCity} from '../../consts/consts.js';
 
 const city = offers[0].city;
 
 it(`MainTabs rnders correctly`, () => {
   const tree = shallow(
       <MainTabs
-        cities={APP_CITIES}
+        cities={AppCity}
         selectedCity={city}
         onSelectCityClick={() => {}}
       />

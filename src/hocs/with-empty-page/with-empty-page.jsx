@@ -1,14 +1,14 @@
 import React from 'react';
 import {number} from 'prop-types';
 
-import {ASYNC_STATUSES} from '../../consts/index.js';
+import {AsyncStatus} from '../../consts/consts.js';
 
 const withEmptyPage = (ComponentPage, ComponentEmptyPage) => (props) => {
   const {dataLength, fetchStatus} = props;
 
-  if (fetchStatus === ASYNC_STATUSES.PENDING) {
+  if (fetchStatus === AsyncStatus.PENDING) {
     return null;
-  } else if (fetchStatus === ASYNC_STATUSES.SUCCESS) {
+  } else if (fetchStatus === AsyncStatus.SUCCESS) {
     return dataLength > 0 ? <ComponentPage {...props} /> : <ComponentEmptyPage {...props} />;
   }
   return null;

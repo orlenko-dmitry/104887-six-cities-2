@@ -8,12 +8,12 @@ import {
 import leaflet from 'leaflet';
 
 import {leafletSetView} from '../../helpers/helpers.js';
-import {LEAFLET_CONSTS} from '../../consts/index.js';
+import {LeafletConst} from '../../consts/consts.js';
 
 const {
   TILE_LAYER,
   ATTRIBUTION,
-} = LEAFLET_CONSTS;
+} = LeafletConst;
 
 class OffersMap extends PureComponent {
   componentDidMount() {

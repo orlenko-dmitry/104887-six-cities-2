@@ -9,13 +9,13 @@ import {
 import {Link, Redirect} from 'react-router-dom';
 
 import PageHeader from '../page-header/page-header.jsx';
-import {ROUTES, ASYNC_STATUSES} from '../../consts/index.js';
+import {AppRoute, AsyncStatus} from '../../consts/consts.js';
 
 const {
   PENDING,
   SUCCESS,
   ERROR,
-} = ASYNC_STATUSES;
+} = AsyncStatus;
 
 const AuthPage = ({
   city,
@@ -28,7 +28,7 @@ const AuthPage = ({
   onPasswordChange,
 }) => {
   if (user !== null && userGetStatus === SUCCESS) {
-    return <Redirect to={ROUTES.ROOT} />;
+    return <Redirect to={AppRoute.ROOT} />;
   }
   if (user === null && userGetStatus === ERROR) {
     return (
@@ -73,7 +73,7 @@ const AuthPage = ({
             </section>
             <section className="locations locations--login locations--current">
               <div className="locations__item">
-                <Link className="locations__item-link" to={ROUTES.ROOT}>
+                <Link className="locations__item-link" to={AppRoute.ROOT}>
                   <span>{city.name}</span>
                 </Link>
               </div>

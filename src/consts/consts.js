@@ -1,4 +1,4 @@
-export const LEAFLET_CONSTS = {
+export const LeafletConst = {
   iconUrl: ({onHoverOfferId, selectedOfferId, currentId}) => {
     return selectedOfferId === currentId
     || onHoverOfferId === currentId ? `/img/pin-active.svg` : `/img/pin.svg`;
@@ -8,23 +8,28 @@ export const LEAFLET_CONSTS = {
   ATTRIBUTION: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`,
 };
 
-export const SORTED_BY = {
+export const SortedBy = {
   POPULAR: `Popular`,
   PRICE_TO_HIGH: `Price: low to high`,
   PRICE_TO_LOW: `Price: high to low`,
   TOP_RATED: `Top rated first`,
 };
 
-export const ROUTES = {
+export const AppRoute = {
   ROOT: `/`,
   AUTH: `/login`,
   OFFER: `/offer`,
   FAVORITE: `/favorites`,
 };
 
+export const ResponseStatus = {
+  UNAUTHORIZED: 401,
+  NOT_FOUND: 404,
+};
+
 export const MAX_REVIEWS = 10;
 
-export const SORT_BY_LIST = [
+export const SortByList = [
   {
     id: 1,
     name: `Popular`,
@@ -43,31 +48,31 @@ export const SORT_BY_LIST = [
   },
 ];
 
-export const AXIOS_CONFIG = {
+export const AxiosConfig = {
   BASE_URL: ` https://htmlacademy-react-2.appspot.com/six-cities`,
   TIME_OUT: 5000,
   WITH_CREDENTIAL: true,
 };
 
-export const ASYNC_STATUSES = {
+export const AsyncStatus = {
   PENDING: `PENDING`,
   SUCCESS: `SUCCESS`,
   ERROR: `ERROR`,
 };
 
-export const DATE_FORMATS = {
+export const DateFormat = {
   DATE_TIME: `YYYY-MM-DD`,
   MOTH_YEAR: `MMMM YYYY`,
 };
 
-export const OFFER_TYPE = {
-  apartment: `Apartment`,
-  room: `Private Room`,
-  house: `House`,
-  hotel: `Hotel`,
+export const OfferType = {
+  APARTMENT: `Apartment`,
+  ROOM: `Private Room`,
+  HOUSE: `House`,
+  HOTEL: `Hotel`,
 };
 
-export const APP_CITIES = [
+export const AppCity = [
   {
     "name": `Amsterdam`,
     "location": {

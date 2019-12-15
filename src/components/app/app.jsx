@@ -21,13 +21,13 @@ import withAuth from '../../hocs/with-auth/with-auth.jsx';
 import aData from '../../store/data/actions.js';
 import aUser from '../../store/user/actions.js';
 import {getCityOffers} from '../../store/data/selectors.js';
-import {ROUTES, ASYNC_STATUSES} from '../../consts/index.js';
+import {AppRoute, AsyncStatus} from '../../consts/consts.js';
 
 const {
   PENDING,
   SUCCESS,
   ERROR,
-} = ASYNC_STATUSES;
+} = AsyncStatus;
 const WithEmptyMainPage = withEmptyPage(MainPage, MainEmptyPage);
 const WithAuthForm = withAuthForm(AuthPage);
 const WithEmptyFavoritesPage = withEmptyPage(FavoritesPage, FavoritesEmptyPage);
@@ -63,16 +63,16 @@ class App extends PureComponent {
     return (
       <Fragment>
         <Switch>
-          <Route exact path={ROUTES.ROOT} render={(props) => (
+          <Route exact path={AppRoute.ROOT} render={(props) => (
             <WithEmptyMainPage
               {...props}
               dataLength={offers.length}
               fetchStatus={offersFetchStatus}
             />
           )} />
-          <Route path={ROUTES.AUTH} component={WithAuthForm} />
-          <Route path={`${ROUTES.OFFER}/:offerId`} component={DetailsPage} />
-          <Route path={ROUTES.FAVORITE} render={(props) => (
+          <Route path={AppRoute.AUTH} component={WithAuthForm} />
+          <Route path={`${AppRoute.OFFER}/:offerId`} component={DetailsPage} />
+          <Route path={AppRoute.FAVORITE} render={(props) => (
             <WithAuth
               {...props}
               user={user}

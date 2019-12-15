@@ -4,13 +4,13 @@ import {
   SORT_OFFERS_BY,
   OFFER_ON_HOVER,
 } from '../../consts/actionTypes';
-import {SORTED_BY} from '../../consts/index.js';
+import {SortedBy} from '../../consts/consts.js';
 
 describe(`Action creators work correctly`, () => {
   it(`Action creator for sorting offers returns action with payload`, () => {
-    expect(actions.sortBy(SORTED_BY.POPULAR)).toEqual({
+    expect(actions.sortBy(SortedBy.POPULAR)).toEqual({
       type: SORT_OFFERS_BY,
-      payload: SORTED_BY.POPULAR,
+      payload: SortedBy.POPULAR,
     });
   });
   it(`Action creator for coloring pin returns action with payload`, () => {
@@ -28,9 +28,9 @@ describe(`Reducer works correctly`, () => {
   it(`Reducer should change sortedBy by a given payload`, () => {
     expect(reducer(undefined, {
       type: SORT_OFFERS_BY,
-      payload: SORTED_BY.POPULAR,
+      payload: SortedBy.POPULAR,
     })).toEqual(Object.assign({}, initialState, {
-      sortedBy: SORTED_BY.POPULAR,
+      sortedBy: SortedBy.POPULAR,
     }));
   });
   it(`Reducer should change onHoverOfferId by a given payload`, () => {
