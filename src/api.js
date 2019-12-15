@@ -6,6 +6,7 @@ import {
   AppRoute,
   ResponseStatus,
 } from './consts/consts.js';
+import endpoints from './consts/endpoints.js';
 import history from './history.js';
 
 const {
@@ -25,7 +26,7 @@ export const createApi = () => {
 
   const onFail = (err) => {
     const {config: {url}, data: {error}} = err.response;
-    if (err.response.status === ResponseStatus.UNAUTHORIZED && url.includes(AppRoute.FAVORITE)) {
+    if (err.response.status === ResponseStatus.UNAUTHORIZED && url.includes(endpoints.getFavorite)) {
       history.push(AppRoute.AUTH);
     }
     if (err.response.status === ResponseStatus.NOT_FOUND) {
