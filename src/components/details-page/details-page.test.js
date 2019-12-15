@@ -18,6 +18,7 @@ it(`DetailsPage renders correctly`, () => {
         offers={offers}
         comments={comments}
         city={city}
+        user={null}
         onHoverOfferId={-1}
         offersFetchStatus={ASYNC_STATUSES.SUCCESS}
         match={match}

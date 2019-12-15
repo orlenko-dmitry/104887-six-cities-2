@@ -19,7 +19,7 @@ export const ROUTES = {
   ROOT: `/`,
   AUTH: `/login`,
   OFFER: `/offer`,
-  FAVORITE: `/favorite`,
+  FAVORITE: `/favorites`,
 };
 
 export const MAX_REVIEWS = 10;

@@ -33,7 +33,7 @@ exports[`App renders correctly 1`] = `
       path="/offer/:offerId"
     />
     <Route
-      path="/favorite"
+      path="/favorites"
       render={[Function]}
     />
   </Switch>

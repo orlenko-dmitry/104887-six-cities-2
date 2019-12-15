@@ -13,18 +13,18 @@ exports[`PageHeader renders correctly 1`] = `
       <div
         className="header__left"
       >
-        <a
+        <Link
           className="header__logo-link"
-          href="/"
+          to="/"
         >
           <img
             alt="6 cities logo"
             className="header__logo"
             height={41}
-            src="img/logo.svg"
+            src="/img/logo.svg"
             width={81}
           />
-        </a>
+        </Link>
       </div>
       <nav
         className="header__nav"
