@@ -12,7 +12,7 @@ const {
   SUCCESS,
   ERROR,
 } = ASYNC_STATUSES;
-const raitings = Array.from(Array(5).keys()).reverse();
+const stars = Array.from(Array(5).keys()).reverse();
 
 const ReviewsForm = ({
   rating,
@@ -31,20 +31,21 @@ const ReviewsForm = ({
     <form className="reviews__form form" onSubmit={(evt) => onSubmitForm(evt)}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
-        {raitings.map((raiting) => (
-          <Fragment key={raiting}>
+        {stars.map((star) => (
+          <Fragment key={star}>
             <input
               className="form__rating-input visually-hidden"
               name="rating"
-              defaultValue={raiting + 1}
-              id={`${raiting + 1}-stars`}
+              defaultValue={star + 1}
+              id={`${star + 1}-stars`}
               type="radio"
+              checked={rating === star + 1}
+              onChange={() => onRatingChange(star + 1)}
             />
             <label
-              htmlFor={`${raiting + 1}-stars`}
+              htmlFor={`${star + 1}-stars`}
               className="reviews__rating-label form__rating-label"
               title="perfect"
-              onClick={() => onRatingChange(raiting + 1)}
             >
               <svg className="form__star-image" width={37} height={33}>
                 <use xlinkHref="#icon-star" />
