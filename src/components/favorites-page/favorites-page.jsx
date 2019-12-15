@@ -39,7 +39,7 @@ const FavoritesPage = ({
 );
 
 FavoritesPage.propTypes = {
-  favorites: arrayOf(shape({
+  favorites: arrayOf(arrayOf(shape({
     id: number.isRequired,
     images: arrayOf(string).isRequired,
     title: string.isRequired,
@@ -61,20 +61,16 @@ FavoritesPage.propTypes = {
       latitude: number.isRequired,
       longitude: number.isRequired,
     }).isRequired,
-  })).isRequired,
+  }))).isRequired,
   user: shape({
     avatarUrl: string.isRequired,
     email: string.isRequired,
     id: number.isRequired,
     isPro: bool.isRequired,
     name: string.isRequired,
-  }),
+  }).isRequired,
   handleFavoriteAdd: func.isRequired,
   handleSelectCity: func.isRequired,
-};
-
-FavoritesPage.defaultProps = {
-  user: null,
 };
 
 const mapStateToProps = ({rUser}) => ({

@@ -51,7 +51,7 @@ const FavoritesList = ({
 );
 
 FavoritesList.propTypes = {
-  favorites: arrayOf(shape({
+  favorites: arrayOf(arrayOf(shape({
     id: number.isRequired,
     images: arrayOf(string).isRequired,
     title: string.isRequired,
@@ -73,7 +73,7 @@ FavoritesList.propTypes = {
       latitude: number.isRequired,
       longitude: number.isRequired,
     }).isRequired,
-  })).isRequired,
+  }))).isRequired,
   onSelectCity: func.isRequired,
   onAddFavorite: func.isRequired,
 };
