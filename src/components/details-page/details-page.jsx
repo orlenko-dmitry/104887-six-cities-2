@@ -33,24 +33,24 @@ const WithReviewsForm = withReviewsForm(ReviewsFrom);
 class DetailsPage extends PureComponent {
   constructor(props) {
     super(props);
-    this._colorPinHandler = this._colorPinHandler.bind(this);
+    this._handleColorPin = this._handleColorPin.bind(this);
   }
 
   componentDidMount() {
-    const {fetchCommentsHandler, match: {params: {offerId}}} = this.props;
-    fetchCommentsHandler(offerId);
+    const {handleFetchComments, match: {params: {offerId}}} = this.props;
+    handleFetchComments(offerId);
   }
 
   componentDidUpdate(prevProps) {
-    const {match: {params: {offerId}}, fetchCommentsHandler} = this.props;
+    const {match: {params: {offerId}}, handleFetchComments} = this.props;
     if (prevProps.match.params.offerId !== offerId) {
-      fetchCommentsHandler(offerId);
+      handleFetchComments(offerId);
     }
   }
 
-  _colorPinHandler(id) {
-    const {getOfferIdHandler} = this.props;
-    getOfferIdHandler(id);
+  _handleColorPin(id) {
+    const {handleGetOfferId} = this.props;
+    handleGetOfferId(id);
   }
 
   render() {
@@ -61,7 +61,7 @@ class DetailsPage extends PureComponent {
       onHoverOfferId,
       user,
       offersFetchStatus,
-      favoriteAddHandler,
+      handleFavoriteAdd,
       match: {
         params: {
           offerId,
@@ -114,7 +114,7 @@ class DetailsPage extends PureComponent {
                   <button
                     className={`property__bookmark-button ${isFavorite ? `property__bookmark-button--active` : ``} button`}
                     type="button"
-                    onClick={() => favoriteAddHandler({offerId: id, status: isFavorite ? 0 : 1})}
+                    onClick={() => handleFavoriteAdd({offerId: id, status: isFavorite ? 0 : 1})}
                   >
                     <svg className="property__bookmark-icon" width={31} height={33}>
                       <use xlinkHref="#icon-bookmark" />
@@ -197,8 +197,8 @@ class DetailsPage extends PureComponent {
               <OffersList
                 classNames={`near-places__list`}
                 offers={getNearOffers(offers, id)}
-                onColorPin={this._colorPinHandler}
-                onAddFavorite={favoriteAddHandler}
+                onColorPin={this._handleColorPin}
+                onAddFavorite={handleFavoriteAdd}
               />
             </section>
           </div>
@@ -245,9 +245,9 @@ DetailsPage.propTypes = {
   onHoverOfferId: number.isRequired,
   offersFetchStatus: oneOf([PENDING, SUCCESS, ERROR]).isRequired,
   user: shape({}),
-  getOfferIdHandler: func.isRequired,
-  fetchCommentsHandler: func.isRequired,
-  favoriteAddHandler: func.isRequired,
+  handleGetOfferId: func.isRequired,
+  handleFetchComments: func.isRequired,
+  handleFavoriteAdd: func.isRequired,
 };
 
 DetailsPage.defaultProps = {
@@ -268,9 +268,9 @@ const mapStateToProps = ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getOfferIdHandler: (payload) => dispatch(aFilters.getOfferId(payload)),
-  fetchCommentsHandler: (payload) => dispatch(aData.fetchComments(payload)),
-  favoriteAddHandler: (payload) => dispatch(aUser.postFavorite(payload)),
+  handleGetOfferId: (payload) => dispatch(aFilters.getOfferId(payload)),
+  handleFetchComments: (payload) => dispatch(aData.fetchComments(payload)),
+  handleFavoriteAdd: (payload) => dispatch(aUser.postFavorite(payload)),
 });
 
 export {DetailsPage};

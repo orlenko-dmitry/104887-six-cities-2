@@ -13,7 +13,7 @@ const OffersSorter = ({
   onOpenSorterClick,
   onSortByClick,
 }) => {
-  const sortByclickHandler = (name) => {
+  const handleSortByclick = (name) => {
     onSortByClick(name);
     onOpenSorterClick();
   };
@@ -46,7 +46,7 @@ const OffersSorter = ({
             className={`${name === sortedBy ? `places__option--active` : ``} places__option`}
             key={id}
             tabIndex="0"
-            onClick={() => sortByclickHandler(name)}
+            onClick={() => handleSortByclick(name)}
           >
             {name}
           </li>

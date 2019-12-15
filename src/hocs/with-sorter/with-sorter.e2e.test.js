@@ -6,12 +6,12 @@ import withSorter from './with-sorter.jsx';
 const MockComponent = () => <div />;
 const MockComponentWrapped = withSorter(MockComponent);
 
-it(`Should change isSorterOpen when call openSorterHandler`, () => {
+it(`Should change isSorterOpen when call _handleOpenSorter`, () => {
   const wrapper = shallow(<MockComponentWrapped />);
 
   expect(wrapper.state().isSorterOpen).toEqual(false);
 
-  wrapper.instance()._openSorterHandler();
+  wrapper.instance()._handleOpenSorter();
 
   expect(wrapper.state().isSorterOpen).toEqual(true);
 });

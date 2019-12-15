@@ -10,7 +10,7 @@ describe(`e2e test for withAuthForm hoc`, () => {
   const MockComponentWrapped = withAuthForm(MockComponent);
   const city = offers[0].city;
 
-  it(`Should change userEmail, when call emailChangeHandler with value`, () => {
+  it(`Should change userEmail, when call _handleEmailChange with value`, () => {
     const wrapper = shallow(
         <MockComponentWrapped
           city={city}
@@ -22,11 +22,11 @@ describe(`e2e test for withAuthForm hoc`, () => {
 
     expect(wrapper.state().userEmail).toEqual(``);
 
-    wrapper.instance()._emailChangeHandler(`test`);
+    wrapper.instance()._handleEmailChange(`test`);
 
     expect(wrapper.state().userEmail).toEqual(`test`);
   });
-  it(`Should change userPassword, when call passwordChangeHandler with value`, () => {
+  it(`Should change userPassword, when call _handlePasswordChange with value`, () => {
     const wrapper = shallow(
         <MockComponentWrapped
           city={city}
@@ -38,27 +38,27 @@ describe(`e2e test for withAuthForm hoc`, () => {
 
     expect(wrapper.state().userPassword).toEqual(``);
 
-    wrapper.instance()._passwordChangeHandler(`qwerty`);
+    wrapper.instance()._handlePasswordChange(`qwerty`);
 
     expect(wrapper.state().userPassword).toEqual(`qwerty`);
   });
-  it(`authLogin should been called with payload, when call formSubmitHandler`, () => {
-    const authLoginHandler = jest.fn();
+  it(`handleAuthLogin should been called with payload, when call _handleFormSubmit`, () => {
+    const handleAuthLogin = jest.fn();
     const mockEvent = {preventDefault: () => {}};
     const wrapper = shallow(
         <MockComponentWrapped
           city={city}
           user={null}
           userGetStatus={ASYNC_STATUSES.ERROR}
-          authLogin={authLoginHandler}
+          handleAuthLogin={handleAuthLogin}
         />
     );
 
-    wrapper.instance()._emailChangeHandler(`test`);
-    wrapper.instance()._passwordChangeHandler(`qwerty`);
-    wrapper.instance()._formSubmitHandler(mockEvent);
+    wrapper.instance()._handleEmailChange(`test`);
+    wrapper.instance()._handlePasswordChange(`qwerty`);
+    wrapper.instance()._handleFormSubmit(mockEvent);
 
-    expect(authLoginHandler).toHaveBeenNthCalledWith(1, {
+    expect(handleAuthLogin).toHaveBeenNthCalledWith(1, {
       userEmail: `test`,
       userPassword: `qwerty`,
     });

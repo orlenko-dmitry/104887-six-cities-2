@@ -22,9 +22,9 @@ it(`DetailsPage renders correctly`, () => {
         onHoverOfferId={-1}
         offersFetchStatus={ASYNC_STATUSES.SUCCESS}
         match={match}
-        getOfferIdHandler={() => {}}
-        fetchCommentsHandler={() => {}}
-        favoriteAddHandler={() => {}}
+        handleGetOfferId={() => {}}
+        handleFetchComments={() => {}}
+        handleFavoriteAdd={() => {}}
       />
   );
 

@@ -6,12 +6,12 @@ import {SORTED_BY} from '../../consts/index.js';
 
 describe(`e2e tests for OffersSorter`, () => {
   it(`OffersSorter dosen't open`, () => {
-    const clickHandler = jest.fn();
+    const handleClick = jest.fn();
     const wrapper = shallow(
         <OffersSorter
           isOpen={false}
           sortedBy={SORTED_BY.POPULAR}
-          onOpenSorterClick={clickHandler}
+          onOpenSorterClick={handleClick}
           onSortByClick={() => {}}
         />
     );
@@ -20,12 +20,12 @@ describe(`e2e tests for OffersSorter`, () => {
     expect(sorterList.hasClass(`places__options--opened`)).toEqual(false);
   });
   it(`OffersSorter is open`, () => {
-    const clickHandler = jest.fn();
+    const handleClick = jest.fn();
     const wrapper = shallow(
         <OffersSorter
           isOpen={true}
           sortedBy={SORTED_BY.POPULAR}
-          onOpenSorterClick={clickHandler}
+          onOpenSorterClick={handleClick}
           onSortByClick={() => {}}
         />
     );

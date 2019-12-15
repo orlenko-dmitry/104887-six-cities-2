@@ -28,10 +28,10 @@ const MainPage = ({
   user,
   sortedBy,
   onHoverOfferId,
-  selectCityHandler,
-  sortByHandler,
-  getOfferIdHandler,
-  favoriteAddHandler,
+  handleSelectCity,
+  handleSortBy,
+  handleGetOfferId,
+  handleFavoriteAdd,
 }) => {
   const offersQuantity = offers.length;
 
@@ -43,7 +43,7 @@ const MainPage = ({
         <MainTabs
           cities={APP_CITIES}
           selectedCity={city}
-          onSelectCityClick={selectCityHandler}
+          onSelectCityClick={handleSelectCity}
         />
         <div className="cities">
           <div className="cities__places-container container">
@@ -52,13 +52,13 @@ const MainPage = ({
               <b className="places__found">{offersQuantity} places to stay in {city.name}</b>
               <WithSorterState
                 sortedBy={sortedBy}
-                onSortByClick={sortByHandler}
+                onSortByClick={handleSortBy}
               />
               <OffersList
                 classNames={`cities__places-list tabs__content`}
                 offers={offers}
-                onColorPin={getOfferIdHandler}
-                onAddFavorite={favoriteAddHandler}
+                onColorPin={handleGetOfferId}
+                onAddFavorite={handleFavoriteAdd}
               />
             </section>
             <div className="cities__right-section">
@@ -91,10 +91,10 @@ MainPage.propTypes = {
   user: shape({}),
   sortedBy: string.isRequired,
   onHoverOfferId: number.isRequired,
-  selectCityHandler: func.isRequired,
-  sortByHandler: func.isRequired,
-  getOfferIdHandler: func.isRequired,
-  favoriteAddHandler: func.isRequired,
+  handleSelectCity: func.isRequired,
+  handleSortBy: func.isRequired,
+  handleGetOfferId: func.isRequired,
+  handleFavoriteAdd: func.isRequired,
 };
 
 MainPage.defaultProps = {
@@ -114,10 +114,10 @@ const mapStateToProps = ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  selectCityHandler: (payload) => dispatch(aData.selectCity(payload)),
-  sortByHandler: (payload) => dispatch(aFilters.sortBy(payload)),
-  getOfferIdHandler: (payload) => dispatch(aFilters.getOfferId(payload)),
-  favoriteAddHandler: (payload) => dispatch(aUser.postFavorite(payload)),
+  handleSelectCity: (payload) => dispatch(aData.selectCity(payload)),
+  handleSortBy: (payload) => dispatch(aFilters.sortBy(payload)),
+  handleGetOfferId: (payload) => dispatch(aFilters.getOfferId(payload)),
+  handleFavoriteAdd: (payload) => dispatch(aUser.postFavorite(payload)),
 });
 
 export {MainPage};

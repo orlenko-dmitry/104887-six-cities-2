@@ -15,16 +15,17 @@ exports[`ReviewsForm renders correctly 1`] = `
     className="reviews__rating-form form__rating"
   >
     <input
+      checked={false}
       className="form__rating-input visually-hidden"
       defaultValue={5}
       id="5-stars"
       name="rating"
+      onChange={[Function]}
       type="radio"
     />
     <label
       className="reviews__rating-label form__rating-label"
       htmlFor="5-stars"
-      onClick={[Function]}
       title="perfect"
     >
       <svg
@@ -38,16 +39,17 @@ exports[`ReviewsForm renders correctly 1`] = `
       </svg>
     </label>
     <input
+      checked={false}
       className="form__rating-input visually-hidden"
       defaultValue={4}
       id="4-stars"
       name="rating"
+      onChange={[Function]}
       type="radio"
     />
     <label
       className="reviews__rating-label form__rating-label"
       htmlFor="4-stars"
-      onClick={[Function]}
       title="perfect"
     >
       <svg
@@ -61,16 +63,17 @@ exports[`ReviewsForm renders correctly 1`] = `
       </svg>
     </label>
     <input
+      checked={false}
       className="form__rating-input visually-hidden"
       defaultValue={3}
       id="3-stars"
       name="rating"
+      onChange={[Function]}
       type="radio"
     />
     <label
       className="reviews__rating-label form__rating-label"
       htmlFor="3-stars"
-      onClick={[Function]}
       title="perfect"
     >
       <svg
@@ -84,16 +87,17 @@ exports[`ReviewsForm renders correctly 1`] = `
       </svg>
     </label>
     <input
+      checked={false}
       className="form__rating-input visually-hidden"
       defaultValue={2}
       id="2-stars"
       name="rating"
+      onChange={[Function]}
       type="radio"
     />
     <label
       className="reviews__rating-label form__rating-label"
       htmlFor="2-stars"
-      onClick={[Function]}
       title="perfect"
     >
       <svg
@@ -107,16 +111,17 @@ exports[`ReviewsForm renders correctly 1`] = `
       </svg>
     </label>
     <input
+      checked={false}
       className="form__rating-input visually-hidden"
       defaultValue={1}
       id="1-stars"
       name="rating"
+      onChange={[Function]}
       type="radio"
     />
     <label
       className="reviews__rating-label form__rating-label"
       htmlFor="1-stars"
-      onClick={[Function]}
       title="perfect"
     >
       <svg

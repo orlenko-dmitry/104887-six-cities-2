@@ -24,37 +24,37 @@ const withReviewsForm = (Component) => {
         rating: 0,
         comment: ``,
       };
-      this._ratingChangeHandler = this._ratingChangeHandler.bind(this);
-      this._commentChangeHandler = this._commentChangeHandler.bind(this);
-      this._formSubmitHandler = this._formSubmitHandler.bind(this);
-      this._clearState = this._clearState.bind(this);
+      this._handleRatingChange = this._handleRatingChange.bind(this);
+      this._handleCommentChange = this._handleCommentChange.bind(this);
+      this._handleFormSubmit = this._handleFormSubmit.bind(this);
+      this._handleClearState = this._handleClearState.bind(this);
     }
 
     componentDidUpdate(prevProps) {
       const {messagePostStatus} = this.props;
       if (prevProps.messagePostStatus === PENDING && messagePostStatus === ``) {
-        this._clearState();
+        this._handleClearState();
       }
     }
 
-    _clearState() {
+    _handleClearState() {
       this.setState({rating: 0, comment: ``});
     }
 
-    _ratingChangeHandler(value) {
+    _handleRatingChange(value) {
       this.setState({rating: value});
     }
 
-    _commentChangeHandler(value) {
+    _handleCommentChange(value) {
       this.setState({comment: value});
     }
 
-    _formSubmitHandler(evt) {
-      const {offerId, postCommentHandler} = this.props;
+    _handleFormSubmit(evt) {
+      const {offerId, handlePostComment} = this.props;
       const {rating, comment} = this.state;
 
       evt.preventDefault();
-      postCommentHandler({offerId, rating, comment});
+      handlePostComment({offerId, rating, comment});
     }
 
     render() {
@@ -67,9 +67,9 @@ const withReviewsForm = (Component) => {
           rating={rating}
           comment={comment}
           messagePostStatus={messagePostStatus}
-          onRatingChange={this._ratingChangeHandler}
-          onCommentChange={this._commentChangeHandler}
-          onSubmitForm={this._formSubmitHandler}
+          onRatingChange={this._handleRatingChange}
+          onCommentChange={this._handleCommentChange}
+          onSubmitForm={this._handleFormSubmit}
         />
       );
     }
@@ -79,7 +79,7 @@ const withReviewsForm = (Component) => {
     user: shape({}),
     messagePostStatus: oneOf([``, PENDING, SUCCESS, ERROR]).isRequired,
     offerId: string.isRequired,
-    postCommentHandler: func.isRequired,
+    handlePostComment: func.isRequired,
   };
 
   WithReviewsForm.defaultProps = {
@@ -95,7 +95,7 @@ const mapStateToProps = ({rData, rUser}) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  postCommentHandler: (payload) => dispatch(aData.postComment(payload)),
+  handlepostComment: (payload) => dispatch(aData.postComment(payload)),
 });
 
 export default compose(

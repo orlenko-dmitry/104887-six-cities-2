@@ -14,7 +14,7 @@ import {APP_CITIES} from '../../consts/index.js';
 
 const MainEmptyPage = ({
   city,
-  selectCityHandler,
+  handleSelectCity,
   user,
 }) => (
   <div className="page page--gray page--main">
@@ -24,7 +24,7 @@ const MainEmptyPage = ({
       <MainTabs
         cities={APP_CITIES}
         selectedCity={city}
-        onSelectCityClick={selectCityHandler}
+        onSelectCityClick={handleSelectCity}
       />
       <div className="cities">
         <div className="cities__places-container cities__places-container--empty container">
@@ -53,7 +53,7 @@ MainEmptyPage.propTypes = {
     name: string.isRequired,
   }).isRequired,
   user: shape({}),
-  selectCityHandler: func.isRequired,
+  handleSelectCity: func.isRequired,
 };
 
 MainEmptyPage.defaultProps = {
@@ -66,7 +66,7 @@ const mapStateToProps = ({rData, rUser}) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  selectCityHandler: (payload) => dispatch(aData.selectCity(payload)),
+  handleSelectCity: (payload) => dispatch(aData.selectCity(payload)),
 });
 
 export {MainEmptyPage};

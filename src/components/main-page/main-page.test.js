@@ -15,10 +15,10 @@ it(`MainPage renders correctly`, () => {
         city={city}
         sortedBy={SORTED_BY.POPULAR}
         onHoverOfferId={-1}
-        selectCityHandler={() => {}}
-        sortByHandler={() => {}}
-        getOfferIdHandler={() => {}}
-        favoriteAddHandler={() => {}}
+        handleSelectCity={() => {}}
+        handleSortBy={() => {}}
+        handleGetOfferId={() => {}}
+        handleFavoriteAdd={() => {}}
       />
   );
 

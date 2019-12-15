@@ -13,8 +13,8 @@ it(`FavoritesPage rendres correctly`, () => {
       <FavoritesPage
         favorites={favorites}
         user={user}
-        selectCityHandler={() => {}}
-        favoriteAddHandler={() => {}}
+        handleSelectCity={() => {}}
+        handleFavoriteAdd={() => {}}
       />
   );
 

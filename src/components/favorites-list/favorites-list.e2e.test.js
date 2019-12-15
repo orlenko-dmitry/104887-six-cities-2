@@ -8,12 +8,12 @@ import offers from '../../mocks/offers.js';
 describe(`e2e test for FavoritesList`, () => {
   const favorites = sortFavorites(offers);
 
-  it(`selectCityHandler have been called`, () => {
-    const selectCityHandler = jest.fn();
+  it(`handleSelectCity have been called`, () => {
+    const handleSelectCity = jest.fn();
     const wrapper = shallow(
         <FavoritesList
           favorites={favorites}
-          onSelectCity={selectCityHandler}
+          onSelectCity={handleSelectCity}
           onAddFavorite={() => {}}
         />
     );
@@ -21,15 +21,15 @@ describe(`e2e test for FavoritesList`, () => {
 
     link.simulate(`click`);
 
-    expect(selectCityHandler).toHaveBeenCalled();
+    expect(handleSelectCity).toHaveBeenCalled();
   });
 
-  it(`selectCityHandler called with valid argument`, () => {
-    const selectCityHandler = jest.fn();
+  it(`handleSelectCity called with valid argument`, () => {
+    const handleSelectCity = jest.fn();
     const wrapper = shallow(
         <FavoritesList
           favorites={favorites}
-          onSelectCity={selectCityHandler}
+          onSelectCity={handleSelectCity}
           onAddFavorite={() => {}}
         />
     );
@@ -37,6 +37,6 @@ describe(`e2e test for FavoritesList`, () => {
 
     link.simulate(`click`);
 
-    expect(selectCityHandler).toBeCalledWith(expect.any(Object));
+    expect(handleSelectCity).toBeCalledWith(expect.any(Object));
   });
 });

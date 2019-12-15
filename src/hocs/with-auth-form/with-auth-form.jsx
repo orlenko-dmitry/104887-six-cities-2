@@ -26,24 +26,24 @@ const withAuthForm = (Component) => {
         userEmail: ``,
         userPassword: ``,
       };
-      this._formSubmitHandler = this._formSubmitHandler.bind(this);
-      this._emailChangeHandler = this._emailChangeHandler.bind(this);
-      this._passwordChangeHandler = this._passwordChangeHandler.bind(this);
+      this._handleFormSubmit = this._handleFormSubmit.bind(this);
+      this._handleEmailChange = this._handleEmailChange.bind(this);
+      this._handlePasswordChange = this._handlePasswordChange.bind(this);
     }
 
-    _formSubmitHandler(evt) {
+    _handleFormSubmit(evt) {
       const {userEmail, userPassword} = this.state;
-      const {authLogin} = this.props;
+      const {handleAuthLogin} = this.props;
 
       evt.preventDefault();
-      authLogin({userEmail, userPassword});
+      handleAuthLogin({userEmail, userPassword});
     }
 
-    _emailChangeHandler(value) {
+    _handleEmailChange(value) {
       this.setState({userEmail: value});
     }
 
-    _passwordChangeHandler(value) {
+    _handlePasswordChange(value) {
       this.setState({userPassword: value});
     }
 
@@ -57,9 +57,9 @@ const withAuthForm = (Component) => {
           userEmail={userEmail}
           userPassword={userPassword}
           userGetStatus={userGetStatus}
-          onFormSubmit={this._formSubmitHandler}
-          onEmailChange={this._emailChangeHandler}
-          onPasswordChange={this._passwordChangeHandler}
+          onFormSubmit={this._handleFormSubmit}
+          onEmailChange={this._handleEmailChange}
+          onPasswordChange={this._handlePasswordChange}
         />
       );
     }
@@ -76,7 +76,7 @@ const withAuthForm = (Component) => {
     }).isRequired,
     user: shape({}),
     userGetStatus: oneOf([PENDING, SUCCESS, ERROR]).isRequired,
-    authLogin: func.isRequired,
+    handleAuthLogin: func.isRequired,
   };
 
   WithAuthForm.defaultProps = {
@@ -93,7 +93,7 @@ const mapStateToProps = ({rData, rUser}) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  authLogin: (payload) => dispatch(aUser.authLogin(payload)),
+  handleAuthLogin: (payload) => dispatch(aUser.authLogin(payload)),
 });
 
 export {withAuthForm};

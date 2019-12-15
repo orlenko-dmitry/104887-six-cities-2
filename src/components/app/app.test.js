@@ -14,9 +14,9 @@ it(`App renders correctly`, () => {
         offersFetchStatus={ASYNC_STATUSES.SUCCESS}
         userGetStatus={ASYNC_STATUSES.SUCCESS}
         favoritesFetchStatus={ASYNC_STATUSES.SUCCESS}
-        getOffersHandler={() => {}}
-        getUserHandler={() => {}}
-        getFavorite={() => {}}
+        handleGetOffers={() => {}}
+        handleGetUser={() => {}}
+        handleGetFavorite={() => {}}
       />
   );
 

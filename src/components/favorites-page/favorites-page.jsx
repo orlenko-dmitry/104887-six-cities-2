@@ -15,8 +15,8 @@ import PageHeader from '../page-header/page-header.jsx';
 const FavoritesPage = ({
   favorites,
   user,
-  favoriteAddHandler,
-  selectCityHandler,
+  handleFavoriteAdd,
+  handleSelectCity,
 }) => (
   <div className="page">
     <PageHeader user={user}/>
@@ -26,8 +26,8 @@ const FavoritesPage = ({
           <h1 className="favorites__title">Saved listing</h1>
           <FavoritesList
             favorites={favorites}
-            onAddFavorite={favoriteAddHandler}
-            onSelectCity={selectCityHandler}
+            onAddFavorite={handleFavoriteAdd}
+            onSelectCity={handleSelectCity}
           />
         </section>
       </div>
@@ -39,8 +39,8 @@ FavoritesPage.propTypes = {
   favorites: arrayOf(arrayOf(shape({
   }))).isRequired,
   user: shape({}),
-  favoriteAddHandler: func.isRequired,
-  selectCityHandler: func.isRequired,
+  handleFavoriteAdd: func.isRequired,
+  handleSelectCity: func.isRequired,
 };
 
 FavoritesPage.defaultProps = {
@@ -53,8 +53,8 @@ const mapStateToProps = ({rUser}) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  favoriteAddHandler: (payload) => dispatch(aUser.postFavorite(payload)),
-  selectCityHandler: (payload) => dispatch(aData.selectCity(payload)),
+  handleFavoriteAdd: (payload) => dispatch(aUser.postFavorite(payload)),
+  handleSelectCity: (payload) => dispatch(aData.selectCity(payload)),
 });
 
 export {FavoritesPage};

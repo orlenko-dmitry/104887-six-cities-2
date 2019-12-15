@@ -36,17 +36,17 @@ const WithAuth = withAuth(WithEmptyFavoritesPage);
 class App extends PureComponent {
   componentDidMount() {
     const {
-      getOffersHandler,
-      getUserHandler,
+      handleGetOffers,
+      handleGetUser,
     } = this.props;
-    getOffersHandler();
-    getUserHandler();
+    handleGetOffers();
+    handleGetUser();
   }
 
   componentDidUpdate(prevProps) {
-    const {user, getFavorite} = this.props;
+    const {user, handleGetFavorite} = this.props;
     if (prevProps.user === null && user !== null) {
-      getFavorite();
+      handleGetFavorite();
     }
   }
 
@@ -95,9 +95,9 @@ App.propTypes = {
   offersFetchStatus: oneOf([PENDING, SUCCESS, ERROR]).isRequired,
   userGetStatus: oneOf([PENDING, SUCCESS, ERROR]).isRequired,
   favoritesFetchStatus: oneOf([PENDING, SUCCESS, ERROR]).isRequired,
-  getOffersHandler: func.isRequired,
-  getUserHandler: func.isRequired,
-  getFavorite: func.isRequired,
+  handleGetOffers: func.isRequired,
+  handleGetUser: func.isRequired,
+  handleGetFavorite: func.isRequired,
 };
 
 App.defaultProps = {
@@ -118,9 +118,9 @@ const mapStateToProps = ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getOffersHandler: () => dispatch(aData.fetchOffers()),
-  getUserHandler: () => dispatch(aUser.getUser()),
-  getFavorite: () => dispatch(aUser.getFavorite()),
+  handleGetOffers: () => dispatch(aData.fetchOffers()),
+  handleGetUser: () => dispatch(aUser.getUser()),
+  handleGetFavorite: () => dispatch(aUser.getFavorite()),
 });
 
 export {App};

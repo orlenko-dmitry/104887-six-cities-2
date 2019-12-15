@@ -10,7 +10,7 @@ it(`MainPage renders correctly`, () => {
   const tree = shallow(
       <MainEmptyPage
         city={city}
-        selectCityHandler={() => {}}
+        handleSelectCity={() => {}}
       />
   );
 
