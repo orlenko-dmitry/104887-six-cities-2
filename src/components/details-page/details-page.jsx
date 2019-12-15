@@ -41,6 +41,13 @@ class DetailsPage extends PureComponent {
     fetchCommentsHandler(offerId);
   }
 
+  componentDidUpdate(prevProps) {
+    const {match: {params: {offerId}}, fetchCommentsHandler} = this.props;
+    if (prevProps.match.params.offerId !== offerId) {
+      fetchCommentsHandler(offerId);
+    }
+  }
+
   _colorPinHandler(id) {
     const {getOfferIdHandler} = this.props;
     getOfferIdHandler(id);
