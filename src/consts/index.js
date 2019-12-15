@@ -22,7 +22,7 @@ export const ROUTES = {
   FAVORITE: `/favorites`,
 };
 
-export const MAX_REVIEWS = 10;
+export const MAX_REVIEWS = 2;
 
 export const SORT_BY_LIST = [
   {
