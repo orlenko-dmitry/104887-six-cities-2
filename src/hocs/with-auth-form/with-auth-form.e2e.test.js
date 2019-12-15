@@ -16,7 +16,7 @@ describe(`e2e test for withAuthForm hoc`, () => {
           city={city}
           user={null}
           userGetStatus={AsyncStatus.ERROR}
-          authLogin={jest.fn()}
+          handleAuthLogin={jest.fn()}
         />
     );
 
@@ -32,7 +32,7 @@ describe(`e2e test for withAuthForm hoc`, () => {
           city={city}
           user={null}
           userGetStatus={AsyncStatus.ERROR}
-          authLogin={() => {}}
+          handleAuthLogin={() => {}}
         />
     );
 

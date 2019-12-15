@@ -78,13 +78,13 @@ describe(`Action creators work correctly`, () => {
 
     apiMock
       .onPost(endpoints.login)
-      .reply(200, {fake: true});
+      .reply(200, {});
 
     return loginUser(dispatch, jest.fn(), api)
       .then(() => {
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: SIGN_IN_SUCCESS,
-          payload: {fake: true},
+          payload: {},
         });
       });
   });
@@ -96,13 +96,13 @@ describe(`Action creators work correctly`, () => {
 
     apiMock
       .onGet(endpoints.login)
-      .reply(200, {fake: true});
+      .reply(200, {});
 
     return userLoader(dispatch, jest.fn(), api)
       .then(() => {
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: GET_USER_SUCCESS,
-          payload: {fake: true},
+          payload: {},
         });
       });
   });
