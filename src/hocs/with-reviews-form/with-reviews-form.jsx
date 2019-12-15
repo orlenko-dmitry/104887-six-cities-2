@@ -3,6 +3,8 @@ import {
   oneOf,
   shape,
   string,
+  number,
+  bool,
   func,
 } from 'prop-types';
 import {connect} from 'react-redux';
@@ -76,7 +78,13 @@ const withReviewsForm = (Component) => {
   }
 
   WithReviewsForm.propTypes = {
-    user: shape({}),
+    user: shape({
+      avatarUrl: string.isRequired,
+      email: string.isRequired,
+      id: number.isRequired,
+      isPro: bool.isRequired,
+      name: string.isRequired,
+    }),
     messagePostStatus: oneOf([``, PENDING, SUCCESS, ERROR]).isRequired,
     offerId: string.isRequired,
     handlePostComment: func.isRequired,
@@ -95,7 +103,7 @@ const mapStateToProps = ({rData, rUser}) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  handlepostComment: (payload) => dispatch(aData.postComment(payload)),
+  handlePostComment: (payload) => dispatch(aData.postComment(payload)),
 });
 
 export default compose(

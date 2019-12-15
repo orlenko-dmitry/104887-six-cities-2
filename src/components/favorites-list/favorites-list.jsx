@@ -2,6 +2,9 @@ import React from 'react';
 import {
   arrayOf,
   shape,
+  number,
+  string,
+  bool,
   func,
 } from 'prop-types';
 import {Link} from 'react-router-dom';
@@ -48,8 +51,29 @@ const FavoritesList = ({
 );
 
 FavoritesList.propTypes = {
-  favorites: arrayOf(arrayOf(shape({
-  }))).isRequired,
+  favorites: arrayOf(shape({
+    id: number.isRequired,
+    images: arrayOf(string).isRequired,
+    title: string.isRequired,
+    isFavorite: bool.isRequired,
+    isPremium: bool.isRequired,
+    rating: number.isRequired,
+    bedrooms: number.isRequired,
+    maxAdults: number.isRequired,
+    price: number.isRequired,
+    goods: arrayOf(string).isRequired,
+    description: string.isRequired,
+    host: shape({
+      id: number.isRequired,
+      isPro: bool.isRequired,
+      name: string.isRequired,
+      avatarUrl: string.isRequired,
+    }).isRequired,
+    location: shape({
+      latitude: number.isRequired,
+      longitude: number.isRequired,
+    }).isRequired,
+  })).isRequired,
   onSelectCity: func.isRequired,
   onAddFavorite: func.isRequired,
 };

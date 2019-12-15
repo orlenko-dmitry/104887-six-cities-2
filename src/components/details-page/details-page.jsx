@@ -226,9 +226,24 @@ DetailsPage.propTypes = {
       isPro: bool.isRequired,
       name: string.isRequired,
       avatarUrl: string.isRequired,
-    }),
+    }).isRequired,
+    location: shape({
+      latitude: number.isRequired,
+      longitude: number.isRequired,
+    }).isRequired,
   })).isRequired,
-  comments: arrayOf(shape({})).isRequired,
+  comments: arrayOf(shape({
+    comment: string.isRequired,
+    date: string.isRequired,
+    id: number.isRequired,
+    rating: number.isRequired,
+    user: shape({
+      avatarUrl: string.isRequired,
+      id: number.isRequired,
+      isPro: bool.isRequired,
+      name: string.isRequired,
+    }).isRequired,
+  })).isRequired,
   city: shape({
     location: shape({
       latitude: number.isRequired,
@@ -244,7 +259,13 @@ DetailsPage.propTypes = {
   }).isRequired,
   onHoverOfferId: number.isRequired,
   offersFetchStatus: oneOf([PENDING, SUCCESS, ERROR]).isRequired,
-  user: shape({}),
+  user: shape({
+    avatarUrl: string.isRequired,
+    email: string.isRequired,
+    id: number.isRequired,
+    isPro: bool.isRequired,
+    name: string.isRequired,
+  }),
   handleGetOfferId: func.isRequired,
   handleFetchComments: func.isRequired,
   handleFavoriteAdd: func.isRequired,

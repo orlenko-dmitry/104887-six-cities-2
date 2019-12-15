@@ -4,6 +4,9 @@ import {
   arrayOf,
   shape,
   oneOf,
+  number,
+  string,
+  bool,
   func,
 } from 'prop-types';
 import {Switch, Route} from 'react-router-dom';
@@ -89,9 +92,59 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  offers: arrayOf(shape({})).isRequired,
-  favorites: arrayOf(shape({})).isRequired,
-  user: shape({}),
+  offers: arrayOf(shape({
+    id: number.isRequired,
+    images: arrayOf(string).isRequired,
+    title: string.isRequired,
+    isFavorite: bool.isRequired,
+    isPremium: bool.isRequired,
+    rating: number.isRequired,
+    bedrooms: number.isRequired,
+    maxAdults: number.isRequired,
+    price: number.isRequired,
+    goods: arrayOf(string).isRequired,
+    description: string.isRequired,
+    host: shape({
+      id: number.isRequired,
+      isPro: bool.isRequired,
+      name: string.isRequired,
+      avatarUrl: string.isRequired,
+    }).isRequired,
+    location: shape({
+      latitude: number.isRequired,
+      longitude: number.isRequired,
+    }).isRequired,
+  })).isRequired,
+  favorites: arrayOf(shape({
+    id: number.isRequired,
+    images: arrayOf(string).isRequired,
+    title: string.isRequired,
+    isFavorite: bool.isRequired,
+    isPremium: bool.isRequired,
+    rating: number.isRequired,
+    bedrooms: number.isRequired,
+    maxAdults: number.isRequired,
+    price: number.isRequired,
+    goods: arrayOf(string).isRequired,
+    description: string.isRequired,
+    host: shape({
+      id: number.isRequired,
+      isPro: bool.isRequired,
+      name: string.isRequired,
+      avatarUrl: string.isRequired,
+    }).isRequired,
+    location: shape({
+      latitude: number.isRequired,
+      longitude: number.isRequired,
+    }).isRequired,
+  })).isRequired,
+  user: shape({
+    avatarUrl: string.isRequired,
+    email: string.isRequired,
+    id: number.isRequired,
+    isPro: bool.isRequired,
+    name: string.isRequired,
+  }),
   offersFetchStatus: oneOf([PENDING, SUCCESS, ERROR]).isRequired,
   userGetStatus: oneOf([PENDING, SUCCESS, ERROR]).isRequired,
   favoritesFetchStatus: oneOf([PENDING, SUCCESS, ERROR]).isRequired,

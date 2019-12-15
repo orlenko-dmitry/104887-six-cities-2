@@ -3,6 +3,8 @@ import {
   arrayOf,
   shape,
   string,
+  number,
+  bool,
   func,
 } from 'prop-types';
 
@@ -31,7 +33,29 @@ const OffersList = ({
 );
 
 OffersList.propTypes = {
-  offers: arrayOf(shape({})).isRequired,
+  offers: arrayOf(shape({
+    id: number.isRequired,
+    images: arrayOf(string).isRequired,
+    title: string.isRequired,
+    isFavorite: bool.isRequired,
+    isPremium: bool.isRequired,
+    rating: number.isRequired,
+    bedrooms: number.isRequired,
+    maxAdults: number.isRequired,
+    price: number.isRequired,
+    goods: arrayOf(string).isRequired,
+    description: string.isRequired,
+    host: shape({
+      id: number.isRequired,
+      isPro: bool.isRequired,
+      name: string.isRequired,
+      avatarUrl: string.isRequired,
+    }).isRequired,
+    location: shape({
+      latitude: number.isRequired,
+      longitude: number.isRequired,
+    }).isRequired,
+  })).isRequired,
   onColorPin: func.isRequired,
   onAddFavorite: func.isRequired,
   classNames: string,

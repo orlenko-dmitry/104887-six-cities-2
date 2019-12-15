@@ -6,6 +6,7 @@ import {
   oneOf,
   string,
   number,
+  bool,
   func,
 } from 'prop-types';
 
@@ -74,7 +75,13 @@ const withAuthForm = (Component) => {
       }).isRequired,
       name: string.isRequired,
     }).isRequired,
-    user: shape({}),
+    user: shape({
+      avatarUrl: string.isRequired,
+      email: string.isRequired,
+      id: number.isRequired,
+      isPro: bool.isRequired,
+      name: string.isRequired,
+    }),
     userGetStatus: oneOf([PENDING, SUCCESS, ERROR]).isRequired,
     handleAuthLogin: func.isRequired,
   };

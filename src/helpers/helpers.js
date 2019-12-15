@@ -197,3 +197,17 @@ export const convertCommentsToCamelCase = (comments) => {
     },
   }));
 };
+
+export const convertUserToCamelCase = ({
+  avatar_url: avatarUrl,
+  email,
+  id,
+  is_pro: isPro,
+  name,
+}) => ({
+  avatarUrl,
+  email,
+  id,
+  isPro,
+  name,
+});

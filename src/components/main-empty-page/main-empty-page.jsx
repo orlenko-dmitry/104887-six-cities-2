@@ -4,6 +4,7 @@ import {
   shape,
   number,
   string,
+  bool,
   func,
 } from 'prop-types';
 
@@ -52,7 +53,13 @@ MainEmptyPage.propTypes = {
     }).isRequired,
     name: string.isRequired,
   }).isRequired,
-  user: shape({}),
+  user: shape({
+    avatarUrl: string.isRequired,
+    email: string.isRequired,
+    id: number.isRequired,
+    isPro: bool.isRequired,
+    name: string.isRequired,
+  }),
   handleSelectCity: func.isRequired,
 };
 

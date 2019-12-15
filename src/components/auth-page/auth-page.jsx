@@ -4,6 +4,7 @@ import {
   oneOf,
   string,
   number,
+  bool,
   func,
 } from 'prop-types';
 import {Link, Redirect} from 'react-router-dom';
@@ -97,7 +98,13 @@ AuthPage.propTypes = {
   }).isRequired,
   userEmail: string.isRequired,
   userPassword: string.isRequired,
-  user: shape({}),
+  user: shape({
+    avatarUrl: string.isRequired,
+    email: string.isRequired,
+    id: number.isRequired,
+    isPro: bool.isRequired,
+    name: string.isRequired,
+  }),
   userGetStatus: oneOf([PENDING, SUCCESS, ERROR]).isRequired,
   onFormSubmit: func.isRequired,
   onEmailChange: func.isRequired,

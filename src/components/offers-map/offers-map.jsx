@@ -4,6 +4,7 @@ import {
   shape,
   number,
   string,
+  bool,
 } from 'prop-types';
 import leaflet from 'leaflet';
 
@@ -75,6 +76,23 @@ class OffersMap extends PureComponent {
 
 OffersMap.propTypes = {
   offers: arrayOf(shape({
+    id: number.isRequired,
+    images: arrayOf(string).isRequired,
+    title: string.isRequired,
+    isFavorite: bool.isRequired,
+    isPremium: bool.isRequired,
+    rating: number.isRequired,
+    bedrooms: number.isRequired,
+    maxAdults: number.isRequired,
+    price: number.isRequired,
+    goods: arrayOf(string).isRequired,
+    description: string.isRequired,
+    host: shape({
+      id: number.isRequired,
+      isPro: bool.isRequired,
+      name: string.isRequired,
+      avatarUrl: string.isRequired,
+    }).isRequired,
     location: shape({
       latitude: number.isRequired,
       longitude: number.isRequired,

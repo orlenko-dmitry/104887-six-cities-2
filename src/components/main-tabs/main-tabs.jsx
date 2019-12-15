@@ -29,7 +29,14 @@ const MainTabs = ({cities, selectedCity, onSelectCityClick}) => (
 );
 
 MainTabs.propTypes = {
-  cities: arrayOf(shape({})).isRequired,
+  cities: arrayOf(shape({
+    location: shape({
+      latitude: number.isRequired,
+      longitude: number.isRequired,
+      zoom: number.isRequired,
+    }).isRequired,
+    name: string.isRequired,
+  })).isRequired,
   selectedCity: shape({
     location: shape({
       latitude: number.isRequired,

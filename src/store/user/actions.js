@@ -13,6 +13,7 @@ import endpoints from '../../consts/endpoints.js';
 import {
   convertOffersToCamelCase,
   convertOfferToCamelCase,
+  convertUserToCamelCase,
 } from '../../helpers/helpers.js';
 import history from '../../history.js';
 import {AppRoute} from '../../consts/consts.js';
@@ -25,7 +26,7 @@ export default ({
     }).then((response) => {
       dispatch({
         type: SIGN_IN_SUCCESS,
-        payload: response.data,
+        payload: convertUserToCamelCase(response.data),
       });
       history.push(AppRoute.ROOT);
     })
@@ -37,7 +38,7 @@ export default ({
     return api.get(endpoints.login)
             .then((response) => dispatch({
               type: GET_USER_SUCCESS,
-              payload: response.data,
+              payload: convertUserToCamelCase(response.data),
             }))
             .catch(() => dispatch({type: GET_USER_ERROR}));
   },

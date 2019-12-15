@@ -2,6 +2,9 @@ import React from 'react';
 import {
   arrayOf,
   shape,
+  number,
+  string,
+  bool,
   func,
 } from 'prop-types';
 import {connect} from 'react-redux';
@@ -36,15 +39,42 @@ const FavoritesPage = ({
 );
 
 FavoritesPage.propTypes = {
-  favorites: arrayOf(arrayOf(shape({
-  }))).isRequired,
-  user: shape({}),
+  favorites: arrayOf(shape({
+    id: number.isRequired,
+    images: arrayOf(string).isRequired,
+    title: string.isRequired,
+    isFavorite: bool.isRequired,
+    isPremium: bool.isRequired,
+    rating: number.isRequired,
+    bedrooms: number.isRequired,
+    maxAdults: number.isRequired,
+    price: number.isRequired,
+    goods: arrayOf(string).isRequired,
+    description: string.isRequired,
+    host: shape({
+      id: number.isRequired,
+      isPro: bool.isRequired,
+      name: string.isRequired,
+      avatarUrl: string.isRequired,
+    }).isRequired,
+    location: shape({
+      latitude: number.isRequired,
+      longitude: number.isRequired,
+    }).isRequired,
+  })).isRequired,
+  user: shape({
+    avatarUrl: string.isRequired,
+    email: string.isRequired,
+    id: number.isRequired,
+    isPro: bool.isRequired,
+    name: string.isRequired,
+  }),
   handleFavoriteAdd: func.isRequired,
   handleSelectCity: func.isRequired,
 };
 
 FavoritesPage.defaultProps = {
-
+  user: null,
 };
 
 const mapStateToProps = ({rUser}) => ({

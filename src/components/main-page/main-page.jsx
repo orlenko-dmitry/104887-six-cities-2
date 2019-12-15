@@ -4,6 +4,7 @@ import {
   shape,
   number,
   string,
+  bool,
   func,
 } from 'prop-types';
 import {connect} from 'react-redux';
@@ -79,7 +80,29 @@ const MainPage = ({
 
 
 MainPage.propTypes = {
-  offers: arrayOf(shape({})).isRequired,
+  offers: arrayOf(shape({
+    id: number.isRequired,
+    images: arrayOf(string).isRequired,
+    title: string.isRequired,
+    isFavorite: bool.isRequired,
+    isPremium: bool.isRequired,
+    rating: number.isRequired,
+    bedrooms: number.isRequired,
+    maxAdults: number.isRequired,
+    price: number.isRequired,
+    goods: arrayOf(string).isRequired,
+    description: string.isRequired,
+    host: shape({
+      id: number.isRequired,
+      isPro: bool.isRequired,
+      name: string.isRequired,
+      avatarUrl: string.isRequired,
+    }).isRequired,
+    location: shape({
+      latitude: number.isRequired,
+      longitude: number.isRequired,
+    }).isRequired,
+  })).isRequired,
   city: shape({
     location: shape({
       latitude: number.isRequired,
@@ -88,7 +111,13 @@ MainPage.propTypes = {
     }).isRequired,
     name: string.isRequired,
   }).isRequired,
-  user: shape({}),
+  user: shape({
+    avatarUrl: string.isRequired,
+    email: string.isRequired,
+    id: number.isRequired,
+    isPro: bool.isRequired,
+    name: string.isRequired,
+  }),
   sortedBy: string.isRequired,
   onHoverOfferId: number.isRequired,
   handleSelectCity: func.isRequired,

@@ -1,5 +1,11 @@
 import React from 'react';
-import {shape, oneOf} from 'prop-types';
+import {
+  shape,
+  oneOf,
+  string,
+  number,
+  bool,
+} from 'prop-types';
 import {Redirect} from 'react-router-dom';
 
 import {AppRoute, AsyncStatus} from '../../consts/consts.js';
@@ -22,7 +28,13 @@ const withAuth = (Component) => (props) => {
 };
 
 withAuth.propTypes = {
-  user: shape({}),
+  user: shape({
+    avatarUrl: string.isRequired,
+    email: string.isRequired,
+    id: number.isRequired,
+    isPro: bool.isRequired,
+    name: string.isRequired,
+  }),
   userGetStatus: oneOf([PENDING, SUCCESS, ERROR]).isRequired,
 };
 

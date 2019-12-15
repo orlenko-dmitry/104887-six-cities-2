@@ -1,5 +1,10 @@
 import React from 'react';
-import {shape} from 'prop-types';
+import {
+  shape,
+  string,
+  number,
+  bool,
+} from 'prop-types';
 import {Link} from 'react-router-dom';
 
 import {AppRoute, AxiosConfig} from '../../consts/consts.js';
@@ -34,7 +39,7 @@ const PageHeader = ({user}) => (
                       <div
                         className="header__avatar-wrapper user__avatar-wrapper"
                         style={{
-                          backgroundImage: `url(${AxiosConfig.BASE_URL}${user.avatar_url})`,
+                          backgroundImage: `url(${AxiosConfig.BASE_URL}${user.avatarUrl})`,
                           borderRadius: `50%`,
                         }}
                       />
@@ -51,7 +56,13 @@ const PageHeader = ({user}) => (
 );
 
 PageHeader.propTypes = {
-  user: shape({}),
+  user: shape({
+    avatarUrl: string.isRequired,
+    email: string.isRequired,
+    id: number.isRequired,
+    isPro: bool.isRequired,
+    name: string.isRequired,
+  }),
 };
 
 PageHeader.defaultProps = {
